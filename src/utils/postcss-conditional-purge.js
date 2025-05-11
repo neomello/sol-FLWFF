@@ -8,6 +8,7 @@ module.exports = (opts = {}) => {
   purgePlugin.OnceExit = function (...args) {
     const [root] = args;
     const filename = root?.source?.input?.file;
+    if (ignore && ignore.some(pattern => filename.match(pattern))) {
       // console.log("ignoring", filename);
       return;
     }
@@ -16,4 +17,5 @@ module.exports = (opts = {}) => {
   };
   return purgePlugin;
 };
+
 module.exports.postcss = true;
