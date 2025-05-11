@@ -100,12 +100,9 @@ const RampFilter = ({
     item.title.toLowerCase().includes(filterText.toLowerCase()),
   );
 
-  // Clear filters when filters length becomes 0
+  useEffect(() => {
     if (filters.length === 0) {
-      setOptionStates((prevOptionStates) =>
-        prevOptionStates.map((option) => ({ ...option, checked: false })),
-      );
-      setFilterTex;
+      setFilterText("");
     }
   }, [filters.length]);
 

@@ -32,8 +32,8 @@ export default function EnvironmentWhatYouCanDo() {
 
   const usages = [
     {
-      title: environment.what-you-can-do.data.title,
-      description: environment.what-you-can-do.data.description,
+      title: environment["what-you-can-do"].data.title,
+      description: environment["what-you-can-do"].data.description,
       image: dataImg,
       url: "/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain",
     },

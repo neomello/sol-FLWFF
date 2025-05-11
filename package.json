@@ -79,6 +79,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.9",
+    "@babel/plugin-proposal-do-expressions": "7.27.1",
+    "@babel/plugin-syntax-do-expressions": "7.27.1",
     "@builder.io/sdk": "^6.0.5",
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "@next/bundle-analyzer": "^14.1.0",
