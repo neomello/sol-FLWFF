@@ -1,6 +1,7 @@
 # solana-com
 
-Projeto baseado em Next.js voltado pra interface do ecossistema Solana. Integra carteira, transações e estatísticas em tempo real com RPCs direto da blockchain.
+Projeto baseado em Next.js voltado pra interface do ecossistema Solana. Integra carteira, transações
+e estatísticas em tempo real com RPCs direto da blockchain.
 
 ## Rodando Localmente
 

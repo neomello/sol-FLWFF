@@ -1,10 +1,10 @@
-import { config } from "src/config";
+import { config } from 'src/config';
 
 /**
  * Prepend the site url to local routes
  */
 export function prependSiteUrl(url: string) {
-  if (url.startsWith("/")) url = `${config.siteUrl}${url}`;
+  if (url.startsWith('/')) url = `${config.siteUrl}${url}`;
 
   return url;
 }

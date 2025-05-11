@@ -1,27 +1,21 @@
-import Head from "next/head";
-import _ from "lodash";
-import url from "url";
-import { extractTags } from "@/lib/builder/api";
-import MetaLinks from "../../MetaLinks";
-import ImageMeta from "./ImageMeta";
-import { config } from "src/config";
-import { useRouter } from "next/router";
+import Head from 'next/head';
+import _ from 'lodash';
+import url from 'url';
+import { extractTags } from '@/lib/builder/api';
+import MetaLinks from '../../MetaLinks';
+import ImageMeta from './ImageMeta';
+import { config } from 'src/config';
+import { useRouter } from 'next/router';
 
-const ArticleMetaBuilder = ({
-  data: builderPost,
-  settings,
-  canonical,
-}) => {
+const ArticleMetaBuilder = ({ data: builderPost, settings, canonical }) => {
   const author = builderPost?.data?.author?.value || null;
 
   const _tags = extractTags([builderPost], 3);
   const publicTags = _tags.map((tag) => tag?.name || null);
 
   const getShareImage = () => {
-    if (builderPost?.data?.seo?.seoImage)
-      return builderPost?.data?.seo?.seoImage;
-    if (builderPost?.data?.openGraph?.ogImage)
-      return builderPost.data.openGraph.ogImage;
+    if (builderPost?.data?.seo?.seoImage) return builderPost?.data?.seo?.seoImage;
+    if (builderPost?.data?.openGraph?.ogImage) return builderPost.data.openGraph.ogImage;
     if (builderPost?.data?.image) return builderPost.data.image;
   };
   const shareImage = getShareImage();
@@ -31,29 +25,24 @@ const ArticleMetaBuilder = ({
       ? url.resolve(config.siteUrl, settings.logo || config.siteIcon)
       : null;
 
-  const datePublished = new Date(
-    builderPost?.firstPublished,
-  ).toLocaleDateString("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  const datePublished = new Date(builderPost?.firstPublished).toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 
-  const dateModified = new Date(builderPost?.lastUpdated).toLocaleDateString(
-    "en-GB",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    },
-  );
+  const dateModified = new Date(builderPost?.lastUpdated).toLocaleDateString('en-GB', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
   const jsonLd = {
-    "@context": `https://schema.org/`,
-    "@type": `Article`,
+    '@context': `https://schema.org/`,
+    '@type': `Article`,
     author: {
-      "@type": `Person`,
-      name: author?.name || "Solana Foundation",
+      '@type': `Person`,
+      name: author?.name || 'Solana Foundation',
       image: author?.data?.image ? author.data.image : undefined,
     },
     keywords: publicTags.length ? publicTags.join(`, `) : undefined,
@@ -63,27 +52,26 @@ const ArticleMetaBuilder = ({
     dateModified: dateModified,
     image: shareImage
       ? {
-          "@type": `ImageObject`,
+          '@type': `ImageObject`,
           url: shareImage,
           width: config.shareImageWidth,
           height: config.shareImageHeight,
         }
       : undefined,
     publisher: {
-      "@type": `Organization`,
+      '@type': `Organization`,
       name: `Solana Foundation`,
       logo: {
-        "@type": `ImageObject`,
+        '@type': `ImageObject`,
         url: publisherLogo,
         width: 60,
         height: 60,
       },
     },
-    description:
-      builderPost?.data?.seo?.seoDescription || builderPost?.data?.intro,
+    description: builderPost?.data?.seo?.seoDescription || builderPost?.data?.intro,
     mainEntityOfPage: {
-      "@type": `WebPage`,
-      "@id": config.siteUrl,
+      '@type': `WebPage`,
+      '@id': config.siteUrl,
     },
   };
 
@@ -92,24 +80,20 @@ const ArticleMetaBuilder = ({
   // We can remove the replace() method once we've updated all the titles.
   const titleRegex = /(\s\|\sSolana|Solana\s\|\s)/g;
   const title = builderPost?.data?.seo?.seoTitle
-    ? `${builderPost?.data?.seo?.seoTitle.replace(titleRegex, "")} | Solana`
+    ? `${builderPost?.data?.seo?.seoTitle.replace(titleRegex, '')} | Solana`
     : `${builderPost?.data?.title} | Solana`;
 
   const { asPath } = useRouter();
-  const asPathNoRedirect = asPath === "/" ? "" : asPath;
+  const asPathNoRedirect = asPath === '/' ? '' : asPath;
 
   return (
     <>
       <Head>
-        <MetaLinks
-          asPathNoRedirect={asPathNoRedirect}
-        />
+        <MetaLinks asPathNoRedirect={asPathNoRedirect} />
         <title>{title}</title>
         <meta
           name="description"
-          content={
-            builderPost?.data?.seo?.seoDescription || builderPost?.data?.intro
-          }
+          content={builderPost?.data?.seo?.seoDescription || builderPost?.data?.intro}
         />
 
         <meta property="og:site_name" content={`Solana`} />
@@ -131,12 +115,8 @@ const ArticleMetaBuilder = ({
           }
         />
         <meta property="og:url" content={canonical} />
-        {datePublished && (
-          <meta property="article:published_time" content={datePublished} />
-        )}
-        {dateModified && (
-          <meta property="article:modified_time" content={dateModified} />
-        )}
+        {datePublished && <meta property="article:published_time" content={datePublished} />}
+        {dateModified && <meta property="article:modified_time" content={dateModified} />}
         {publicTags.map((keyword, i) => (
           <meta property="article:tag" content={keyword} key={i} />
         ))}
@@ -161,26 +141,16 @@ const ArticleMetaBuilder = ({
           }
         />
         <meta name="twitter:url" content={canonical} />
-        <meta
-          name="twitter:data1"
-          content={author?.name || "Solana Foundation"}
-        />
+        <meta name="twitter:data1" content={author?.name || 'Solana Foundation'} />
 
         {settings.twitter && (
           <meta
             name="twitter:site"
-            content={`https://twitter.com/${settings.twitter.replace(
-              /^@/,
-              ``,
-            )}/`}
+            content={`https://twitter.com/${settings.twitter.replace(/^@/, ``)}/`}
           />
         )}
-        {settings.twitter && (
-          <meta name="twitter:creator" content={settings.twitter} />
-        )}
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd, undefined, 4)}
-        </script>
+        {settings.twitter && <meta name="twitter:creator" content={settings.twitter} />}
+        <script type="application/ld+json">{JSON.stringify(jsonLd, undefined, 4)}</script>
       </Head>
       <ImageMeta image={shareImage} />
     </>

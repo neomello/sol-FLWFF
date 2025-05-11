@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
+import { useState, useEffect } from 'react';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 export function useStateOrLocalStorage(
   key: string | undefined,
@@ -20,13 +20,13 @@ export function useStateOrLocalStorage(
       }
     };
 
-    window.addEventListener("storage", onStorageChange);
-    return () => window.removeEventListener("storage", onStorageChange);
+    window.addEventListener('storage', onStorageChange);
+    return () => window.removeEventListener('storage', onStorageChange);
   }, [key, initialState]);
 
   const setStorage = (val: string) => {
     setState(val);
-    if (!key || typeof window === "undefined") return;
+    if (!key || typeof window === 'undefined') return;
     window.localStorage.setItem(key, val);
     // emitir "fake" event só se quiser sync entre tabs
   };

@@ -1,18 +1,18 @@
-import { useState } from "react";
-import StyledRoundedCard from "../shared/StyledRoundedCard";
-import heroImage from "../../../public/src/img/format/hero.jpg";
-import solanaFormat from "../../../public/src/img/format/solana-format.png";
-import formatBannerLogo from "../../../public/src/img/format/banner-logo.png";
-import SolanaPay from "../../../public/src/img/format/solanapay.inline.svg";
-import TipLink from "../../../public/src/img/format/tiplink.inline.svg";
-import MagicEden from "../../../public/src/img/format/magiceden.inline.svg";
-import Twitter from "../../../public/src/img/format/twitter.inline.svg";
-import Image from "next/legacy/image";
-import styled from "styled-components";
-import { InlineLink } from "../../utils/Link";
-import VideoModal from "../shared/VideoModal";
-import Button from "../shared/Button";
-import Play from "../../../public/src/img/format/play.inline.svg";
+import { useState } from 'react';
+import StyledRoundedCard from '../shared/StyledRoundedCard';
+import heroImage from '../../../public/src/img/format/hero.jpg';
+import solanaFormat from '../../../public/src/img/format/solana-format.png';
+import formatBannerLogo from '../../../public/src/img/format/banner-logo.png';
+import SolanaPay from '../../../public/src/img/format/solanapay.inline.svg';
+import TipLink from '../../../public/src/img/format/tiplink.inline.svg';
+import MagicEden from '../../../public/src/img/format/magiceden.inline.svg';
+import Twitter from '../../../public/src/img/format/twitter.inline.svg';
+import Image from 'next/legacy/image';
+import styled from 'styled-components';
+import { InlineLink } from '../../utils/Link';
+import VideoModal from '../shared/VideoModal';
+import Button from '../shared/Button';
+import Play from '../../../public/src/img/format/play.inline.svg';
 
 const StyledImage = styled.div`
   position: relative;
@@ -46,7 +46,7 @@ const StyledBanner = styled.div`
   border-radius: 2rem;
 
   @media (min-width: 992px) {
-    background-image: url("/src/img/format/banner-bg.png");
+    background-image: url('/src/img/format/banner-bg.png');
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -104,17 +104,14 @@ const FormatHero = () => {
               <strong>{format.hero.subtitle}</strong>
             </p>
             <p>
-                components={{
-                  formatLink: (
-                    <InlineLink to="https://www.format-festival.com/" />
-                  ),
-                  artistLink: (
-                    <InlineLink to="https://www.instagram.com/nancybakercahill/" />
-                  ),
-                  auctionLink: (
-                    <InlineLink to="https://www.magiceden.io/auction/slipstream_entanglement_08" />
-                  ),
-                }}
+              components=
+              {{
+                formatLink: <InlineLink to="https://www.format-festival.com/" />,
+                artistLink: <InlineLink to="https://www.instagram.com/nancybakercahill/" />,
+                auctionLink: (
+                  <InlineLink to="https://www.magiceden.io/auction/slipstream_entanglement_08" />
+                ),
+              }}
               />
             </p>
             <p>{format.hero.dates}</p>
@@ -130,12 +127,7 @@ const FormatHero = () => {
                 <div className="w-md-75 mb-6">
                   <p>{format.claim.description}</p>
                 </div>
-                <Button
-                  to="https://tiplink.io/format"
-                  arrowRight
-                  size="large"
-                  newTab
-                >
+                <Button to="https://tiplink.io/format" arrowRight size="large" newTab>
                   {format.claim.cta}
                 </Button>
               </div>
@@ -143,15 +135,11 @@ const FormatHero = () => {
             <div className="social mt-6">
               <div className="d-lg-flex justify-content-between align-items-center">
                 <p className="m-0">
-                  <Twitter className="me-2" />{" "}
-                    components={{
-                      tipLink: (
-                        <InlineLink to="https://twitter.com/tiplinkofficial" />
-                      ),
-                      solanaSpacesLink: (
-                        <InlineLink to="https://twitter.com/solanaspaces" />
-                      ),
-                    }}
+                  <Twitter className="me-2" /> components=
+                  {{
+                    tipLink: <InlineLink to="https://twitter.com/tiplinkofficial" />,
+                    solanaSpacesLink: <InlineLink to="https://twitter.com/solanaspaces" />,
+                  }}
                   />
                 </p>
                 <p className="m-0 poweredby">
@@ -168,10 +156,7 @@ const FormatHero = () => {
         <div className="container">
           <div className="row my-10">
             <div className="col-lg-6 my-5">
-              <StyledRoundedCard
-                bgColor="#1c1c1c"
-                className="h-100 p-6 text-white"
-              >
+              <StyledRoundedCard bgColor="#1c1c1c" className="h-100 p-6 text-white">
                 <h2 className="h3 mb-6">{format.concessions.title}</h2>
                 <p className="mb-0">{format.concessions.description}</p>
 
@@ -186,17 +171,15 @@ const FormatHero = () => {
               </StyledRoundedCard>
             </div>
             <div className="col-lg-6 my-5">
-              <StyledRoundedCard
-                bgColor="#1c1c1c"
-                className="h-100 p-6 text-white"
-              >
+              <StyledRoundedCard bgColor="#1c1c1c" className="h-100 p-6 text-white">
                 <h2 className="h3 mb-6">{format.slipstream.title}</h2>
                 <p className="mb-0">
-                    components={{
-                      auctionLink: (
-                        <InlineLink to="https://www.magiceden.io/auction/slipstream_entanglement_08" />
-                      ),
-                    }}
+                  components=
+                  {{
+                    auctionLink: (
+                      <InlineLink to="https://www.magiceden.io/auction/slipstream_entanglement_08" />
+                    ),
+                  }}
                   />
                 </p>
                 <div className="mt-6">

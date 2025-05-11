@@ -25,4 +25,4 @@ export const useTranslation = () => {
     t,
     locale,
   };
-}; 
+};

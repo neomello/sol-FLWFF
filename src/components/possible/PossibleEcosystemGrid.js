@@ -1,4 +1,4 @@
-import PossibleEcosystemGridRow from "./PossibleEcosystemGridRow";
+import PossibleEcosystemGridRow from './PossibleEcosystemGridRow';
 
 const PossibleEcosystemGrid = ({ data }) => {
   // convert array of objects into 6 equal chunks
@@ -11,7 +11,7 @@ const PossibleEcosystemGrid = ({ data }) => {
           <PossibleEcosystemGridRow
             data={chunk}
             key={index}
-            dir={index % 2 === 0 ? "ltr" : "rtl"}
+            dir={index % 2 === 0 ? 'ltr' : 'rtl'}
           />
         );
       })}

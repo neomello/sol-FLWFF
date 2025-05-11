@@ -1,6 +1,6 @@
-import Head from "next/head";
-import PropTypes from "prop-types";
-import { config } from "src/config";
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+import { config } from 'src/config';
 
 const ImageMeta = ({ image }) => {
   if (!image) {

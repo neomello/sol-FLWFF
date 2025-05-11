@@ -1,55 +1,48 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { usePathname } from "@/hooks/useRouter";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { usePathname } from '@/hooks/useRouter';
 
 export const ThemeContext = createContext({
-  theme: "dark",
+  theme: 'dark',
   toggleTheme: () => {},
 });
 
 export const ThemeProvider = ({ children }) => {
   const pathname = usePathname();
   const isThemePage = pathname
-    ? pathname.startsWith("/docs") ||
-      pathname.startsWith("/developers/cookbook") ||
-      pathname.startsWith("/developers/guides") ||
-      pathname.startsWith("/developers/courses")
+    ? pathname.startsWith('/docs') ||
+      pathname.startsWith('/developers/cookbook') ||
+      pathname.startsWith('/developers/guides') ||
+      pathname.startsWith('/developers/courses')
     : false;
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     if (isThemePage) {
       // Function to update the theme based on the passed theme name
       const updateTheme = (newTheme) => {
         setTheme(newTheme);
-        document.documentElement.classList.remove(
-          "dark",
-          "tw-dark",
-          "light",
-          "tw-light",
-        );
+        document.documentElement.classList.remove('dark', 'tw-dark', 'light', 'tw-light');
         document.documentElement.classList.add(newTheme, `tw-${newTheme}`);
-        localStorage.setItem("theme", newTheme);
+        localStorage.setItem('theme', newTheme);
       };
 
       // Check if user has a theme preference in localStorage
-      const localTheme = localStorage.getItem("theme");
+      const localTheme = localStorage.getItem('theme');
       if (localTheme) {
         updateTheme(localTheme);
       } else {
         // Use system color scheme if no local preference
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        const systemTheme = prefersDark ? "dark" : "light";
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const systemTheme = prefersDark ? 'dark' : 'light';
         updateTheme(systemTheme);
       }
 
       // Listen for system theme changes
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       const mediaQueryListener = (e) => {
-        const newTheme = e.matches ? "dark" : "light";
+        const newTheme = e.matches ? 'dark' : 'light';
         updateTheme(newTheme);
       };
       mediaQuery.addListener(mediaQueryListener);
@@ -57,29 +50,19 @@ export const ThemeProvider = ({ children }) => {
       // Cleanup listener on component unmount
       return () => mediaQuery.removeListener(mediaQueryListener);
     } else {
-      setTheme("dark");
-      document.documentElement.classList.remove(
-        "light",
-        "tw-light",
-        "dark",
-        "tw-dark",
-      );
-      document.documentElement.classList.add("dark", "tw-dark");
+      setTheme('dark');
+      document.documentElement.classList.remove('light', 'tw-light', 'dark', 'tw-dark');
+      document.documentElement.classList.add('dark', 'tw-dark');
     }
   }, [pathname, isThemePage]);
 
   const toggleTheme = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    document.documentElement.classList.remove(
-      "dark",
-      "tw-dark",
-      "light",
-      "tw-light",
-    );
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.classList.remove('dark', 'tw-dark', 'light', 'tw-light');
     document.documentElement.classList.add(newTheme, `tw-${newTheme}`);
     setTheme(newTheme);
     if (isThemePage) {
-      localStorage.setItem("theme", newTheme);
+      localStorage.setItem('theme', newTheme);
     }
   };
 
@@ -89,4 +72,3 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   );
 };
-

@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import { AnnouncementBar } from "@solana-foundation/solana-lib";
-import builder from "@builder.io/react";
-import { BUILDER_CONFIG } from "../../lib/builder/builderConstants";
-import styles from "./SitewideTopAlert.module.scss";
+import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import { AnnouncementBar } from '@solana-foundation/solana-lib';
+import builder from '@builder.io/react';
+import { BUILDER_CONFIG } from '../../lib/builder/builderConstants';
+import styles from './SitewideTopAlert.module.scss';
 
 /**
  * Displays an Alert at the top of the window excluding
@@ -20,12 +20,12 @@ export default function SitewideTopAlert() {
 
   useEffect(() => {
     // Fetch announcement bar data from Builder.io
-    builder.apiVersion = "v3";
+    builder.apiVersion = 'v3';
     builder
-      .get("announcement-bar", {
+      .get('announcement-bar', {
         staleCacheSeconds: 20,
         userAttributes: {},
-        options: {}
+        options: {},
       })
       .promise()
       .then((response) => {
@@ -40,18 +40,15 @@ export default function SitewideTopAlert() {
       });
   }, []);
 
-  if (
-    pathname?.includes(announcementBarData?.cta?.url) ||
-    pathname?.includes("/breakpoint/app")
-  ) {
+  if (pathname?.includes(announcementBarData?.cta?.url) || pathname?.includes('/breakpoint/app')) {
     return null;
   }
 
   return (
     <>
       {(announcementBarData?.text || announcementBarData?.cta?.label) && (
-        <div className={styles["alertOuter"]}>
-          <div className={styles["alertInner"]}>
+        <div className={styles['alertOuter']}>
+          <div className={styles['alertInner']}>
             <AnnouncementBar {...announcementBarData} dismissable={false} />
           </div>
         </div>

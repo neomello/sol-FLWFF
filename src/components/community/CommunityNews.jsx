@@ -1,4 +1,4 @@
-import PostCard from "../community/PostCard";
+import PostCard from '../community/PostCard';
 
 /**
  * Display builder blog posts
@@ -8,7 +8,6 @@ import PostCard from "../community/PostCard";
  * @constructor
  */
 const CommunityNews = ({ posts }) => {
-
   return (
     <section className="community-podcasts container">
       <h2>{community.popular.title}</h2>

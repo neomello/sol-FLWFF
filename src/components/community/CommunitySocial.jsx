@@ -1,15 +1,15 @@
-import { FormattedNumber } from "../SolFormattedMessage";
-import { Badge } from "react-bootstrap";
-import Telegram from "../../../public/src/img/community/socials-telegram.inline.svg";
-import Twitter from "../../../public/src/img/community/socials-twitter.inline.svg";
-import Youtube from "../../../public/src/img/community/socials-youtube.inline.svg";
-import Weibo from "../../../public/src/img/community/socials-weibo.inline.svg";
-import Discord from "../../../public/src/img/community/socials-discord.inline.svg";
-import Git from "../../../public/src/img/community/socials-git.inline.svg";
-import Sun from "../../../public/src/img/community/socials-sun.inline.svg";
-import Mail from "../../../public/src/img/community/socials-mail.inline.svg";
-import Reddit from "../../../public/src/img/community/socials-reddit.inline.svg";
-import News from "../../../public/src/img/community/socials-news.inline.svg";
+import { FormattedNumber } from '../SolFormattedMessage';
+import { Badge } from 'react-bootstrap';
+import Telegram from '../../../public/src/img/community/socials-telegram.inline.svg';
+import Twitter from '../../../public/src/img/community/socials-twitter.inline.svg';
+import Youtube from '../../../public/src/img/community/socials-youtube.inline.svg';
+import Weibo from '../../../public/src/img/community/socials-weibo.inline.svg';
+import Discord from '../../../public/src/img/community/socials-discord.inline.svg';
+import Git from '../../../public/src/img/community/socials-git.inline.svg';
+import Sun from '../../../public/src/img/community/socials-sun.inline.svg';
+import Mail from '../../../public/src/img/community/socials-mail.inline.svg';
+import Reddit from '../../../public/src/img/community/socials-reddit.inline.svg';
+import News from '../../../public/src/img/community/socials-news.inline.svg';
 
 /**
  * Display social network cards
@@ -19,7 +19,6 @@ import News from "../../../public/src/img/community/socials-news.inline.svg";
  * @constructor
  */
 const CommunitySocial = ({ data }) => {
-
   const {
     telegram = 70463,
     twitter = 3028785,
@@ -34,83 +33,83 @@ const CommunitySocial = ({ data }) => {
 
   const socialAccounts = [
     {
-      link: "/telegram",
-      category: "Announcements",
+      link: '/telegram',
+      category: 'Announcements',
       renderIcon: () => <Telegram />,
-      nameId: "community.socials.telegram",
-      memberStrId: "community.socials.approx-members",
+      nameId: 'community.socials.telegram',
+      memberStrId: 'community.socials.approx-members',
       members: telegram,
     },
     {
-      link: "/twitter",
-      category: "Announcements",
+      link: '/twitter',
+      category: 'Announcements',
       renderIcon: () => <Twitter />,
-      nameId: "community.socials.twitter",
-      memberStrId: "community.socials.approx-members",
+      nameId: 'community.socials.twitter',
+      memberStrId: 'community.socials.approx-members',
       members: twitter,
     },
     {
-      link: "/youtube",
-      category: "Announcements",
+      link: '/youtube',
+      category: 'Announcements',
       renderIcon: () => <Youtube size={32} className="stroke" />,
-      nameId: "community.socials.youtube",
-      memberStrId: "community.socials.yt-subscribers",
+      nameId: 'community.socials.youtube',
+      memberStrId: 'community.socials.yt-subscribers',
       members: youtube,
     },
     {
-      link: "/reddit",
-      category: "Discussions",
+      link: '/reddit',
+      category: 'Discussions',
       renderIcon: () => <Reddit />,
-      nameId: "community.socials.reddit",
-      memberStrId: "community.socials.gt-subscribers",
+      nameId: 'community.socials.reddit',
+      memberStrId: 'community.socials.gt-subscribers',
       members: reddit,
     },
     {
-      link: "/discord",
-      category: "Engineering",
+      link: '/discord',
+      category: 'Engineering',
       renderIcon: () => <Discord />,
-      nameId: "community.socials.discord",
-      memberStrId: "community.socials.approx-members",
+      nameId: 'community.socials.discord',
+      memberStrId: 'community.socials.approx-members',
       members: discord,
     },
     {
-      link: "/github",
-      category: "Engineering",
+      link: '/github',
+      category: 'Engineering',
       renderIcon: () => <Git />,
-      nameId: "community.socials.github",
-      memberStrId: "community.socials.gt-stars",
+      nameId: 'community.socials.github',
+      memberStrId: 'community.socials.gt-stars',
       members: github,
     },
     {
-      link: "https://www.meetup.com/topics/solana/",
-      category: "Meetings",
+      link: 'https://www.meetup.com/topics/solana/',
+      category: 'Meetings',
       renderIcon: () => <Sun />,
-      nameId: "community.socials.meetup",
-      memberStrId: "community.socials.gt-members",
+      nameId: 'community.socials.meetup',
+      memberStrId: 'community.socials.gt-members',
       members: meetup,
     },
     {
-      link: "https://weibo.com/SolanaNews",
-      category: "Announcements",
+      link: 'https://weibo.com/SolanaNews',
+      category: 'Announcements',
       renderIcon: () => <Weibo />,
-      nameId: "community.socials.weibo",
-      memberStrId: "community.socials.weibo-subscribers",
+      nameId: 'community.socials.weibo',
+      memberStrId: 'community.socials.weibo-subscribers',
       members: weibo,
     },
     {
-      link: "/news",
-      category: "Discussions",
+      link: '/news',
+      category: 'Discussions',
       renderIcon: () => <News />,
-      nameId: "community.socials.medium",
-      memberStrId: "community.socials.approx-write-ups",
+      nameId: 'community.socials.medium',
+      memberStrId: 'community.socials.approx-write-ups',
       members: news,
     },
     {
-      link: "mailto:hello@solana.com",
-      category: "Meetings",
+      link: 'mailto:hello@solana.com',
+      category: 'Meetings',
       renderIcon: () => <Mail />,
-      nameId: "community.socials.email",
-      membersStr: "hello@solana.com",
+      nameId: 'community.socials.email',
+      membersStr: 'hello@solana.com',
     },
   ];
 

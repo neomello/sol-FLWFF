@@ -1,9 +1,8 @@
-
-import Layout from "@/components/layout";
-import HTMLHead from "@/components/HTMLHead";
-import ECDRHero from "@/components/ecdr/ECDRHero";
-import ECDRStats from "@/components/ecdr/ECDRStats";
-import ECDRJoinCommunity from "@/components/ecdr/ECDRJoinCommunity";
+import Layout from '@/components/layout';
+import HTMLHead from '@/components/HTMLHead';
+import ECDRHero from '@/components/ecdr/ECDRHero';
+import ECDRStats from '@/components/ecdr/ECDRStats';
+import ECDRJoinCommunity from '@/components/ecdr/ECDRJoinCommunity';
 
 const ECDRPage = () => {
   return (
@@ -24,14 +23,13 @@ const ECDRPage = () => {
 
 export async function getStaticProps({ params }) {
   return {
-    props: {
-    },
+    props: {},
   };
 }
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 

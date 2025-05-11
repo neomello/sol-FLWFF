@@ -1,12 +1,11 @@
-
-import HTMLHead from "@/components/HTMLHead";
-import Layout from "@/components/layout";
-import PodcastNavigation from "@/components/podcast/PodcastNavigation";
+import HTMLHead from '@/components/HTMLHead';
+import Layout from '@/components/layout';
+import PodcastNavigation from '@/components/podcast/PodcastNavigation';
 import PodcastStickyPlayer, {
   PodcastPlayerContextProvider,
-} from "@/components/podcast/PodcastStickyPlayer";
-import PodcastEpisodeSection from "@/components/podcast/episode/PodcastEpisodeSection";
-import PodcastApi from "@/lib/podcast";
+} from '@/components/podcast/PodcastStickyPlayer';
+import PodcastEpisodeSection from '@/components/podcast/episode/PodcastEpisodeSection';
+import PodcastApi from '@/lib/podcast';
 
 export default function PodcastIndex({ episode }) {
   return (
@@ -39,7 +38,7 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 };
 

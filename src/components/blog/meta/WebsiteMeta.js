@@ -1,26 +1,13 @@
-import Head from "next/head";
-import _ from "lodash";
-import url from "url";
+import Head from 'next/head';
+import _ from 'lodash';
+import url from 'url';
 
-import ImageMeta from "./ImageMeta";
-import { config } from "src/config";
+import ImageMeta from './ImageMeta';
+import { config } from 'src/config';
 
-const WebsiteMeta = ({
-  data,
-  settings,
-  canonical,
-  title,
-  description,
-  image,
-  type,
-}) => {
-  const publisherLogo = url.resolve(
-    config.siteUrl,
-    settings.logo || config.siteIcon,
-  );
-  let shareImage =
-
-  shareImage = shareImage ? url.resolve(config.siteUrl, shareImage) : null;
+const WebsiteMeta = ({ data, settings, canonical, title, description, image, type }) => {
+  const publisherLogo = url.resolve(config.siteUrl, settings.logo || config.siteIcon);
+  let shareImage = (shareImage = shareImage ? url.resolve(config.siteUrl, shareImage) : null);
 
   description =
     description ||
@@ -28,35 +15,33 @@ const WebsiteMeta = ({
     data.description ||
     config.siteMetadata.description ||
     settings.description;
-  title = `${title || data.meta_title || data.name || data.title} - ${
-    settings.title
-  }`;
+  title = `${title || data.meta_title || data.name || data.title} - ${settings.title}`;
 
   const jsonLd = {
-    "@context": `https://schema.org/`,
-    "@type": type,
+    '@context': `https://schema.org/`,
+    '@type': type,
     url: canonical,
     image: shareImage
       ? {
-          "@type": `ImageObject`,
+          '@type': `ImageObject`,
           url: shareImage,
           width: config.shareImageWidth,
           height: config.shareImageHeight,
         }
       : undefined,
     publisher: {
-      "@type": `Organization`,
+      '@type': `Organization`,
       name: settings.title,
       logo: {
-        "@type": `ImageObject`,
+        '@type': `ImageObject`,
         url: publisherLogo,
         width: 60,
         height: 60,
       },
     },
     mainEntityOfPage: {
-      "@type": `WebPage`,
-      "@id": config.siteUrl,
+      '@type': `WebPage`,
+      '@id': config.siteUrl,
     },
     description,
   };
@@ -78,26 +63,17 @@ const WebsiteMeta = ({
         {settings.twitter && (
           <meta
             name="twitter:site"
-            content={`https://twitter.com/${settings.twitter.replace(
-              /^@/,
-              ``,
-            )}/`}
+            content={`https://twitter.com/${settings.twitter.replace(/^@/, ``)}/`}
           />
         )}
-        {settings.twitter && (
-          <meta name="twitter:creator" content={settings.twitter} />
-        )}
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd, undefined, 4)}
-        </script>
+        {settings.twitter && <meta name="twitter:creator" content={settings.twitter} />}
+        <script type="application/ld+json">{JSON.stringify(jsonLd, undefined, 4)}</script>
       </Head>
       <ImageMeta image={shareImage} />
     </>
   );
 };
 
-const WebsiteMetaQuery = ({ settings, ...rest }) => (
-  <WebsiteMeta settings={settings} {...rest} />
-);
+const WebsiteMetaQuery = ({ settings, ...rest }) => <WebsiteMeta settings={settings} {...rest} />;
 
 export default WebsiteMetaQuery;

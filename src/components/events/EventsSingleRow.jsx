@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import Image from "next/image";
+import styled from 'styled-components';
+import Image from 'next/image';
 
-import Link from "../../utils/Link";
-import EventsSingleLocation from "./EventsSingleLocation";
-import FormattedDate from "../shared/FormattedDate";
-import defaultImg from "../../../assets/events/solana-community-event.jpg";
+import Link from '../../utils/Link';
+import EventsSingleLocation from './EventsSingleLocation';
+import FormattedDate from '../shared/FormattedDate';
+import defaultImg from '../../../assets/events/solana-community-event.jpg';
 
 const StyledEventWrapperLink = styled(Link)`
   .details {
@@ -33,18 +33,17 @@ const StyledEventWrapperLink = styled(Link)`
 `;
 
 const EventsSingleRow = ({ event }) => {
-  const eventUrl =
-    event.platform === "external" ? event.key : event.rsvp || event.lumaUrl;
+  const eventUrl = event.platform === 'external' ? event.key : event.rsvp || event.lumaUrl;
 
   return event ? (
     <StyledEventWrapperLink
       className="link-unstyled d-flex align-items-center"
       target="_blank"
-      rel={!eventUrl.includes("solana.com") && "nofollow"}
+      rel={!eventUrl.includes('solana.com') && 'nofollow'}
       to={eventUrl}
     >
       <Image
-        alt={event?.img?.primary?.alt || ""}
+        alt={event?.img?.primary?.alt || ''}
         src={event?.img?.primary || defaultImg}
         width={150}
         height={150}
@@ -60,8 +59,7 @@ const EventsSingleRow = ({ event }) => {
             />
           )}
           {event?.schedule?.to &&
-            new Date(event?.schedule?.from).getDay() !==
-              new Date(event?.schedule?.to).getDay() && (
+            new Date(event?.schedule?.from).getDay() !== new Date(event?.schedule?.to).getDay() && (
               <>
                 <span className="mx-1">-</span>
                 <FormattedDate

@@ -1,7 +1,6 @@
-import Button from "../shared/Button";
+import Button from '../shared/Button';
 
 const ValidatorsRewards = () => {
-
   return (
     <section className="rewards">
       <div className="container">
@@ -9,21 +8,17 @@ const ValidatorsRewards = () => {
         <div className="rewards-cards mt-1 mt-md-3">
           <div className="rewards-card">
             <h3 className="text-black mb-2 mb-md-4">
-              {validators.rewards.cards.protocol-header}
+              {validators.rewards.cards.protocol - header}
             </h3>
-            <p className="small text-black">
-              {validators.rewards.cards.protocol-text}
-            </p>
+            <p className="small text-black">{validators.rewards.cards.protocol - text}</p>
           </div>
 
           <div className="rewards-card justify-content-between">
             <div>
               <h3 className="text-black mb-2 mb-md-4">
-                {validators.rewards.cards.staking-header}
+                {validators.rewards.cards.staking - header}
               </h3>
-              <p className="small text-black">
-                {validators.rewards.cards.staking-text}
-              </p>
+              <p className="small text-black">{validators.rewards.cards.staking - text}</p>
             </div>
             <Button
               to="/staking"
@@ -38,11 +33,9 @@ const ValidatorsRewards = () => {
           <div className="rewards-card justify-content-between">
             <div>
               <h3 className="text-black mb-2 mb-md-4">
-                {validators.rewards.cards.stake-pool-header}
+                {validators.rewards.cards.stake - pool - header}
               </h3>
-              <p className="small text-black">
-                {validators.rewards.cards.stake-pool-text}
-              </p>
+              <p className="small text-black">{validators.rewards.cards.stake - pool - text}</p>
             </div>
             <Button
               to="https://spl.solana.com/stake-pool"

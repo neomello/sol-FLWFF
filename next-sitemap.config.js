@@ -1,10 +1,10 @@
-const { getBuilderUrls } = require("./src/lib/builder/getUrls");
+const { getBuilderUrls } = require('./src/lib/builder/getUrls');
 
 module.exports = {
-  siteUrl: "https://solana.com/",
+  siteUrl: 'https://solana.com/',
   transform: (config, path) => {
     // remove the "en" locale from the path
-    const loc = path == "/en" ? "/" : path.replace("/en/", "/");
+    const loc = path == '/en' ? '/' : path.replace('/en/', '/');
     return {
       loc,
       changefreq: config.changefreq,

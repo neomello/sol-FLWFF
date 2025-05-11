@@ -16,7 +16,7 @@
 }
 
 .ramp__title {
-  font-family: "Diatype", monotype;
+  font-family: 'Diatype', monotype;
   font-size: 28px;
   line-height: 33px;
 }
@@ -72,11 +72,11 @@
         transition: all 0.3s ease;
       }
 
-      &[class*="collapsed"] {
+      &[class*='collapsed'] {
         color: #fff;
       }
 
-      &:not([class*="collapsed"]) {
+      &:not([class*='collapsed']) {
         color: #9945ff;
 
         svg {
@@ -107,7 +107,7 @@
     }
   }
 
-  button[aria-label="Close"] {
+  button[aria-label='Close'] {
     filter: unset;
     background-color: #9945ff;
     transition: all 0.3s ease;
@@ -122,7 +122,7 @@
 }
 
 .ramp-popup__title {
-  font-family: "Diatype", monospace;
+  font-family: 'Diatype', monospace;
   font-size: 28px;
   line-height: 33px;
   margin-top: 15px;

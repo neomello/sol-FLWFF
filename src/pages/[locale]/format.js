@@ -1,12 +1,11 @@
-import Layout from "@/components/layout";
-import HTMLHead from "@/components/HTMLHead";
+import Layout from '@/components/layout';
+import HTMLHead from '@/components/HTMLHead';
 
-import FormatNFTVolume from "@/components/format/FormatNFTVolume";
-import FormatHero from "@/components/format/FormatHero";
-import FormatEcosystem from "@/components/format/FormatEcosystem";
+import FormatNFTVolume from '@/components/format/FormatNFTVolume';
+import FormatHero from '@/components/format/FormatHero';
+import FormatEcosystem from '@/components/format/FormatEcosystem';
 
 const Format = () => {
-
   return (
     <Layout>
       <HTMLHead
@@ -25,15 +24,14 @@ const Format = () => {
 
 export async function getStaticProps({ params }) {
   return {
-    props: {
-    },
+    props: {},
     revalidate: 60,
   };
 }
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 

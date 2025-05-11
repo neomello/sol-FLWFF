@@ -1,6 +1,6 @@
-import { memo } from "react";
-import { Spinner } from "react-bootstrap";
-import styled from "styled-components";
+import { memo } from 'react';
+import { Spinner } from 'react-bootstrap';
+import styled from 'styled-components';
 
 function getYoutubeVideoId(url) {
   const match = url.match(/[=/]([\w\d_-]{10,12})/);
@@ -67,7 +67,7 @@ export const YoutubeIFrame = memo(function ({
           allowFullScreen
           title="Youtube video"
           className="youtube-embed"
-          style={{ visibility: loaded ? "visible" : "hidden" }}
+          style={{ visibility: loaded ? 'visible' : 'hidden' }}
           onLoad={onLoad}
         ></iframe>
       )}

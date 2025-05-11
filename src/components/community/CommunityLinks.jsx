@@ -1,12 +1,11 @@
-import RoundedDepthCard from "../shared/RoundedDepthCard";
-import Button from "../shared/Button";
+import RoundedDepthCard from '../shared/RoundedDepthCard';
+import Button from '../shared/Button';
 
 /**
  * @returns {JSX.Element}
  * @constructor
  */
 const CommunityLinks = () => {
-
   return (
     <section className="container mb-8">
       <div className="row pb-8">

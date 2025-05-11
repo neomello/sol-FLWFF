@@ -1,20 +1,20 @@
-import { useState } from "react";
-import classNames from "classnames";
-import Image from "next/legacy/image";
-import TypeformModal from "../shared/TypeformModal";
-import styles from "./ECDRHero.module.scss";
-import IndexBtn from "../index/IndexBtn";
-import SolanaRing from "../../../public/src/img/ecdr/solana-ring.png";
+import { useState } from 'react';
+import classNames from 'classnames';
+import Image from 'next/legacy/image';
+import TypeformModal from '../shared/TypeformModal';
+import styles from './ECDRHero.module.scss';
+import IndexBtn from '../index/IndexBtn';
+import SolanaRing from '../../../public/src/img/ecdr/solana-ring.png';
 
 const ECDRHero = () => {
   const [showTypeformModal, setShowTypeformModal] = useState(false);
 
   return (
-    <div className={classNames("pb-10", styles["ecdr-hero"])}>
+    <div className={classNames('pb-10', styles['ecdr-hero'])}>
       <div className="container text-center">
-        <div className={styles["ecdr-hero__inner"]}>
-          <div className={styles["ecdr-hero__ring--effect1"]} />
-          <div className={styles["ecdr-hero__ring--img"]}>
+        <div className={styles['ecdr-hero__inner']}>
+          <div className={styles['ecdr-hero__ring--effect1']} />
+          <div className={styles['ecdr-hero__ring--img']}>
             <Image
               src={SolanaRing}
               alt=""
@@ -26,23 +26,14 @@ const ECDRHero = () => {
               height={850}
             />
           </div>
-          <div className={styles["ecdr-hero__ring--effect2"]} />
-          <h1 className={classNames("mb-2", styles["ecdr-hero__heading"])}>
-            {ecdr.hero.headline}
-          </h1>
+          <div className={styles['ecdr-hero__ring--effect2']} />
+          <h1 className={classNames('mb-2', styles['ecdr-hero__heading'])}>{ecdr.hero.headline}</h1>
           <div className="row">
             <div className="col-md-8 mx-auto">
-              <p
-                className={classNames(
-                  "mt-2 mb-5",
-                  styles["ecdr-hero__subHeading"],
-                )}
-              >
+              <p className={classNames('mt-2 mb-5', styles['ecdr-hero__subHeading'])}>
                 {ecdr.hero.subheadline}
               </p>
-              <p className={classNames("my-1", styles["ecdr-hero__note"])}>
-                {ecdr.hero.note}
-              </p>
+              <p className={classNames('my-1', styles['ecdr-hero__note'])}>{ecdr.hero.note}</p>
             </div>
           </div>
           <IndexBtn
@@ -51,9 +42,9 @@ const ECDRHero = () => {
             size="large"
             onClick={() => {
               setShowTypeformModal(true);
-              gtag("event", "Button click", {
-                event_category: "Open modal",
-                event_label: "EC Developers Report - Get in touch modal ",
+              gtag('event', 'Button click', {
+                event_category: 'Open modal',
+                event_label: 'EC Developers Report - Get in touch modal ',
               });
             }}
           >

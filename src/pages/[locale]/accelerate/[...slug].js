@@ -1,13 +1,13 @@
-import { builder, BuilderComponent, useIsPreviewing } from "@builder.io/react";
-import NotFoundPage from "../404";
-import customComponentsRegistration from "@/utils/customComponentGenerator";
-import AccelerateLayout from "@/components/accelerate/AccelerateLayout";
-import { getAllCustomSlugs, getCustomPage } from "@/lib/builder/api";
-import { ACCELERATE_BUILDER_CONFIG } from "@/lib/builder/accelerate/constants";
-import HTMLHead from "@/components/builder/HTMLHead";
-import SimpleHero from "@/components/accelerate/AccelerateSimpleHero";
+import { builder, BuilderComponent, useIsPreviewing } from '@builder.io/react';
+import NotFoundPage from '../404';
+import customComponentsRegistration from '@/utils/customComponentGenerator';
+import AccelerateLayout from '@/components/accelerate/AccelerateLayout';
+import { getAllCustomSlugs, getCustomPage } from '@/lib/builder/api';
+import { ACCELERATE_BUILDER_CONFIG } from '@/lib/builder/accelerate/constants';
+import HTMLHead from '@/components/builder/HTMLHead';
+import SimpleHero from '@/components/accelerate/AccelerateSimpleHero';
 
-builder.apiVersion = "v3";
+builder.apiVersion = 'v3';
 customComponentsRegistration();
 
 /**
@@ -45,35 +45,28 @@ const AcceleratePage = ({ builderLocale, page }) => {
 };
 
 export async function getStaticPaths() {
-  const allPages = await getAllCustomSlugs(
-    "/accelerate",
-    ACCELERATE_BUILDER_CONFIG.model,
-  );
+  const allPages = await getAllCustomSlugs('/accelerate', ACCELERATE_BUILDER_CONFIG.model);
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 
 export const getStaticProps = async ({ params }) => {
   try {
-    let slug = params?.slug || "";
+    let slug = params?.slug || '';
 
-    if (typeof slug === "object" && slug.length) {
-      slug = slug.map((slug) => slug.replace(/(%\d+)+$/, ""));
+    if (typeof slug === 'object' && slug.length) {
+      slug = slug.map((slug) => slug.replace(/(%\d+)+$/, ''));
 
       // if we have more than 1 slug, combine them so its a full path (ex: ['test', 'test'] => 'test/test')
-      if (slug.length > 1 && slug !== "") {
-        slug = slug.join("/");
+      if (slug.length > 1 && slug !== '') {
+        slug = slug.join('/');
       } else {
         slug = slug[0]; // Pass the slug (['faq'] => 'faq')
       }
     }
 
-    let { page } = await getCustomPage(
-      ACCELERATE_BUILDER_CONFIG.model,
-      slug,
-      builderLocale,
-    );
+    let { page } = await getCustomPage(ACCELERATE_BUILDER_CONFIG.model, slug, builderLocale);
 
     return {
       props: {

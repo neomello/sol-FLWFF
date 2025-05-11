@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import Image from "next/image";
-import SocialShareButtons from "../sharedPageSections/SocialShareButtons";
-import Button from "../shared/Button";
-import FormattedDate from "../shared/FormattedDate";
-import defaultImg from "../../../public/social/solana.jpg";
-import Link from "../shared/Link";
+import styled from 'styled-components';
+import Image from 'next/image';
+import SocialShareButtons from '../sharedPageSections/SocialShareButtons';
+import Button from '../shared/Button';
+import FormattedDate from '../shared/FormattedDate';
+import defaultImg from '../../../public/social/solana.jpg';
+import Link from '../shared/Link';
 
 const StyledSection = styled.section`
   display: flex;
@@ -43,17 +43,12 @@ const StyledSection = styled.section`
 const EventsDetailSection = ({ event = null }) => {
   if (!event) return null;
 
-  const eventUrl =
-    event.platform === "external" ? event.key : event.rsvp || event.lumaUrl;
+  const eventUrl = event.platform === 'external' ? event.key : event.rsvp || event.lumaUrl;
 
   return (
     <StyledSection className="my-10">
       <div className="event-img">
-        <Link
-          target="_blank"
-          rel={!eventUrl.includes("solana.com") && "nofollow"}
-          to={eventUrl}
-        >
+        <Link target="_blank" rel={!eventUrl.includes('solana.com') && 'nofollow'} to={eventUrl}>
           <Image
             alt={event?.img?.primary?.alt || event.title}
             src={event?.img?.primary || defaultImg}
@@ -71,8 +66,7 @@ const EventsDetailSection = ({ event = null }) => {
             />
           )}
           {event?.schedule?.to &&
-            new Date(event?.schedule?.from).getDay() !==
-              new Date(event?.schedule?.to).getDay() && (
+            new Date(event?.schedule?.from).getDay() !== new Date(event?.schedule?.to).getDay() && (
               <>
                 <span className="mx-1">-</span>
                 <FormattedDate
@@ -89,15 +83,11 @@ const EventsDetailSection = ({ event = null }) => {
           to={eventUrl}
           arrow={true}
           newTab
-          rel={!eventUrl.includes("solana.com") && "nofollow"}
+          rel={!eventUrl.includes('solana.com') && 'nofollow'}
         >
           {events.detail.action}
         </Button>
-        <SocialShareButtons
-          url={eventUrl}
-          title={event.title}
-          className="mt-2"
-        />
+        <SocialShareButtons url={eventUrl} title={event.title} className="mt-2" />
       </div>
     </StyledSection>
   );

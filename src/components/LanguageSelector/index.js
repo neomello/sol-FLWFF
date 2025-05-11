@@ -1,6 +1,6 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import styles from "./LanguageSelector.module.scss";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import styles from './LanguageSelector.module.scss';
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
@@ -12,18 +12,14 @@ const LanguageSelector = () => {
   return (
     <div className={styles.languageSelector}>
       <button
-        className={`${styles.languageButton} ${
-          i18n.language === "en" ? styles.active : ""
-        }`}
-        onClick={() => changeLanguage("en")}
+        className={`${styles.languageButton} ${i18n.language === 'en' ? styles.active : ''}`}
+        onClick={() => changeLanguage('en')}
       >
         EN
       </button>
       <button
-        className={`${styles.languageButton} ${
-          i18n.language === "pt" ? styles.active : ""
-        }`}
-        onClick={() => changeLanguage("pt")}
+        className={`${styles.languageButton} ${i18n.language === 'pt' ? styles.active : ''}`}
+        onClick={() => changeLanguage('pt')}
       >
         PT
       </button>
@@ -31,4 +27,4 @@ const LanguageSelector = () => {
   );
 };
 
-export default LanguageSelector; 
+export default LanguageSelector;

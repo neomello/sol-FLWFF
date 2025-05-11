@@ -1,8 +1,8 @@
-import { ThemeProvider } from "@/components/ThemeProvider";
-import "../scss/index.scss";
-import SitewideTopAlert from "../components/sharedPageSections/SitewideTopAlert";
-import GTMTrackingSnippet from "@/components/GTMTrackingSnippet";
-import CookieConsent from "@/components/CookieConsent";
+import { ThemeProvider } from '@/components/ThemeProvider';
+import '../scss/index.scss';
+import SitewideTopAlert from '../components/sharedPageSections/SitewideTopAlert';
+import GTMTrackingSnippet from '@/components/GTMTrackingSnippet';
+import CookieConsent from '@/components/CookieConsent';
 
 const App = ({ Component, pageProps }) => {
   return (

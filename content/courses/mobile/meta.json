@@ -1,7 +1,3 @@
 {
-  "pages": [
-    "intro-to-solana-mobile",
-    "mwa-deep-dive",
-    "solana-mobile-dapps-with-expo"
-  ]
+  "pages": ["intro-to-solana-mobile", "mwa-deep-dive", "solana-mobile-dapps-with-expo"]
 }

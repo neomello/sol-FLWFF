@@ -1,8 +1,7 @@
-import RoundedDepthCard from "../shared/RoundedDepthCard";
-import Button from "../shared/Button";
+import RoundedDepthCard from '../shared/RoundedDepthCard';
+import Button from '../shared/Button';
 
 const FormatHero = () => {
-
   return (
     <>
       <div className="container mt-10 pt-10">
@@ -23,16 +22,10 @@ const FormatHero = () => {
             </RoundedDepthCard>
           </div>
           <div className="col-lg-4 my-2">
-            <RoundedDepthCard
-              shadow="bottom"
-              className="p-6 h-100 m-1"
-              bgColor="#fa428e"
-            >
+            <RoundedDepthCard shadow="bottom" className="p-6 h-100 m-1" bgColor="#fa428e">
               <div className="d-flex flex-column justify-content-between h-100">
                 <div>
-                  <h3 className="h4">
-                    {format.ecosystem.magiceden.title}
-                  </h3>
+                  <h3 className="h4">{format.ecosystem.magiceden.title}</h3>
                   <p>{format.ecosystem.magiceden.description}</p>
                 </div>
                 <Button to="https://magiceden.io/" noBorder newTab>
@@ -42,11 +35,7 @@ const FormatHero = () => {
             </RoundedDepthCard>
           </div>
           <div className="col-lg-4 my-2">
-            <RoundedDepthCard
-              shadow="bottom"
-              className="p-6 h-100 m-1"
-              bgColor="#63c5ff"
-            >
+            <RoundedDepthCard shadow="bottom" className="p-6 h-100 m-1" bgColor="#63c5ff">
               <div className="d-flex flex-column justify-content-between h-100">
                 <div>
                   <h3 className="h4">{format.ecosystem.tipLink.title}</h3>

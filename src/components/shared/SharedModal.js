@@ -1,5 +1,5 @@
-import { Modal } from "react-bootstrap";
-import Button from "./Button";
+import { Modal } from 'react-bootstrap';
+import Button from './Button';
 
 /**
  * Shared Modal for various Messages.
@@ -22,23 +22,21 @@ const SharedModal = ({
   children,
   className = false,
 }) => {
-
   return (
     <Modal
-      size={size || "md"}
+      size={size || 'md'}
       show={show}
       onHide={handleClose}
       restoreFocus={false}
       centered
       contentClassName="dark-modal-content"
-      className={className ? `text-white ${className}` : "text-white"}
+      className={className ? `text-white ${className}` : 'text-white'}
     >
       <Modal.Header
         closeButton
         closeVariant="white"
-        style={{ borderBottomColor: "#333" }}
-      >
-      </Modal.Header>
+        style={{ borderBottomColor: '#333' }}
+      ></Modal.Header>
       {showCloseButton && (
         <Modal.Footer className="border-0 pt-0">
           <Button onClick={handleClose} variant="secondary">

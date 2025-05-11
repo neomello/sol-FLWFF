@@ -1,15 +1,15 @@
-import { ChevronLeft, ChevronRight } from "react-feather";
-import Link from "../../utils/Link";
+import { ChevronLeft, ChevronRight } from 'react-feather';
+import Link from '../../utils/Link';
 
 const LearnPagination = ({ prevSlug, prevTopic, nextSlug, nextTopic }) => {
   return (
     <nav
       className={`d-flex mx-n5 mx-md-n0 my-10 ${
         prevSlug && nextSlug
-          ? "justify-content-between"
+          ? 'justify-content-between'
           : nextSlug
-            ? "justify-content-end"
-            : "justify-content-start"
+            ? 'justify-content-end'
+            : 'justify-content-start'
       }`}
     >
       {prevSlug && (

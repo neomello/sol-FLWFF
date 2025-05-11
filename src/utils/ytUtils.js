@@ -3,13 +3,7 @@
  *
  * @type {string[]}
  */
-const YT_THUMBNAIL_RESOLUTION_PREFERENCE = [
-  "maxres",
-  "standard",
-  "high",
-  "medium",
-  "default",
-];
+const YT_THUMBNAIL_RESOLUTION_PREFERENCE = ['maxres', 'standard', 'high', 'medium', 'default'];
 
 /**
  * Loops through the list of available YouTube thumbnail resolutions
@@ -23,5 +17,5 @@ export const getMaximalThumbnailResolutionUrl = (video) => {
   for (let resolution of YT_THUMBNAIL_RESOLUTION_PREFERENCE) {
     if (thumbnails?.[resolution]) return thumbnails[resolution].url;
   }
-  return "";
+  return '';
 };

@@ -1,5 +1,5 @@
-import Button from "../shared/Button";
-import VideoCard from "./VideoCard";
+import Button from '../shared/Button';
+import VideoCard from './VideoCard';
 
 /**
  * List videos using VideoCard
@@ -9,7 +9,6 @@ import VideoCard from "./VideoCard";
  * @constructor
  */
 export default function FeaturedVideos({ videos }) {
-
   return videos.length ? (
     <section className="featured-videos">
       <div className="container">
@@ -32,15 +31,9 @@ export default function FeaturedVideos({ videos }) {
           </div>
           {/* related videos list */}
           <div className="related col-12 col-md-3">
-            <h5 className="mb-5 d-none d-md-block">
-              {community.videos.related}
-            </h5>
+            <h5 className="mb-5 d-none d-md-block">{community.videos.related}</h5>
             {videos.slice(1, 4).map((video, i) => (
-              <VideoCard
-                key={`${i}_${video.id}`}
-                video={video}
-                showThumbnail={false}
-              />
+              <VideoCard key={`${i}_${video.id}`} video={video} showThumbnail={false} />
             ))}
           </div>
         </div>

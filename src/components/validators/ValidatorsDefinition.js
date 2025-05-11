@@ -1,8 +1,7 @@
-import Image from "next/legacy/image";
-import validatorLogo from "../../../public/src/img/validators/validators_geometry_small.png";
+import Image from 'next/legacy/image';
+import validatorLogo from '../../../public/src/img/validators/validators_geometry_small.png';
 
 const ValidatorsDefinition = () => {
-
   return (
     <section className="definition">
       <div className="container">

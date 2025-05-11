@@ -1,5 +1,5 @@
-import { FC } from "react";
-import styles from "./AcceleratePricing.module.scss";
+import { FC } from 'react';
+import styles from './AcceleratePricing.module.scss';
 
 export const AcceleratePricing: FC<{
   label: string;

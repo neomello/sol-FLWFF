@@ -65,11 +65,7 @@
     top: 100%;
     padding: 1rem;
     background:
-      radial-gradient(
-        farthest-corner at bottom right,
-        rgb(58 35 63 / 60%),
-        transparent 250px
-      ),
+      radial-gradient(farthest-corner at bottom right, rgb(58 35 63 / 60%), transparent 250px),
       linear-gradient(180deg, #000 70%, #181222);
     height: calc(100vh - 68px) !important;
     overflow-y: scroll;
@@ -214,7 +210,7 @@
           margin: 0 0 0 2rem;
 
           &::before {
-            content: "";
+            content: '';
             position: absolute;
             height: 1px;
             width: 100%;

@@ -1,13 +1,13 @@
-import { FC } from "react";
-import { HtmlParser } from "@solana-foundation/solana-lib";
+import { FC } from 'react';
+import { HtmlParser } from '@solana-foundation/solana-lib';
 import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
   Accordion,
-} from "@radix-ui/react-accordion";
-import styles from "./AccelerateAccordion.module.scss";
-import { ArrowDown } from "lucide-react";
+} from '@radix-ui/react-accordion';
+import styles from './AccelerateAccordion.module.scss';
+import { ArrowDown } from 'lucide-react';
 
 export const AccelerateAccordion: FC<{
   items: {
@@ -20,11 +20,7 @@ export const AccelerateAccordion: FC<{
       <Accordion className={styles.Root} type="multiple">
         {items && items.length !== 0 ? (
           items.map((item, index) => (
-            <AccordionItem
-              key={index}
-              className={styles.Item}
-              value={`item-${index}`}
-            >
+            <AccordionItem key={index} className={styles.Item} value={`item-${index}`}>
               <AccordionTrigger className={styles.AccordionTrigger}>
                 {item.title}
                 <span className={styles.Icon}>

@@ -1,12 +1,12 @@
 // Integrating Builder Symbols
 // https://www.builder.io/c/docs/integrate-symbols
 
-import { builder, BuilderComponent } from "@builder.io/react";
-import { PAGE_BUILDER_CONFIG } from "@/lib/builder/page/constants";
-import customComponentsRegistration from "@/utils/customComponentGenerator";
-import Head from "next/head";
+import { builder, BuilderComponent } from '@builder.io/react';
+import { PAGE_BUILDER_CONFIG } from '@/lib/builder/page/constants';
+import customComponentsRegistration from '@/utils/customComponentGenerator';
+import Head from 'next/head';
 
-builder.apiVersion = "v3";
+builder.apiVersion = 'v3';
 customComponentsRegistration();
 
 export default function Page() {
@@ -22,13 +22,12 @@ export default function Page() {
 
 export async function getStaticProps({ params }) {
   return {
-    props: {
-    },
+    props: {},
   };
 }
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }

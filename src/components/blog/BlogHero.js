@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Image from "next/legacy/image";
+import styled from 'styled-components';
+import Image from 'next/legacy/image';
 
-import blogHeroImage from "../../../public/src/img/news/hero.png";
+import blogHeroImage from '../../../public/src/img/news/hero.png';
 
 const StyledBlogHeroImageContainer = styled.div`
   position: absolute;
@@ -29,7 +29,7 @@ const StyledHeroText = styled.div`
 
     // Using !important here to overcome the global !important setting from solana-variables
     letter-spacing: -0.04em !important;
-    font-feature-settings: "ss14" on;
+    font-feature-settings: 'ss14' on;
 
     @media (min-width: 576px) {
       font-size: 5rem;
@@ -45,7 +45,6 @@ const StyledHeroText = styled.div`
 `;
 
 const BlogHero = () => {
-
   return (
     <section className="news-hero">
       <div className="main-container">

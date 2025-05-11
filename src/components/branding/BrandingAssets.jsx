@@ -1,7 +1,7 @@
-import Image from "next/image";
-import styled from "styled-components";
-import Divider from "../shared/Divider";
-import Button from "../shared/Button";
+import Image from 'next/image';
+import styled from 'styled-components';
+import Divider from '../shared/Divider';
+import Button from '../shared/Button';
 
 const StyledSection = styled.section`
   .logo-section {
@@ -23,7 +23,6 @@ const StyledSection = styled.section`
 `;
 
 const BrandingAssets = () => {
-
   return (
     <StyledSection className="pt-10" id="asset">
       <h2 className="h3">{branding.assets.title}</h2>
@@ -34,21 +33,15 @@ const BrandingAssets = () => {
         newTab
         className="mt-6 mb-6"
       >
-        {branding.assets.download-btn}
+        {branding.assets.download - btn}
       </Button>
 
       <Divider theme="light" axis="x" className="my-4" />
       <div className="logo-section">
         <div>
-          <p className="smaller text-uppercase mt-4">
-            {branding.assets.mainLogoType}
-          </p>
+          <p className="smaller text-uppercase mt-4">{branding.assets.mainLogoType}</p>
           <div className="d-flex align-items-center">
-            <Button
-              to="src/img/branding/solanaLogo.png"
-              download
-              className="me-4"
-            >
+            <Button to="src/img/branding/solanaLogo.png" download className="me-4">
               PNG
             </Button>
             <Button to="src/img/branding/solanaLogo.svg" download>
@@ -57,27 +50,16 @@ const BrandingAssets = () => {
           </div>
         </div>
         <div className="logo">
-          <Image
-            alt={`Solana`}
-            src="/src/img/branding/solanaLogo.svg"
-            width={320}
-            height={160}
-          />
+          <Image alt={`Solana`} src="/src/img/branding/solanaLogo.svg" width={320} height={160} />
         </div>
       </div>
 
       <Divider theme="light" axis="x" className="my-4" />
       <div className="logo-section">
         <div>
-          <p className="smaller text-uppercase mt-4">
-            {branding.assets.logomark}
-          </p>
+          <p className="smaller text-uppercase mt-4">{branding.assets.logomark}</p>
           <div className="d-flex align-items-center">
-            <Button
-              to="src/img/branding/solanaLogoMark.png"
-              download
-              className="me-4"
-            >
+            <Button to="src/img/branding/solanaLogoMark.png" download className="me-4">
               PNG
             </Button>
             <Button to="src/img/branding/solanaLogoMark.svg" download>
@@ -98,15 +80,9 @@ const BrandingAssets = () => {
       <Divider theme="light" axis="x" className="my-4" />
       <div className="logo-section">
         <div>
-          <p className="smaller text-uppercase mt-4">
-            {branding.assets.wordmark}
-          </p>
+          <p className="smaller text-uppercase mt-4">{branding.assets.wordmark}</p>
           <div className="d-flex align-items-center">
-            <Button
-              to="src/img/branding/solanaWordMark.png"
-              download
-              className="me-4"
-            >
+            <Button to="src/img/branding/solanaWordMark.png" download className="me-4">
               PNG
             </Button>
             <Button to="src/img/branding/solanaWordMark.svg" download>
@@ -127,15 +103,9 @@ const BrandingAssets = () => {
       <Divider theme="light" axis="x" className="my-4" />
       <div className="logo-section">
         <div>
-          <p className="smaller text-uppercase mt-4">
-            {branding.assets.vertical}
-          </p>
+          <p className="smaller text-uppercase mt-4">{branding.assets.vertical}</p>
           <div className="d-flex align-items-center">
-            <Button
-              to="src/img/branding/solanaVerticalLogo.png"
-              download
-              className="me-4"
-            >
+            <Button to="src/img/branding/solanaVerticalLogo.png" download className="me-4">
               PNG
             </Button>
             <Button to="src/img/branding/solanaVerticalLogo.svg" download>
@@ -156,15 +126,9 @@ const BrandingAssets = () => {
       <Divider theme="light" axis="x" className="my-4" />
       <div className="logo-section">
         <div>
-          <p className="smaller text-uppercase mt-4">
-            {branding.assets.foundation}
-          </p>
+          <p className="smaller text-uppercase mt-4">{branding.assets.foundation}</p>
           <div className="d-flex align-items-center">
-            <Button
-              to="src/img/branding/solanaFoundationLogo.png"
-              download
-              className="me-4"
-            >
+            <Button to="src/img/branding/solanaFoundationLogo.png" download className="me-4">
               PNG
             </Button>
             <Button to="src/img/branding/solanaFoundationLogo.svg" download>

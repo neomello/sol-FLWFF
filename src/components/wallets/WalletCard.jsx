@@ -1,31 +1,30 @@
-import Image from "next/image";
-import styles from "./WalletCard.module.scss";
+import Image from 'next/image';
+import styles from './WalletCard.module.scss';
 
 const WalletCard = ({ index, walletImage, name, body, websiteUrl }) => {
-
   return (
-    <article data-index={index} className={styles["wallet"]}>
+    <article data-index={index} className={styles['wallet']}>
       <Image
         src={walletImage}
         width={60}
         height={60}
         alt={name}
-        className={styles["wallet-card-icon"]}
+        className={styles['wallet-card-icon']}
         suppressHydrationWarning
       ></Image>
-      <h3 className={styles["wallet-card-title"]} suppressHydrationWarning>
+      <h3 className={styles['wallet-card-title']} suppressHydrationWarning>
         {name}
       </h3>
-      <p className={styles["wallet-card-body"]} suppressHydrationWarning>
+      <p className={styles['wallet-card-body']} suppressHydrationWarning>
         {body}
       </p>
       <a
         href={websiteUrl}
-        className={styles["wallet-card-view-details"]}
+        className={styles['wallet-card-view-details']}
         target="_blank"
         suppressHydrationWarning
       >
-        {wallets.card.view-details}
+        {wallets.card.view - details}
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -1,36 +1,35 @@
-import heliumSpeaker01 from "assets/possible/visionaries/Helium_speaker_01.png";
-import heliumSpeaker02 from "assets/possible/visionaries/Helium_speaker_02.png";
-import heliumSpeaker03 from "assets/possible/visionaries/Helium_speaker_03.png";
-import heliumPoster from "assets/possible/visionaries/Helium_poster.jpg";
-import decafSpeaker01 from "assets/possible/visionaries/Decaf_speaker_01.png";
-import decafPoster from "assets/possible/visionaries/Decaf_poster.jpg";
-import dripSpeaker01 from "assets/possible/visionaries/DRiP_speaker_01.png";
-import dripPoster from "assets/possible/visionaries/DRiP_poster.jpg";
-import hivemapperSpeaker01 from "assets/possible/visionaries/Hivemapper_speaker_01.png";
-import hivemapperPoster from "assets/possible/visionaries/Hivemapper_poster.jpg";
-import orcaSpeaker01 from "assets/possible/visionaries/Orca_speaker_01.png";
-import orcaSpeaker02 from "assets/possible/visionaries/Orca_speaker_02.png";
-import orcaPoster from "assets/possible/visionaries/Orca_poster.jpg";
-import dialectSpeaker01 from "assets/possible/visionaries/Dialect_speaker_01.png";
-import dialectPoster from "assets/possible/visionaries/Dialect_poster.jpg";
-import heliusSpeaker01 from "assets/possible/visionaries/Helius_speaker_01.png";
-import heliusPoster from "assets/possible/visionaries/Helius_poster.jpg";
+import heliumSpeaker01 from 'assets/possible/visionaries/Helium_speaker_01.png';
+import heliumSpeaker02 from 'assets/possible/visionaries/Helium_speaker_02.png';
+import heliumSpeaker03 from 'assets/possible/visionaries/Helium_speaker_03.png';
+import heliumPoster from 'assets/possible/visionaries/Helium_poster.jpg';
+import decafSpeaker01 from 'assets/possible/visionaries/Decaf_speaker_01.png';
+import decafPoster from 'assets/possible/visionaries/Decaf_poster.jpg';
+import dripSpeaker01 from 'assets/possible/visionaries/DRiP_speaker_01.png';
+import dripPoster from 'assets/possible/visionaries/DRiP_poster.jpg';
+import hivemapperSpeaker01 from 'assets/possible/visionaries/Hivemapper_speaker_01.png';
+import hivemapperPoster from 'assets/possible/visionaries/Hivemapper_poster.jpg';
+import orcaSpeaker01 from 'assets/possible/visionaries/Orca_speaker_01.png';
+import orcaSpeaker02 from 'assets/possible/visionaries/Orca_speaker_02.png';
+import orcaPoster from 'assets/possible/visionaries/Orca_poster.jpg';
+import dialectSpeaker01 from 'assets/possible/visionaries/Dialect_speaker_01.png';
+import dialectPoster from 'assets/possible/visionaries/Dialect_poster.jpg';
+import heliusSpeaker01 from 'assets/possible/visionaries/Helius_speaker_01.png';
+import heliusPoster from 'assets/possible/visionaries/Helius_poster.jpg';
 
 export const PossibleVisionariesData = () => {
-
   return [
     {
       speakers: [
         {
-          name: "Abhay Kumar",
+          name: 'Abhay Kumar',
           image: heliumSpeaker01,
         },
         {
-          name: "Scott Sigel",
+          name: 'Scott Sigel',
           image: heliumSpeaker02,
         },
         {
-          name: "Noah Prince",
+          name: 'Noah Prince',
           image: heliumSpeaker03,
         },
       ],
@@ -38,12 +37,12 @@ export const PossibleVisionariesData = () => {
       title: episodes[4].title,
       description: episodes[4].description,
       poster: heliumPoster,
-      vimeoId: "923872175",
+      vimeoId: '923872175',
     },
     {
       speakers: [
         {
-          name: "Fernanda Orduña Rangel",
+          name: 'Fernanda Orduña Rangel',
           image: decafSpeaker01,
         },
       ],
@@ -51,12 +50,12 @@ export const PossibleVisionariesData = () => {
       title: episodes[5].title,
       description: episodes[5].description,
       poster: decafPoster,
-      vimeoId: "923876499",
+      vimeoId: '923876499',
     },
     {
       speakers: [
         {
-          name: "Vibhu Norby",
+          name: 'Vibhu Norby',
           image: dripSpeaker01,
         },
       ],
@@ -64,12 +63,12 @@ export const PossibleVisionariesData = () => {
       title: episodes[6].title,
       description: episodes[6].description,
       poster: dripPoster,
-      vimeoId: "923867820",
+      vimeoId: '923867820',
     },
     {
       speakers: [
         {
-          name: "Mert Mumtaz",
+          name: 'Mert Mumtaz',
           image: heliusSpeaker01,
         },
       ],
@@ -77,12 +76,12 @@ export const PossibleVisionariesData = () => {
       title: episodes[3].title,
       description: episodes[3].description,
       poster: heliusPoster,
-      vimeoId: "873378046",
+      vimeoId: '873378046',
     },
     {
       speakers: [
         {
-          name: "Chris Osborn",
+          name: 'Chris Osborn',
           image: dialectSpeaker01,
         },
       ],
@@ -90,16 +89,16 @@ export const PossibleVisionariesData = () => {
       title: episodes[2].title,
       description: episodes[2].description,
       poster: dialectPoster,
-      vimeoId: "873360315",
+      vimeoId: '873360315',
     },
     {
       speakers: [
         {
-          name: "Yutaro Mori",
+          name: 'Yutaro Mori',
           image: orcaSpeaker01,
         },
         {
-          name: "Ori Kwan",
+          name: 'Ori Kwan',
           image: orcaSpeaker02,
         },
       ],
@@ -107,12 +106,12 @@ export const PossibleVisionariesData = () => {
       title: episodes[1].title,
       description: episodes[1].description,
       poster: orcaPoster,
-      vimeoId: "873400844",
+      vimeoId: '873400844',
     },
     {
       speakers: [
         {
-          name: "Ariel Seidman",
+          name: 'Ariel Seidman',
           image: hivemapperSpeaker01,
         },
       ],
@@ -120,7 +119,7 @@ export const PossibleVisionariesData = () => {
       title: episodes[0].title,
       description: episodes[0].description,
       poster: hivemapperPoster,
-      vimeoId: "873394287",
+      vimeoId: '873394287',
     },
   ];
 };

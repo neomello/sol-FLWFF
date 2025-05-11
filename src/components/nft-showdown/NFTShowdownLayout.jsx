@@ -1,10 +1,10 @@
-import styles from "./NFTShowdownLayout.module.scss";
-import BodyPattern from "../../../assets/nft-showdown/body-pattern.png";
+import styles from './NFTShowdownLayout.module.scss';
+import BodyPattern from '../../../assets/nft-showdown/body-pattern.png';
 
 const NFTShowdownLayout = ({ children }) => {
   return (
     <>
-      <div className={styles["nft-showdown-layout"]}>
+      <div className={styles['nft-showdown-layout']}>
         <main>
           <div className="container">
             <div className="row">

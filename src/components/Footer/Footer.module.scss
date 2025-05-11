@@ -6,11 +6,7 @@ $lightGray: #848895;
   padding: 5rem 0;
   background-color: #000508;
   color: #fff;
-  background-image: radial-gradient(
-    farthest-corner at bottom right,
-    #3a233f,
-    transparent 250px
-  );
+  background-image: radial-gradient(farthest-corner at bottom right, #3a233f, transparent 250px);
 
   border: 1px solid #141414;
   border-radius: 12px 12px 0 0;
@@ -18,11 +14,7 @@ $lightGray: #848895;
   @media (min-width: 768px) {
     background-image:
       radial-gradient(farthest-side at bottom left, #271d3b, transparent 900px),
-      radial-gradient(
-        farthest-corner at bottom right,
-        #3a233f,
-        transparent 1000px
-      );
+      radial-gradient(farthest-corner at bottom right, #3a233f, transparent 1000px);
   }
 
   :global {
@@ -43,7 +35,7 @@ $lightGray: #848895;
 
   // Managed by
   &__foundation {
-    font-family: "DSemi";
+    font-family: 'DSemi';
     margin-bottom: 0;
     line-height: 1;
   }

@@ -1,6 +1,6 @@
-import { FC } from "react";
-import styles from "./AccelerateInfoItem.module.scss";
-import classNames from "classnames";
+import { FC } from 'react';
+import styles from './AccelerateInfoItem.module.scss';
+import classNames from 'classnames';
 
 export const AccelerateInfoItem: FC<{
   term: string;
@@ -19,7 +19,7 @@ export const AccelerateInfoItem: FC<{
         <strong>{value}</strong>
       </p>
       <p
-        className={classNames("subdued", styles.subtitle, {
+        className={classNames('subdued', styles.subtitle, {
           [styles.padded]: true,
         })}
       >

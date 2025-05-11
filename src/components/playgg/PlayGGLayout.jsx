@@ -1,9 +1,8 @@
-import { createContext, useState } from "react";
-import styled from "styled-components";
-import TypeformModal from "../shared/TypeformModal";
-import Footer from "../Footer";
-import styles from "./PlayGGLayout.module.scss";
-
+import { createContext, useState } from 'react';
+import styled from 'styled-components';
+import TypeformModal from '../shared/TypeformModal';
+import Footer from '../Footer';
+import styles from './PlayGGLayout.module.scss';
 
 const LayoutWrapper = styled.div`
   --color-playgg-black: #111;
@@ -17,7 +16,7 @@ const PlayGGLayout = ({ children }) => {
 
   return (
     <LayoutWrapper>
-      <div className={styles["playgg-layout"]}>
+      <div className={styles['playgg-layout']}>
         <ModalContext.Provider
           value={{
             showTypeformModal,
@@ -30,7 +29,7 @@ const PlayGGLayout = ({ children }) => {
             showTypeformModal={showTypeformModal}
             setShowTypeformModal={setShowTypeformModal}
             typeformID=""
-            className={styles["playgg-layout__modal"]}
+            className={styles['playgg-layout__modal']}
             showCloseButton={false}
           />
         </ModalContext.Provider>

@@ -1,7 +1,7 @@
-import { FC } from "react";
-import styles from "./AccelerateSecondaryButton.module.scss";
-import Link from "next/link";
-import classNames from "classnames";
+import { FC } from 'react';
+import styles from './AccelerateSecondaryButton.module.scss';
+import Link from 'next/link';
+import classNames from 'classnames';
 
 export const AccelerateSecondaryButton: FC<{
   label: string;
@@ -9,7 +9,7 @@ export const AccelerateSecondaryButton: FC<{
   capitalize?: boolean;
   inverted?: boolean;
   attributes: any;
-}> = ({ label, url = "", capitalize = true, inverted = false, attributes }) => {
+}> = ({ label, url = '', capitalize = true, inverted = false, attributes }) => {
   return (
     <Link href={url}>
       <button

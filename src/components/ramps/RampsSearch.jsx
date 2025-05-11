@@ -1,29 +1,24 @@
-import styles from "./RampsSearch.module.scss";
+import styles from './RampsSearch.module.scss';
 
 const RampsSearch = ({ mobileClickEvent, searchTerm, handleInputChange }) => {
-
   return (
-    <div className={`${styles["ramps-search"]}`}>
-      <h3 className={`${styles["ramps-search__title"]}`}>
-        {on-off-ramp.search.title}
-      </h3>
-      <div
-        className={`position-relative ${styles["ramps-search__field-container"]}`}
-      >
+    <div className={`${styles['ramps-search']}`}>
+      <h3 className={`${styles['ramps-search__title']}`}>{on - off - ramp.search.title}</h3>
+      <div className={`position-relative ${styles['ramps-search__field-container']}`}>
         <input
-          className={`${styles["ramps-search__search-field"]}`}
+          className={`${styles['ramps-search__search-field']}`}
           type="text"
           name="search"
           value={searchTerm}
           onChange={handleInputChange}
-          placeholder={on-off-ramp.search.search-placeholder}
+          placeholder={on - off - ramp.search.search - placeholder}
         ></input>
-        <div className={`${styles["ramps-search__submit-button"]}`}></div>
+        <div className={`${styles['ramps-search__submit-button']}`}></div>
       </div>
 
       <button
-        className={`${styles["ramps-search__mobile-filters"]}`}
-        aria-label={on-off-ramp.search.toggle-mobile-filters.aria-label}
+        className={`${styles['ramps-search__mobile-filters']}`}
+        aria-label={on - off - ramp.search.toggle - mobile - filters.aria - label}
         onClick={mobileClickEvent}
       ></button>
     </div>

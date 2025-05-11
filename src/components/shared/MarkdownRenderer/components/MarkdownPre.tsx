@@ -1,11 +1,11 @@
-import React from "react";
-import styles from "./MarkdownPre.module.scss";
-import { CopyToClipBoardButton } from "./CopyToClipBoardButton";
+import React from 'react';
+import styles from './MarkdownPre.module.scss';
+import { CopyToClipBoardButton } from './CopyToClipBoardButton';
 
-import RustIcon from "@@/public/src/img/icons/Rust.inline.svg";
-import TypescriptIcon from "@@/public/src/img/icons/Typescript.inline.svg";
-import TerminalIcon from "@@/public/src/img/icons/Terminal.inline.svg";
-import FileDiffIcon from "@@/public/src/img/icons/FileDiff.inline.svg";
+import RustIcon from '@@/public/src/img/icons/Rust.inline.svg';
+import TypescriptIcon from '@@/public/src/img/icons/Typescript.inline.svg';
+import TerminalIcon from '@@/public/src/img/icons/Terminal.inline.svg';
+import FileDiffIcon from '@@/public/src/img/icons/FileDiff.inline.svg';
 
 /**
  * Listing of the supported custom metadata that can be attached to parsed components via `attachMetadata`
@@ -30,7 +30,7 @@ const languageIcons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
 };
 
 const getIconForLanguage = (
-  language: string | undefined,
+  language: string | undefined
 ): React.FC<React.SVGProps<SVGSVGElement>> | undefined => {
   if (!language) return undefined;
   return languageIcons[language];
@@ -39,8 +39,8 @@ const getIconForLanguage = (
 export function MarkdownPre({
   children,
   ...props
-}: React.ComponentProps<"pre"> & CustomPreMetadataProps) {
-  const language = props["data-language"];
+}: React.ComponentProps<'pre'> & CustomPreMetadataProps) {
+  const language = props['data-language'];
   const Icon = getIconForLanguage(language);
 
   return (
@@ -53,7 +53,7 @@ export function MarkdownPre({
       )}
       <pre className={styles.pre} {...props}>
         {children}
-        <div className={styles["copy-button"]}>
+        <div className={styles['copy-button']}>
           <CopyToClipBoardButton />
         </div>
       </pre>

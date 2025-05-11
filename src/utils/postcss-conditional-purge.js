@@ -1,4 +1,4 @@
-const purgePluginCreator = require("@fullhuman/postcss-purgecss");
+const purgePluginCreator = require('@fullhuman/postcss-purgecss');
 
 // This is a wrapper around the purgecss plugin that allows you to ignore certain CSS files with the `ignore` option.
 module.exports = (opts = {}) => {

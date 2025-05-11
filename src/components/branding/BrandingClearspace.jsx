@@ -1,8 +1,7 @@
-import Image from "next/legacy/image";
-import clearspaceMain from "../../../public/src/img/branding/spacing.png";
+import Image from 'next/legacy/image';
+import clearspaceMain from '../../../public/src/img/branding/spacing.png';
 
 const BrandingClearspace = () => {
-
   return (
     <section>
       <div className="h6 fw-bold">{branding.clearspace.title}</div>

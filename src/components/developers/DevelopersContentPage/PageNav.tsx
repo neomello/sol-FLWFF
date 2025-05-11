@@ -1,14 +1,13 @@
-import classNames from "classnames";
-import styles from "./DevelopersContentPage.module.scss";
-import Link from "next/link";
+import classNames from 'classnames';
+import styles from './DevelopersContentPage.module.scss';
+import Link from 'next/link';
 
 export const PageNav = ({ nav }) => {
-
   return (
     <div
       className={classNames(
-        styles["developers-content-page__nav"],
-        "d-flex flex-column flex-md-row justify-content-between mt-10 small",
+        styles['developers-content-page__nav'],
+        'd-flex flex-column flex-md-row justify-content-between mt-10 small'
       )}
     >
       {nav.prev ? (

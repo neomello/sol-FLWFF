@@ -2,7 +2,7 @@
 // Extended from Bootstrap
 //
 
-@import "./solana/navbar";
+@import './solana/navbar';
 
 // Former lift.scss
 $btnBorder: 1px;
@@ -24,7 +24,7 @@ $box-shadow-lift:
 }
 
 .lift:not([disabled]):hover::after {
-  content: "";
+  content: '';
   position: absolute;
   left: -$btnBorder;
   top: -$btnBorder;
@@ -65,7 +65,7 @@ $box-shadow-lift:
 
 // Former dropdown.scss
 .dropdown-toggle:after {
-  content: "";
+  content: '';
   border: 0;
 }
 
@@ -280,7 +280,7 @@ code {
 // Safari 15+ displays a gray border while loading
 // https://nextjs.org/docs/api-reference/next/image
 @supports (font: -apple-system-body) and (-webkit-appearance: none) {
-  img[loading="lazy"] {
+  img[loading='lazy'] {
     clip-path: inset(0.6px);
   }
 }

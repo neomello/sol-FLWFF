@@ -6,4 +6,4 @@ module.exports = {
     locales: Object.keys(languages),
     localeDetection: true,
   },
-}; 
+};

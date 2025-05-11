@@ -1,10 +1,9 @@
-import Button from "../shared/Button";
-import PossibleEcosystemData from "./PossibleEcosystemData";
-import PossibleGlow from "./PossibleGlow";
-import PossibleEcosystemGrid from "./PossibleEcosystemGrid";
+import Button from '../shared/Button';
+import PossibleEcosystemData from './PossibleEcosystemData';
+import PossibleGlow from './PossibleGlow';
+import PossibleEcosystemGrid from './PossibleEcosystemGrid';
 
 const PossibleEcosystem = () => {
-
   return (
     <section className={`pt-10 pb-8 pt-md-12 pb-md-10 position-relative`}>
       <PossibleGlow
@@ -26,9 +25,7 @@ const PossibleEcosystem = () => {
       <div className="container position-relative">
         <div className={`row`}>
           <div className="col d-flex flex-row mb-8 mb-md-0 pb-md-10 align-items-center ">
-            <h2 className="h2 pe-5 flex-grow-1 flex-shrink-1 mb-0">
-              {possible.ecosystem.title}
-            </h2>
+            <h2 className="h2 pe-5 flex-grow-1 flex-shrink-1 mb-0">{possible.ecosystem.title}</h2>
             <Button
               to="/news"
               newTab

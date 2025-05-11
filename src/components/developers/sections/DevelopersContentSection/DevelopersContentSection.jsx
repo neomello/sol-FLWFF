@@ -1,5 +1,5 @@
-import DevelopersNewsletter from "./DevelopersNewsletter";
-import DevelopersOtherContent from "./DevelopersOtherContent";
+import DevelopersNewsletter from './DevelopersNewsletter';
+import DevelopersOtherContent from './DevelopersOtherContent';
 
 export default function DevelopersContentSection() {
   return (

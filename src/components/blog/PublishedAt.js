@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { formatDate, getRelativeTime } from "../../utils/dateUtils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { formatDate, getRelativeTime } from '../../utils/dateUtils';
 
 /**
  * Converts the Date and displays it.

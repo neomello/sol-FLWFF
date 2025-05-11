@@ -105,7 +105,7 @@
     border-radius: 0.75rem;
     overflow: hidden;
     border: 1px solid #2c2c2c;
-    background-image: url("/img/gradient.jpg");
+    background-image: url('/img/gradient.jpg');
     background-size: cover;
 
     &:hover {
@@ -221,13 +221,7 @@
     color: var(--mdx-text-color);
 
     &:hover {
-      background: linear-gradient(
-        90deg,
-        #14f195 0%,
-        #80ecff 40.1%,
-        #64a8f2 82.29%,
-        #64a8f2 100%
-      );
+      background: linear-gradient(90deg, #14f195 0%, #80ecff 40.1%, #64a8f2 82.29%, #64a8f2 100%);
       color: transparent;
       background-clip: text;
     }

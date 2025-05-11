@@ -1,6 +1,6 @@
-import { ArrowLeft, ArrowRight } from "react-feather";
-import styled from "styled-components";
-import Button from "../../shared/Button";
+import { ArrowLeft, ArrowRight } from 'react-feather';
+import styled from 'styled-components';
+import Button from '../../shared/Button';
 
 const StyledProgressBar = styled.div`
   height: 0.25rem;
@@ -24,9 +24,7 @@ const EventsArchivePagination = ({
   const pageLowerBound = currentPage * initialPageSize;
 
   const pageUpperBound =
-    pageLowerBound + initialPageSize < totalCount
-      ? pageLowerBound + initialPageSize
-      : totalCount;
+    pageLowerBound + initialPageSize < totalCount ? pageLowerBound + initialPageSize : totalCount;
 
   const progressPercentage = (pageUpperBound / totalCount) * 100;
 
@@ -35,36 +33,30 @@ const EventsArchivePagination = ({
   return (
     <div className="container">
       <div className="mt-5">
-          current: `${pageLowerBound + 1} - ${pageUpperBound}`,
-          total: totalCount,
-        })}
+        current: `${pageLowerBound + 1} - ${pageUpperBound}`, total: totalCount, })}
         <StyledProgressBar $progressPercentage={progressPercentage}>
           <div className="progress-bar" />
         </StyledProgressBar>
       </div>
       <div className="d-md-flex justify-content-between mt-5">
         <Button
-          onClick={() =>
-            setCurrentPage((prevPage) => (currentPage === 0 ? 0 : prevPage - 1))
-          }
+          onClick={() => setCurrentPage((prevPage) => (currentPage === 0 ? 0 : prevPage - 1))}
           variant="tertiary"
           className="mt-5 mt-md-0"
           disabled={currentPage === 0}
         >
           <ArrowLeft className="me-2" />
-          {events.archive.previous-page}
+          {events.archive.previous - page}
         </Button>
         <Button
           onClick={() =>
-            setCurrentPage((prevPage) =>
-              prevPage + 1 > totalPages ? prevPage : prevPage + 1,
-            )
+            setCurrentPage((prevPage) => (prevPage + 1 > totalPages ? prevPage : prevPage + 1))
           }
           variant="tertiary"
           className="mt-5 mt-md-0"
           disabled={currentPage + 1 >= totalPages}
         >
-          {events.archive.next-page}
+          {events.archive.next - page}
           <ArrowRight className="ms-2" />
         </Button>
       </div>

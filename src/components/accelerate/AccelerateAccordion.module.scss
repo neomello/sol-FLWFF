@@ -10,7 +10,7 @@
 
 .AccordionTrigger {
   font-size: 32px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 400;
   color: #b3b2bc;
   gap: 16px;
@@ -31,12 +31,12 @@
   color: black;
   transition: 0.3s;
 }
-.AccordionTrigger[data-state="open"] {
+.AccordionTrigger[data-state='open'] {
   .Icon {
     transform: rotate(180deg);
   }
 }
-.AccordionContent[data-state="open"] {
+.AccordionContent[data-state='open'] {
   --radix-collapsible-content-width: 100%; /* Set your desired width */
 }
 
@@ -44,7 +44,7 @@
   padding-top: 40px;
   max-width: 800px;
   font-size: 20px;
-  font-family: "Diatype", sans-serif;
+  font-family: 'Diatype', sans-serif;
   line-height: 1.4;
   font-weight: 300;
   .content {
@@ -56,10 +56,10 @@
     }
   }
 }
-.AccordionContent[data-state="open"] {
+.AccordionContent[data-state='open'] {
   animation: slideDown 300ms ease-out;
 }
-.AccordionContent[data-state="closed"] {
+.AccordionContent[data-state='closed'] {
   animation: slideUp 300ms ease-out;
 }
 

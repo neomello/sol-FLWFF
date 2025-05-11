@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./Filters.module.scss";
-import RampFilter from "./RampFilter";
-import { CloseButton } from "react-bootstrap";
+import React from 'react';
+import styles from './Filters.module.scss';
+import RampFilter from './RampFilter';
+import { CloseButton } from 'react-bootstrap';
 
 const Filters = ({
   filtersActive,
@@ -17,27 +17,24 @@ const Filters = ({
   resetFilters,
   filters,
 }) => {
-
   return (
     <div
-      className={`${styles["ramp-filters"]} ${
-        filtersActive ? styles["ramp-filters--active"] : ""
-      }`}
+      className={`${styles['ramp-filters']} ${filtersActive ? styles['ramp-filters--active'] : ''}`}
     >
-      <div className={`${styles["ramp-filters__header"]}`}>
-        <div className={styles["ramp-filters__header-left"]}>
-          <h2 className={`${styles["ramp-filters__title"]}`}>Filters</h2>
+      <div className={`${styles['ramp-filters__header']}`}>
+        <div className={styles['ramp-filters__header-left']}>
+          <h2 className={`${styles['ramp-filters__title']}`}>Filters</h2>
           <button
-            className={`${styles["ramp-filters__clear-filters"]}`}
-            aria-label={on-off-ramp.filters.clear-button.aria-label}
+            className={`${styles['ramp-filters__clear-filters']}`}
+            aria-label={on - off - ramp.filters.clear - button.aria - label}
             onClick={resetFilters}
           >
-            {on-off-ramp.filters.clear-button.title}
+            {on - off - ramp.filters.clear - button.title}
           </button>
         </div>
         <CloseButton
           className="ramp-filters__close"
-          aria-label={on-off-ramp.filters.close-button.aria-label}
+          aria-label={on - off - ramp.filters.close - button.aria - label}
           onClick={toggleFiltersActive}
         ></CloseButton>
       </div>
@@ -54,9 +51,9 @@ const Filters = ({
           placeholderRamps={placeholderRamps}
         />*/}
         <RampFilter
-          title={on-off-ramp.filters.country}
+          title={on - off - ramp.filters.country}
           options={countries}
-          inputType={"normal"}
+          inputType={'normal'}
           setFilters={setFilters}
           filters={filters}
           // filteredRamps={filteredRamps}
@@ -64,9 +61,9 @@ const Filters = ({
           placeholderRamps={placeholderRamps}
         />
         <RampFilter
-          title={on-off-ramp.filters.fiat-assets}
+          title={on - off - ramp.filters.fiat - assets}
           options={fiatAssets}
-          inputType={"currency"}
+          inputType={'currency'}
           setFilters={setFilters}
           filters={filters}
           // filteredRamps={filteredRamps}
@@ -74,9 +71,9 @@ const Filters = ({
           placeholderRamps={placeholderRamps}
         />
         <RampFilter
-          title={on-off-ramp.filters.payment-rails}
+          title={on - off - ramp.filters.payment - rails}
           options={paymentRails}
-          inputType={"normal"}
+          inputType={'normal'}
           setFilters={setFilters}
           filters={filters}
           // filteredRamps={filteredRamps}

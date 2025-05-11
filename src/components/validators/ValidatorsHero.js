@@ -1,26 +1,20 @@
-import { forwardRef } from "react";
-import Image from "next/legacy/image";
-import HeroImage from "../../../public/src/img/validators/validators_geometry.png";
-import Button from "../shared/Button";
+import { forwardRef } from 'react';
+import Image from 'next/legacy/image';
+import HeroImage from '../../../public/src/img/validators/validators_geometry.png';
+import Button from '../shared/Button';
 
 const ValidatorsHero = forwardRef((props, ref) => {
-
   return (
     <section className="hero" ref={ref}>
       <div className="hero-image">
-        <Image
-          src={HeroImage}
-          alt="Rings sphere geometry"
-          quality={90}
-          placeholder="blur"
-        />
+        <Image src={HeroImage} alt="Rings sphere geometry" quality={90} placeholder="blur" />
       </div>
       <div className="hero-gradient" />
       <div className="hero-gradient-secondary" />
       <div className="container main-content">
         <div className="hero-content">
           <h1>{validators.header}</h1>
-          <p className="regular hero-text">{validators.sub-header}</p>
+          <p className="regular hero-text">{validators.sub - header}</p>
           <div className="hero-buttons">
             <Button
               to="https://docs.anza.xyz/operations"
@@ -31,7 +25,7 @@ const ValidatorsHero = forwardRef((props, ref) => {
               variant="secondary"
               size="large"
             >
-              {validators.become-validator}
+              {validators.become - validator}
             </Button>
           </div>
         </div>

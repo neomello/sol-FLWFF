@@ -1,5 +1,5 @@
-import Button from "../shared/Button";
-import styled from "styled-components";
+import Button from '../shared/Button';
+import styled from 'styled-components';
 
 const StyledIndexBtn = styled(Button)`
   &.btn {

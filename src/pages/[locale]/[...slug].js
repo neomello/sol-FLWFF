@@ -1,13 +1,13 @@
-import { builder, BuilderComponent, useIsPreviewing } from "@builder.io/react";
-import HTMLHead from "@/components/builder/HTMLHead";
-import NotFoundPage from "./404";
-import customComponentsRegistration from "@/utils/customComponentGenerator";
-import Layout from "@/components/layout";
-import { PAGE_BUILDER_CONFIG } from "@/lib/builder/page/constants";
-import { getPage, getAllPagesWithSlug } from "@/lib/builder/page/api";
-import ModalLauncher from "@/components/ModalLauncher/ModalLauncher";
+import { builder, BuilderComponent, useIsPreviewing } from '@builder.io/react';
+import HTMLHead from '@/components/builder/HTMLHead';
+import NotFoundPage from './404';
+import customComponentsRegistration from '@/utils/customComponentGenerator';
+import Layout from '@/components/layout';
+import { PAGE_BUILDER_CONFIG } from '@/lib/builder/page/constants';
+import { getPage, getAllPagesWithSlug } from '@/lib/builder/page/api';
+import ModalLauncher from '@/components/ModalLauncher/ModalLauncher';
 
-builder.apiVersion = "v3";
+builder.apiVersion = 'v3';
 customComponentsRegistration();
 
 const Page = ({ page, builderLocale }) => {

@@ -1,37 +1,35 @@
-import { config } from "src/config";
-import { ServerRuntime } from "next";
-import { ImageResponseOptions } from "next/server";
+import { config } from 'src/config';
+import { ServerRuntime } from 'next';
+import { ImageResponseOptions } from 'next/server';
 
 /**
  * Helper function for loading the brand fonts for images
  */
-export async function getBrandFonts(): Promise<ImageResponseOptions["fonts"]> {
+export async function getBrandFonts(): Promise<ImageResponseOptions['fonts']> {
   const [
     // comment for better diffs
     brandBold,
     brandMedium,
   ] = await Promise.all([
+    fetch(config.siteUrl + new URL('../fonts/diatype/ABCDiatype-Bold.woff', import.meta.url)).then(
+      (res) => res.arrayBuffer()
+    ),
     fetch(
-      config.siteUrl +
-        new URL("../fonts/diatype/ABCDiatype-Bold.woff", import.meta.url),
-    ).then((res) => res.arrayBuffer()),
-    fetch(
-      config.siteUrl +
-        new URL("../fonts/diatype/ABCDiatype-Medium.woff", import.meta.url),
+      config.siteUrl + new URL('../fonts/diatype/ABCDiatype-Medium.woff', import.meta.url)
     ).then((res) => res.arrayBuffer()),
   ]);
 
   return [
     {
-      name: "Diatype",
+      name: 'Diatype',
       data: brandMedium,
-      style: "normal",
+      style: 'normal',
       weight: 500,
     },
     {
-      name: "Diatype",
+      name: 'Diatype',
       data: brandBold,
-      style: "normal",
+      style: 'normal',
       weight: 700,
     },
   ];
@@ -61,7 +59,7 @@ export const IMAGE_SETTINGS: {
     height: 630,
   },
   /**  */
-  contentType: "image/png",
+  contentType: 'image/png',
   /**  */
-  runtime: "nodejs",
+  runtime: 'nodejs',
 };

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Button from "../shared/Button";
+import styled from 'styled-components';
+import Button from '../shared/Button';
 
 const StyledEventsHeroSection = styled.section`
   position: relative;
@@ -18,17 +18,14 @@ const StyledEventsHeroSection = styled.section`
   }
 `;
 
-const EventsHeroSection = ({ type = "hero" }) => {
-
+const EventsHeroSection = ({ type = 'hero' }) => {
   return (
     <StyledEventsHeroSection>
       <div className="hero-gradient" />
       <div className="container position-relative">
         <div className="row">
           <div className="col-md-7">
-            {type === "archive" && (
-              <Button to="/events">{events.hero.all-events}</Button>
-            )}
+            {type === 'archive' && <Button to="/events">{events.hero.all - events}</Button>}
           </div>
         </div>
       </div>

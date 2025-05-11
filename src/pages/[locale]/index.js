@@ -1,5 +1,5 @@
-import { getPage } from "@/lib/builder/page/api";
-import Page from "./[...slug]";
+import { getPage } from '@/lib/builder/page/api';
+import Page from './[...slug]';
 
 export default function Home(props) {
   return (
@@ -11,7 +11,6 @@ export default function Home(props) {
 
 export async function getStaticProps({ params }) {
   try {
-
     return {
       props: {
         page: page || null,
@@ -26,6 +25,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }

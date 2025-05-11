@@ -1,19 +1,16 @@
-"use client";
+'use client';
 
-import { memo, useMemo, Suspense } from "react";
-import classNames from "classnames";
-import { useSearchParams } from "next/navigation";
-import DevelopersResourceItem from "../sections/DevelopersResourcesSection/DevelopersResourceItem";
-import styles from "./DevelopersResourcesGrid.module.scss";
+import { memo, useMemo, Suspense } from 'react';
+import classNames from 'classnames';
+import { useSearchParams } from 'next/navigation';
+import DevelopersResourceItem from '../sections/DevelopersResourcesSection/DevelopersResourceItem';
+import styles from './DevelopersResourcesGrid.module.scss';
 
 function Grid({ items }) {
   return (
-    <div className={classNames(styles["developers-resources-grid"])}>
+    <div className={classNames(styles['developers-resources-grid'])}>
       {items.map((item, id) => (
-        <div
-          key={id}
-          className={classNames(styles["developers-resources-grid__item"])}
-        >
+        <div key={id} className={classNames(styles['developers-resources-grid__item'])}>
           <DevelopersResourceItem
             category={item?.category || item?.difficulty || undefined}
             title={item.title}
@@ -45,12 +42,10 @@ function FilteredGrid({ items }) {
         const itemValues = item?.[filterKey];
         if (!itemValues) return false;
 
-        if (typeof itemValues === "string") {
+        if (typeof itemValues === 'string') {
           matchesFilters = filterValues.includes(itemValues);
         } else if (Array.isArray(itemValues)) {
-          matchesFilters = itemValues.some((value) =>
-            filterValues.includes(value),
-          );
+          matchesFilters = itemValues.some((value) => filterValues.includes(value));
         }
 
         if (!matchesFilters) {

@@ -1,20 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledDivider = styled.div`
-  height: ${(props) => props.height || "auto"};
+  height: ${(props) => props.height || 'auto'};
   ${(props) =>
-    props.$axis === "x"
-      ? "border-top"
-      : props.$axis === "y"
-        ? "border-right"
-        : "border"}: 1px solid
+    props.$axis === 'x' ? 'border-top' : props.$axis === 'y' ? 'border-right' : 'border'}: 1px solid
     rgba(
       ${(props) =>
-    props.$theme === "light"
-      ? "255, 255, 255"
-      : props.$theme === "dark"
-        ? "0, 0, 0"
-        : "100, 100, 100"},
+    props.$theme === 'light'
+      ? '255, 255, 255'
+      : props.$theme === 'dark'
+        ? '0, 0, 0'
+        : '100, 100, 100'},
       ${(props) => props.$alpha || 0.4}
     );
 `;

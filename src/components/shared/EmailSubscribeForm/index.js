@@ -1,3 +1,3 @@
-import EmailSubscribeForm from "./IterableEmailSubscribeForm";
+import EmailSubscribeForm from './IterableEmailSubscribeForm';
 
 export default EmailSubscribeForm;

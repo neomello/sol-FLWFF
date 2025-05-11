@@ -1,17 +1,17 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Layout from "@/components/layout";
-import HTMLHead from "@/components/HTMLHead";
+import Layout from '@/components/layout';
+import HTMLHead from '@/components/HTMLHead';
 
-import BrandingWelcome from "@/components/branding/BrandingWelcome";
-import BrandingLogo from "@/components/branding/BrandingLogo";
-import BrandingClearspace from "@/components/branding/BrandingClearspace";
-import BrandingBannedLogos from "@/components/branding/BrandingBannedLogos";
-import BrandingColors from "@/components/branding/BrandingColors";
-import BrandingAssets from "@/components/branding/BrandingAssets";
-import BrandingPress from "@/components/branding/BrandingPress";
-import BrandingAnchorTags from "@/components/branding/BrandingAnchorTags";
-import SimpleHero from "@/components/sharedPageSections/SimpleHero";
+import BrandingWelcome from '@/components/branding/BrandingWelcome';
+import BrandingLogo from '@/components/branding/BrandingLogo';
+import BrandingClearspace from '@/components/branding/BrandingClearspace';
+import BrandingBannedLogos from '@/components/branding/BrandingBannedLogos';
+import BrandingColors from '@/components/branding/BrandingColors';
+import BrandingAssets from '@/components/branding/BrandingAssets';
+import BrandingPress from '@/components/branding/BrandingPress';
+import BrandingAnchorTags from '@/components/branding/BrandingAnchorTags';
+import SimpleHero from '@/components/sharedPageSections/SimpleHero';
 
 const StyledMainContainer = styled.div`
   display: flex;
@@ -45,13 +45,9 @@ const StyledMainContainer = styled.div`
 `;
 
 const Branding = () => {
-
   return (
     <Layout>
-      <HTMLHead
-        title={branding.title}
-        description={branding.description}
-      />
+      <HTMLHead title={branding.title} description={branding.description} />
       <SimpleHero
         frontmatter={{
           title: branding.title,
@@ -77,14 +73,13 @@ const Branding = () => {
 
 export async function getStaticProps({ params }) {
   return {
-    props: {
-    },
+    props: {},
   };
 }
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 

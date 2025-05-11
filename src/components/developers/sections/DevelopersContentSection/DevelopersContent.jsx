@@ -1,26 +1,22 @@
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import styles from "./DevelopersContent.module.scss";
+import styles from './DevelopersContent.module.scss';
 
 function Title({ children }) {
-  return <h3 className={styles["content-title"]}>{children}</h3>;
+  return <h3 className={styles['content-title']}>{children}</h3>;
 }
 
 function Description({ children }) {
-  return (
-    <p className={classNames("subdued", styles["content-description"])}>
-      {children}
-    </p>
-  );
+  return <p className={classNames('subdued', styles['content-description'])}>{children}</p>;
 }
 
 function Container({ className, children }) {
   return (
     <div
       className={classNames(
-        styles["content-container"],
-        "h-100 justify-content-between",
-        className,
+        styles['content-container'],
+        'h-100 justify-content-between',
+        className
       )}
     >
       {children}

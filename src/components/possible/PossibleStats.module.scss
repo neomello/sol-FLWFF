@@ -4,11 +4,11 @@
   padding: 125px 0;
 
   &__ff-mono {
-    font-family: "DSemi", monospace;
+    font-family: 'DSemi', monospace;
   }
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     width: 100%;
@@ -69,12 +69,7 @@
     }
 
     &--green {
-      background: linear-gradient(
-        97.65deg,
-        #19fb9b 11.36%,
-        #199890 54.3%,
-        #005f59 100.78%
-      );
+      background: linear-gradient(97.65deg, #19fb9b 11.36%, #199890 54.3%, #005f59 100.78%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -91,7 +86,7 @@
     padding-left: 10px;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;

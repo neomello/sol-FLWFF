@@ -1,8 +1,8 @@
-import React from "react";
-import classNames from "classnames";
-import Image from "next/image";
-import Button from "../shared/Button";
-import styles from "./AiHighlight.module.scss";
+import React from 'react';
+import classNames from 'classnames';
+import Image from 'next/image';
+import Button from '../shared/Button';
+import styles from './AiHighlight.module.scss';
 
 const AiHighlight = ({ title, description, image }) => {
   return (

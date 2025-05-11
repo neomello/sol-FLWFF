@@ -1,14 +1,14 @@
-import { FC } from "react";
-import Image from "next/image";
-import styles from "./AccelerateSpeakers.module.scss";
-import TwitterIcon from "../../../public/src/img/footer/twitter.inline.svg";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { FC } from 'react';
+import Image from 'next/image';
+import styles from './AccelerateSpeakers.module.scss';
+import TwitterIcon from '../../../public/src/img/footer/twitter.inline.svg';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface Speaker {
-  event: "scale" | "ship";
+  event: 'scale' | 'ship';
   speakerName: string;
   company: string;
   title: string;
@@ -21,10 +21,7 @@ interface AccelerateSpeakersProps {
   speakers: Speaker[];
 }
 
-export const AccelerateSpeakers: FC<AccelerateSpeakersProps> = ({
-  heading,
-  speakers,
-}) => {
+export const AccelerateSpeakers: FC<AccelerateSpeakersProps> = ({ heading, speakers }) => {
   var settings = {
     dots: false,
     speed: 500,
@@ -65,21 +62,17 @@ export const AccelerateSpeakers: FC<AccelerateSpeakersProps> = ({
               </div>
               <div className={styles.info}>
                 <p className={`${styles.event} ${styles[speaker.event]}`}>
-                  {speaker.event === "scale" ? "Scale or die" : "Ship or die"}
+                  {speaker.event === 'scale' ? 'Scale or die' : 'Ship or die'}
                 </p>
                 <h3 className={styles.name}>
-                  <span>{speaker.speakerName.spli [0]}</span>
-                  <span>{speaker.speakerName.spli [1]}</span>
+                  <span>{speaker.speakerName.spli[0]}</span>
+                  <span>{speaker.speakerName.spli[1]}</span>
                 </h3>
                 <div className={styles.companyWrapper}>
                   <p className={styles.company}>{speaker.company}</p>
                   <div className={styles.socialWrapper}>
                     <p className={styles.title}>{speaker.title}</p>
-                    <a
-                      className={styles.social}
-                      href={speaker.socialLink}
-                      target="_blank"
-                    >
+                    <a className={styles.social} href={speaker.socialLink} target="_blank">
                       <TwitterIcon width="16" height="16" />
                     </a>
                   </div>

@@ -1,9 +1,9 @@
-import React from "react";
-import styles from "./AccelerateStories.module.scss";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import React from 'react';
+import styles from './AccelerateStories.module.scss';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const AccelerateStories = ({ urls }) => {
   var settings = {
@@ -34,7 +34,7 @@ const AccelerateStories = ({ urls }) => {
     <div className={styles.stories}>
       <Slider {...settings}>
         {urls.map(({ url }, index) => {
-          const videoId = url.split("v=")[1]?.split("&")[0] || url.split("/").pop();
+          const videoId = url.split('v=')[1]?.split('&')[0] || url.split('/').pop();
           return (
             <div key={index} className={styles.card}>
               <iframe

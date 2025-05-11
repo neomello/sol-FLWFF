@@ -41,13 +41,11 @@ const NewsPage = ({ posts, pagination }) => {
 
 export async function getStaticProps() {
   const posts = await fetchPosts();
-  const sortedPosts = posts
-    .filter(Boolean)
-    .sort((a, b) => {
-      const dateA = new Date(a.publishedDate);
-      const dateB = new Date(b.publishedDate);
-      return dateB - dateA;
-    });
+  const sortedPosts = posts.filter(Boolean).sort((a, b) => {
+    const dateA = new Date(a.publishedDate);
+    const dateB = new Date(b.publishedDate);
+    return dateB - dateA;
+  });
 
   return {
     props: {

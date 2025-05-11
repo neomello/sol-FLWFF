@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const SolFormattedMessage = ({ value }) => {
   try {
@@ -10,13 +10,13 @@ const SolFormattedMessage = ({ value }) => {
 };
 
 const humanFriendlyNumbers = {
-  1: "",
-  1e3: "K",
-  1e6: "M",
-  1e9: "G",
-  1e12: "T",
-  1e15: "P",
-  1e18: "E",
+  1: '',
+  1e3: 'K',
+  1e6: 'M',
+  1e9: 'G',
+  1e12: 'T',
+  1e15: 'P',
+  1e18: 'E',
 };
 
 /**
@@ -28,12 +28,7 @@ const humanFriendlyNumbers = {
  * @param {NumberFormatOptions}   options
  * @return {`${*}${*}`|`${*}${*}`}
  */
-export const formatNumberHumanFriendly = (
-  value,
-  digits = 1,
-  startDividing = 1e4,
-  options = {}
-) => {
+export const formatNumberHumanFriendly = (value, digits = 1, startDividing = 1e4, options = {}) => {
   let dividend;
   switch (true) {
     case value >= 1e18:

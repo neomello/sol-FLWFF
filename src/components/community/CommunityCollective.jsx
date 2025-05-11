@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Image from "next/legacy/image";
-import Button from "../shared/Button";
-import collectiveImg from "../../../public/src/img/community/collective.png";
+import styled from 'styled-components';
+import Image from 'next/legacy/image';
+import Button from '../shared/Button';
+import collectiveImg from '../../../public/src/img/community/collective.png';
 
 const StyledCommunityCollective = styled.section`
   color: #000;
@@ -48,7 +48,11 @@ const CommunityCollective = () => {
       <div className="card px-8 pt-8 pb-5 justify-content-end">
         <div className="body">
           <h2 className="h1">Solana Collective</h2>
-          <p>Solana Collective é uma comunidade de desenvolvedores que trabalham juntos para criar e apoiar a rede Solana. Se você é um desenvolvedor ou está interessado em participar, preencha o formulário abaixo para se juntar à comunidade.</p>
+          <p>
+            Solana Collective é uma comunidade de desenvolvedores que trabalham juntos para criar e
+            apoiar a rede Solana. Se você é um desenvolvedor ou está interessado em participar,
+            preencha o formulário abaixo para se juntar à comunidade.
+          </p>
           <Button to="https://www.solanacollective.com/" noBorder newTab>
             Participar
           </Button>

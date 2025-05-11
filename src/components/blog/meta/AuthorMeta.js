@@ -1,34 +1,33 @@
-import Head from "next/head";
-import PropTypes from "prop-types";
-import _ from "lodash";
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
 
-import ImageMeta from "./ImageMeta";
-import getAuthorProperties from "./getAuthorProperties";
-import { config } from "src/config";
+import ImageMeta from './ImageMeta';
+import getAuthorProperties from './getAuthorProperties';
+import { config } from 'src/config';
 
 const AuthorMeta = ({ data, settings, canonical }) => {
   const author = getAuthorProperties(data);
   const title = `${data.name} - ${settings.title}`;
-  const description =
-    data.bio || config.siteMetadata.description || settings.description;
+  const description = data.bio || config.siteMetadata.description || settings.description;
 
   const jsonLd = {
-    "@context": `https://schema.org/`,
-    "@type": `Person`,
+    '@context': `https://schema.org/`,
+    '@type': `Person`,
     name: data.name,
     sameAs: author.sameAsArray ? author.sameAsArray : undefined,
     url: canonical,
     image: shareImage
       ? {
-          "@type": `ImageObject`,
+          '@type': `ImageObject`,
           url: shareImage,
           width: config.shareImageWidth,
           height: config.shareImageHeight,
         }
       : undefined,
     mainEntityOfPage: {
-      "@type": `WebPage`,
-      "@id": config.siteUrl,
+      '@type': `WebPage`,
+      '@id': config.siteUrl,
     },
     description,
   };
@@ -50,18 +49,11 @@ const AuthorMeta = ({ data, settings, canonical }) => {
         {settings.twitter && (
           <meta
             name="twitter:site"
-            content={`https://twitter.com/${settings.twitter.replace(
-              /^@/,
-              ``,
-            )}/`}
+            content={`https://twitter.com/${settings.twitter.replace(/^@/, ``)}/`}
           />
         )}
-        {settings.twitter && (
-          <meta name="twitter:creator" content={settings.twitter} />
-        )}
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd, undefined, 4)}
-        </script>
+        {settings.twitter && <meta name="twitter:creator" content={settings.twitter} />}
+        <script type="application/ld+json">{JSON.stringify(jsonLd, undefined, 4)}</script>
       </Head>
       <ImageMeta image={shareImage} />
     </>
@@ -85,8 +77,6 @@ AuthorMeta.propTypes = {
   canonical: PropTypes.string.isRequired,
 };
 
-const AuthorMetaQuery = ({ settings, ...rest }) => (
-  <AuthorMeta settings={settings} {...rest} />
-);
+const AuthorMetaQuery = ({ settings, ...rest }) => <AuthorMeta settings={settings} {...rest} />;
 
 export default AuthorMetaQuery;

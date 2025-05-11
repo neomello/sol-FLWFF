@@ -1,44 +1,36 @@
-import { useState } from "react";
-import styles from "./Ramps.module.scss";
-import RampsCard from "./RampsCard";
-import SharedModal from "../shared/SharedModal";
-import Image from "next/image";
-import Button from "../shared/Button";
-import { Accordion } from "react-bootstrap";
-import CommonMarkdown from "../sharedPageSections/CommonMarkdown";
-import ChevronDown from "../../../public/src/img/icons/Angle-down.inline.svg";
+import { useState } from 'react';
+import styles from './Ramps.module.scss';
+import RampsCard from './RampsCard';
+import SharedModal from '../shared/SharedModal';
+import Image from 'next/image';
+import Button from '../shared/Button';
+import { Accordion } from 'react-bootstrap';
+import CommonMarkdown from '../sharedPageSections/CommonMarkdown';
+import ChevronDown from '../../../public/src/img/icons/Angle-down.inline.svg';
 
-const Ramps = ({
-  fiatAssets,
-  countries,
-  paymentRails,
-  ramps,
-  resetFilters,
-}) => {
+const Ramps = ({ fiatAssets, countries, paymentRails, ramps, resetFilters }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState([]);
   const [generalModalData, setGeneralModalData] = useState({
-    title: "Ramp",
-    websiteUrl: "",
-    imageUrl: "",
+    title: 'Ramp',
+    websiteUrl: '',
+    imageUrl: '',
   });
 
   const handleShowModal = (ramp) => {
     const countriesOfRamp = countries.filter((countryData) =>
-      ramp.meta.countries.includes(countryData.value),
+      ramp.meta.countries.includes(countryData.value)
     );
     const fiatAssetsOfRamp = fiatAssets.filter((fiatData) =>
-      ramp.meta["fiat-assets"].includes(fiatData.value),
+      ramp.meta['fiat-assets'].includes(fiatData.value)
     );
     const paymentRailsOfRamp = paymentRails.filter((paymentData) =>
-      ramp.meta["payment-rails"].includes(paymentData.value),
+      ramp.meta['payment-rails'].includes(paymentData.value)
     );
 
     const fiatHtml = fiatAssetsOfRamp
-      .map(
-        (item) => `<span class="${styles["fiat_asset"]}">${item.title}</span>`,
-      )
-      .join(" ");
+      .map((item) => `<span class="${styles['fiat_asset']}">${item.title}</span>`)
+      .join(' ');
 
     setGeneralModalData({
       title: ramp.title,
@@ -48,20 +40,16 @@ const Ramps = ({
 
     setModalData([
       {
-        content: countriesOfRamp
-          .map((item) => item.title)
-          .join(" / "),
-        title: on-off-ramp.ramp-modal-data.country-title,
+        content: countriesOfRamp.map((item) => item.title).join(' / '),
+        title: on - off - ramp.ramp - modal - data.country - title,
       },
       {
         content: `<div class="tw-flex tw-flex-row tw-gap-2 tw-flex-wrap py-2">${fiatHtml}</div>`,
-        title: on-off-ramp.ramp-modal-data.fiat-title,
+        title: on - off - ramp.ramp - modal - data.fiat - title,
       },
       {
-        content: paymentRailsOfRamp
-          .map((item) => item.title)
-          .join(" / "),
-        title: on-off-ramp.ramp-modal-data.payment-rails-title,
+        content: paymentRailsOfRamp.map((item) => item.title).join(' / '),
+        title: on - off - ramp.ramp - modal - data.payment - rails - title,
       },
     ]);
 
@@ -69,12 +57,12 @@ const Ramps = ({
   };
 
   return (
-    <div className={`${styles["ramps"]}`}>
-      <div className={`${styles["ramp__header"]}`}>
-        <h2 className={`${styles["ramp__title"]}`}>All Ramps</h2>
+    <div className={`${styles['ramps']}`}>
+      <div className={`${styles['ramp__header']}`}>
+        <h2 className={`${styles['ramp__title']}`}>All Ramps</h2>
       </div>
 
-      <div className={`${styles["ramp__grid"]}`}>
+      <div className={`${styles['ramp__grid']}`}>
         {ramps.length ? (
           ramps.map((item, index) => (
             <RampsCard
@@ -87,10 +75,10 @@ const Ramps = ({
             />
           ))
         ) : (
-          <div className={styles["ramp-no-results"]}>
-            {on-off-ramp.no-results.title}
+          <div className={styles['ramp-no-results']}>
+            {on - off - ramp.no - results.title}
             <Button variant="outline" onClick={resetFilters} className="ms-2">
-              {on-off-ramp.no-results.clear-filters-button}
+              {on - off - ramp.no - results.clear - filters - button}
             </Button>
           </div>
         )}
@@ -100,46 +88,44 @@ const Ramps = ({
         size="lg"
         show={showModal}
         handleClose={() => {
-          document.body.style.overflow = "auto";
+          document.body.style.overflow = 'auto';
           setShowModal(false);
         }}
         showCloseButton={false}
-        className={styles["ramp-popup-custom"]}
+        className={styles['ramp-popup-custom']}
       >
         <div className="ramp-data">
-          <div className={styles["ramp__header"]}>
+          <div className={styles['ramp__header']}>
             <Image
               src={generalModalData.imageUrl}
               width={61}
               height={61}
               alt={generalModalData.title}
             />
-            <h3 className={styles["ramp-popup__title"]}>
-              {generalModalData.title}
-            </h3>
+            <h3 className={styles['ramp-popup__title']}>{generalModalData.title}</h3>
             <Button
               to={generalModalData.websiteUrl}
-              ariaLabel={on-off-ramp.ramp-modal-data.button-aria-label}
+              ariaLabel={on - off - ramp.ramp - modal - data.button - aria - label}
               variant="tertiary"
               size="md"
               newTab={true}
             >
-              {on-off-ramp.ramp-modal-data.button-title}
+              {on - off - ramp.ramp - modal - data.button - title}
             </Button>
           </div>
           <div className="mt-5">
-            <Accordion defaultActiveKey={["0"]} alwaysOpen>
+            <Accordion defaultActiveKey={['0']} alwaysOpen>
               {modalData.map((itemData, index) => (
                 <Accordion.Item
                   key={index}
                   bsPrefix="custom-accordion-item"
-                  className={styles["custom-accordion-item"]}
+                  className={styles['custom-accordion-item']}
                   eventKey={index}
                 >
                   <Accordion.Header
                     as="h6"
                     bsPrefix="custom-accordion-header"
-                    className={styles["custom-accordion-header"]}
+                    className={styles['custom-accordion-header']}
                   >
                     {itemData.title}
                     <ChevronDown className="collapse-chevron" />

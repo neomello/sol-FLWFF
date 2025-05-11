@@ -1,4 +1,4 @@
-import NextErrorComponent from "next/error";
+import NextErrorComponent from 'next/error';
 
 const MyError = ({ statusCode }) => {
   return <NextErrorComponent statusCode={statusCode} />;

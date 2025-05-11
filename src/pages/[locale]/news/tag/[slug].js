@@ -1,20 +1,20 @@
-import { builder } from "@builder.io/react";
-import Layout from "@/components/layout";
-import PostCard from "@/components/blog/PostCard";
-import HTMLHead from "@/components/HTMLHead";
-import styled from "styled-components";
+import { builder } from '@builder.io/react';
+import Layout from '@/components/layout';
+import PostCard from '@/components/blog/PostCard';
+import HTMLHead from '@/components/HTMLHead';
+import styled from 'styled-components';
 import {
   getSingleTag,
   getPostsByTag,
   // getTagSlugs,
   getPageSettings,
-} from "@/lib/builder/api";
+} from '@/lib/builder/api';
 
-import { NEWS_BUILDER_CONFIG } from "@/lib/builder/news/constants";
+import { NEWS_BUILDER_CONFIG } from '@/lib/builder/news/constants';
 
-import { MetaData } from "@/components/blog/meta";
+import { MetaData } from '@/components/blog/meta';
 
-builder.apiVersion = "v3";
+builder.apiVersion = 'v3';
 
 const StyledBlogTagHeader = styled.div`
   font-family: Diatype, var(--font-family-sans-serif);
@@ -30,7 +30,7 @@ const StyledBlogTagHeader = styled.div`
     font-size: clamp(44px, 4vw, 96px) !important;
     line-height: 110% !important;
     letter-spacing: -0.02em !important;
-    font-feature-settings: "ss14" on;
+    font-feature-settings: 'ss14' on;
 
     @media (min-width: 768px) {
       letter-spacing: -0.04em !important;
@@ -59,12 +59,7 @@ const Tag = ({ tag, posts, pageSettings }) => {
         <section className="post-feed">
           {posts.map((post, index) => (
             // The tag below includes the markup for each post - components/common/PostCard.js
-            <PostCard
-              key={post?.data?.slug}
-              post={post}
-              index={index}
-              isFirstPage={true}
-            />
+            <PostCard key={post?.data?.slug} post={post} index={index} isFirstPage={true} />
           ))}
         </section>
       </div>
@@ -83,7 +78,7 @@ export async function getStaticPaths() {
   const allPaths = [];
   const paths = allPaths?.map((p) => `/news/tag/${p?.data?.slug}`) || [];
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 

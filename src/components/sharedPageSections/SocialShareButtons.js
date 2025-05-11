@@ -1,6 +1,6 @@
-import { useState } from "react";
-import styled from "styled-components";
-import { config } from "src/config";
+import { useState } from 'react';
+import styled from 'styled-components';
+import { config } from 'src/config';
 import {
   TwitterShareButton,
   XIcon,
@@ -8,8 +8,8 @@ import {
   FacebookIcon,
   TelegramShareButton,
   TelegramIcon,
-} from "react-share";
-import CopyLinkIcon from "../../../public/src/img/icons/copyLink.inline.svg";
+} from 'react-share';
+import CopyLinkIcon from '../../../public/src/img/icons/copyLink.inline.svg';
 
 const StyledSection = styled.section`
   .shared-icons {
@@ -42,8 +42,7 @@ const StyledCopied = styled.button`
   }
 `;
 
-const SocialShareButtons = ({ url, title, className = "" }) => {
-
+const SocialShareButtons = ({ url, title, className = '' }) => {
   const [copied, setCopied] = useState(false);
   const [timer, setTimer] = useState(null);
 
@@ -76,11 +75,7 @@ const SocialShareButtons = ({ url, title, className = "" }) => {
           <TelegramIcon size={32} round />
         </TelegramShareButton>
         <StyledCopied type="button" onClick={() => copyLink(url)}>
-          {copied ? (
-            <span className="copied">{commands.copied}</span>
-          ) : (
-            <CopyLinkIcon />
-          )}
+          {copied ? <span className="copied">{commands.copied}</span> : <CopyLinkIcon />}
         </StyledCopied>
       </div>
     </StyledSection>

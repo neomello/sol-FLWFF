@@ -1,6 +1,4 @@
-import AcceleratePage, {
-  getStaticProps as getStaticPropsCatchAll,
-} from "./[...slug]";
+import AcceleratePage, { getStaticProps as getStaticPropsCatchAll } from './[...slug]';
 
 export default function Page(props) {
   // We use an index page instead of an optional catch-all route
@@ -15,6 +13,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }

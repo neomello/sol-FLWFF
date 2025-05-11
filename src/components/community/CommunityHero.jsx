@@ -1,6 +1,6 @@
-import Image from "next/legacy/image";
-import styled from "styled-components";
-import heroImg from "../../../public/src/img/community/hero.png";
+import Image from 'next/legacy/image';
+import styled from 'styled-components';
+import heroImg from '../../../public/src/img/community/hero.png';
 
 const ImgContainer = styled.div`
   position: absolute;
@@ -19,17 +19,11 @@ const ImgContainer = styled.div`
  * @constructor
  */
 const CommunityHero = () => {
-
   return (
     <section className="hero">
       <div className="main-container">
         <ImgContainer>
-          <Image
-            src={heroImg}
-            alt=""
-            objectPosition="center"
-            objectFit="cover"
-          />
+          <Image src={heroImg} alt="" objectPosition="center" objectFit="cover" />
         </ImgContainer>
         <div className="container pt-12 pb-md-8">
           <div className="row pb-8 mb-8">

@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import styles from "./MarkdownSteps.module.scss";
+import React, { ReactNode } from 'react';
+import styles from './MarkdownSteps.module.scss';
 
 interface MarkdownStepsProps {
   children: ReactNode;
@@ -7,7 +7,7 @@ interface MarkdownStepsProps {
 
 export function MarkdownSteps({ children, ...props }: MarkdownStepsProps) {
   return (
-    <div {...props} className={styles["markdown-steps"]}>
+    <div {...props} className={styles['markdown-steps']}>
       {children}
     </div>
   );

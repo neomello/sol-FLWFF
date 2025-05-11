@@ -1,15 +1,12 @@
-import { uniqBy, orderBy } from "lodash";
-import { StrictMode, useState } from "react";
+import { uniqBy, orderBy } from 'lodash';
+import { StrictMode, useState } from 'react';
 
-import Layout from "@/components/layout";
-import HTMLHead from "@/components/HTMLHead";
-import EventsHeroSection from "@/components/events/EventsHeroSection";
-import EventsList from "@/components/events/EventsList";
-import EventsArchivePagination from "@/components/events/archive/EventsArchivePagination";
-import {
-  fetchCalendarEvents,
-  fetchCalendarRiverEvents,
-} from "@/lib/events/fetchCalendarEvents";
+import Layout from '@/components/layout';
+import HTMLHead from '@/components/HTMLHead';
+import EventsHeroSection from '@/components/events/EventsHeroSection';
+import EventsList from '@/components/events/EventsList';
+import EventsArchivePagination from '@/components/events/archive/EventsArchivePagination';
+import { fetchCalendarEvents, fetchCalendarRiverEvents } from '@/lib/events/fetchCalendarEvents';
 
 const EventsArchivePage = ({ events }) => {
   const [page, setPage] = useState(0);
@@ -17,16 +14,13 @@ const EventsArchivePage = ({ events }) => {
 
   const pageEvents = events.slice(
     page * TOTAL_EVENTS_PER_PAGE,
-    page * TOTAL_EVENTS_PER_PAGE + TOTAL_EVENTS_PER_PAGE,
+    page * TOTAL_EVENTS_PER_PAGE + TOTAL_EVENTS_PER_PAGE
   );
 
   return (
     <StrictMode>
       <Layout>
-        <HTMLHead
-          title={events.archive.page-title}
-          description={events.description}
-        />
+        <HTMLHead title={events.archive.page - title} description={events.description} />
         <div className="overflow-hidden">
           <EventsHeroSection type="archive" />
 
@@ -47,32 +41,32 @@ const EventsArchivePage = ({ events }) => {
 
 export async function getStaticProps({ params }) {
   // Solana Foundation calendar
-  let mainEvents = await fetchCalendarEvents("cal-J8WZ4jDbwzD9TWi", {
-    period: "past",
+  let mainEvents = await fetchCalendarEvents('cal-J8WZ4jDbwzD9TWi', {
+    period: 'past',
   });
 
   // HH calendar
-  let hhEvents = await fetchCalendarEvents("cal-dLrjJu0Dqay3WBe", {
-    period: "past",
+  let hhEvents = await fetchCalendarEvents('cal-dLrjJu0Dqay3WBe', {
+    period: 'past',
   });
 
   // Community calendar
-  const communityEvents = await fetchCalendarEvents("cal-C0cmhNE8Qz3xF5r", {
-    period: "past",
+  const communityEvents = await fetchCalendarEvents('cal-C0cmhNE8Qz3xF5r', {
+    period: 'past',
   });
 
   // Community River calendar
   const communityRiverEvents = await fetchCalendarRiverEvents({
-    time: "past",
+    time: 'past',
     limit: 20,
   });
 
-  const sortInstructions = [[(x) => x.schedule.from], ["desc"]];
+  const sortInstructions = [[(x) => x.schedule.from], ['desc']];
   const sorted = orderBy(
     [...mainEvents, ...hhEvents, ...communityEvents, ...communityRiverEvents],
-    ...sortInstructions,
+    ...sortInstructions
   );
-  let unique = uniqBy(sorted, "key");
+  let unique = uniqBy(sorted, 'key');
 
   return {
     props: {
@@ -84,7 +78,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 

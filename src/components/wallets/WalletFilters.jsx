@@ -1,15 +1,8 @@
-import { useState } from "react";
-import styles from "./WalletFilters.module.scss";
-import Wallets from "./Wallets";
+import { useState } from 'react';
+import styles from './WalletFilters.module.scss';
+import Wallets from './Wallets';
 
-const WalletFilters = ({
-  filterData,
-  currentFilters,
-  setFilters,
-  updateWallets,
-  walletData,
-}) => {
-
+const WalletFilters = ({ filterData, currentFilters, setFilters, updateWallets, walletData }) => {
   /**
    * Returns all filter data with an extra key named `checked` set to false as the initial state of a filter
    * @returns Object
@@ -42,9 +35,7 @@ const WalletFilters = ({
       }
     }
 
-    const showAllButton = document.querySelector(
-      'button[data-role="show-all"]',
-    );
+    const showAllButton = document.querySelector('button[data-role="show-all"]');
 
     setFilters(activeFilters);
 
@@ -52,11 +43,8 @@ const WalletFilters = ({
     // show all wallets and set the "All wallets" button as active. If we have filters at least one filter active,
     // remove active state from "All wallets" and show filtered wallets
     if (Object.keys(activeFilters).length > 0) {
-      if (
-        showAllButton &&
-        showAllButton.classList.contains(`${styles["wallet-filter--active"]}`)
-      ) {
-        showAllButton.classList.remove(`${styles["wallet-filter--active"]}`);
+      if (showAllButton && showAllButton.classList.contains(`${styles['wallet-filter--active']}`)) {
+        showAllButton.classList.remove(`${styles['wallet-filter--active']}`);
       }
 
       // Filters are active - show filtered results
@@ -64,9 +52,9 @@ const WalletFilters = ({
     } else {
       if (
         showAllButton &&
-        !showAllButton.classList.contains(`${styles["wallet-filter--active"]}`)
+        !showAllButton.classList.contains(`${styles['wallet-filter--active']}`)
       ) {
-        showAllButton.classList.add(`${styles["wallet-filter--active"]}`);
+        showAllButton.classList.add(`${styles['wallet-filter--active']}`);
       }
 
       // No filters are active - show all
@@ -79,43 +67,38 @@ const WalletFilters = ({
     setFilters({}); // Remove all current filters
     updateWallets({}); // Pass empty filters object to show all wallets
 
-    const showAllButton = document.querySelector(
-      'button[data-role="show-all"]',
-    );
+    const showAllButton = document.querySelector('button[data-role="show-all"]');
 
-    if (
-      showAllButton &&
-      !showAllButton.classList.contains(`${styles["wallet-filter--active"]}`)
-    ) {
-      showAllButton.classList.add(`${styles["wallet-filter--active"]}`);
+    if (showAllButton && !showAllButton.classList.contains(`${styles['wallet-filter--active']}`)) {
+      showAllButton.classList.add(`${styles['wallet-filter--active']}`);
     }
   };
 
   return (
     <>
-      <section className={styles["wallet-filter-section"]}>
+      <section className={styles['wallet-filter-section']}>
         <div>
           <button
             onClick={() => {
               resetWalletsAndFilters();
             }}
-            className={`${styles["wallet-filter"]} ${styles["wallet-filter--active"]}`}
+            className={`${styles['wallet-filter']} ${styles['wallet-filter--active']}`}
             data-role="show-all"
           >
-            {wallets.filters.all-wallets}
+            {wallets.filters.all - wallets}
           </button>
         </div>
         {filterState.length &&
           filterState.map((filter, index) => (
             <div key={index}>
               <label
-                className={`${styles["wallet-filter"]} ${filter.checked ? styles["wallet-filter--active"] : ""}`}
+                className={`${styles['wallet-filter']} ${filter.checked ? styles['wallet-filter--active'] : ''}`}
                 htmlFor={filter.filterKey}
               >
                 {filter.title}
               </label>
               <input
-                className={styles["wallet-filter-input"]}
+                className={styles['wallet-filter-input']}
                 type="checkbox"
                 name="filters"
                 id={filter.filterKey}
@@ -126,10 +109,7 @@ const WalletFilters = ({
             </div>
           ))}
       </section>
-      <Wallets
-        walletData={walletData}
-        resetWalletsAndFilters={resetWalletsAndFilters}
-      />
+      <Wallets walletData={walletData} resetWalletsAndFilters={resetWalletsAndFilters} />
     </>
   );
 };

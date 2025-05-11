@@ -1,8 +1,8 @@
-import Image from "next/legacy/image";
-import styled from "styled-components";
-import Button from "../shared/Button";
-import { Link } from "../../utils/Link";
-import { getMaximalThumbnailResolutionUrl } from "../../utils/ytUtils";
+import Image from 'next/legacy/image';
+import styled from 'styled-components';
+import Button from '../shared/Button';
+import { Link } from '../../utils/Link';
+import { getMaximalThumbnailResolutionUrl } from '../../utils/ytUtils';
 
 const StyledVideoCard = styled.div`
   font-family: Diatype, var(--font-family-sans-serif);
@@ -74,9 +74,7 @@ const VideoCard = ({ video, showThumbnail }) => {
       <div>
         {showThumbnail && (
           <div className="ratio ratio-16x9 video">
-            <Link
-              to={`https://www.youtube.com/watch?v=${video.contentDetails.videoId}`}
-            >
+            <Link to={`https://www.youtube.com/watch?v=${video.contentDetails.videoId}`}>
               <Image
                 className="video-card-image"
                 src={thumbnailUrl}
@@ -89,9 +87,7 @@ const VideoCard = ({ video, showThumbnail }) => {
         )}
         <p className="video-card-title">{video.snippet.title}</p>
       </div>
-      <Button
-        to={`https://www.youtube.com/watch?v=${video.contentDetails.videoId}`}
-      >
+      <Button to={`https://www.youtube.com/watch?v=${video.contentDetails.videoId}`}>
         {community.videos.watch}
       </Button>
     </StyledVideoCard>

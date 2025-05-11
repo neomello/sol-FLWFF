@@ -1,5 +1,5 @@
-import { Modal, Ratio } from "react-bootstrap";
-import Script from "next/script";
+import { Modal, Ratio } from 'react-bootstrap';
+import Script from 'next/script';
 
 const VideoModal = ({
   type,
@@ -15,8 +15,8 @@ const VideoModal = ({
   };
 
   const handleVimeoIframeLoad = () => {
-    if (typeof Vimeo !== "undefined" && autoplay) {
-      const player = new Vimeo.Player(document.querySelector(".vimeo-iframe"));
+    if (typeof Vimeo !== 'undefined' && autoplay) {
+      const player = new Vimeo.Player(document.querySelector('.vimeo-iframe'));
       player.play();
     }
   };
@@ -30,14 +30,10 @@ const VideoModal = ({
       contentClassName="overflow-hidden dark-modal-content"
       className={className}
     >
-      <Modal.Header
-        closeButton
-        closeVariant="white"
-        className="bg-black border-0"
-      />
+      <Modal.Header closeButton closeVariant="white" className="bg-black border-0" />
       <Modal.Body className="d-flex justify-content-center bg-black p-0">
         <Ratio aspectRatio="16x9">
-          {type !== "youtube" ? (
+          {type !== 'youtube' ? (
             <iframe
               className={`vimeo-iframe`}
               src={`https://player.vimeo.com/video/${urlId}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1`}
@@ -59,11 +55,8 @@ const VideoModal = ({
             ></iframe>
           )}
         </Ratio>
-        {type !== "youtube" && (
-          <Script
-            src="https://player.vimeo.com/api/player.js"
-            strategy="lazyOnload"
-          />
+        {type !== 'youtube' && (
+          <Script src="https://player.vimeo.com/api/player.js" strategy="lazyOnload" />
         )}
       </Modal.Body>
     </Modal>

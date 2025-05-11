@@ -1,45 +1,41 @@
-import styled from "styled-components";
-import Image from "next/image";
-import { ArrowRight } from "react-feather";
+import styled from 'styled-components';
+import Image from 'next/image';
+import { ArrowRight } from 'react-feather';
 
-import Button from "../shared/Button";
-import CarouselCards from "../shared/CarouselCards";
-import bgImage from "../../../assets/ai/build-bg.png";
-import solanaAgentKitIcon from "../../../assets/ai/solana-agent-kit.png";
-import elizaIcon from "../../../assets/ai/eliza.png";
-import rigIcon from "../../../assets/ai/rig.png";
-import goatIcon from "../../../assets/ai/goat.png";
-import zerepyIcon from "../../../assets/ai/zerepy.jpg";
+import Button from '../shared/Button';
+import CarouselCards from '../shared/CarouselCards';
+import bgImage from '../../../assets/ai/build-bg.png';
+import solanaAgentKitIcon from '../../../assets/ai/solana-agent-kit.png';
+import elizaIcon from '../../../assets/ai/eliza.png';
+import rigIcon from '../../../assets/ai/rig.png';
+import goatIcon from '../../../assets/ai/goat.png';
+import zerepyIcon from '../../../assets/ai/zerepy.jpg';
 
-import styles from "./AiBuild.module.scss";
+import styles from './AiBuild.module.scss';
 
 const StyledCard = styled.div`
   position: relative;
-  color: ${(props) => (props.color ? props.color : "#fff")};
-  background-color: ${(props) => props.bgColor ?? "unset"};
+  color: ${(props) => (props.color ? props.color : '#fff')};
+  background-color: ${(props) => props.bgColor ?? 'unset'};
   background-size: cover;
   background-repeat: no-repeat;
 `;
 
 function Card({ color, bgColor, dividerColor, title, icon, content, ctaLink }) {
-
   return (
     <StyledCard
       color={color}
       bgColor={bgColor}
       dividerColor={dividerColor}
-      className={styles["card"]}
+      className={styles['card']}
     >
       {title && (
         <>
           <div>
-            <Image src={icon} alt="" className={styles["card__icon"]} />
-            <span
-              className={styles["card__divider"]}
-              style={{ borderColor: dividerColor }}
-            ></span>
+            <Image src={icon} alt="" className={styles['card__icon']} />
+            <span className={styles['card__divider']} style={{ borderColor: dividerColor }}></span>
           </div>
-          <div className={styles["card__cta"]}>
+          <div className={styles['card__cta']}>
             <Button to={ctaLink} variant="captioned" noBorder newTab>
               <ArrowRight color={color} />
             </Button>
@@ -52,14 +48,15 @@ function Card({ color, bgColor, dividerColor, title, icon, content, ctaLink }) {
 
 export default function AiBuild() {
   return (
-    <section className={styles["build"]}>
+    <section className={styles['build']}>
       <div className="container position-relative py-10">
-        <Image className={styles["build__bg"]} src={bgImage} alt="" fill />
-        <div className={styles["build__bg-effect"]}></div>
-        <h2 className={styles["build__title"]}>
-            components={{
-              colored: <span className={styles["build__title--colored"]} />,
-            }}
+        <Image className={styles['build__bg']} src={bgImage} alt="" fill />
+        <div className={styles['build__bg-effect']}></div>
+        <h2 className={styles['build__title']}>
+          components=
+          {{
+            colored: <span className={styles['build__title--colored']} />,
+          }}
           />
         </h2>
         <CarouselCards>

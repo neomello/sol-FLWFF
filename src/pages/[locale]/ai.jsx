@@ -1,11 +1,10 @@
-
-import Layout from "@/components/layout";
-import HTMLHead from "@/components/HTMLHead";
-import AiHero from "@/components/ai/AiHero";
-import AiWhySection from "@/components/ai/AiWhySection";
-import AiCard from "@/components/ai/AiCard";
+import Layout from '@/components/layout';
+import HTMLHead from '@/components/HTMLHead';
+import AiHero from '@/components/ai/AiHero';
+import AiWhySection from '@/components/ai/AiWhySection';
+import AiCard from '@/components/ai/AiCard';
 // import AiHighlight from "@/components/ai/AiHighlight";
-import AiBuild from "@/components/ai/AiBuild";
+import AiBuild from '@/components/ai/AiBuild';
 
 export default function AiPage() {
   return (
@@ -24,13 +23,12 @@ export default function AiPage() {
 
 export async function getStaticProps({ params }) {
   return {
-    props: {
-    },
+    props: {},
   };
 }
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }

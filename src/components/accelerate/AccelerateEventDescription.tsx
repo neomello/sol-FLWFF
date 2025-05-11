@@ -1,10 +1,10 @@
-import { FC } from "react";
-import styles from "./AccelerateEventDescription.module.scss";
-import { HtmlParser } from "@solana-foundation/solana-lib";
+import { FC } from 'react';
+import styles from './AccelerateEventDescription.module.scss';
+import { HtmlParser } from '@solana-foundation/solana-lib';
 
 export const AccelerateEventDescription: FC<{
   content: string;
-  variant: "none" | "scale" | "ship";
+  variant: 'none' | 'scale' | 'ship';
   attributes: any;
 }> = ({ content, variant, attributes }) => {
   return (

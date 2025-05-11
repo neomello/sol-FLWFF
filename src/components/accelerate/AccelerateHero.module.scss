@@ -8,7 +8,7 @@
   text-wrap: balance;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -28,7 +28,7 @@
     }
   }
 
-  &[data-variant="scale"] {
+  &[data-variant='scale'] {
     background: linear-gradient(
       45deg,
       #3357d5 0%,
@@ -46,7 +46,7 @@
     );
   }
 
-  &[data-variant="ship"] {
+  &[data-variant='ship'] {
     background: linear-gradient(
       to bottom right,
       #300000 0%,

@@ -1,9 +1,9 @@
-import Image from "next/legacy/image";
-import styled from "styled-components";
-import Divider from "../shared/Divider";
-import Button from "../shared/Button";
+import Image from 'next/legacy/image';
+import styled from 'styled-components';
+import Divider from '../shared/Divider';
+import Button from '../shared/Button';
 
-import solanaGradient from "../../../public/src/img/branding/solanaGradient.jpg";
+import solanaGradient from '../../../public/src/img/branding/solanaGradient.jpg';
 
 const StyledSection = styled.section`
   .title {
@@ -45,15 +45,12 @@ const StyledSection = styled.section`
 `;
 
 const BrandingColors = () => {
-
   return (
     <StyledSection>
       <div className="h6 fw-bold mb-4">{branding.colors.title}</div>
       <Divider theme="light" axis="x" />
       <div className="mt-4 mb-6">
-        <p className="smaller text-uppercase">
-          {branding.colors.gradient}
-        </p>
+        <p className="smaller text-uppercase">{branding.colors.gradient}</p>
         <Button to="src/img/branding/solanaGradient.jpg" download>
           PNG
         </Button>
@@ -64,16 +61,12 @@ const BrandingColors = () => {
       <Divider theme="light" axis="x" />
       <div className="colors mt-4">
         <div>
-          <p className="smaller text-uppercase mt-2">
-            {branding.colors.purple}
-          </p>
+          <p className="smaller text-uppercase mt-2">{branding.colors.purple}</p>
           <p className="small mt-2">#9945FF</p>
           <div className="purple mt-6" />
         </div>
         <div>
-          <p className="smaller text-uppercase mt-2">
-            {branding.colors.green}
-          </p>
+          <p className="smaller text-uppercase mt-2">{branding.colors.green}</p>
           <p className="small mt-2">#14F195</p>
           <div className="green mt-6" />
         </div>

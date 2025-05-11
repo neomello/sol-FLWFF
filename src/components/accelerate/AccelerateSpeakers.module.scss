@@ -3,7 +3,7 @@
 
   .heading {
     font-size: 2rem;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     margin-bottom: 30px;
   }
 }
@@ -112,7 +112,7 @@
 }
 .event {
   font-size: 1.25rem;
-  font-family: "Diatype", sans-serif;
+  font-family: 'Diatype', sans-serif;
   text-transform: uppercase;
 
   &.scale {
@@ -147,7 +147,7 @@
   font-size: 2rem;
   font-weight: 400;
   color: white;
-  font-family: "Space Grotesk";
+  font-family: 'Space Grotesk';
   @media (max-width: 1200px) {
     font-size: 1.5rem;
   }

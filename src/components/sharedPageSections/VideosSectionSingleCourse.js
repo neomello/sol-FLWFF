@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledVideosSectionButton = styled.button`
   color: #fff;
@@ -93,7 +93,7 @@ const StyledVideosSectionButton = styled.button`
  */
 const VideosSectionSingleCourse = ({ image, title, onClick, url }) => {
   let props = {
-    type: "button",
+    type: 'button',
   };
   props.onClick = (e) => onClick(e, url);
 

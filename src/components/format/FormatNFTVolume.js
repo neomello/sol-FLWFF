@@ -1,9 +1,9 @@
-import Image from "next/legacy/image";
-import styled from "styled-components";
-import Button from "../shared/Button";
-import RoundedDepthCard from "../shared/RoundedDepthCard";
-import nftLogo from "../../../assets/format/nftLogo.png";
-import Link from "../../utils/Link";
+import Image from 'next/legacy/image';
+import styled from 'styled-components';
+import Button from '../shared/Button';
+import RoundedDepthCard from '../shared/RoundedDepthCard';
+import nftLogo from '../../../assets/format/nftLogo.png';
+import Link from '../../utils/Link';
 
 const StyledHeroSection = styled.section`
   width: 100%;
@@ -61,15 +61,15 @@ const NFTCard = styled.div`
 `;
 
 const FormatNFTVolume = () => {
-
   return (
     <StyledHeroSection>
       <div className="container">
-        <h2 className="title mb-0">{format.nft-volume.title}</h2>
+        <h2 className="title mb-0">{format.nft - volume.title}</h2>
         <p className="mt-2 w-md-75">
-            components={{
-              learnNFTsLink: <Link to="/learn/nfts" />,
-            }}
+          components=
+          {{
+            learnNFTsLink: <Link to="/learn/nfts" />,
+          }}
           />
         </p>
         <div>
@@ -77,39 +77,21 @@ const FormatNFTVolume = () => {
             <Image src={nftLogo} alt="NFT Volume" objectFit="contain" />
           </ImgContainer>
           <NFTCard>
-            <RoundedDepthCard
-              bgColor="#9945FF"
-              borderRadius="0.75rem"
-              shadow="bottom"
-            >
+            <RoundedDepthCard bgColor="#9945FF" borderRadius="0.75rem" shadow="bottom">
               <div className="nft-volume">
                 <div>
-                  <h2 className="mb-0">
-                    {format.nft-volume.volume.title}
-                  </h2>
-                  <p className="clamp mt-2 mt-md-4">
-                    {format.nft-volume.volume.description}
-                  </p>
+                  <h2 className="mb-0">{format.nft - volume.volume.title}</h2>
+                  <p className="clamp mt-2 mt-md-4">{format.nft - volume.volume.description}</p>
                 </div>
                 <div className="d-inline-block">
                   <Button to="/learn/nfts" noBorder className="m-1">
-                    {format.nft-volume.volume.nfts}
+                    {format.nft - volume.volume.nfts}
                   </Button>
-                  <Button
-                    to="https://www.magiceden.io/"
-                    noBorder
-                    newTab
-                    className="m-1"
-                  >
-                    {format.nft-volume.volume.me}
+                  <Button to="https://www.magiceden.io/" noBorder newTab className="m-1">
+                    {format.nft - volume.volume.me}
                   </Button>
-                  <Button
-                    to="https://opensea.io/"
-                    noBorder
-                    newTab
-                    className="m-1"
-                  >
-                    {format.nft-volume.volume.os}
+                  <Button to="https://opensea.io/" noBorder newTab className="m-1">
+                    {format.nft - volume.volume.os}
                   </Button>
                 </div>
               </div>

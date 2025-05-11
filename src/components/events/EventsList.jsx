@@ -1,5 +1,5 @@
-import EventSingleCard from "./EventsSingleCard";
-import EventsSingleRow from "./EventsSingleRow";
+import EventSingleCard from './EventsSingleCard';
+import EventsSingleRow from './EventsSingleRow';
 
 const EventsList = ({ list, isCompact }) => {
   return (

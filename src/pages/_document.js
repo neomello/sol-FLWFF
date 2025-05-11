@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from "styled-components";
-import { config } from "src/config";
+import { ServerStyleSheet } from 'styled-components';
+import { config } from 'src/config';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -17,11 +17,7 @@ class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-          </>
-        ),
+        styles: <>{initialProps.styles}</>,
       };
     } finally {
       sheet.seal();
@@ -41,7 +37,7 @@ class MyDocument extends Document {
               src={`https://www.googletagmanager.com/ns.html?id=${id}`}
               height="0"
               width="0"
-              style={{ display: "none", visibility: "hidden" }}
+              style={{ display: 'none', visibility: 'hidden' }}
             ></iframe>
           </noscript>
           {/* End Google Tag Manager (noscript) */}

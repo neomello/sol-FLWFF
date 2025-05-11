@@ -2,20 +2,16 @@ import React from 'react';
 import Layout from '../../../components/layout';
 import PublishedAt from '../../../components/blog/PublishedAt';
 import styles from './Post.module.scss';
-import { builder, BuilderComponent, useIsPreviewing } from "@builder.io/react";
-import NotFoundPage from "../404";
-import customComponentsRegistration from "@/utils/customComponentGenerator";
-import {
-  getAllPostSlugs,
-  getPostAndMorePosts,
-  getPageSettings,
-} from "@/lib/builder/api";
-import { NEWS_BUILDER_CONFIG } from "@/lib/builder/news/constants";
-import { MetaData } from "@/components/blog/meta";
-import { DetailsHero } from "@solana-foundation/solana-lib";
-import { PageBreadcrumbs } from "@/components/developers/DevelopersContentPage/PageBreadcrumbs";
+import { builder, BuilderComponent, useIsPreviewing } from '@builder.io/react';
+import NotFoundPage from '../404';
+import customComponentsRegistration from '@/utils/customComponentGenerator';
+import { getAllPostSlugs, getPostAndMorePosts, getPageSettings } from '@/lib/builder/api';
+import { NEWS_BUILDER_CONFIG } from '@/lib/builder/news/constants';
+import { MetaData } from '@/components/blog/meta';
+import { DetailsHero } from '@solana-foundation/solana-lib';
+import { PageBreadcrumbs } from '@/components/developers/DevelopersContentPage/PageBreadcrumbs';
 
-builder.apiVersion = "v3";
+builder.apiVersion = 'v3';
 customComponentsRegistration();
 
 /**
@@ -26,11 +22,11 @@ customComponentsRegistration();
  */
 const PostPage = ({ builderLocale, post, pageSettings }) => {
   const newsPostData = post?.data;
-  const postSlug = `/news/${newsPostData?.slug}` || "/news";
+  const postSlug = `/news/${newsPostData?.slug}` || '/news';
 
-  const postTitle = newsPostData?.title || "Please Enter a Title";
-  const featuredImage = newsPostData?.image || "/src/img/news/blogbackup.png";
-  const authorName = newsPostData?.author?.value?.name || "Solana Foundation";
+  const postTitle = newsPostData?.title || 'Please Enter a Title';
+  const featuredImage = newsPostData?.image || '/src/img/news/blogbackup.png';
+  const authorName = newsPostData?.author?.value?.name || 'Solana Foundation';
   const publishedDate = newsPostData?.datePublished;
   const isPreviewing = useIsPreviewing();
 
@@ -42,10 +38,7 @@ const PostPage = ({ builderLocale, post, pageSettings }) => {
     <>
       <MetaData settings={pageSettings} data={{ builderPost: post }} />
       <Layout>
-        <PageBreadcrumbs
-          className="d-none"
-          breadcrumbs={[{ label: "News", href: "/news" }]}
-        />
+        <PageBreadcrumbs className="d-none" breadcrumbs={[{ label: 'News', href: '/news' }]} />
 
         <DetailsHero
           title={postTitle}
@@ -63,16 +56,12 @@ const PostPage = ({ builderLocale, post, pageSettings }) => {
             </header>
             {featuredImage && (
               <div className={styles.imageContainer}>
-                <img 
-                  src={featuredImage} 
-                  alt={postTitle}
-                  className={styles.image}
-                />
+                <img src={featuredImage} alt={postTitle} className={styles.image} />
               </div>
             )}
-            <div 
+            <div
               className={styles.content}
-              dangerouslySetInnerHTML={{ __html: newsPostData?.content }} 
+              dangerouslySetInnerHTML={{ __html: newsPostData?.content }}
             />
           </div>
         </article>
@@ -89,13 +78,13 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ params }) {
   try {
-    let slug = params?.slug || "";
+    let slug = params?.slug || '';
 
     if (!slug) {
       return { notFound: true };
@@ -104,12 +93,12 @@ export async function getStaticProps({ params }) {
     // sometimes links will contain a URL encoded character at the end (as exposed by Sentries).
     // make an effort to remove those so that the user doesnt get a 404
     // real example: 9-14-network-outage-initial-overview%22
-    slug = slug.replace(/(%\d+)+$/, "");
+    slug = slug.replace(/(%\d+)+$/, '');
 
     let { post, morePosts } = await getPostAndMorePosts(
       NEWS_BUILDER_CONFIG.postsModel,
       slug,
-      builderLocale,
+      builderLocale
     );
 
     const [pageSettings] = await Promise.all([getPageSettings()]);

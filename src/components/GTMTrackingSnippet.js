@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Script from "next/script";
-import { config } from "src/config";
+import Script from 'next/script';
+import { config } from 'src/config';
 
 const GTMTrackingSnippet = () => {
   const id = config.siteMetadata.googleTagManagerID;

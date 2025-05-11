@@ -1,6 +1,6 @@
-import _ from "lodash";
-import PropTypes from "prop-types";
-import { getAuthor } from "@/lib/builder/api";
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+import { getAuthor } from '@/lib/builder/api';
 
 export const getAuthorProperties = (primaryAuthor) => {
   let authorProfiles = [];
@@ -8,20 +8,15 @@ export const getAuthorProperties = (primaryAuthor) => {
 
   authorProfiles.push(
     authorData?.website ? authorData?.website : null,
-    authorData?.twitter
-      ? `https://twitter.com/${authorData?.twitter.replace(/^@/, ``)}/`
-      : null,
+    authorData?.twitter ? `https://twitter.com/${authorData?.twitter.replace(/^@/, ``)}/` : null,
     authorData?.facebook
       ? `https://www.facebook.com/${authorData?.facebook.replace(/^\//, ``)}/`
-      : null,
+      : null
   );
-
 
   return {
     name: authorData?.name || null,
-    sameAsArray: authorProfiles.length
-      ? `["${_.join(authorProfiles, `", "`)}"]`
-      : null,
+    sameAsArray: authorProfiles.length ? `["${_.join(authorProfiles, `", "`)}"]` : null,
     image: authorData?.profileImage || null,
     facebookUrl: authorData?.facebook
       ? `https://www.facebook.com/${authorData?.facebook.replace(/^\//, ``)}/`

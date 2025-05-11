@@ -1,9 +1,9 @@
-import React from "react";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import styles from "./PostCard.module.scss";
-import PublishedAt from "./PublishedAt";
-import { useTranslation } from "../../hooks/useTranslation";
+import React from 'react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import styles from './PostCard.module.scss';
+import PublishedAt from './PublishedAt';
+import { useTranslation } from '../../hooks/useTranslation';
 
 const PostCard = ({ post }) => {
   const { t } = useTranslation();

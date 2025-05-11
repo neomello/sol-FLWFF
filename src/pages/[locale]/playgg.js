@@ -1,11 +1,9 @@
-
-import PlayGGLayout from "@/components/playgg/PlayGGLayout";
-import HTMLHead from "@/components/HTMLHead";
-import PlayGGSplash from "@/components/playgg/PlayGGSplash";
-import PlayGGGames from "@/components/playgg/PlayGGGames";
+import PlayGGLayout from '@/components/playgg/PlayGGLayout';
+import HTMLHead from '@/components/HTMLHead';
+import PlayGGSplash from '@/components/playgg/PlayGGSplash';
+import PlayGGGames from '@/components/playgg/PlayGGGames';
 
 const PlayGG = () => {
-
   return (
     <PlayGGLayout>
       <HTMLHead
@@ -21,14 +19,13 @@ const PlayGG = () => {
 
 export async function getStaticProps({ params }) {
   return {
-    props: {
-    },
+    props: {},
   };
 }
 
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }
 

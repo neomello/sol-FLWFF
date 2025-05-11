@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { makeRPCCall } from "../utils/rpcUtils";
+import { useCallback, useEffect, useState } from 'react';
+import { makeRPCCall } from '../utils/rpcUtils';
 
 // Constants for performance and sample history
 export const PERF_UPDATE_SEC = 5; // Performance update interval in seconds
@@ -10,19 +10,17 @@ let rpcLock = false;
 // RPC Node URL
 const rpcNodeURL = process.env.NEXT_PUBLIC_RPC_ENDPOINT;
 if (!rpcNodeURL) {
-  console.warn("Warning: NEXT_PUBLIC_RPC_ENDPOINT is not set.");
+  console.warn('Warning: NEXT_PUBLIC_RPC_ENDPOINT is not set.');
 }
 
 // Check for AbortController support
 const isAbortControllerSupported =
-  typeof window !== "undefined" && window.hasOwnProperty("AbortController");
+  typeof window !== 'undefined' && window.hasOwnProperty('AbortController');
 const noOp = () => null;
 
 // Initializes an AbortController if supported
 const initAbortController = () =>
-  isAbortControllerSupported
-    ? new AbortController()
-    : { abort: noOp, signal: {} };
+  isAbortControllerSupported ? new AbortController() : { abort: noOp, signal: {} };
 
 /**
  * Fetches the superminority count.
@@ -32,7 +30,7 @@ const initAbortController = () =>
 export const fetchSuperminority = async () => {
   try {
     const voteAccounts = await makeRPCCall({
-      method: "getVoteAccounts",
+      method: 'getVoteAccounts',
       rpcNodeURL,
     });
 
@@ -64,7 +62,7 @@ export const fetchSuperminority = async () => {
 
     return superminorityCount;
   } catch (error) {
-    console.warn("Error fetching superminority:", error);
+    console.warn('Error fetching superminority:', error);
     return null;
   }
 };
@@ -96,22 +94,17 @@ export const useTransactionStats = ({
             (async () => {
               const recentPerformanceSamples = await makeRPCCall({
                 abortSignal,
-                method: "getRecentPerformanceSamples",
+                method: 'getRecentPerformanceSamples',
                 params: [60 * sampleHistoryHours],
                 rpcNodeURL,
               });
               // Calculate average transactions per second
-              const short = recentPerformanceSamples.result.reduce(
-                (shortResults, sample) => {
-                  if (sample.numTransactions > 0) {
-                    shortResults.push(
-                      sample.numTransactions / sample.samplePeriodSecs
-                    );
-                  }
-                  return shortResults;
-                },
-                []
-              );
+              const short = recentPerformanceSamples.result.reduce((shortResults, sample) => {
+                if (sample.numTransactions > 0) {
+                  shortResults.push(sample.numTransactions / sample.samplePeriodSecs);
+                }
+                return shortResults;
+              }, []);
               const avgTps = Math.round(short[0]);
               setAvgTps(avgTps);
               setAvailableStats(true);
@@ -122,7 +115,7 @@ export const useTransactionStats = ({
               }
               const voteAccounts = await makeRPCCall({
                 abortSignal,
-                method: "getVoteAccounts",
+                method: 'getVoteAccounts',
                 rpcNodeURL,
               });
               setValidators(voteAccounts.result.current.length);
@@ -141,10 +134,10 @@ export const useTransactionStats = ({
           ]);
         }
       } catch (error) {
-        if (error.name === "AbortError" || error.name === "TypeError") {
+        if (error.name === 'AbortError' || error.name === 'TypeError') {
           return;
         }
-        console.error("Error fetching RPC data:", error);
+        console.error('Error fetching RPC data:', error);
       }
     },
     [sampleHistoryHours]
@@ -184,12 +177,7 @@ export const useTransactionStats = ({
         intervalId = null;
       }
     };
-  }, [
-    visible,
-    getCurrentValidatorNodes,
-    performanceUpdateSeconds,
-    getRPCData,
-  ]);
+  }, [visible, getCurrentValidatorNodes, performanceUpdateSeconds, getRPCData]);
 
   return {
     availableStats,

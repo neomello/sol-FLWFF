@@ -1,5 +1,5 @@
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from '../Header';
+import Footer from '../Footer';
 
 const DevelopersLayout = ({ children }) => {
   return (
@@ -7,7 +7,7 @@ const DevelopersLayout = ({ children }) => {
       <Header />
       <main
         style={{
-          minHeight: "70vh",
+          minHeight: '70vh',
         }}
       >
         <div className="container py-5">{children}</div>

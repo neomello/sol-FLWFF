@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Button from "../shared/Button";
+import styled from 'styled-components';
+import Button from '../shared/Button';
 
 const StyledCardsWrapper = styled.div`
   display: grid;
@@ -9,7 +9,7 @@ const StyledCardsWrapper = styled.div`
 `;
 
 const StyledGettingStartedCard = styled.div`
-  background: ${(props) => props.background || "#AB66FF"};
+  background: ${(props) => props.background || '#AB66FF'};
   border-radius: 0.75rem;
   padding: 1rem;
   display: flex;
@@ -27,18 +27,15 @@ const StyledGettingStartedCard = styled.div`
 `;
 
 const ValidatorsGettingStarted = () => {
-
   return (
     <section className="getting-started">
       <div className="container">
         <StyledCardsWrapper>
           <StyledGettingStartedCard background="#AB66FF">
             <div>
-              <h2 className="text-black">
-                {validators.getting-started.cards.docs-header}
-              </h2>
+              <h2 className="text-black">{validators.getting - started.cards.docs - header}</h2>
               <p className="clamp text-black mt-2">
-                {validators.getting-started.cards.docs-text}
+                {validators.getting - started.cards.docs - text}
               </p>
             </div>
             <Button
@@ -53,11 +50,9 @@ const ValidatorsGettingStarted = () => {
           </StyledGettingStartedCard>
           <StyledGettingStartedCard background="#14F195">
             <div>
-              <h2 className="text-black">
-                {validators.getting-started.cards.explorer-header}
-              </h2>
+              <h2 className="text-black">{validators.getting - started.cards.explorer - header}</h2>
               <p className="clamp text-black mt-2">
-                {validators.getting-started.cards.explorer-text}
+                {validators.getting - started.cards.explorer - text}
               </p>
             </div>
             <Button
@@ -67,16 +62,16 @@ const ValidatorsGettingStarted = () => {
               variant="none"
               arrow={true}
             >
-              {validators.getting-started.cards.explorer-btn}
+              {validators.getting - started.cards.explorer - btn}
             </Button>
           </StyledGettingStartedCard>
           <StyledGettingStartedCard background="#EB54BC">
             <div>
               <h2 className="text-black">
-                {validators.getting-started.cards.education-header}
+                {validators.getting - started.cards.education - header}
               </h2>
               <p className="clamp text-black mt-2">
-                {validators.getting-started.cards.education-text}
+                {validators.getting - started.cards.education - text}
               </p>
             </div>
             <Button
@@ -92,10 +87,10 @@ const ValidatorsGettingStarted = () => {
           <StyledGettingStartedCard background="#FF754A">
             <div>
               <h2 className="text-black">
-                {validators.getting-started.cards.delegation-header}
+                {validators.getting - started.cards.delegation - header}
               </h2>
               <p className="clamp text-black mt-2">
-                {validators.getting-started.cards.delegation-text}
+                {validators.getting - started.cards.delegation - text}
               </p>
             </div>
             <div className="d-flex flex-wrap">
@@ -116,7 +111,7 @@ const ValidatorsGettingStarted = () => {
                 arrow={true}
                 className="mt-2"
               >
-                {validators.getting-started.cards.delegation-btn}
+                {validators.getting - started.cards.delegation - btn}
               </Button>
             </div>
           </StyledGettingStartedCard>

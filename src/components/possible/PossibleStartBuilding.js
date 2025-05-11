@@ -1,17 +1,16 @@
-import Image from "next/image";
-import Button from "../shared/Button";
-import Link from "next/link";
-import PossibleGlow from "./PossibleGlow";
-import classNames from "classnames";
-import styles from "./PossibleStartBuilding.module.scss";
-import portalImg from "../../../assets/possible/startBuilding-portal.png";
-import programmingImg from "../../../assets/possible/startBuilding-programming.png";
-import communityImg from "../../../assets/possible/startBuilding-community.png";
+import Image from 'next/image';
+import Button from '../shared/Button';
+import Link from 'next/link';
+import PossibleGlow from './PossibleGlow';
+import classNames from 'classnames';
+import styles from './PossibleStartBuilding.module.scss';
+import portalImg from '../../../assets/possible/startBuilding-portal.png';
+import programmingImg from '../../../assets/possible/startBuilding-programming.png';
+import communityImg from '../../../assets/possible/startBuilding-community.png';
 
 const PossibleStartBuilding = () => {
-
   return (
-    <section className={styles["section__start-building--possible"]}>
+    <section className={styles['section__start-building--possible']}>
       <PossibleGlow
         backgroundColor="#2e00e6"
         top="0%"
@@ -35,21 +34,21 @@ const PossibleStartBuilding = () => {
             title={possible.startBuilding.portal.title}
             copy={possible.startBuilding.portal.description}
             cta={possible.startBuilding.portal.cta}
-            url={"/developers"}
+            url={'/developers'}
           />
           <StartBuildingColumn
             image={programmingImg}
             title={possible.startBuilding.programming.title}
             copy={possible.startBuilding.programming.description}
             cta={possible.startBuilding.programming.cta}
-            url={"/events"}
+            url={'/events'}
           />
           <StartBuildingColumn
             image={communityImg}
             title={possible.startBuilding.community.title}
             copy={possible.startBuilding.community.description}
             cta={possible.startBuilding.community.cta}
-            url={"/community"}
+            url={'/community'}
           />
         </div>
       </div>
@@ -60,34 +59,15 @@ const PossibleStartBuilding = () => {
 const StartBuildingColumn = ({ image, title, copy, cta, url }) => {
   return (
     <div className="col-12 col-md-4 mb-8 mb-md-0 d-md-flex flex-md-column flex-md-grow-1">
-      <div
-        className={classNames(
-          styles["card--possible"],
-          `h-md-100 d-md-flex flex-md-column`,
-        )}
-      >
-        <Link
-          href={url}
-          className="d-flex justify-content-center mt-n9 mt-md-0 mb-3 mb-md-6"
-        >
-          <Image
-            priority
-            src={image}
-            alt=""
-            className={`px-lg-6 w-100 h-auto`}
-          />
+      <div className={classNames(styles['card--possible'], `h-md-100 d-md-flex flex-md-column`)}>
+        <Link href={url} className="d-flex justify-content-center mt-n9 mt-md-0 mb-3 mb-md-6">
+          <Image priority src={image} alt="" className={`px-lg-6 w-100 h-auto`} />
         </Link>
         <Link href={url} className="d-block mb-4">
           <h3 className="h6 fw-semibold text-white">{title}</h3>
         </Link>
-        <p className={"copy mb-5"}>{copy}</p>
-        <Button
-          to={url}
-          newTab
-          variant="outline"
-          size="large"
-          className={"mt-md-auto"}
-        >
+        <p className={'copy mb-5'}>{copy}</p>
+        <Button to={url} newTab variant="outline" size="large" className={'mt-md-auto'}>
           {cta}
         </Button>
       </div>

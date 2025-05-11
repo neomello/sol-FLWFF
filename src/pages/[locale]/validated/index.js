@@ -1,16 +1,14 @@
-
-import HTMLHead from "@/components/HTMLHead";
-import Layout from "@/components/layout";
-import PodcastApi from "@/lib/podcast";
-import PodcastNavigation from "@/components/podcast/PodcastNavigation";
-import PodcastOverviewSection from "@/components/podcast/PodcastOverviewSection";
-import PodcastRecentEpisodesSection from "@/components/podcast/PodcastRecentEpisodesSection";
+import HTMLHead from '@/components/HTMLHead';
+import Layout from '@/components/layout';
+import PodcastApi from '@/lib/podcast';
+import PodcastNavigation from '@/components/podcast/PodcastNavigation';
+import PodcastOverviewSection from '@/components/podcast/PodcastOverviewSection';
+import PodcastRecentEpisodesSection from '@/components/podcast/PodcastRecentEpisodesSection';
 import PodcastStickyPlayer, {
   PodcastPlayerContextProvider,
-} from "@/components/podcast/PodcastStickyPlayer";
+} from '@/components/podcast/PodcastStickyPlayer';
 
 export default function PodcastIndex({ episodes }) {
-
   return (
     <Layout>
       <HTMLHead
@@ -43,6 +41,6 @@ export async function getStaticProps({ params }) {
 }
 export async function getStaticPaths() {
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 }

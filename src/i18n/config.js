@@ -4,7 +4,7 @@ export const languages = {
     code: 'pt-BR',
     flag: '🇧🇷',
   },
-  'en': {
+  en: {
     name: 'English',
     code: 'en',
     flag: '🇺🇸',
@@ -21,21 +21,21 @@ export const getLanguageFromPath = (path) => {
 export const getPathWithoutLanguage = (path) => {
   const segments = path.split('/');
   const firstSegment = segments[1];
-  
+
   if (Object.keys(languages).includes(firstSegment)) {
     return '/' + segments.slice(2).join('/');
   }
-  
+
   return path;
 };
 
 export const getLocalizedPath = (path, language) => {
   const pathWithoutLanguage = getPathWithoutLanguage(path);
-  
+
   if (language === defaultLanguage) {
     return pathWithoutLanguage;
   }
-  
+
   return `/${language}${pathWithoutLanguage}`;
 };
 
@@ -62,7 +62,7 @@ export const translations = {
       share: 'Compartilhar',
     },
   },
-  'en': {
+  en: {
     common: {
       readMore: 'Read more',
       previous: 'Previous',
@@ -84,4 +84,4 @@ export const translations = {
       share: 'Share',
     },
   },
-}; 
+};

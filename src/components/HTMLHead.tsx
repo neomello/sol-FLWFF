@@ -1,5 +1,5 @@
-import Head from "next/head";
-import { usePathname } from "next/navigation";
+import Head from 'next/head';
+import { usePathname } from 'next/navigation';
 
 type HTMLHeadProps = {
   title?: string;
@@ -9,9 +9,9 @@ type HTMLHeadProps = {
 };
 
 export default function HTMLHead({
-  title = "Solana",
-  description = "Solana is a high-performance blockchain supporting builders around the world creating crypto apps that scale today.",
-  image = "/img/social/solana-social.jpg",
+  title = 'Solana',
+  description = 'Solana is a high-performance blockchain supporting builders around the world creating crypto apps that scale today.',
+  image = '/img/social/solana-social.jpg',
   addDefaultMeta = true,
 }: HTMLHeadProps) {
   const pathname = usePathname();

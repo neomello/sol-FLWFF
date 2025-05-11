@@ -1,18 +1,12 @@
-import { useState } from "react";
-import Filters from "./Filters";
-import Ramps from "./Ramps";
-import styles from "./RampsLayout.module.scss";
-import RampsSearch from "./RampsSearch";
-import { Hero } from "@solana-foundation/solana-lib";
-import onOffRampHeroImage from "../../../assets/onofframp/on-off-ramp-hero-img.png";
+import { useState } from 'react';
+import Filters from './Filters';
+import Ramps from './Ramps';
+import styles from './RampsLayout.module.scss';
+import RampsSearch from './RampsSearch';
+import { Hero } from '@solana-foundation/solana-lib';
+import onOffRampHeroImage from '../../../assets/onofframp/on-off-ramp-hero-img.png';
 
-const RampLayout = ({
-  data,
-  fiatAssetsOptions,
-  countryOptions,
-  paymentRailsOptions,
-}) => {
-
+const RampLayout = ({ data, fiatAssetsOptions, countryOptions, paymentRailsOptions }) => {
   const [filtersActive, setFiltersActive] = useState(0);
 
   // Shows/Hides the mobile filter layout
@@ -28,9 +22,7 @@ const RampLayout = ({
 
   if (rampsTitles.length) {
     rampsTitles.forEach((title) => {
-      const matchingRamp = data.filter(
-        (item) => item.fields.RampName === title,
-      );
+      const matchingRamp = data.filter((item) => item.fields.RampName === title);
 
       const {
         RampName,
@@ -46,45 +38,45 @@ const RampLayout = ({
 
       placeholderRamps.push({
         title: RampName,
-        description: Description ?? "",
+        description: Description ?? '',
         websiteUrl: WebsiteUrl,
         imageUrl: RampLogo,
         meta: {
           countries: Countries ?? [],
-          "payment-rails": PaymentRails ?? [],
-          "fiat-assets": FiatAssets ?? [],
-          "ramp-status-on": RampStatusOn ?? false,
-          "ramp-status-off": RampStatusOff ?? false,
+          'payment-rails': PaymentRails ?? [],
+          'fiat-assets': FiatAssets ?? [],
+          'ramp-status-on': RampStatusOn ?? false,
+          'ramp-status-off': RampStatusOff ?? false,
         },
       });
     });
   } else {
     // Dummy ramp data if we have no data coming from the API
     placeholderRamps.push({
-      title: on-off-ramp.ramp-fallbacks.title,
-      description: on-off-ramp.ramp-fallbacks.description,
-      websiteUrl: "",
+      title: on - off - ramp.ramp - fallbacks.title,
+      description: on - off - ramp.ramp - fallbacks.description,
+      websiteUrl: '',
       imageUrl: null,
       meta: {
         countries: [],
-        "payment-rails": [],
-        "fiat-assets": [],
-        "ramp-status-on": false,
-        "ramp-status-off": false,
+        'payment-rails': [],
+        'fiat-assets': [],
+        'ramp-status-on': false,
+        'ramp-status-off': false,
       },
     });
   }
 
   const rampStatus = [
     {
-      value: "ramp-status-on",
-      title: on-off-ramp.ramp-data.on-ramp-status,
-      name: "ramp-status",
+      value: 'ramp-status-on',
+      title: on - off - ramp.ramp - data.on - ramp - status,
+      name: 'ramp-status',
     },
     {
-      value: "ramp-status-off",
-      title: on-off-ramp.ramp-data.off-ramp-status,
-      name: "ramp-status",
+      value: 'ramp-status-off',
+      title: on - off - ramp.ramp - data.off - ramp - status,
+      name: 'ramp-status',
     },
   ];
 
@@ -98,13 +90,11 @@ const RampLayout = ({
   const sortAndFormatData = (dataArray, checkboxName) => {
     const sortedData = [];
     if (dataArray.length) {
-
       onlyTitles.forEach((title) => {
         const data = dataArray.filter((item) => item.fields.Name === title);
         sortedData.push({
           value: data[0].id,
-          title:
-            checkboxName === "fiat-assets" ? data[0].id : data[0].fields?.Name,
+          title: checkboxName === 'fiat-assets' ? data[0].id : data[0].fields?.Name,
           name: checkboxName,
         });
       });
@@ -113,25 +103,23 @@ const RampLayout = ({
     return sortedData;
   };
 
-  const fiatAssets = sortAndFormatData(fiatAssetsOptions, "fiat-assets");
-  const countries = sortAndFormatData(countryOptions, "countries");
-  const paymentRails = sortAndFormatData(paymentRailsOptions, "payment-rails");
+  const fiatAssets = sortAndFormatData(fiatAssetsOptions, 'fiat-assets');
+  const countries = sortAndFormatData(countryOptions, 'countries');
+  const paymentRails = sortAndFormatData(paymentRailsOptions, 'payment-rails');
 
-  const [searchItems, setSearchItems] = useState("");
+  const [searchItems, setSearchItems] = useState('');
   const [filteredRamps, setFilteredRamps] = useState(placeholderRamps);
 
   const [filters, setFilters] = useState([]);
 
   const resetFilters = () => {
-    const allFilters = document.querySelectorAll(
-      'input[type="checkbox"]:checked',
-    );
+    const allFilters = document.querySelectorAll('input[type="checkbox"]:checked');
 
     if (allFilters.length) {
       allFilters.forEach((filter) => (filter.checked = false));
     }
 
-    setSearchItems("");
+    setSearchItems('');
 
     setFilteredRamps(placeholderRamps);
 
@@ -145,12 +133,10 @@ const RampLayout = ({
     let currentFilters = [...filters];
 
     // Remove old search input values in exchange for newly typed ones
-    currentFilters = currentFilters.filter(
-      (filterItem) => filterItem.name !== "name",
-    );
+    currentFilters = currentFilters.filter((filterItem) => filterItem.name !== 'name');
 
     currentFilters.push({
-      name: "name",
+      name: 'name',
       value: searchTerm,
     });
 
@@ -159,32 +145,32 @@ const RampLayout = ({
     const filteredItems = placeholderRamps.filter(
       (ramp) =>
         ramp.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ramp.description.toLowerCase().includes(searchTerm.toLowerCase()),
+        ramp.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredRamps(filteredItems);
   };
 
   return (
     <>
-      <div className={styles["ramps-hero-container"]}>
+      <div className={styles['ramps-hero-container']}>
         <Hero
-          eyebrow={on-off-ramp.hero.eyebrow}
-          headline={on-off-ramp.hero.headline}
+          eyebrow={on - off - ramp.hero.eyebrow}
+          headline={on - off - ramp.hero.headline}
           headingAs="h1"
-          body={`<p>${on-off-ramp.hero.body}</p>`}
+          body={`<p>${on - off - ramp.hero.body}</p>`}
           image={onOffRampHeroImage}
           centered={false}
           newsletter={false}
         />
       </div>
-      <div className={`position-relative ${styles["ramps-layout"]}`}>
+      <div className={`position-relative ${styles['ramps-layout']}`}>
         <RampsSearch
           mobileClickEvent={toggleFiltersActive}
           searchTerm={searchItems}
           handleInputChange={handleInputChange}
         />
         <div
-          className={`d-flex flex-row align-items-start relative ${styles["ramps-layout__content"]}`}
+          className={`d-flex flex-row align-items-start relative ${styles['ramps-layout__content']}`}
         >
           <Filters
             placeholderRamps={placeholderRamps}

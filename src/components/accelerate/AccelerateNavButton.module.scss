@@ -5,14 +5,14 @@
     color: #fff;
     font-size: 18px;
 
-    &:not([data-variant="none"]) {
+    &:not([data-variant='none']) {
       padding: 2px 4px;
       border-bottom: 1px solid transparent;
       box-sizing: border-box;
       transition: 0.3s;
     }
 
-    &[data-variant="scale"] {
+    &[data-variant='scale'] {
       &:hover {
         border-bottom: 1px solid #193dbc;
       }
@@ -22,7 +22,7 @@
       }
     }
 
-    &[data-variant="ship"] {
+    &[data-variant='ship'] {
       &:hover {
         border-bottom: 1px solid #ae2747;
       }

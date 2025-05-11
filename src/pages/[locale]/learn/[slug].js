@@ -1,28 +1,19 @@
-import CommonMarkdown from "@/components/sharedPageSections/CommonMarkdown";
+import CommonMarkdown from '@/components/sharedPageSections/CommonMarkdown';
 
-import Layout from "@/components/layout";
-import HTMLHead from "@/components/HTMLHead";
-import SimpleHero from "@/components/sharedPageSections/SimpleHero";
+import Layout from '@/components/layout';
+import HTMLHead from '@/components/HTMLHead';
+import SimpleHero from '@/components/sharedPageSections/SimpleHero';
 
-import SocialShareButtons from "@/components/sharedPageSections/SocialShareButtons";
-import Divider from "@/components/shared/Divider";
-import { config } from "src/config";
+import SocialShareButtons from '@/components/sharedPageSections/SocialShareButtons';
+import Divider from '@/components/shared/Divider';
+import { config } from 'src/config';
 
-import { getAllPostsInDir, getPostBySlug } from "@/lib/markdown";
-import LearnPagination from "@/components/learn/LearnPagination";
+import { getAllPostsInDir, getPostBySlug } from '@/lib/markdown';
+import LearnPagination from '@/components/learn/LearnPagination';
 
 const LearnPage = ({ article }) => {
   const {
-    frontmatter: {
-      slug,
-      topic,
-      title,
-      description,
-      prevSlug,
-      prevTopic,
-      nextSlug,
-      nextTopic,
-    },
+    frontmatter: { slug, topic, title, description, prevSlug, prevTopic, nextSlug, nextTopic },
     content,
   } = article;
 
@@ -33,7 +24,7 @@ const LearnPage = ({ article }) => {
       <HTMLHead title={`${title} ${topic}`} description={description} />
       <SimpleHero
         frontmatter={{ title, topic }}
-        breadcrumbs={[{ label: "Learn", href: undefined }]}
+        breadcrumbs={[{ label: 'Learn', href: undefined }]}
       />
       <div className="container py-8">
         <div className="row justify-content-between">
@@ -64,7 +55,7 @@ const LearnPage = ({ article }) => {
 };
 
 export const getStaticPaths = async () => {
-  const articles = getAllPostsInDir("learn");
+  const articles = getAllPostsInDir('learn');
   const paths = articles.map(({ frontmatter }) => ({
     params: {
       slug: frontmatter.slug,
@@ -72,12 +63,12 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 };
 
 export async function getStaticProps({ params }) {
-  const article = getPostBySlug("learn", params.slug);
+  const article = getPostBySlug('learn', params.slug);
 
   if (!article) {
     return { notFound: true };

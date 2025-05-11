@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import Image from "next/image";
-import Link from "../../utils/Link";
-import EventsSingleLocation from "./EventsSingleLocation";
-import FormattedDate from "../shared/FormattedDate";
-import defaultImg from "../../../assets/events/solana-event.jpg";
+import styled from 'styled-components';
+import Image from 'next/image';
+import Link from '../../utils/Link';
+import EventsSingleLocation from './EventsSingleLocation';
+import FormattedDate from '../shared/FormattedDate';
+import defaultImg from '../../../assets/events/solana-event.jpg';
 
 const StyledEventWrapperLink = styled(Link)`
   .details {
@@ -52,14 +52,13 @@ const StyledImageWrapper = styled.div`
 `;
 
 const EventsSingleCard = ({ event }) => {
-  const eventUrl =
-    event.platform === "external" ? event.key : event.rsvp || event.lumaUrl;
+  const eventUrl = event.platform === 'external' ? event.key : event.rsvp || event.lumaUrl;
 
   return event ? (
     <StyledEventWrapperLink
       className="link-unstyled"
       target="_blank"
-      rel={!eventUrl.includes("solana.com") && "nofollow"}
+      rel={!eventUrl.includes('solana.com') && 'nofollow'}
       to={eventUrl}
     >
       <StyledImageWrapper>
@@ -81,8 +80,7 @@ const EventsSingleCard = ({ event }) => {
           )}
 
           {event?.schedule?.to &&
-            new Date(event?.schedule?.from).getDay() !==
-              new Date(event?.schedule?.to).getDay() && (
+            new Date(event?.schedule?.from).getDay() !== new Date(event?.schedule?.to).getDay() && (
               <>
                 <span className="mx-1">-</span>
                 <FormattedDate

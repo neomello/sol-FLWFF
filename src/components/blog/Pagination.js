@@ -18,10 +18,7 @@ const Pagination = ({ pagination }) => {
       <ul className={styles.list}>
         {currentPage > 1 && (
           <li>
-            <Link 
-              href={`/news?page=${currentPage - 1}`}
-              className={styles.link}
-            >
+            <Link href={`/news?page=${currentPage - 1}`} className={styles.link}>
               {t('common.previous')}
             </Link>
           </li>
@@ -31,9 +28,7 @@ const Pagination = ({ pagination }) => {
           <li key={page}>
             <Link
               href={`/news?page=${page}`}
-              className={`${styles.link} ${
-                page === currentPage ? styles.active : ''
-              }`}
+              className={`${styles.link} ${page === currentPage ? styles.active : ''}`}
             >
               {page}
             </Link>
@@ -42,10 +37,7 @@ const Pagination = ({ pagination }) => {
 
         {currentPage < totalPages && (
           <li>
-            <Link 
-              href={`/news?page=${currentPage + 1}`}
-              className={styles.link}
-            >
+            <Link href={`/news?page=${currentPage + 1}`} className={styles.link}>
               {t('common.next')}
             </Link>
           </li>

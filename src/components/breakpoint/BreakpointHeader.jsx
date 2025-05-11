@@ -1,9 +1,8 @@
-import Navbar from "react-bootstrap/Navbar";
-import Link from "../shared/Link";
-import SolanaLogo from "../../../public/src/img/logos-solana/logotype.inline.svg";
+import Navbar from 'react-bootstrap/Navbar';
+import Link from '../shared/Link';
+import SolanaLogo from '../../../public/src/img/logos-solana/logotype.inline.svg';
 
 const Header = () => {
-
   return (
     // 1020 is a z-index value similar to main Header's one
     // that prevents stacking issues as e.g. modal underneath the main menu
@@ -18,18 +17,10 @@ const Header = () => {
       >
         <div className="container-xl">
           <Link to="/" className="d-flex" aria-label="Solana">
-            <SolanaLogo
-              style={{ color: "var(--body-text)" }}
-              width={149}
-              height={22}
-            />
+            <SolanaLogo style={{ color: 'var(--body-text)' }} width={149} height={22} />
           </Link>
 
-          <Navbar.Toggle
-            aria-controls="navbarCollapse"
-            as="button"
-            type="button"
-          >
+          <Navbar.Toggle aria-controls="navbarCollapse" as="button" type="button">
             <span className="bar"></span>
             <span className="bar"></span>
             <span className="bar"></span>

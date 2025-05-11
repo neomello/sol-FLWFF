@@ -1,9 +1,9 @@
-import { useMemo } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import Link from "../../utils/Link";
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Link from '../../utils/Link';
 
-import { extractTags } from "@/lib/builder/api";
+import { extractTags } from '@/lib/builder/api';
 
 const StyledPostTopics = styled.div`
   font-family: Diatype, var(--font-family-sans-serif);

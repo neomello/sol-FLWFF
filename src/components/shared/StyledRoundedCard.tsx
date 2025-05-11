@@ -1,5 +1,5 @@
-import { SimpleComponentProps } from "@/types";
-import styled from "styled-components";
+import { SimpleComponentProps } from '@/types';
+import styled from 'styled-components';
 
 type StyledDivProps = SimpleComponentProps<{
   color?: any;
@@ -17,7 +17,7 @@ const StyledRoundedCard = styled(StyledDiv)`
   z-index: 1;
   color: ${(props) => props.color ?? `#000`};
   background: ${(props) => props.bgColor ?? `#14f195`};
-  border-radius: ${(props) => props.borderRadius ?? "1rem"};
+  border-radius: ${(props) => props.borderRadius ?? '1rem'};
 `;
 
 export default StyledRoundedCard;

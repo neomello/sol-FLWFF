@@ -1,7 +1,7 @@
-import Image from "next/image";
-import styled from "styled-components";
+import Image from 'next/image';
+import styled from 'styled-components';
 
-import InvalidMark from "../../../public/src/img/icons/RedClose.inline.svg";
+import InvalidMark from '../../../public/src/img/icons/RedClose.inline.svg';
 
 const StyledSection = styled.section`
   .banned-logos {
@@ -41,28 +41,27 @@ const StyledSection = styled.section`
 `;
 
 const BrandingBannedLogos = () => {
-
   return (
     <StyledSection className="mt-6">
       <div className="h6 fw-bold">{branding.banned.title}</div>
       <p className="small mt-2">{branding.banned.description}</p>
       <div className="banned-logos">
-        <div style={{ background: "#9945FF" }}>
+        <div style={{ background: '#9945FF' }}>
           <Image
             alt=""
             src="/src/img/branding/bannedLogos-1.svg"
             fill
-            style={{ objectFit: "contain", padding: "1rem" }}
+            style={{ objectFit: 'contain', padding: '1rem' }}
           />
           <InvalidMark className="invalid-mark" />
           <p className="description">{branding.banned.shadow}</p>
         </div>
-        <div style={{ background: "#9945FF" }}>
+        <div style={{ background: '#9945FF' }}>
           <Image
             alt=""
             src="/src/img/branding/bannedLogos-2.png"
             fill
-            style={{ objectFit: "contain", padding: "1rem" }}
+            style={{ objectFit: 'contain', padding: '1rem' }}
           />
           <InvalidMark className="invalid-mark" />
           <p className="description">{branding.banned.outline}</p>
@@ -72,7 +71,7 @@ const BrandingBannedLogos = () => {
             alt=""
             src="/src/img/branding/bannedLogos-3.svg"
             fill
-            style={{ objectFit: "contain", padding: "1rem" }}
+            style={{ objectFit: 'contain', padding: '1rem' }}
           />
           <InvalidMark className="invalid-mark" />
           <p className="description">{branding.banned.stretch}</p>
@@ -82,7 +81,7 @@ const BrandingBannedLogos = () => {
             alt=""
             src="/src/img/branding/bannedLogos-4.svg"
             fill
-            style={{ objectFit: "contain", padding: "1rem" }}
+            style={{ objectFit: 'contain', padding: '1rem' }}
           />
           <InvalidMark className="invalid-mark" />
           <p className="description">{branding.banned.lowResolution}</p>
@@ -92,17 +91,17 @@ const BrandingBannedLogos = () => {
             alt=""
             src="/src/img/branding/bannedLogos-5.svg"
             fill
-            style={{ objectFit: "contain", padding: "1rem" }}
+            style={{ objectFit: 'contain', padding: '1rem' }}
           />
           <InvalidMark className="invalid-mark" />
           <p className="description">{branding.banned.imagery}</p>
         </div>
-        <div style={{ background: "#6D86D1" }}>
+        <div style={{ background: '#6D86D1' }}>
           <Image
             alt=""
             src="/src/img/branding/bannedLogos-6.svg"
             fill
-            style={{ objectFit: "contain", padding: "1rem" }}
+            style={{ objectFit: 'contain', padding: '1rem' }}
           />
           <InvalidMark className="invalid-mark" />
           <p className="description">{branding.banned.contrast}</p>

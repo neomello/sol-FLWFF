@@ -1,18 +1,18 @@
-import slugify from "@sindresorhus/slugify";
-import { memo, useContext } from "react";
-import Image from "next/legacy/image";
-import styled from "styled-components";
-import { Accordion, AccordionContext, Card } from "react-bootstrap";
-import { useAccordionButton } from "react-bootstrap/AccordionButton";
+import slugify from '@sindresorhus/slugify';
+import { memo, useContext } from 'react';
+import Image from 'next/legacy/image';
+import styled from 'styled-components';
+import { Accordion, AccordionContext, Card } from 'react-bootstrap';
+import { useAccordionButton } from 'react-bootstrap/AccordionButton';
 
-import CommonMarkdown from "./CommonMarkdown";
-import Button from "../shared/Button";
-import Divider from "../shared/Divider";
-import HashAccordion from "../sharedPageSections/HashAccordion";
+import CommonMarkdown from './CommonMarkdown';
+import Button from '../shared/Button';
+import Divider from '../shared/Divider';
+import HashAccordion from '../sharedPageSections/HashAccordion';
 
-import ChevronDown from "../../../public/src/img/icons/Angle-down.inline.svg";
+import ChevronDown from '../../../public/src/img/icons/Angle-down.inline.svg';
 
-import faqLogo from "../../../public/src/img/validators/validators_geometry_small2.png";
+import faqLogo from '../../../public/src/img/validators/validators_geometry_small2.png';
 
 const StyledFAQSection = styled.div`
   display: flex;
@@ -100,18 +100,14 @@ export const FAQWrapper = styled.div`
 `;
 
 const FAQToggle = ({ children, eventKey, callback }) => {
-
-  const decoratedOnClick = useAccordionButton(
-    eventKey,
-    () => callback && callback(eventKey),
-  );
+  const decoratedOnClick = useAccordionButton(eventKey, () => callback && callback(eventKey));
 
   const isCurrentEventKey = activeEventKey === eventKey;
 
   return (
     <Card.Header
       aria-expanded={isCurrentEventKey && true}
-      className={isCurrentEventKey && "showing"}
+      className={isCurrentEventKey && 'showing'}
       onClick={decoratedOnClick}
     >
       <h4 className="h6 m-0 fw-normal">{children}</h4>
@@ -176,13 +172,7 @@ const FAQContent = ({
   </StyledFAQSection>
 );
 
-const FAQsection = ({
-  data,
-  titles,
-  hiddenTitle = false,
-  hiddenLogo = false,
-  className = "",
-}) => {
+const FAQsection = ({ data, titles, hiddenTitle = false, hiddenLogo = false, className = '' }) => {
   const faqs = titles.map((sectionData) => {
     const sectionItems = data.reduce((acc, faqItem) => {
       if (faqItem.frontmatter.section === sectionData.sectionTitle) {
@@ -207,7 +197,7 @@ const FAQsection = ({
       <FAQWrapper>
         {faqs.map((sectionData) => (
           <FAQContent
-            key={sectionData.sectionTitle.replace(" ", "-")}
+            key={sectionData.sectionTitle.replace(' ', '-')}
             {...sectionData}
             hiddenTitle={hiddenTitle}
             hiddenLogo={hiddenLogo}

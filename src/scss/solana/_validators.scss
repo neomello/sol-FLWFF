@@ -42,7 +42,7 @@
         color: #ffffff;
         font-size: 1.3125rem;
         line-height: 130%;
-        font-feature-settings: "ss14" on;
+        font-feature-settings: 'ss14' on;
         padding: 1rem 0;
         margin: 0;
         @media (min-width: 576px) {
@@ -86,11 +86,7 @@
       left: 50%;
       top: -50%;
       transform: translate(-50%, -50%);
-      background: radial-gradient(
-        56.83% 56.83% at 50% 50%,
-        #9945ff 0%,
-        rgba(0, 0, 0, 0) 85%
-      );
+      background: radial-gradient(56.83% 56.83% at 50% 50%, #9945ff 0%, rgba(0, 0, 0, 0) 85%);
       opacity: 0.2;
       @media (min-width: 576px) {
         width: 100%;

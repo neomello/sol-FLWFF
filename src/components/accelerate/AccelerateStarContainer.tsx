@@ -1,5 +1,5 @@
-import { FC, ReactNode } from "react";
-import styles from "./AccelerateStarContainer.module.scss";
+import { FC, ReactNode } from 'react';
+import styles from './AccelerateStarContainer.module.scss';
 
 export const AccelerateStarContainer: FC<{
   children: ReactNode;

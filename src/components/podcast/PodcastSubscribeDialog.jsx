@@ -1,16 +1,16 @@
-import classNames from "classnames";
-import { forwardRef, useCallback, useImperativeHandle, useState } from "react";
-import { InlineLink } from "../shared/Link";
-import SharedModal from "../shared/SharedModal";
+import classNames from 'classnames';
+import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
+import { InlineLink } from '../shared/Link';
+import SharedModal from '../shared/SharedModal';
 
-import AmazonMusicLogo from "../../../assets/podcast/amazon-music-logo.inline.svg";
-import ApplePodcastsLogo from "../../../assets/podcast/apple-podcasts-logo.inline.svg";
-import GooglePodcastsLogo from "../../../assets/podcast/google-podcasts-logo.inline.svg";
-import PocketcastLogo from "../../../assets/podcast/pocketcast-logo.inline.svg";
-import SpotifyLogo from "../../../assets/podcast/spotify-logo.inline.svg";
-import RssFeedIcon from "../../../assets/podcast/rss-feed.inline.svg";
+import AmazonMusicLogo from '../../../assets/podcast/amazon-music-logo.inline.svg';
+import ApplePodcastsLogo from '../../../assets/podcast/apple-podcasts-logo.inline.svg';
+import GooglePodcastsLogo from '../../../assets/podcast/google-podcasts-logo.inline.svg';
+import PocketcastLogo from '../../../assets/podcast/pocketcast-logo.inline.svg';
+import SpotifyLogo from '../../../assets/podcast/spotify-logo.inline.svg';
+import RssFeedIcon from '../../../assets/podcast/rss-feed.inline.svg';
 
-import styles from "./PodcastSubscribeDialog.module.scss";
+import styles from './PodcastSubscribeDialog.module.scss';
 
 function PodcastSubscribeDialog(_, ref) {
   const [show, setShow] = useState(false);
@@ -24,7 +24,7 @@ function PodcastSubscribeDialog(_, ref) {
       open,
       close,
     }),
-    [open, close],
+    [open, close]
   );
 
   return (
@@ -36,8 +36,8 @@ function PodcastSubscribeDialog(_, ref) {
     >
       <div
         className={classNames(
-          "container d-flex flex-wrap",
-          styles["podcast-listen-options-modal-content"],
+          'container d-flex flex-wrap',
+          styles['podcast-listen-options-modal-content']
         )}
       >
         <div className="col-12 col-sm-6">

@@ -1,2 +1,1 @@
-export function isValidEmail(value) {
-}
+export function isValidEmail(value) {}

@@ -84,14 +84,14 @@
   :global(.diff.add) {
     background-color: var(--diff-add-bg);
     &::before {
-      content: "+";
+      content: '+';
     }
   }
 
   :global(.diff.remove) {
     background-color: var(--diff-remove-bg);
     &::before {
-      content: "-";
+      content: '-';
     }
   }
 }

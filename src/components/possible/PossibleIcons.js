@@ -1,18 +1,14 @@
-import PossibleGlow from "./PossibleGlow";
-import classNames from "classnames";
-import Button from "../shared/Button";
-import styles from "./PossibleIcons.module.scss";
-import IconBackground from "../../../assets/possible/icons.png";
-import IconMobileBackground from "../../../assets/possible/icons-mobile.png";
+import PossibleGlow from './PossibleGlow';
+import classNames from 'classnames';
+import Button from '../shared/Button';
+import styles from './PossibleIcons.module.scss';
+import IconBackground from '../../../assets/possible/icons.png';
+import IconMobileBackground from '../../../assets/possible/icons-mobile.png';
 
 const PossibleIcons = () => {
-
   return (
     <section
-      className={classNames(
-        styles["icons--possible"],
-        "position-relative overflow-hidden",
-      )}
+      className={classNames(styles['icons--possible'], 'position-relative overflow-hidden')}
       style={{ backgroundImage: `url(${IconBackground.src})` }}
     >
       <div
@@ -41,12 +37,7 @@ const PossibleIcons = () => {
         <div className={`row d-flex align-items-center h-md-auto`}>
           <div className="col">
             <h3 className="h2 mb-4">{possible.icons.title}</h3>
-            <p
-              className={classNames(
-                styles["icons__copy--possible"],
-                `mb-6 mx-auto`,
-              )}
-            >
+            <p className={classNames(styles['icons__copy--possible'], `mb-6 mx-auto`)}>
               {possible.icons.description}
             </p>
             <div className={`text-center text-md-start`}>
@@ -54,7 +45,7 @@ const PossibleIcons = () => {
                 to="https://drive.google.com/file/d/1VrfJS15kOjJsKz-V9_uRlSj6gFbdLlxX/view"
                 newTab
                 variant="secondary"
-                size={"large"}
+                size={'large'}
                 className="d-table mx-auto"
               >
                 {possible.icons.cta}

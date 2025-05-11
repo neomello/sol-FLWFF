@@ -1,4 +1,3 @@
-import styles from "./DevelopersSectionTitle.module.scss";
+import styles from './DevelopersSectionTitle.module.scss';
 
-export default function DevelopersSectionTitle({ titleId }) {
-}
+export default function DevelopersSectionTitle({ titleId }) {}

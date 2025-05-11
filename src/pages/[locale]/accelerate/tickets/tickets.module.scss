@@ -1,6 +1,6 @@
 // Main container
 .container {
-  font-family: "ABC Diatype", sans-serif;
+  font-family: 'ABC Diatype', sans-serif;
   background-color: #000;
   color: #fff;
   min-height: 100vh;
@@ -173,12 +173,7 @@
 
 .shipTicket {
   .ticketImageContainer {
-    background-color: rgba(
-      230,
-      28,
-      93,
-      0.1
-    ); // Reddish background for Ship or Die
+    background-color: rgba(230, 28, 93, 0.1); // Reddish background for Ship or Die
   }
 
   .ticketDate {
@@ -192,12 +187,7 @@
 
 .scaleTicket {
   .ticketImageContainer {
-    background-color: rgba(
-      59,
-      130,
-      246,
-      0.1
-    ); // Bluish background for Scale or Die
+    background-color: rgba(59, 130, 246, 0.1); // Bluish background for Scale or Die
   }
 
   .ticketDate {
@@ -272,11 +262,7 @@
 .getTicketsButton {
   display: inline-block;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(
-    90deg,
-    #e61c5d 0%,
-    #3b82f6 100%
-  ); // Default gradient (red to blue)
+  background: linear-gradient(90deg, #e61c5d 0%, #3b82f6 100%); // Default gradient (red to blue)
   color: white;
   border-radius: 0.5rem;
   text-decoration: none;

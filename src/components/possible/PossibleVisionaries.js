@@ -1,16 +1,16 @@
-import { useState, useRef } from "react";
-import Image from "next/image";
-import classNames from "classnames";
-import styles from "./PossibleVisionaries.module.scss";
-import VideoModal from "../shared/VideoModal";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Dropdown from "react-bootstrap/Dropdown";
-import { ChevronDown } from "react-feather";
-import PossibleGlow from "./PossibleGlow";
-import PlayButton from "assets/possible/visionaries/play-button.png";
-import { PossibleVisionariesData } from "./PossibleVisionariesData";
+import { useState, useRef } from 'react';
+import Image from 'next/image';
+import classNames from 'classnames';
+import styles from './PossibleVisionaries.module.scss';
+import VideoModal from '../shared/VideoModal';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { ChevronDown } from 'react-feather';
+import PossibleGlow from './PossibleGlow';
+import PlayButton from 'assets/possible/visionaries/play-button.png';
+import { PossibleVisionariesData } from './PossibleVisionariesData';
 
 const PossibleVisionaries = () => {
   const sliderRef = useRef(null);
@@ -37,7 +37,7 @@ const PossibleVisionaries = () => {
     <section
       className={classNames(
         `pt-10 pb-6 pt-md-10 pb-md-10 position-relative`,
-        styles[`possible-visionaries`],
+        styles[`possible-visionaries`]
       )}
     >
       <PossibleGlow
@@ -52,9 +52,10 @@ const PossibleVisionaries = () => {
         <div className={`row`}>
           <div className="col-12 col-md-5 d-flex flex-row d-md-block mb-8 mb-md-0 ps-lg-0 align-items-center">
             <h2 className="h2 pe-5 flex-grow-1 flex-shrink-1 mb-0">
-                components={{
-                  italic: <em className="fst-italic" />,
-                }}
+              components=
+              {{
+                italic: <em className="fst-italic" />,
+              }}
               />
             </h2>
           </div>
@@ -69,8 +70,8 @@ const PossibleVisionaries = () => {
       </div>
       <div
         className={classNames(
-          "container-fluid p-0 mb-6 mb-md-0 mx-auto d-block",
-          styles["visionaries-videoContainer--possible"],
+          'container-fluid p-0 mb-6 mb-md-0 mx-auto d-block',
+          styles['visionaries-videoContainer--possible']
         )}
       >
         <div className={`row`}>
@@ -100,18 +101,14 @@ const PossibleVisionaries = () => {
                               src={speaker.image}
                               alt={speaker.name}
                               className={classNames(
-                                "mb-5 me-1 mt-md-3 d-inline-block w-auto h-100",
-                                styles[
-                                  `visionaries-speakerThumbnail--possible`
-                                ],
+                                'mb-5 me-1 mt-md-3 d-inline-block w-auto h-100',
+                                styles[`visionaries-speakerThumbnail--possible`]
                               )}
                             />
                           );
                         })}
                       </div>
-                      <h2 className="h6 fw-normal mb-6 mb-md-7">
-                        {item.title}
-                      </h2>
+                      <h2 className="h6 fw-normal mb-6 mb-md-7">{item.title}</h2>
                       <p className="mb-5 copy text-white">{item.description}</p>
                       <button
                         onClick={() => {
@@ -122,7 +119,7 @@ const PossibleVisionaries = () => {
                       >
                         <Image
                           src={PlayButton.src}
-                          alt={""}
+                          alt={''}
                           width={30}
                           height={30}
                           className={`d-inline-block me-2`}
@@ -138,7 +135,7 @@ const PossibleVisionaries = () => {
         </div>
       </div>
       <VideoModal
-        type={"vimeo"}
+        type={'vimeo'}
         urlId={data[videoId].vimeoId}
         showVideoModal={showVideoModal}
         setShowVideoModal={setShowVideoModal}
@@ -148,11 +145,7 @@ const PossibleVisionaries = () => {
   );
 };
 
-const PossibleEpisodeSelection = ({
-  sliderRef,
-  episodeData,
-  currentEpisode,
-}) => {
+const PossibleEpisodeSelection = ({ sliderRef, episodeData, currentEpisode }) => {
   const containerRef = useRef(null);
 
   const selectEpisode = (index) => {
@@ -165,7 +158,7 @@ const PossibleEpisodeSelection = ({
     const buttonLeft = containerRef.current.children[index].offsetLeft;
     const scrollPosition = buttonLeft - containerLeft;
 
-    containerRef.current.scroll({ left: scrollPosition, behavior: "smooth" });
+    containerRef.current.scroll({ left: scrollPosition, behavior: 'smooth' });
   };
 
   return (
@@ -174,8 +167,8 @@ const PossibleEpisodeSelection = ({
         <div className="col d-flex flex-column flex-md-row pe-lg-0">
           <div
             className={classNames(
-              "w-100 d-flex flex-row flex-nowrap overflow-scroll me-2",
-              styles[`visionaries-episodeSelectionContainer--possible`],
+              'w-100 d-flex flex-row flex-nowrap overflow-scroll me-2',
+              styles[`visionaries-episodeSelectionContainer--possible`]
             )}
             ref={containerRef}
           >
@@ -183,15 +176,16 @@ const PossibleEpisodeSelection = ({
               <button
                 key={index}
                 className={classNames(
-                  "btn btn-lg text-uppercase flex-grow-0",
+                  'btn btn-lg text-uppercase flex-grow-0',
                   styles[`visionaries-episodeSelectionBtn--possible`],
-                  currentEpisode === index && "active",
+                  currentEpisode === index && 'active'
                 )}
                 onClick={() => selectEpisode(index)}
               >
-                  components={{
-                    lowercase: <span className="text-lowercase" />,
-                  }}
+                components=
+                {{
+                  lowercase: <span className="text-lowercase" />,
+                }}
                 />
               </button>
             ))}
@@ -200,8 +194,8 @@ const PossibleEpisodeSelection = ({
             <Dropdown.Toggle
               variant="success"
               className={classNames(
-                "btn btn-lg text-uppercase w-100 w-md-auto",
-                styles[`visionaries-episodeSelectionBtn--possible`],
+                'btn btn-lg text-uppercase w-100 w-md-auto',
+                styles[`visionaries-episodeSelectionBtn--possible`]
               )}
             >
               {possible.visionaries.seeAll}
@@ -216,13 +210,14 @@ const PossibleEpisodeSelection = ({
                   key={index}
                   onClick={() => selectEpisode(index)}
                   className={classNames(
-                    currentEpisode === index && "active",
-                    styles[`visionaries-episodeDropdownBtn--possible`],
+                    currentEpisode === index && 'active',
+                    styles[`visionaries-episodeDropdownBtn--possible`]
                   )}
                 >
-                    components={{
-                      lowercase: <span className="text-lowercase" />,
-                    }}
+                  components=
+                  {{
+                    lowercase: <span className="text-lowercase" />,
+                  }}
                   />
                 </Dropdown.Item>
               ))}
@@ -234,14 +229,7 @@ const PossibleEpisodeSelection = ({
   );
 };
 
-const VideoModalButton = ({
-  setVideoId,
-  setShowVideoModal,
-  poster,
-  index,
-  title,
-  watchText,
-}) => {
+const VideoModalButton = ({ setVideoId, setShowVideoModal, poster, index, title, watchText }) => {
   return (
     <button
       onClick={() => {
@@ -253,7 +241,7 @@ const VideoModalButton = ({
       <Image
         className={`video-thumbnail poster w-100 h-auto`}
         src={poster}
-        alt={""}
+        alt={''}
         width={400}
         height={160}
       />
