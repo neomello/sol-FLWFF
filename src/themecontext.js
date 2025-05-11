@@ -16,8 +16,9 @@ export const ThemeProvider = ({ children }) => {
       pathname.startsWith("/developers/guides") ||
       pathname.startsWith("/developers/courses")
     : false;
-  const [theme, setTheme] = useState("dark"); // Initial theme state; will be updated by useEffect.
+  const [theme, setTheme] = useState("dark");
 
+  useEffect(() => {
     if (isThemePage) {
       // Function to update the theme based on the passed theme name
       const updateTheme = (newTheme) => {
