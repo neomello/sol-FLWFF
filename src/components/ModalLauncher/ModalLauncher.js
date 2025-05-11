@@ -49,7 +49,6 @@ const ModalLauncher = () => {
     );
   }, [modalLaunchId, router]);
 
-  useEffect(() => {
     const { modalLaunch, modalLaunchId } = router.query;
 
     if (
@@ -57,8 +56,6 @@ const ModalLauncher = () => {
       modalLaunchId &&
       modalMapping[modalLaunchId]
     ) {
-      setModalComponent(
-        createElement(modalMapping[router.query.modalLaunchId], {
           modalCloseHandler,
           modalActionCompleted,
         }),
@@ -76,7 +73,6 @@ const ModalLauncher = () => {
       }
     } else {
       setShowModal(false);
-      setModalComponent(null);
     }
   }, [router.query, modalCloseHandler, modalMapping]);
 

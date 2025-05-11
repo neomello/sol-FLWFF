@@ -22,7 +22,6 @@ const cleanPath = (pathString) => {
   }
 };
 
-const MetaLinks = ({ localeNoEnDefault, asPathNoRedirect }) => {
   const cleanedAsPathNoRedirect = cleanPath(asPathNoRedirect);
   return (
     <>
@@ -33,7 +32,6 @@ const MetaLinks = ({ localeNoEnDefault, asPathNoRedirect }) => {
       {/* preferred canonical page */}
       <link
         rel="canonical"
-        href={`${config.siteUrl}${localeNoEnDefault}${cleanedAsPathNoRedirect}`}
       ></link>
       {/* hreflang localized variations of the same content */}
       <link

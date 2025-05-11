@@ -4,12 +4,9 @@ import customComponentsRegistration from "@/utils/customComponentGenerator";
 import BreakpointLayout from "@/components/breakpoint/BreakpointLayout";
 import { getAllCustomSlugs, getCustomPage } from "@/lib/builder/api";
 import { BREAKPOINT_BUILDER_CONFIG } from "@/lib/builder/breakpoint/constants";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import HTMLHead from "@/components/builder/HTMLHead";
 import SimpleHero from "@/components/breakpoint/BreakpointSimpleHero";
-import { slugWithLocales } from "@/i18n/routing";
 
-builder.init(BREAKPOINT_BUILDER_CONFIG.apiKey);
 builder.apiVersion = "v3";
 customComponentsRegistration();
 
@@ -40,7 +37,6 @@ const Page = ({ builderLocale, page }) => {
             options={{ includeRefs: true }}
             model={BREAKPOINT_BUILDER_CONFIG.model}
             content={page}
-            locale={builderLocale || "Default"}
           />
         </article>
       </BreakpointLayout>
@@ -54,18 +50,14 @@ export async function getStaticPaths() {
     BREAKPOINT_BUILDER_CONFIG.model,
   );
   return {
-    paths: slugWithLocales(allPages || []),
     fallback: "blocking",
   };
 }
 
 export const getStaticProps = async ({ params }) => {
-  const { locale = "en" } = params;
   try {
     let slug = params?.slug || "";
 
-    const isDefaultLocale = locale === "en";
-    const builderLocale = isDefaultLocale ? "Default" : locale;
 
     if (typeof slug === "object" && slug.length) {
       slug = slug.map((slug) => slug.replace(/(%\d+)+$/, ""));
@@ -86,11 +78,9 @@ export const getStaticProps = async ({ params }) => {
 
     return {
       props: {
-        locale,
         builderLocale,
         key: page?.id + page?.data.slug + params.slug,
         page: page || null,
-        ...(await serverSideTranslations(locale, ["common"])),
       },
       revalidate: 60,
     };

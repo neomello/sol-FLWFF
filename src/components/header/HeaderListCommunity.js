@@ -1,11 +1,8 @@
-import { useTranslation } from "next-i18next";
 import Link from "../../utils/Link";
 import BreakpointLogo from "../../../assets/nav/community/breakpoint-logo.inline.svg";
 import InvolvedSVG from "../../../assets/nav/community/involved.inline.svg";
 
 const HeaderListCommunity = () => {
-  const { t } = useTranslation("common");
-  const communityInvolvedItems = t("nav.community.involved.items", {
     returnObjects: true,
   });
 
@@ -14,7 +11,7 @@ const HeaderListCommunity = () => {
       <div>
         <div className="text-uppercase py-2 d-flex align-items-center">
           <InvolvedSVG className="me-3" />
-          {t("nav.community.involved.title")}
+          {nav.community.involved.title}
         </div>
         <div>
           <Link
@@ -65,7 +62,7 @@ const HeaderListCommunity = () => {
 
       <div>
         <div className="text-uppercase py-2">
-          {t("nav.community.event.title")}
+          {nav.community.event.title}
         </div>
         <div>
           <Link to="/breakpoint" className="text-white">

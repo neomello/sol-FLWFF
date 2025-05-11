@@ -38,7 +38,6 @@ export const truncateTextByWord = (text, truncateLength, append = "") => {
  * @returns {string}
  */
 export const capitalizeFirstChar = (str) =>
-  str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
 
 /**
  * Capitalizes every word in a given string.

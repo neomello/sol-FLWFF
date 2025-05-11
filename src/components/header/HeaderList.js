@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import AngleUp from "../../../public/src/img/icons/Angle-up.inline.svg";
 import AngleDown from "../../../public/src/img/icons/Angle-down.inline.svg";
-import { useTranslation } from "next-i18next";
 import { useRouter } from "@/hooks/useRouter";
 import HeaderListBuild from "./HeaderListBuild";
 import HeaderListSolutions from "./HeaderListSolutions";
@@ -11,7 +10,6 @@ import HeaderListNetwork from "./HeaderListNetwork";
 import HeaderListCommunity from "./HeaderListCommunity";
 
 const HeaderList = () => {
-  const { t } = useTranslation();
   const { asPath } = useRouter();
 
   const [showNetwork, updateShowNetwork] = useState(false);
@@ -20,7 +18,6 @@ const HeaderList = () => {
   const [showCommunity, updateShowCommunity] = useState(false);
   const [showLearn, updateShowLearn] = useState(false);
 
-  useEffect(() => {
     // links from "developers" (app router) doesnt reload the page
     // so we need to close the dropdown when the route changes
     updateShowDevelopers(false);
@@ -61,7 +58,7 @@ const HeaderList = () => {
           }`}
           suppressHydrationWarning={true}
         >
-          {t("nav.learn.title")}
+          {nav.learn.title}
           {showLearn ? <AngleUp /> : <AngleDown />}
         </Dropdown.Toggle>
         <Dropdown.Menu>
@@ -86,7 +83,7 @@ const HeaderList = () => {
           }`}
           suppressHydrationWarning={true}
         >
-          {t("nav.developers.title")}
+          {nav.developers.title}
           {showDevelopers ? <AngleUp /> : <AngleDown />}
         </Dropdown.Toggle>
         <Dropdown.Menu>
@@ -110,7 +107,7 @@ const HeaderList = () => {
           }`}
           suppressHydrationWarning={true}
         >
-          {t("nav.solutions.title")}
+          {nav.solutions.title}
           {showSolutions ? <AngleUp /> : <AngleDown />}
         </Dropdown.Toggle>
         <Dropdown.Menu>
@@ -134,7 +131,7 @@ const HeaderList = () => {
           }`}
           suppressHydrationWarning={true}
         >
-          {t("nav.network.title")}
+          {nav.network.title}
           {showNetwork ? <AngleUp /> : <AngleDown />}
         </Dropdown.Toggle>
 
@@ -159,7 +156,7 @@ const HeaderList = () => {
           }`}
           suppressHydrationWarning={true}
         >
-          {t("nav.community.title")}
+          {nav.community.title}
           {showCommunity ? <AngleUp /> : <AngleDown />}
         </Dropdown.Toggle>
         <Dropdown.Menu>

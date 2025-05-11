@@ -1,28 +1,54 @@
-# solana.com
+# solana-com
 
-Repository for [https://solana.com](https://solana.com).
+Projeto baseado em Next.js voltado pra interface do ecossistema Solana. Integra carteira, transações e estatísticas em tempo real com RPCs direto da blockchain.
 
-## Setup locally
+## Rodando Localmente
 
-1. Clone the repo to your local machine:
+```bash
+npm install
+npm run dev
+```
 
-   ```
-   git clone https://github.com/solana-foundation/solana-com.git
-   ```
+Acesse em http://localhost:3000
 
-2. Install the dependencies via `yarn`:
+## 📁 Estrutura do Código
 
-   ```
-   yarn
-   ```
+```bash
+src/
+├── assets/            # Imagens e ícones de wallets
+├── components/        # Componentes React soltos
+├── data/              # Dados de wallets e filtros
+├── hooks/             # Hooks custom tipo useTransactionStats
+├── pages/             # Páginas Next.js (com suporte a locale)
+├── utils/             # RPC utils e helpers
+```
 
-3. Run the project locally:
+## ⚙️ Configuração
 
-   ```
-   yarn dev
-   ```
+Crie um arquivo `.env.local` com:
 
-## Maintainers
+```bash
+NEXT_PUBLIC_RPC_ENDPOINT=https://api.mainnet-beta.solana.com
+```
 
-The solana.com website is managed and maintained by the Solana Foundation. Read
-more on [how to contribute](CONTRIBUTING.md).
+## 🛠 Scripts Úteis
+
+```bash
+npm run dev      # Sobe local
+npm run build    # Build de produção
+npm run start    # Serve build pronto
+```
+
+## ☠️ Aviso
+
+Esse projeto é sensível a falhas de RPC, erros silenciosos e dependências dinâmicas com cache zoado.
+Se der ruim, limpe tudo:
+
+```bash
+rm -rf node_modules .next
+npm cache clean --force
+npm install
+npm run dev
+```
+
+> "Código bom é o que não te faz odiar a própria existência. Por enquanto esse aqui passa raspando."

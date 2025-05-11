@@ -1,4 +1,3 @@
-import { Trans, useTranslation } from "next-i18next";
 import classNames from "classnames";
 import styles from "./PossibleStats.module.scss";
 import Link from "../../utils/Link";
@@ -9,10 +8,7 @@ import Loader from "../../../public/src/img/icons/Loader.inline.svg";
 import {
   PERF_UPDATE_SEC,
   SAMPLE_HISTORY_HOURS,
-  useTransactionStats,
-} from "../../hooks/useTransactionStats";
 import { FormattedNumber } from "../SolFormattedMessage";
-import AnimatedTransactionCountup from "../shared/AnimatedTransactionCountup";
 
 const StatsNo = ({ value, description, className }) => {
   return (
@@ -54,7 +50,6 @@ const StatsCard = ({
         <p className="small subdued">{description}</p>
         <div className="mt-6">
           {/* Check for the static 0% value of the carbon impact section */}
-          {parseInt(value) !== 0 ? (
             <div
               className={classNames(
                 "h5 fw-normal",
@@ -83,15 +78,11 @@ const StatsCard = ({
 };
 
 const PossibleStats = ({ visible, showKPIs = true }) => {
-  const { avgTps, validators, totalTransactionCount, availableStats } =
-    useTransactionStats({
       visible,
       performanceUpdateSeconds: PERF_UPDATE_SEC,
       sampleHistoryHours: SAMPLE_HISTORY_HOURS,
-      getLiveTransactionCount: true,
     });
 
-  const { t } = useTranslation("common");
 
   return (
     <div className={styles["index-stats"]}>
@@ -108,28 +99,28 @@ const PossibleStats = ({ visible, showKPIs = true }) => {
                   styles["index-stats__heading"],
                 )}
               >
-                {t("possible.stats.headline")}
+                {possible.stats.headline}
               </h2>
             </div>
             <div className="col-lg-6">
               <div className="mb-8">
                 <StatsNo
                   value="11.5M+"
-                  description={t("possible.stats.accounts")}
+                  description={possible.stats.accounts}
                   className={styles["index-stats__color--purple"]}
                 />
               </div>
               <div className="mb-8">
                 <StatsNo
                   value="21.9M"
-                  description={t("possible.stats.nfts")}
+                  description={possible.stats.nfts}
                   className={styles["index-stats__color--blue"]}
                 />
               </div>
               <div>
                 <StatsNo
                   value="$0.00025"
-                  description={t("possible.stats.cost")}
+                  description={possible.stats.cost}
                   className={styles["index-stats__color--green"]}
                 />
               </div>
@@ -141,7 +132,7 @@ const PossibleStats = ({ visible, showKPIs = true }) => {
           <div className="col-lg-4">
             <div className="mb-8 mb-lg-0">
               <h2 className={classNames("h4", styles["index-stats__heading"])}>
-                {t("possible.stats.headline-secondary")}
+                {possible.stats.headline-secondary}
               </h2>
               <div
                 className={classNames(
@@ -150,15 +141,15 @@ const PossibleStats = ({ visible, showKPIs = true }) => {
                   styles["index-stats__ff-mono"],
                 )}
               >
-                {t("possible.stats.live")}
+                {possible.stats.live}
               </div>
             </div>
           </div>
           <div className="col-lg-8">
             <div className="row">
               <StatsCard
-                title={t("possible.stats.adoption.fast.title")}
-                description={t("possible.stats.adoption.fast.description")}
+                title={possible.stats.adoption.fast.title}
+                description={possible.stats.adoption.fast.description}
                 value={
                   availableStats ? (
                     <FormattedNumber value={avgTps} />
@@ -166,12 +157,11 @@ const PossibleStats = ({ visible, showKPIs = true }) => {
                     <Loader />
                   )
                 }
-                valueName={t("possible.stats.transactions")}
+                valueName={possible.stats.transactions}
                 border="#1FCFF1"
               />
               <StatsCard
-                title={t("possible.stats.adoption.decentralized.title")}
-                description={t(
+                title={possible.stats.adoption.decentralized.title}
                   "possible.stats.adoption.decentralized.description",
                 )}
                 value={
@@ -181,38 +171,34 @@ const PossibleStats = ({ visible, showKPIs = true }) => {
                     <Loader />
                   )
                 }
-                valueName={t("possible.stats.validators")}
+                valueName={possible.stats.validators}
                 border="#FFD512"
                 className="mt-lg-n10"
               />
               <StatsCard
-                title={t("possible.stats.adoption.scalable.title")}
-                description={t("possible.stats.adoption.scalable.description")}
+                title={possible.stats.adoption.scalable.title}
+                description={possible.stats.adoption.scalable.description}
                 value={
                   availableStats ? (
-                    <AnimatedTransactionCountup
-                      info={{ avgTPS: avgTps, totalTransactionCount }}
                       perfUpdateSec={PERF_UPDATE_SEC}
                     />
                   ) : (
                     <Loader />
                   )
                 }
-                valueName={t("possible.stats.totaltransactions")}
+                valueName={possible.stats.totaltransactions}
                 border="#9945FF"
               />
               <StatsCard
-                title={t("possible.stats.adoption.energy.title")}
+                title={possible.stats.adoption.energy.title}
                 description={
-                  <Trans
-                    i18nKey="possible.stats.adoption.energy.description"
                     components={{
                       envLink: <Link to="/environment" />,
                     }}
                   />
                 }
                 value="0%"
-                valueName={t("possible.stats.carbon")}
+                valueName={possible.stats.carbon}
                 border="#19FB9B"
                 className="mt-lg-n8"
               />

@@ -1,6 +1,5 @@
 import { ArrowLeft, ArrowRight } from "react-feather";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 import Button from "../../shared/Button";
 
 const StyledProgressBar = styled.div`
@@ -22,7 +21,6 @@ const EventsArchivePagination = ({
   currentPage = 0,
   setCurrentPage = () => {},
 }) => {
-  const { t } = useTranslation();
   const pageLowerBound = currentPage * initialPageSize;
 
   const pageUpperBound =
@@ -37,7 +35,6 @@ const EventsArchivePagination = ({
   return (
     <div className="container">
       <div className="mt-5">
-        {t("events.archive.event-count", {
           current: `${pageLowerBound + 1} - ${pageUpperBound}`,
           total: totalCount,
         })}
@@ -55,7 +52,7 @@ const EventsArchivePagination = ({
           disabled={currentPage === 0}
         >
           <ArrowLeft className="me-2" />
-          {t("events.archive.previous-page")}
+          {events.archive.previous-page}
         </Button>
         <Button
           onClick={() =>
@@ -67,7 +64,7 @@ const EventsArchivePagination = ({
           className="mt-5 mt-md-0"
           disabled={currentPage + 1 >= totalPages}
         >
-          {t("events.archive.next-page")}
+          {events.archive.next-page}
           <ArrowRight className="ms-2" />
         </Button>
       </div>

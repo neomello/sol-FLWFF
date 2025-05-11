@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { useTranslation } from "next-i18next";
 import { ArrowRightCircle } from "react-feather";
 import styles from "./EnvironmentWhatYouCanDo.module.scss";
 import dataImg from "../../../assets/environment/usages/data.png";
@@ -30,24 +29,23 @@ function WhatYouCanDoCard({ usage }) {
 }
 
 export default function EnvironmentWhatYouCanDo() {
-  const { t } = useTranslation("common");
 
   const usages = [
     {
-      title: t("environment.what-you-can-do.data.title"),
-      description: t("environment.what-you-can-do.data.description"),
+      title: environment.what-you-can-do.data.title,
+      description: environment.what-you-can-do.data.description,
       image: dataImg,
       url: "/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain",
     },
     {
-      title: t("environment.what-you-can-do.footprint.title"),
-      description: t("environment.what-you-can-do.footprint.description"),
+      title: environment.what-you-can-do.footprint.title,
+      description: environment.what-you-can-do.footprint.description,
       image: footprintImg,
       url: "https://medium.com/orca-so/what-daos-can-do-about-climate-change-e38292c46c16",
     },
     {
-      title: t("environment.what-you-can-do.grants.title"),
-      description: t("environment.what-you-can-do.grants.description"),
+      title: environment.what-you-can-do.grants.title,
+      description: environment.what-you-can-do.grants.description,
       image: grantsImg,
       url: "https://solanafoundation.notion.site/Solana-Foundation-RFPs-be81db095f054b3f895e1c03de3e65fd",
     },
@@ -66,7 +64,7 @@ export default function EnvironmentWhatYouCanDo() {
           styles["environment-what-you-can-do__title"],
         )}
       >
-        {t("environment.what-you-can-do.title")}
+        {environment.what-you-can-do.title}
       </h2>
       <div
         className={classNames(

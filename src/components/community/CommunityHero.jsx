@@ -1,6 +1,5 @@
 import Image from "next/legacy/image";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 import heroImg from "../../../public/src/img/community/hero.png";
 
 const ImgContainer = styled.div`
@@ -20,7 +19,6 @@ const ImgContainer = styled.div`
  * @constructor
  */
 const CommunityHero = () => {
-  const { t } = useTranslation();
 
   return (
     <section className="hero">
@@ -37,8 +35,8 @@ const CommunityHero = () => {
           <div className="row pb-8 mb-8">
             <div className="col-12 col-md-6">
               <div className="hero-title">
-                <h1 className="h1-new text-white">{t("community.hero")}</h1>
-                <p className="mb-0">{t("community.header")}</p>
+                <h1 className="h1-new text-white">{community.hero}</h1>
+                <p className="mb-0">{community.header}</p>
               </div>
             </div>
           </div>

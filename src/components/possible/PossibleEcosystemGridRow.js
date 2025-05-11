@@ -21,15 +21,11 @@ const PossibleEcosystemGridRow = ({ data, dir }) => {
       ? "ecosystem__ltr-row--possible"
       : "ecosystem__rtl-row--possible";
 
-  useEffect(() => {
     if (rowRef?.current) {
       const initRowWidth = rowRef?.current.clientWidth || 0;
-      const repeatCount = getRepeatCount(initRowWidth);
-      setRepeatCount(repeatCount);
     }
   }, []);
 
-  useEffect(() => {
     const rowWidth = rowRef?.current.clientWidth || 0;
     setRowWidth(rowWidth);
   }, [repeatCount]);

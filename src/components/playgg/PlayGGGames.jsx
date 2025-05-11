@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import styles from "./PlayGGGames.module.scss";
 import { InlineLink } from "../shared/Link";
 import Image from "next/image";
@@ -54,12 +53,11 @@ const Game = ({ logo, url, name }) => {
 };
 
 const PlayGGGames = () => {
-  const { t } = useTranslation("common");
 
   return (
     <div className="container">
       <div className={styles["playgg-games"]}>
-        <h2 className="h3">{t("playgg.games.title")}</h2>
+        <h2 className="h3">{playgg.games.title}</h2>
 
         <div className={styles["playgg-games__grid"]}>
           <Game logo={br1} url="https://www.br1game.com/" name="BR1" />

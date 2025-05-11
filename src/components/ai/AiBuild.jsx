@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Image from "next/image";
 import { ArrowRight } from "react-feather";
 
-import { Trans, useTranslation } from "next-i18next";
 import Button from "../shared/Button";
 import CarouselCards from "../shared/CarouselCards";
 import bgImage from "../../../assets/ai/build-bg.png";
@@ -23,7 +22,6 @@ const StyledCard = styled.div`
 `;
 
 function Card({ color, bgColor, dividerColor, title, icon, content, ctaLink }) {
-  const { t } = useTranslation();
 
   return (
     <StyledCard
@@ -35,13 +33,11 @@ function Card({ color, bgColor, dividerColor, title, icon, content, ctaLink }) {
       {title && (
         <>
           <div>
-            <h3 className={styles["card__title"]}>{t(title)}</h3>
             <Image src={icon} alt="" className={styles["card__icon"]} />
             <span
               className={styles["card__divider"]}
               style={{ borderColor: dividerColor }}
             ></span>
-            <p className={styles["card__content"]}>{t(content)}</p>
           </div>
           <div className={styles["card__cta"]}>
             <Button to={ctaLink} variant="captioned" noBorder newTab>
@@ -61,8 +57,6 @@ export default function AiBuild() {
         <Image className={styles["build__bg"]} src={bgImage} alt="" fill />
         <div className={styles["build__bg-effect"]}></div>
         <h2 className={styles["build__title"]}>
-          <Trans
-            i18nKey="ai.build.title"
             components={{
               colored: <span className={styles["build__title--colored"]} />,
             }}

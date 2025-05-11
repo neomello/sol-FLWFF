@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { ArrowUpRight } from "react-feather";
 
 import { InlineLink, Link } from "@/utils/Link";
-import { useTranslation } from "next-i18next";
 
 import styles from "./DevelopersResourceItem.module.scss";
 import { memo } from "react";
@@ -15,7 +14,6 @@ export default function DevelopersResourceItem({
   url,
   isExternal,
 }) {
-  const { t } = useTranslation();
   // use the correct type of link
   const ResourceLink = memo(
     ({ children, ...props }) => {
@@ -50,7 +48,7 @@ export default function DevelopersResourceItem({
           </div>
         </div>
         <div className={styles["resource-item__cta"]}>
-          <span>{t("developers.resources.learn-more")}</span>
+          <span>{developers.resources.learn-more}</span>
           <ArrowUpRight strokeWidth={1} />
         </div>
       </div>

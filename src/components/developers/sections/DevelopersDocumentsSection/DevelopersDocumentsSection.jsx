@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import Image from "next/legacy/image";
 
 import DevelopersDocumentItem from "./DevelopersDocumentItem";
@@ -12,35 +11,33 @@ import DevelopersSectionTitle from "../DevelopersSectionTitle";
 import { YT_PLAYLIST_CHANGELOG } from "@/constants/developerContentConfig";
 
 export default function DevelopersDocumentsSection({ latestVideo }) {
-  const { t } = useTranslation();
 
   return (
     <section className={styles["documents-section"]}>
       <div className="container">
         <div className="mb-8 pt-10">
           <DevelopersSectionTitle titleId="developers.documents.title" />
-          <p className="subdued">{t("developers.documents.description")}</p>
+          <p className="subdued">{developers.documents.description}</p>
         </div>
         <div
           className="d-flex flex-column"
           style={{
             backgroundColor:
-              "linear-gradient(180deg, #19161C 0%, rgba(25, 22, 28, 0) 100%)",
           }}
         >
           <div className="row">
             <div className="col-12 col-lg-6">
               <DevelopersDocumentItem
-                title={t("developers.documents.solana-docs.title")}
-                description={t("developers.documents.solana-docs.description")}
+                title={developers.documents.solana-docs.title}
+                description={developers.documents.solana-docs.description}
                 url="/docs"
                 newTab={false}
               />
             </div>
             <div className="col-12 col-lg-6 mt-10 mt-lg-0">
               <DevelopersDocumentItem
-                title={t("developers.documents.anchor-docs.title")}
-                description={t("developers.documents.anchor-docs.description")}
+                title={developers.documents.anchor-docs.title}
+                description={developers.documents.anchor-docs.description}
                 url="https://www.anchor-lang.com/"
                 newTab={true}
               />

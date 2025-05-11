@@ -3,7 +3,6 @@ import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import classNames from "classnames";
 import styles from "./PossibleInnovations.module.scss";
-import { useTranslation } from "next-i18next";
 import { AccordionContext } from "react-bootstrap";
 import PossibleAnimatedIcons from "./PossibleAnimatedIcons";
 
@@ -22,10 +21,8 @@ const AccordionButton = ({ eventKey, onToggle, children }) => {
 
 const InnovationAccordion = forwardRef(
   ({ title, image, imageAlt, animatedIcon, children, index, color }, ref) => {
-    const accordionContext = useContext(AccordionContext);
     const isExpanded =
       accordionContext?.activeEventKey?.includes(index) || false;
-    const { t } = useTranslation();
 
     return (
       <div ref={ref}>
@@ -82,7 +79,7 @@ const InnovationAccordion = forwardRef(
                       className={"copy text-decoration-underline mb-0"}
                       style={{ WebkitFontSmoothing: "antialiased" }}
                     >
-                      {t("possible.readMore")}
+                      {possible.readMore}
                     </p>
                   </AccordionButton>
                 </>

@@ -725,7 +725,6 @@ export const rampData = [
   {
     id: "transfero",
     fields: {
-      RampName: "Transfero",
       WebsiteUrl: "https://transfero.com/",
       RampLogo: transfero,
       PaymentRails: ["pix"],
@@ -1233,7 +1232,6 @@ export const rampData = [
   {
     id: "transak",
     fields: {
-      RampName: "Transak",
       WebsiteUrl: "https://transak.com/",
       RampLogo: transak,
       PaymentRails: [
@@ -1957,7 +1955,6 @@ export const rampData = [
   {
     id: "transfi",
     fields: {
-      RampName: "TransFi",
       WebsiteUrl: "https://www.transfi.com/",
       RampLogo: transfi,
       PaymentRails: ["bank-transfer", "fpx", "mastercard", "vietqr", "visa"],
@@ -2216,7 +2213,6 @@ export const paymentRails = [
   { id: "apple-pay", fields: { Name: "Apple Pay" } },
   { id: "astropay", fields: { Name: "AstroPay" } },
   { id: "banco-do-brasil", fields: { Name: "Banco Do Brasil" } },
-  { id: "bank-transfer", fields: { Name: "Bank Transfer" } },
   { id: "boleto", fields: { Name: "Boleto" } },
   { id: "cards-international", fields: { Name: "Cards (International)" } },
   { id: "credit", fields: { Name: "Credit" } },

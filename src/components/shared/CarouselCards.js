@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "react-feather";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 import useIsomorphicLayoutEffect from "../../hooks/useIsomorphicLayoutEffect";
 
 const Direction = {
@@ -69,14 +68,12 @@ const StyledCarouselCards = styled.div`
 
   .overlay-left {
     left: 0;
-    background: linear-gradient(to left, transparent, #000000 80%);
     border: none;
     left: -20px;
   }
 
   .overlay-right {
     right: 0;
-    background: linear-gradient(to right, transparent, #000000 80%);
     border: none;
     right: -20px;
   }
@@ -105,7 +102,6 @@ const StyledCarouselCards = styled.div`
  */
 const determineArrowPosition = (container, content) => {
   const contentWidth = content.scrollWidth;
-  const contentMetrics = content.getBoundingClientRect();
   const contentUIWidth = Math.floor(contentMetrics.width);
 
   const scrollLeft = container.scrollLeft;
@@ -139,7 +135,6 @@ const CarouselCards = ({ children }) => {
   const [dataPos, setDataPos] = useState("none");
   const [scroll, setScroll] = useState(Direction.NONE);
 
-  useIsomorphicLayoutEffect(() => {
     if (typeof window !== "undefined" && wrapperRef.current) {
       const onScroll = () => {
         window.requestAnimationFrame(() =>
@@ -154,7 +149,6 @@ const CarouselCards = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
     if (typeof window !== "undefined" && wrapperRef.current) {
       setDataPos(
         determineArrowPosition(wrapperRef.current, contentRef.current),
@@ -213,26 +207,21 @@ const CarouselCards = ({ children }) => {
   const handleScroll = useCallback(
     (direction) => {
       if (direction === Direction.LEFT) {
-        scrollToLeft();
       }
 
       if (direction === Direction.RIGHT) {
-        scrollToRight();
       }
     },
     [scrollToLeft, scrollToRight],
   );
 
-  useEffect(() => {
     if (scroll !== 0 && !timerIdRef?.current) {
       timerIdRef.current = setInterval(() => handleScroll(scroll), 80);
     } else {
       timerIdRef.current = null;
-      clearTimeout(timerIdRef?.current);
     }
 
     return () => {
-      clearTimeout(timerIdRef?.current);
     };
   }, [handleScroll, scroll]);
 
@@ -270,7 +259,6 @@ const CarouselCards = ({ children }) => {
 
   const onTouchEnd = useCallback(
     (e) => {
-      e.preventDefault();
       stopScroll();
     },
     [stopScroll],
@@ -281,16 +269,13 @@ const CarouselCards = ({ children }) => {
   // #region (Single) Click handlers
 
   const onLeftBtnClick = useCallback(() => {
-    scrollToLeft();
   }, [scrollToLeft]);
 
   const onRightBtnClick = useCallback(() => {
-    scrollToRight();
   }, [scrollToRight]);
 
   // #endregion
 
-  const { t } = useTranslation();
 
   return (
     <StyledCarouselCards className="py-2" data-overflowing={dataPos || "none"}>
@@ -301,7 +286,7 @@ const CarouselCards = ({ children }) => {
       </div>
       <button
         className="overlay-left justify-content-center align-items-center btn btn-link text-white"
-        aria-label={t("developers.carousel.prev")}
+        aria-label={developers.carousel.prev}
         onMouseDown={onLeftBtnMouseDown}
         onMouseUp={stopScroll}
         onMouseLeave={stopScroll}
@@ -313,7 +298,7 @@ const CarouselCards = ({ children }) => {
       </button>
       <button
         className="overlay-right justify-content-center align-items-center btn btn-link text-white"
-        aria-label={t("developers.nav.next")}
+        aria-label={developers.nav.next}
         onMouseDown={onRightBtnMouseDown}
         onMouseUp={stopScroll}
         onMouseLeave={stopScroll}

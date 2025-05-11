@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 import Link from "../../utils/Link";
 
 import { extractTags } from "@/lib/builder/api";
@@ -45,11 +44,10 @@ const PostTopics = ({ posts }) => {
       return extractTags(posts, 3);
     } else return [];
   }, [posts]);
-  const { t } = useTranslation();
 
   return (
     <StyledPostTopics>
-      <h5 className="mb-6">{t("blog.latestTopics")}</h5>
+      <h5 className="mb-6">{blog.latestTopics}</h5>
       <section className="post-topics">
         {topics.map((t) => {
           return (

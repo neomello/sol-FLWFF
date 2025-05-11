@@ -1,98 +1,41 @@
 import Head from "next/head";
-import { NextSeo } from "next-seo";
-import { config } from "@/config";
-import { usePathname, useLocale } from "@/i18n/routing";
-import MetaLinks from "./MetaLinks";
-import { prependSiteUrl } from "@/utils/general";
+import { usePathname } from "next/navigation";
 
 type HTMLHeadProps = {
-  title: string;
+  title?: string;
   description?: string;
-  meta?: Array<any>;
+  image?: string;
   addDefaultMeta?: boolean;
-  socialShare?: string;
-  twitterShare?: string;
 };
 
-/**
- * Adds metadata, classNames, scripts and others to head & body via Helmet.
- *
- * @param {string}    description               The meta description.
- * @param {Object}    meta                      Custom meta-tag object (default: []).
- * @param {string}    title                     The site title.
- * @param {boolean}   addDefaultMeta            If the default meta-tags should be added if "meta" present (default: true).
- * @param {string}    socialShare               URl to social share image (default: https://solana.com/social/solana.jpg).
- * @returns {JSX.Element}
- * @constructor
- */
 export default function HTMLHead({
-  description = "",
-  meta = [],
-  title,
+  title = "Solana",
+  description = "Solana is a high-performance blockchain supporting builders around the world creating crypto apps that scale today.",
+  image = "/img/social/solana-social.jpg",
   addDefaultMeta = true,
-  socialShare,
 }: HTMLHeadProps) {
-  const locale = useLocale();
-  const asPath = usePathname();
-  const asPathNoRedirect = asPath === "/" ? "" : asPath;
-  const localeNoEnDefault = locale === "en" ? "" : "/" + locale;
-  const metaDescription = description || config.siteMetadata.description;
-  const metaSocialShare = prependSiteUrl(
-    socialShare || config.siteMetadata.socialShare,
-  );
-
-  if (addDefaultMeta) {
-    meta.unshift(
-      {
-        name: `description`,
-        content: metaDescription,
-      },
-      {
-        property: `og:description`,
-        content: metaDescription,
-      },
-      {
-        property: `og:image`,
-        content: metaSocialShare,
-      },
-      {
-        property: `og:type`,
-        content: `website`,
-      },
-      {
-        name: `twitter:card`,
-        content: `summary_large_image`,
-      },
-      {
-        name: `twitter:creator`,
-        content: config.siteMetadata.author,
-      },
-    );
-  }
-
-  // always add these metatags to the start of the array
-  meta.unshift({
-    name: "language",
-    content: locale,
-  });
+  const pathname = usePathname();
+  const url = `https://solana.com${pathname}`;
 
   return (
-    <>
-      <NextSeo
-        {...(addDefaultMeta && { title })}
-        titleTemplate={`%s | ${config.siteMetadata.title}`}
-        additionalMetaTags={meta}
-      />
-
-      {/* @ts-ignore */}
-      <Head title={{ ...(addDefaultMeta && { title }) }}>
-        {addDefaultMeta && (
-          <MetaLinks
-            localeNoEnDefault={localeNoEnDefault}
-            asPathNoRedirect={asPathNoRedirect}
-          />
-        )}
-      </Head>
-    </>
+    <Head>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      <meta property="og:url" content={url} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
+      {addDefaultMeta && (
+        <>
+          <link rel="icon" href="/favicon.ico" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta charSet="utf-8" />
+        </>
+      )}
+    </Head>
   );
 }

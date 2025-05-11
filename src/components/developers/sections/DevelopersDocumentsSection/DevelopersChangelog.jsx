@@ -1,11 +1,9 @@
 import { ArrowRightCircle } from "react-feather";
 import { truncateTextByWord } from "../../../../utils/stringUtils";
 import Button from "../../../shared/Button";
-import { useTranslation } from "next-i18next";
 import styles from "./DevelopersChangelog.module.scss";
 
 export default function DevelopersChangelog({ latestVideo }) {
-  const { t } = useTranslation();
   if (!latestVideo) {
     return null;
   }
@@ -18,7 +16,7 @@ export default function DevelopersChangelog({ latestVideo }) {
           (
             latestVideo.snippet?.description ||
             "Latest changes for the Solana blockchain"
-          ).split("---")[0],
+          ).spli---[0],
           160,
           "...",
         )}
@@ -28,7 +26,7 @@ export default function DevelopersChangelog({ latestVideo }) {
         newTab
         className={styles["changelog__cta"]}
       >
-        <span>{t("developers.changelog.cta")}</span>
+        <span>{developers.changelog.cta}</span>
         <ArrowRightCircle strokeWidth={1} />
       </Button>
     </div>

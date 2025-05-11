@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { Hero } from "@solana-foundation/solana-lib";
 import onOffRampHeroImage from "../../../assets/onofframp/on-off-ramp-hero-img.png";
-import { useTranslation } from "next-i18next";
 import WalletFilters from "./WalletFilters";
 import { walletFiltersData } from "../../data/wallets/wallet-filters";
 
 const WalletsLayout = ({ walletData }) => {
-  const { t } = useTranslation();
 
   const [filters, setFilters] = useState({});
   const [wallets, setWallets] = useState(walletData);
@@ -27,10 +25,10 @@ const WalletsLayout = ({ walletData }) => {
   return (
     <>
       <Hero
-        eyebrow={t("wallets.hero.eyebrow")}
-        headline={t("wallets.hero.headline")}
+        eyebrow={wallets.hero.eyebrow}
+        headline={wallets.hero.headline}
         headingAs="h1"
-        body={`<p>${t("wallets.hero.body")}</p>`}
+        body={`<p>${wallets.hero.body}</p>`}
         image={onOffRampHeroImage}
         centered={false}
         newsletter={false}

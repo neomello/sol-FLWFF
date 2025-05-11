@@ -1,20 +1,15 @@
 import Loader from "../../../public/src/img/icons/Loader.inline.svg";
 import RoundedDepthCard from "../shared/RoundedDepthCard";
 import { FormattedNumber } from "../SolFormattedMessage";
-import { useTranslation } from "next-i18next";
 import {
   PERF_UPDATE_SEC,
   SAMPLE_HISTORY_HOURS,
-  useTransactionStats,
-} from "../../hooks/useTransactionStats";
 
 const ValidatorsCards = ({ visible }) => {
-  const { validators, availableStats, superminority } = useTransactionStats({
     visible,
     performanceUpdateSeconds: PERF_UPDATE_SEC,
     sampleHistoryHours: SAMPLE_HISTORY_HOURS,
   });
-  const { t } = useTranslation();
 
   return (
     <section className="cards mt-4">
@@ -30,7 +25,7 @@ const ValidatorsCards = ({ visible }) => {
                 )}
               </div>
               <p className="text-black m-0">
-                {t("validators.cards.number-text")}
+                {validators.cards.number-text}
               </p>
             </RoundedDepthCard>
           </div>
@@ -44,7 +39,7 @@ const ValidatorsCards = ({ visible }) => {
                 )}
               </div>
               <p className="text-black m-0">
-                {t("validators.cards.nakamoto-text")}
+                {validators.cards.nakamoto-text}
               </p>
             </RoundedDepthCard>
           </div>

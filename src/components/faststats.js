@@ -7,12 +7,10 @@ import CountUp from "react-countup";
 // //   undefined
 // // );
 
-const AnimatedTransactionCount = ({ info, perfUpdateSec }) => {
   const txCountRef = useRef(0);
   const countUpRef = useRef({ start: 0, period: 0, lastUpdate: 0 });
   const countUp = countUpRef.current;
 
-  const { totalTransactionCount: txCount, avgTPS } = info;
 
   // Track last tx count to reset count up options
   if (txCount !== txCountRef.current) {
@@ -49,4 +47,3 @@ const AnimatedTransactionCount = ({ info, perfUpdateSec }) => {
   );
 };
 
-export default AnimatedTransactionCount;

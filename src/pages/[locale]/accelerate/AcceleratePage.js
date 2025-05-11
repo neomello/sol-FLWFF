@@ -51,13 +51,11 @@ const useCounterAnimation = (end, duration = 2000, startDelay = 0) => {
   const [hasStarted, setHasStarted] = useState(false);
   const countRef = useRef(null);
 
-  useEffect(() => {
     // Check if on mobile
     const isMobile = window.innerWidth < 768;
 
     // If on mobile, just set to the end value without animation
     if (isMobile) {
-      setCount(end);
       return;
     }
 
@@ -65,18 +63,15 @@ const useCounterAnimation = (end, duration = 2000, startDelay = 0) => {
       (entries) => {
         if (entries[0].isIntersecting && !hasStarted) {
           setHasStarted(true);
-          setTimeout(() => {
             let startTime;
             const animateCount = (timestamp) => {
               if (!startTime) startTime = timestamp;
               const progress = Math.min((timestamp - startTime) / duration, 1);
               const currentCount = Math.floor(progress * end);
-              setCount(currentCount);
 
               if (progress < 1) {
                 requestAnimationFrame(animateCount);
               } else {
-                setCount(end);
               }
             };
             requestAnimationFrame(animateCount);
@@ -478,7 +473,6 @@ export default function AcceleratePage() {
   }, [setShowVideoLightbox]);
 
   // Close lightbox on ESC key press
-  useEffect(() => {
     const handleEscKey = (event) => {
       if (event.key === "Escape") {
         if (showVideoLightbox) {
@@ -494,7 +488,6 @@ export default function AcceleratePage() {
   }, [showVideoLightbox, closeVideoLightbox]);
 
   // Add scroll event listener
-  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       if (scrollPosition > 50) {
@@ -565,8 +558,8 @@ export default function AcceleratePage() {
             /* ABC Diatype font-face declaration */
             @font-face {
               font-family: 'ABC Diatype';
-              src: url('/fonts/ABCDiatype-Regular.woff2') format('woff2'),
-                   url('/fonts/ABCDiatype-Regular.woff') format('woff');
+              src: url('/fonts/ABCDiatype-Regular.woff2') formawoff2,
+                   url('/fonts/ABCDiatype-Regular.woff') formawoff;
               font-weight: normal;
               font-style: normal;
               font-display: swap;
@@ -574,8 +567,8 @@ export default function AcceleratePage() {
             
             @font-face {
               font-family: 'ABC Diatype';
-              src: url('/fonts/ABCDiatype-Medium.woff2') format('woff2'),
-                   url('/fonts/ABCDiatype-Medium.woff') format('woff');
+              src: url('/fonts/ABCDiatype-Medium.woff2') formawoff2,
+                   url('/fonts/ABCDiatype-Medium.woff') formawoff;
               font-weight: 500;
               font-style: normal;
               font-display: swap;

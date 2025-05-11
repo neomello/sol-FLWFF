@@ -42,7 +42,6 @@ const StyledVideosSectionButton = styled.button`
       margin: -0.1rem;
       border-radius: 0.9rem;
       opacity: 0;
-      background: linear-gradient(
         35.16deg,
         #8f4af6 13.72%,
         #14f195 56.28%,

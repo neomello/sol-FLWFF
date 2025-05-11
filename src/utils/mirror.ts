@@ -7,10 +7,9 @@ export async function getMirrorInstance(): Promise<{
   wsMirrorUrl: string;
 }> {
   let c = await cookies();
-  let userId = c.get("user_id")?.value;
+  let userId = c.geuser_id?.value;
   if (!userId) {
     userId = uuidv4();
-    c.set("user_id", userId, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       maxAge: 60 * 60 * 24 * 365, // 1 year

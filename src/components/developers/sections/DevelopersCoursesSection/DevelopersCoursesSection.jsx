@@ -1,5 +1,4 @@
 // import { memo } from "react";
-import { useTranslation } from "next-i18next";
 
 import CarouselCards from "@/components/shared/CarouselCards";
 import DevelopersCourseItem from "./DevelopersCourseItem";
@@ -18,7 +17,6 @@ import shapeImg5 from "../../../../../assets/developers/courses/shape-5.png";
 import shapeImg6 from "../../../../../assets/developers/courses/shape-6.png";
 
 export default function DevelopersCoursesSection(/* { courses } */) {
-  const { t } = useTranslation();
 
   const courses = (
     <>
@@ -67,10 +65,10 @@ export default function DevelopersCoursesSection(/* { courses } */) {
         <div className="d-md-flex align-items-center justify-content-between mb-6">
           <div>
             <DevelopersSectionTitle titleId="developers.courses.title" />
-            <p className="subdued">{t("developers.courses.description")}</p>
+            <p className="subdued">{developers.courses.description}</p>
           </div>
           {/* <Button className="text-nowrap ms-md-4" to="/developers/courses">
-            {t("developers.documents.view-all")}
+            {developers.documents.view-all}
           </Button> */}
         </div>
         <div className={styles["courses-section__carousel-container"]}>
@@ -87,8 +85,8 @@ export default function DevelopersCoursesSection(/* { courses } */) {
         </div>
         <div className={styles["courses-section__grid-container"]}>
           <DevelopersCourseFeaturedItem
-            title={t("developers.courses.featured-item.title")}
-            description={t("developers.courses.featured-item.description")}
+            title={developers.courses.featured-item.title}
+            description={developers.courses.featured-item.description}
             courseCreator={"Unboxed"}
             url="/developers/courses"
             image={solanaDevCourseImg}
@@ -103,7 +101,6 @@ export default function DevelopersCoursesSection(/* { courses } */) {
 }
 
 // const CourseCards = memo(function CourseCards({ courses }) {
-//   // const { t } = useTranslation();
 
 //   return (
 //     <>

@@ -1,43 +1,35 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import useIsomorphicLayoutEffect from "./useIsomorphicLayoutEffect";
 
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable react-hooks/exhaustive-deps */
 export function useStateOrLocalStorage(
   key: string | undefined,
-  initialState: string,
-): [string, (_: string) => void] {
-  if (!key) {
-    return React.useState(initialState);
-  }
+  initialState: string
+): [string, (val: string) => void] {
+  const [state, setState] = useState(initialState);
 
-  const [state, setState] = React.useState(initialState);
-
-  React.useLayoutEffect(() => {
+  useEffect(() => {
     if (!key) return;
 
     const storedValue = window.localStorage.getItem(key);
-    if (storedValue != null) {
-      setState(storedValue);
-    }
+    if (storedValue != null) setState(storedValue);
 
     const onStorageChange = (e: StorageEvent) => {
       if (e.key === key) {
-        const storedValue = window.localStorage.getItem(key);
-        setState(storedValue || initialState);
+        const updated = window.localStorage.getItem(key);
+        setState(updated ?? initialState);
       }
     };
+
     window.addEventListener("storage", onStorageChange);
     return () => window.removeEventListener("storage", onStorageChange);
-  }, [key]);
+  }, [key, initialState]);
 
-  const setStorage = !key
-    ? setState
-    : (value: string) => {
-        if (typeof window !== "undefined") {
-          window.localStorage.setItem(key, value);
-          window.dispatchEvent(new StorageEvent("storage", { key }));
-        }
-      };
+  const setStorage = (val: string) => {
+    setState(val);
+    if (!key || typeof window === "undefined") return;
+    window.localStorage.setItem(key, val);
+    // emitir "fake" event só se quiser sync entre tabs
+  };
 
   return [state, setStorage];
 }

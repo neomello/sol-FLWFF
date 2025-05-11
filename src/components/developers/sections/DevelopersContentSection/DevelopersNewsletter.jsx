@@ -1,19 +1,17 @@
-import { useTranslation } from "next-i18next";
 import EmailSubscribeForm from "../../../shared/EmailSubscribeForm";
 import DevelopersContent from "./DevelopersContent";
 
 import styles from "./DevelopersNewsletter.module.scss";
 
 export default function DevelopersNewsletter() {
-  const { t } = useTranslation();
   return (
     <DevelopersContent.Container>
       <div>
         <DevelopersContent.Title>
-          {t("developers.content.newsletter.title")}
+          {developers.content.newsletter.title}
         </DevelopersContent.Title>
         <DevelopersContent.Description>
-          {t("developers.content.newsletter.description")}
+          {developers.content.newsletter.description}
         </DevelopersContent.Description>
       </div>
       <div className={styles["signup-form"]}>

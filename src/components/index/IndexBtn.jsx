@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const StyledIndexBtn = styled(Button)`
   &.btn {
-    background: linear-gradient(
       101.81deg,
       #f087ff -4.52%,
       #6e1fce 54.5%,

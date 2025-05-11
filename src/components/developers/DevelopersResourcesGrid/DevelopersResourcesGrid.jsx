@@ -34,7 +34,6 @@ function FilteredGrid({ items }) {
     return items.filter((item) => {
       let matchesFilters = true;
 
-      const filterKeys = new Set();
       for (const [key] of searchParams.entries()) {
         filterKeys.add(key);
       }

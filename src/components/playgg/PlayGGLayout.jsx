@@ -4,7 +4,6 @@ import TypeformModal from "../shared/TypeformModal";
 import Footer from "../Footer";
 import styles from "./PlayGGLayout.module.scss";
 
-export const ModalContext = createContext({});
 
 const LayoutWrapper = styled.div`
   --color-playgg-black: #111;

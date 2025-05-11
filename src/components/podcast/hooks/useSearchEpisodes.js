@@ -7,7 +7,6 @@ import { usePodcastPlayerContext } from "../PodcastStickyPlayer";
 
 export default function useSearchEpisodes() {
   const { episodes: initialEpisodes, hasMore: initialHasMore } =
-    usePodcastPlayerContext();
 
   const [enabled, setEnabled] = useState(false);
   const [page, setPage] = useState(0);

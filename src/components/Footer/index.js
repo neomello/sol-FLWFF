@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslation } from "next-i18next";
 import styles from "./Footer.module.scss";
 import LanguageSelector from "../LanguageSelector";
 import Divider from "../shared/Divider";
@@ -14,11 +13,9 @@ import TelegramIcon from "../../../public/src/img/footer/telegram.inline.svg";
 import Link, { InlineLink } from "../../utils/Link";
 
 const CopyrightRow = () => {
-  const { t } = useTranslation();
 
   return (
     <span className={styles["solFooter__copyright"]}>
-      {t("footer.copyright", {
         currentYear: new Date().getFullYear(),
       })}
     </span>
@@ -26,7 +23,6 @@ const CopyrightRow = () => {
 };
 
 const Footer = () => {
-  const { t } = useTranslation();
 
   return (
     <div className={styles["solFooter"]}>
@@ -34,7 +30,7 @@ const Footer = () => {
         <div className="d-md-flex justify-content-md-between">
           <div className="d-flex flex-column align-items-center align-items-md-start">
             <p className={styles["solFooter__foundation"]}>
-              {t("footer.foundation")}
+              {footer.foundation}
             </p>
             <div className={styles["solFooter__foundation-logo"]}>
               <Link to="/" aria-label="Solana Foundation">
@@ -69,33 +65,33 @@ const Footer = () => {
             <div className="row my-6 my-md-0">
               <div className="col pe-lg-8">
                 <div className="h6 smaller text-uppercase text-nowrap">
-                  {t("footer.solana.heading")}
+                  {footer.solana.heading}
                 </div>
                 <ul className="list-unstyled m-0">
                   <li>
                     <InlineLink to="https://solana.org/grants">
-                      {t("footer.solana.grants")}
+                      {footer.solana.grants}
                     </InlineLink>
                   </li>
                   <li>
                     <InlineLink to="https://break.solana.com/">
-                      {t("footer.solana.break")}
+                      {footer.solana.break}
                     </InlineLink>
                   </li>
                   <li>
-                    <Link to="/branding">{t("footer.solana.media")}</Link>
+                    <Link to="/branding">{footer.solana.media}</Link>
                   </li>
                   <li>
                     <InlineLink to="https://jobs.solana.com/">
-                      {t("footer.solana.careers")}
+                      {footer.solana.careers}
                     </InlineLink>
                   </li>
                   <li>
-                    <Link to="/tos">{t("footer.solana.disclaimer")}</Link>
+                    <Link to="/tos">{footer.solana.disclaimer}</Link>
                   </li>
                   <li>
                     <Link to="/privacy-policy">
-                      {t("footer.solana.privacy-policy")}
+                      {footer.solana.privacy-policy}
                     </Link>
                   </li>
                 </ul>
@@ -104,15 +100,15 @@ const Footer = () => {
                 <div className="row flex-md-nowrap h-100 flex-column flex-md-row">
                   <div className="col pe-lg-8">
                     <div className="h6 smaller text-uppercase text-nowrap">
-                      {t("footer.get-connected.heading")}
+                      {footer.get-connected.heading}
                     </div>
                     <ul className="list-unstyled m-0">
                       <li>
-                        <Link to="/news">{t("footer.get-connected.blog")}</Link>
+                        <Link to="/news">{footer.get-connected.blog}</Link>
                       </li>
                       <li>
                         <Link to="/newsletter">
-                          {t("footer.get-connected.newsletter")}
+                          {footer.get-connected.newsletter}
                         </Link>
                       </li>
                     </ul>

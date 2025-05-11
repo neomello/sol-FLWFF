@@ -6,12 +6,10 @@ describe("fetcher", () => {
   });
 
   describe("fetcher", () => {
-    it("should fetch page", async () => {
       const url = `/api`;
 
       const response = await fetcher(url);
 
-      expect(response.success).toBe(true);
     });
   });
 });

@@ -6,7 +6,7 @@ import styles from "./DevelopersResources.module.scss";
 import DevelopersResourcesGrid from "../DevelopersResourcesGrid/DevelopersResourcesGrid";
 
 const DevelopersResourcesFilters = dynamic(
-  () => import("../DevelopersResourcesFilters/DevelopersResourcesFilters"),
+  () => impor../DevelopersResourcesFilters/DevelopersResourcesFilters,
   {
     ssr: false,
   },
@@ -80,20 +80,15 @@ export default memo(function DevelopersResources({ items, title = "" }) {
 
     // deduplicate all filters
     filters.difficulty.items = Array.from(
-      new Set(filters.difficulty.items.map((item) => item.toLowerCase())),
     );
     filters.category.items = Array.from(
-      new Set(filters.category.items.map((item) => item.toLowerCase())),
     );
     filters.tags.items = Array.from(
-      new Set(filters.tags.items.map((item) => item.toLowerCase())),
     );
     filters.labels.items = Array.from(
-      new Set(filters.labels.items.map((item) => item.toLowerCase())),
     );
 
     // force sort all filters to the same, always
-    for (const key in filters) filters[key].items.sort();
 
     return filters;
   }, [items]);

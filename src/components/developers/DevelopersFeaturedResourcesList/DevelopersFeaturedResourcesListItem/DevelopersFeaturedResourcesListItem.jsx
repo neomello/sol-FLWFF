@@ -1,14 +1,11 @@
 import { memo } from "react";
-import { useTranslation } from "next-i18next";
 import styles from "./DevelopersFeaturedResourcesListItem.module.scss";
 import Button from "@/components/shared/Button";
 import { Link, InlineLink } from "@/components/shared/Link";
 
-const Content = memo(function Content({
   item,
   translationTag = "featured-resources-list",
 }) {
-  const { t } = useTranslation("common");
   return (
     <>
       <span
@@ -22,7 +19,6 @@ const Content = memo(function Content({
         <span
           className={styles["developers-featured-resources-list-item__cta"]}
         >
-          <Button>{t(`developers.${translationTag}.start`)}</Button>
         </span>
       </span>
       <p className={styles["developers-featured-resources-list-item__desc"]}>

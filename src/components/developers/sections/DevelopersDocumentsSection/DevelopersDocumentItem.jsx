@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { ArrowUpRight } from "react-feather";
 import Button from "../../../shared/Button";
-import { useTranslation } from "next-i18next";
 import styles from "./DevelopersDocumentItem.module.scss";
 
 export default function DevelopersDocumentItem({
@@ -10,7 +9,6 @@ export default function DevelopersDocumentItem({
   url,
   newTab = true,
 }) {
-  const { t } = useTranslation();
 
   return (
     <div className={styles["document-item"]}>
@@ -25,9 +23,9 @@ export default function DevelopersDocumentItem({
           to={url}
           newTab={newTab}
           className={styles["document-item__cta"]}
-          aria-label={t("developers.documents.view-all")}
+          aria-label={developers.documents.view-all}
         >
-          <span>{t("developers.documents.view-all")}</span>
+          <span>{developers.documents.view-all}</span>
           <ArrowUpRight strokeWidth={1} />
         </Button>
       </div>

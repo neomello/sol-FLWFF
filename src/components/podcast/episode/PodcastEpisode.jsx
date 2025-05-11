@@ -10,7 +10,6 @@ import {
 import Divider from "../../shared/Divider";
 import FormattedDate from "../../shared/FormattedDate";
 import { InlineLink } from "../../shared/Link";
-import { useTranslation } from "next-i18next";
 import PodcastSubscribeDialog from "../PodcastSubscribeDialog";
 
 import solanaPodcastLogo from "../../../../assets/podcast/solana-podcast-logo.jpeg";
@@ -25,8 +24,6 @@ export default function PodcastEpisode({ episode }) {
     [],
   );
 
-  const minutes = (~~(episode.duration / 60)).toString().padStart(2, "0");
-  const seconds = (episode.duration % 60).toString().padStart(2, "0");
   const duration = `${minutes}:${seconds}`;
 
   const authors = useMemo(() => {
@@ -35,7 +32,6 @@ export default function PodcastEpisode({ episode }) {
       ?.join(", ");
   }, [episode]);
 
-  const { t } = useTranslation();
 
   return (
     <div className={classNames("d-flex flex-column", styles["episode"])}>
@@ -56,7 +52,7 @@ export default function PodcastEpisode({ episode }) {
       <div className={styles["episode__content"]}>
         <div className={styles["episode__content--links"]}>
           <InlineLink href={`https://recast.simplecast.com/${episode.id}`}>
-            {t("podcast.episode.recast")}
+            {podcast.episode.recast}
             <RecastIcon size={16} color="#fff" />
           </InlineLink>
           <a
@@ -65,12 +61,12 @@ export default function PodcastEpisode({ episode }) {
             onClick={onSubscribeClick}
             role="button"
           >
-            {t("podcast.episode.subscribe")}
+            {podcast.episode.subscribe}
             <SubscribeIcon size={16} color="#fff" />
           </a>
           {episode.enclosure_url && (
             <InlineLink href={episode.enclosure_url}>
-              {t("podcast.episode.download")}
+              {podcast.episode.download}
               <DownloadIcon size={16} color="#fff" />
             </InlineLink>
           )}
@@ -79,7 +75,7 @@ export default function PodcastEpisode({ episode }) {
         <div className={styles["episode__content--details"]}>
           <div className="mb-4">
             <h2 className={styles["episode__content--details__title"]}>
-              {t("podcast.episode.summary")}
+              {podcast.episode.summary}
             </h2>
             <p className={styles["episode__content--details__text"]}>
               {episode.description}
@@ -88,7 +84,7 @@ export default function PodcastEpisode({ episode }) {
 
           <div className="mb-4">
             <h2 className={styles["episode__content--details__title"]}>
-              {t("podcast.episode.notes")}
+              {podcast.episode.notes}
             </h2>
             <div
               className={styles["episode__content--details__text"]}
@@ -100,7 +96,7 @@ export default function PodcastEpisode({ episode }) {
               <Divider />
               <p className={styles["episode__content--details__contributors"]}>
                 <span className="text-uppercase me-4">
-                  {t("podcast.episode.contributors")}
+                  {podcast.episode.contributors}
                 </span>
                 <span className="subdued">{authors}</span>
               </p>

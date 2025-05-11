@@ -1,9 +1,7 @@
 import { useRouter } from "@/hooks/useRouter";
 import { useEffect, useMemo, useState } from "react";
 
-export const formatNumber = (locale, value, options) => {
   try {
-    return Intl.NumberFormat(locale, options).format(value);
   } catch (error) {
     console.error(error);
     return value;
@@ -23,7 +21,6 @@ const humanFriendlyNumbers = {
 /**
  * Format a number down and adds the above extensions.
  *
- * @param {string}                locale
  * @param {number}                value
  * @param {number}                digits          How many digits to display after the floating point, defaults to 1.
  * @param {number}                startDividing   When to start dividing, default to 1e4, divides by 1e3.
@@ -31,7 +28,6 @@ const humanFriendlyNumbers = {
  * @return {`${*}${*}`|`${*}${*}`}
  */
 export const formatNumberHumanFriendly = (
-  locale,
   value,
   digits = 1,
   startDividing = 1e4,
@@ -68,31 +64,25 @@ export const formatNumberHumanFriendly = (
   }
   const dividedDown = (value / dividend).toFixed(digits);
   // console.log(value, dividedDown, dividend);
-  return `${formatNumber(locale, dividedDown, options)}${
     humanFriendlyNumbers[dividend]
   }`;
 };
 
 export function FormattedNumber({ value, ...options }) {
-  const { locale } = useRouter();
 
   const formatted = useMemo(() => {
     try {
-      return Intl.NumberFormat(locale, options).format(value);
     } catch (error) {
       console.error(error);
       return value;
     }
-  }, [locale, value, options]);
 
   return <>{formatted}</>;
 }
 
 export function FormattedDate({ value, ...options }) {
-  const { locale } = useRouter();
   const [date, setDate] = useState(null);
 
-  useEffect(() => {
     setDate(value);
   }, [value]);
 
@@ -102,12 +92,10 @@ export function FormattedDate({ value, ...options }) {
     }
 
     try {
-      return Intl.DateTimeFormat(locale, options).format(date);
     } catch (error) {
       console.error(error);
       return date;
     }
-  }, [locale, date, options]);
 
   return <>{formatted}</>;
 }

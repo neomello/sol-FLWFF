@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
 import { ArrowRightCircle } from "react-feather";
 import CarouselCards from "../../../shared/CarouselCards";
 import Link from "../../../shared/Link";
@@ -39,18 +38,16 @@ function PreviousHackathonCard({ date, title, description, to, image }) {
 }
 
 export default function HackathonPreviousHackathonsSection() {
-  const { t } = useTranslation();
   return (
     <section className="mt-12">
       <div className="container">
         <h2 className="text-center">
-          {t("hackathon.previousHackathons.title")}
+          {hackathon.previousHackathons.title}
         </h2>
         <div className="mt-8">
           <CarouselCards>
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.renaissance.title")}
-              description={t(
+              title={hackathon.previousHackathons.renaissance.title}
                 "hackathon.previousHackathons.renaissance.description",
               )}
               date="May 2024"
@@ -58,8 +55,7 @@ export default function HackathonPreviousHackathonsSection() {
               image={renaissanceImg}
             />
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.hyperdrive.title")}
-              description={t(
+              title={hackathon.previousHackathons.hyperdrive.title}
                 "hackathon.previousHackathons.hyperdrive.description",
               )}
               date="November 2023"
@@ -67,8 +63,7 @@ export default function HackathonPreviousHackathonsSection() {
               image={hyperdriveImg}
             />
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.grizzlython.title")}
-              description={t(
+              title={hackathon.previousHackathons.grizzlython.title}
                 "hackathon.previousHackathons.grizzlython.description",
               )}
               date="February 2023"
@@ -76,8 +71,7 @@ export default function HackathonPreviousHackathonsSection() {
               image={grizzlythonImg}
             />
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.summercamp.title")}
-              description={t(
+              title={hackathon.previousHackathons.summercamp.title}
                 "hackathon.previousHackathons.summercamp.description",
               )}
               date="July 2022"
@@ -85,8 +79,7 @@ export default function HackathonPreviousHackathonsSection() {
               image={summercampImg}
             />
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.riptide.title")}
-              description={t(
+              title={hackathon.previousHackathons.riptide.title}
                 "hackathon.previousHackathons.riptide.description",
               )}
               date="February 2022"
@@ -94,8 +87,7 @@ export default function HackathonPreviousHackathonsSection() {
               image={riptideImg}
             />
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.ignition.title")}
-              description={t(
+              title={hackathon.previousHackathons.ignition.title}
                 "hackathon.previousHackathons.ignition.description",
               )}
               date="September 2021"
@@ -103,22 +95,21 @@ export default function HackathonPreviousHackathonsSection() {
               image={ignitionImg}
             />
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.season.title")}
-              description={t("hackathon.previousHackathons.season.description")}
+              title={hackathon.previousHackathons.season.title}
+              description={hackathon.previousHackathons.season.description}
               date="May 2021"
               to="/news/announcing-winners-of-the-solana-season-hackathon"
               image={seasonImg}
             />
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.defi.title")}
-              description={t("hackathon.previousHackathons.defi.description")}
+              title={hackathon.previousHackathons.defi.title}
+              description={hackathon.previousHackathons.defi.description}
               date="February 2021"
               to="/news/winners-of-the-solana-x-serum-defi-hackathon"
               image={defiImg}
             />
             <PreviousHackathonCard
-              title={t("hackathon.previousHackathons.inaugural.title")}
-              description={t(
+              title={hackathon.previousHackathons.inaugural.title}
                 "hackathon.previousHackathons.inaugural.description",
               )}
               date="November 2020"

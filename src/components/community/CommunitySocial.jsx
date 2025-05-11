@@ -10,7 +10,6 @@ import Sun from "../../../public/src/img/community/socials-sun.inline.svg";
 import Mail from "../../../public/src/img/community/socials-mail.inline.svg";
 import Reddit from "../../../public/src/img/community/socials-reddit.inline.svg";
 import News from "../../../public/src/img/community/socials-news.inline.svg";
-import { useTranslation } from "next-i18next";
 
 /**
  * Display social network cards
@@ -20,7 +19,6 @@ import { useTranslation } from "next-i18next";
  * @constructor
  */
 const CommunitySocial = ({ data }) => {
-  const { t } = useTranslation();
 
   const {
     telegram = 70463,
@@ -119,8 +117,8 @@ const CommunitySocial = ({ data }) => {
   return (
     <section className="community-socials container">
       <div>
-        <h2>{t("community.socials.hero")}</h2>
-        <p className="text-white w-md-50">{t("community.socials.subheader")}</p>
+        <h2>{community.socials.hero}</h2>
+        <p className="text-white w-md-50">{community.socials.subheader}</p>
       </div>
       <div className="row community-socials-content">
         {socialAccounts.map((item) => (
@@ -128,14 +126,12 @@ const CommunitySocial = ({ data }) => {
             <a href={item.link} className="community-socials-item">
               <Badge className="bg-black fw-light">{item.category}</Badge>
               <div className="community-socials-icon">{item.renderIcon()}</div>
-              <p className="fw-bold w-100 mb-6">{t(item.nameId)}</p>
               <p className="community-socials-amount">
                 {item.membersStr ? (
                   item.membersStr
                 ) : (
                   <>
                     <FormattedNumber value={item.members} />
-                    <span> {t(item.memberStrId)}</span>
                   </>
                 )}
               </p>

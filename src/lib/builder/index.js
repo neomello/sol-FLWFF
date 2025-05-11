@@ -1,12 +1,9 @@
 import { builder } from "@builder.io/react";
 import { BUILDER_CONFIG } from "./builderConstants";
 
-builder.init(BUILDER_CONFIG.apiKey);
 builder.apiVersion = "v3";
 
-export async function getBuilderSinglePost(postSlug) {
   return builder
-    .get("article", {
       includeRefs: true,
       userAttributes: {
         urlPath: "/news/" + postSlug,
@@ -37,7 +34,6 @@ export async function getBuilderFeaturedPosts() {
 //
 export async function getBuilderSingleTag(tagSlug) {
   return builder
-    .get("entity-blog-tags", {
       query: {
         "data.slug": tagSlug,
       },

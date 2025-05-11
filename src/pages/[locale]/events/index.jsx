@@ -1,7 +1,4 @@
 import { StrictMode } from "react";
-import { Trans, useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { withLocales } from "@/i18n/routing";
 
 import Layout from "@/components/layout";
 import HTMLHead from "@/components/HTMLHead";
@@ -27,14 +24,13 @@ const EventsLandingPage = ({
   featuredEvent,
   usEvents,
 }) => {
-  const { t } = useTranslation();
 
   return (
     <StrictMode>
       <Layout>
         <HTMLHead
-          title={t("titles.events")}
-          description={t("events.description")}
+          title={titles.events}
+          description={events.description}
         />
         <div className="overflow-hidden">
           <EventsHeroSection />
@@ -44,18 +40,16 @@ const EventsLandingPage = ({
 
             {usEvents.length > 0 && (
               <div className="my-10">
-                <h2>{t("events.us.heading")}</h2>
-                <p>{t("events.us.description")}</p>
+                <h2>{events.us.heading}</h2>
+                <p>{events.us.description}</p>
                 <EventsList list={usEvents} isCompact />
               </div>
             )}
 
-            <h2>{t("events.community.heading")}</h2>
+            <h2>{events.community.heading}</h2>
             <ul>
-              <li>{t("events.community.description")}</li>
+              <li>{events.community.description}</li>
               <li>
-                <Trans
-                  i18nKey="events.community.help"
                   components={{
                     meetupLink: (
                       <InlineLink to="https://community-meetups-playbook.super.site/" />
@@ -72,7 +66,7 @@ const EventsLandingPage = ({
                 newTab
                 rel="nofollow"
               >
-                {t("commands.submit-event")}
+                {commands.submit-event}
               </Button>
               <Button
                 to="https://app.getriver.io/solana"
@@ -80,13 +74,13 @@ const EventsLandingPage = ({
                 newTab
                 rel="nofollow"
               >
-                {t("commands.host-event")}
+                {commands.host-event}
               </Button>
             </div>
             <EventsList list={communityEvents} isCompact />
             <Divider className="my-10" />
             <Button to="/events/archive" className="mt-6">
-              {t("events.archive.archive")}
+              {events.archive.archive}
             </Button>
           </div>
         </div>
@@ -95,7 +89,6 @@ const EventsLandingPage = ({
   );
 };
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   // Solana Foundation calendar
   let mainEvents = await fetchCalendarEvents("cal-J8WZ4jDbwzD9TWi", {
     period: "future",
@@ -166,12 +159,10 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      locale,
       events: JSON.parse(JSON.stringify(events)), // all events, including subevents
       communityEvents: JSON.parse(JSON.stringify(sortedCommunity)),
       usEvents: JSON.parse(JSON.stringify(usEvents)),
       featuredEvent: JSON.parse(JSON.stringify(featuredEvent)), // never a subevent
-      ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 60,
   };
@@ -179,7 +170,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   return {
-    paths: withLocales(),
     fallback: "blocking",
   };
 }

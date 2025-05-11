@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useTranslation } from "next-i18next";
 import classNames from "classnames";
 import Image from "next/legacy/image";
 import TypeformModal from "../shared/TypeformModal";
@@ -8,7 +7,6 @@ import IndexBtn from "../index/IndexBtn";
 import SolanaRing from "../../../public/src/img/ecdr/solana-ring.png";
 
 const ECDRHero = () => {
-  const { t } = useTranslation("common");
   const [showTypeformModal, setShowTypeformModal] = useState(false);
 
   return (
@@ -30,7 +28,7 @@ const ECDRHero = () => {
           </div>
           <div className={styles["ecdr-hero__ring--effect2"]} />
           <h1 className={classNames("mb-2", styles["ecdr-hero__heading"])}>
-            {t("ecdr.hero.headline")}
+            {ecdr.hero.headline}
           </h1>
           <div className="row">
             <div className="col-md-8 mx-auto">
@@ -40,10 +38,10 @@ const ECDRHero = () => {
                   styles["ecdr-hero__subHeading"],
                 )}
               >
-                {t("ecdr.hero.subheadline")}
+                {ecdr.hero.subheadline}
               </p>
               <p className={classNames("my-1", styles["ecdr-hero__note"])}>
-                {t("ecdr.hero.note")}
+                {ecdr.hero.note}
               </p>
             </div>
           </div>
@@ -59,7 +57,7 @@ const ECDRHero = () => {
               });
             }}
           >
-            {t("ecdr.hero.cta")}
+            {ecdr.hero.cta}
           </IndexBtn>
         </div>
       </div>

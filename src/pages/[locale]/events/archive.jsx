@@ -1,8 +1,5 @@
 import { uniqBy, orderBy } from "lodash";
 import { StrictMode, useState } from "react";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { withLocales } from "@/i18n/routing";
 
 import Layout from "@/components/layout";
 import HTMLHead from "@/components/HTMLHead";
@@ -15,7 +12,6 @@ import {
 } from "@/lib/events/fetchCalendarEvents";
 
 const EventsArchivePage = ({ events }) => {
-  const { t } = useTranslation();
   const [page, setPage] = useState(0);
   const TOTAL_EVENTS_PER_PAGE = 8;
 
@@ -28,8 +24,8 @@ const EventsArchivePage = ({ events }) => {
     <StrictMode>
       <Layout>
         <HTMLHead
-          title={t("events.archive.page-title")}
-          description={t("events.description")}
+          title={events.archive.page-title}
+          description={events.description}
         />
         <div className="overflow-hidden">
           <EventsHeroSection type="archive" />
@@ -50,7 +46,6 @@ const EventsArchivePage = ({ events }) => {
 };
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   // Solana Foundation calendar
   let mainEvents = await fetchCalendarEvents("cal-J8WZ4jDbwzD9TWi", {
     period: "past",
@@ -81,9 +76,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      locale,
       events: JSON.parse(JSON.stringify(unique)),
-      ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 60,
   };
@@ -91,7 +84,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   return {
-    paths: withLocales(),
     fallback: "blocking",
   };
 }

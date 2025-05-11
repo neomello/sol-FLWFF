@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 
 import InvalidMark from "../../../public/src/img/icons/RedClose.inline.svg";
 
@@ -42,12 +41,11 @@ const StyledSection = styled.section`
 `;
 
 const BrandingBannedLogos = () => {
-  const { t } = useTranslation();
 
   return (
     <StyledSection className="mt-6">
-      <div className="h6 fw-bold">{t("branding.banned.title")}</div>
-      <p className="small mt-2">{t("branding.banned.description")}</p>
+      <div className="h6 fw-bold">{branding.banned.title}</div>
+      <p className="small mt-2">{branding.banned.description}</p>
       <div className="banned-logos">
         <div style={{ background: "#9945FF" }}>
           <Image
@@ -57,7 +55,7 @@ const BrandingBannedLogos = () => {
             style={{ objectFit: "contain", padding: "1rem" }}
           />
           <InvalidMark className="invalid-mark" />
-          <p className="description">{t("branding.banned.shadow")}</p>
+          <p className="description">{branding.banned.shadow}</p>
         </div>
         <div style={{ background: "#9945FF" }}>
           <Image
@@ -67,7 +65,7 @@ const BrandingBannedLogos = () => {
             style={{ objectFit: "contain", padding: "1rem" }}
           />
           <InvalidMark className="invalid-mark" />
-          <p className="description">{t("branding.banned.outline")}</p>
+          <p className="description">{branding.banned.outline}</p>
         </div>
         <div>
           <Image
@@ -77,7 +75,7 @@ const BrandingBannedLogos = () => {
             style={{ objectFit: "contain", padding: "1rem" }}
           />
           <InvalidMark className="invalid-mark" />
-          <p className="description">{t("branding.banned.stretch")}</p>
+          <p className="description">{branding.banned.stretch}</p>
         </div>
         <div>
           <Image
@@ -87,7 +85,7 @@ const BrandingBannedLogos = () => {
             style={{ objectFit: "contain", padding: "1rem" }}
           />
           <InvalidMark className="invalid-mark" />
-          <p className="description">{t("branding.banned.lowResolution")}</p>
+          <p className="description">{branding.banned.lowResolution}</p>
         </div>
         <div>
           <Image
@@ -97,7 +95,7 @@ const BrandingBannedLogos = () => {
             style={{ objectFit: "contain", padding: "1rem" }}
           />
           <InvalidMark className="invalid-mark" />
-          <p className="description">{t("branding.banned.imagery")}</p>
+          <p className="description">{branding.banned.imagery}</p>
         </div>
         <div style={{ background: "#6D86D1" }}>
           <Image
@@ -107,7 +105,7 @@ const BrandingBannedLogos = () => {
             style={{ objectFit: "contain", padding: "1rem" }}
           />
           <InvalidMark className="invalid-mark" />
-          <p className="description">{t("branding.banned.contrast")}</p>
+          <p className="description">{branding.banned.contrast}</p>
         </div>
       </div>
     </StyledSection>

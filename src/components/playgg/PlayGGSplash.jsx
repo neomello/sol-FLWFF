@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { Trans, useTranslation } from "next-i18next";
 import styles from "./PlayGGSplash.module.scss";
 import Link, { InlineLink } from "../shared/Link";
 import useReducedMotion from "../../hooks/useReducedMotion";
@@ -15,11 +14,9 @@ import PlayGGPoster from "../../../assets/playgg/poster.jpg";
 import RSVP from "./RSVP";
 
 const PlayGGSplash = () => {
-  const { t } = useTranslation("common");
 
   const heroVideoRef = useRef();
   const [prefersReducedMotion] = useReducedMotion();
-  useEffect(() => {
     prefersReducedMotion && heroVideoRef.current.pause();
   }, [prefersReducedMotion]);
 
@@ -31,20 +28,20 @@ const PlayGGSplash = () => {
             <div className="w-75 w-lg-50 d-flex">
               <div className="pe-md-10 w-50">
                 <div className="text-uppercase text-nowrap">
-                  [{t("playgg.info.title")}]
+                  [{playgg.info.title}]
                 </div>
                 <div>&ndash;</div>
-                <p>{t("playgg.info.description")}</p>
+                <p>{playgg.info.description}</p>
               </div>
               {/* <div className="ps-4 w-50">
                 <div className="text-uppercase text-nowrap">
-                  [{t("playgg.presentedby.title")}]
+                  [{playgg.presentedby.title}]
                 </div>
                 <div>&ndash;</div>
                 <div className="d-flex align-items-center">
                   <Solana className="me-2 me-md-4" />
                   <p style={{ width: "1px" }} className="m-0">
-                    {t("playgg.presentedby.description")}
+                    {playgg.presentedby.description}
                   </p>
                 </div>
               </div> */}
@@ -105,7 +102,7 @@ const PlayGGSplash = () => {
             <div className="w-50">
               {/* <div className={styles["playgg-splash__form"]}>
                 <div className={styles["playgg-splash__form__title"]}>
-                  {t("playgg.signup.title")}
+                  {playgg.signup.title}
                 </div>
                 <PlayGGSignUpForm />
               </div> */}
@@ -114,7 +111,7 @@ const PlayGGSplash = () => {
                 className={classNames(styles["playgg-splash__cta"], "text-end")}
               >
                 <div className="text-uppercase text-nowrap smaller">
-                  [{t("playgg.presentedby.title")}]
+                  [{playgg.presentedby.title}]
                 </div>
                 <div>&ndash;</div>
                 <div className="my-2">
@@ -125,8 +122,6 @@ const PlayGGSplash = () => {
                 <br />
                 <RSVP />
                 <div className="mono mt-2">
-                  <Trans
-                    i18nKey="playgg.signup.cta"
                     components={{
                       ctaLink: <Link to="mailto:partnerships@solana.org" />,
                     }}

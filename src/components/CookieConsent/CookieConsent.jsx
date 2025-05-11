@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslation } from "next-i18next";
 import Button from "../shared/Button";
 import classNames from "classnames";
 import styles from "./CookieConsent.module.scss";
@@ -37,16 +36,12 @@ const setLocalStorage = function (key, value) {
   localStorage.setItem(key, JSON.stringify(obj));
 };
 
-export default function CookieConsent() {
-  const { t } = useTranslation("common");
 
   // cookieConsent is blank by default
   const [cookieConsent, setCookieConsent] = useState("");
 
   // check if it has previously set within localStorage, or null otherwise
-  useEffect(() => {
     const consent = getLocalStorage("cookie_consent", null);
-    setCookieConsent(consent);
 
     // set builderNoTrack based on the previously set consent
     if (typeof window !== "undefined" && consent) {
@@ -55,7 +50,6 @@ export default function CookieConsent() {
   }, [setCookieConsent]);
 
   // update when cookieConsent is changed via onClick
-  useEffect(() => {
     if (typeof window.gtag !== "undefined" && cookieConsent !== "") {
       setLocalStorage("cookie_consent", cookieConsent);
       window.gtag("consent", "update", {
@@ -79,7 +73,7 @@ export default function CookieConsent() {
           )}
         >
           <div className="small">
-            <p>{t("cookie-consent.title")}</p>
+            <p>{cookie-consent.title}</p>
           </div>
 
           <div className="d-flex align-items-center justify-content-between smaller">
@@ -87,20 +81,18 @@ export default function CookieConsent() {
               <Button
                 variant="captioned"
                 className="px-0"
-                onClick={() => setCookieConsent(false)}
               >
-                {t("cookie-consent.button.optout")}
+                {cookie-consent.button.optout}
               </Button>
               <Button
                 to="/privacy-policy#collection-of-information"
                 variant="captioned"
                 className="px-0 ms-4"
               >
-                {t("cookie-consent.button.details")}
+                {cookie-consent.button.details}
               </Button>
             </div>
-            <Button onClick={() => setCookieConsent(true)}>
-              {t("cookie-consent.button.accept")}
+              {cookie-consent.button.accept}
             </Button>
           </div>
         </div>

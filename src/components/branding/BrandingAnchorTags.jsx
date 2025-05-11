@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 
 const StyledSection = styled.section`
   a {
@@ -21,25 +20,24 @@ const StyledSection = styled.section`
 `;
 
 const BrandingAnchorTagsSection = () => {
-  const { t } = useTranslation();
 
   return (
     <StyledSection>
-      <p className="smallest">{t("branding.tags.title")}</p>
+      <p className="smallest">{branding.tags.title}</p>
       <div className="d-flex flex-column">
         <a href="#brand">
           <div className="tag small">
-            <span>{t("branding.tags.first-tag")}</span>
+            <span>{branding.tags.first-tag}</span>
           </div>
         </a>
         <a href="#asset">
           <div className="tag small">
-            <span>{t("branding.tags.second-tag")}</span>
+            <span>{branding.tags.second-tag}</span>
           </div>
         </a>
         <a href="#press">
           <div className="tag small">
-            <span>{t("branding.tags.third-tag")}</span>
+            <span>{branding.tags.third-tag}</span>
           </div>
         </a>
       </div>

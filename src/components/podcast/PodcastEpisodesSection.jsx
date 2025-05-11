@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { useTranslation } from "next-i18next";
 import { useCallback } from "react";
 
 import Button from "../shared/Button";
@@ -12,7 +11,6 @@ import Loader from "../../../public/src/img/icons/Loader.inline.svg";
 import styles from "./PodcastEpisodesSection.module.scss";
 
 export default function PodcastEpisodesSection() {
-  const { t } = useTranslation();
 
   const {
     episodes,
@@ -43,20 +41,20 @@ export default function PodcastEpisodesSection() {
           )}
         >
           <h1 className={styles["episodes__title"]}>
-            {t("podcast.episodes.title")}
+            {podcast.episodes.title}
           </h1>
           <div>
-            <label htmlFor="sort">{t("podcast.episodes.sort-by")}:</label>
+            <label htmlFor="sort">{podcast.episodes.sort-by}:</label>
             <select
               id="sort"
               className="ms-2 mt-2 mt-md-0"
               onChange={onOrderByChange}
             >
-              <option value="desc">{t("podcast.episodes.newest-first")}</option>
-              <option value="asc">{t("podcast.episodes.oldest-first")}</option>
+              <option value="desc">{podcast.episodes.newest-first}</option>
+              <option value="asc">{podcast.episodes.oldest-first}</option>
             </select>
             <input
-              placeholder={t("podcast.episodes.search")}
+              placeholder={podcast.episodes.search}
               onChange={onSearchTextChange}
             />
           </div>
@@ -74,7 +72,7 @@ export default function PodcastEpisodesSection() {
                 {isLoadingEpisodes ? (
                   <Loader height={18} />
                 ) : (
-                  t("podcast.episodes.load-more")
+                  podcast.episodes.load-more
                 )}
               </Button>
             </div>

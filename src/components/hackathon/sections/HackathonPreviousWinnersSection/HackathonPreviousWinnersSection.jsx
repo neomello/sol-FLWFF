@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import CarouselCards from "../../../shared/CarouselCards";
 import HackathonWinnerCard from "./HackathonWinnerCard";
 
@@ -41,7 +40,6 @@ const pastWinners = [
 ];
 
 export default function HackathonPreviousWinnersSection() {
-  const { t } = useTranslation();
   const pastWinnersCards = pastWinners.map(({ logo, alt, width, height }) => (
     <HackathonWinnerCard
       key={alt}
@@ -55,7 +53,7 @@ export default function HackathonPreviousWinnersSection() {
   return (
     <section className={styles["previous-winners"]}>
       <div className="container">
-        <h2>{t("hackathon.previousWinners.title")}</h2>
+        <h2>{hackathon.previousWinners.title}</h2>
 
         <div className={styles["previous-winners__carousel-container"]}>
           <CarouselCards>{pastWinnersCards}</CarouselCards>

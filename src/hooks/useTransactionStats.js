@@ -5,6 +5,8 @@ import { makeRPCCall } from "../utils/rpcUtils";
 export const PERF_UPDATE_SEC = 5; // Performance update interval in seconds
 export const SAMPLE_HISTORY_HOURS = 6; // Hours to query for historical data
 
+let rpcLock = false;
+
 // RPC Node URL
 const rpcNodeURL = process.env.NEXT_PUBLIC_RPC_ENDPOINT;
 if (!rpcNodeURL) {
@@ -36,7 +38,7 @@ export const fetchSuperminority = async () => {
 
     // Sort validators by stake in ascending order
     const sortedValidators = voteAccounts.result.current.sort((a, b) => {
-      const diff = BigInt(b.activatedStake) - BigInt(a.activatedStake);
+      const diff = a.activatedStake - b.activatedStake;
       if (diff > 0) return 1;
       else if (diff < 0) return -1;
       else return 0;
@@ -44,19 +46,19 @@ export const fetchSuperminority = async () => {
 
     // Calculate total stake from sorted validators
     const totalStake = sortedValidators.reduce(
-      (sum, validator) => sum + BigInt(validator.activatedStake),
-      BigInt(0),
+      (sum, validator) => sum + validator.activatedStake,
+      0
     );
 
     // Calculate one-third of the total stake
-    const oneThirdStake = totalStake / BigInt(3);
-    let cumulativeStake = BigInt(0);
+    const oneThirdStake = totalStake / 3;
+    let cumulativeStake = 0;
     let superminorityCount = 0;
 
     // Count superminority
     for (const validator of sortedValidators) {
+      cumulativeStake += validator.activatedStake;
       if (cumulativeStake > oneThirdStake) break;
-      cumulativeStake += BigInt(validator.activatedStake);
       superminorityCount++;
     }
 
@@ -73,25 +75,21 @@ export const fetchSuperminority = async () => {
  * @param {boolean} visible                   Only fire new queries when visible.
  * @param {number} performanceUpdateSeconds   Delay before next query.
  * @param {number} sampleHistoryHours         How many hours (60min.) the query should go back.
- * @param {boolean} getLiveTransactionCount
  * @param {boolean} getCurrentValidatorNodes
- * @returns {{availableStats: boolean, avgTps: number, validators: number, totalTransactionCount: number, superminority: number}}
  */
 export const useTransactionStats = ({
   visible,
   performanceUpdateSeconds,
   sampleHistoryHours,
-  getLiveTransactionCount = true,
   getCurrentValidatorNodes = true,
 }) => {
   const [availableStats, setAvailableStats] = useState(false);
   const [avgTps, setAvgTps] = useState(0);
-  const [totalTransactionCount, setTotalTransactionCount] = useState(0);
   const [validators, setValidators] = useState(0);
   const [superminority, setSuperminority] = useState(null);
 
   const getRPCData = useCallback(
-    async (getValidatorNodes, getTransactionCount, abortSignal) => {
+    async (getValidatorNodes, abortSignal) => {
       try {
         if (rpcNodeURL) {
           await Promise.all([
@@ -105,14 +103,14 @@ export const useTransactionStats = ({
               // Calculate average transactions per second
               const short = recentPerformanceSamples.result.reduce(
                 (shortResults, sample) => {
-                  if (sample.numTransactions !== 0) {
+                  if (sample.numTransactions > 0) {
                     shortResults.push(
-                      sample.numTransactions / sample.samplePeriodSecs,
+                      sample.numTransactions / sample.samplePeriodSecs
                     );
                   }
                   return shortResults;
                 },
-                [],
+                []
               );
               const avgTps = Math.round(short[0]);
               setAvgTps(avgTps);
@@ -131,15 +129,13 @@ export const useTransactionStats = ({
               setAvailableStats(true);
             })(),
             (async () => {
-              if (!getTransactionCount) {
+              if (!getValidatorNodes) {
                 return;
               }
               const transactionCount = await makeRPCCall({
                 abortSignal,
-                method: "getTransactionCount",
                 rpcNodeURL,
               });
-              setTotalTransactionCount(transactionCount.result);
               setAvailableStats(true);
             })(),
           ]);
@@ -151,39 +147,46 @@ export const useTransactionStats = ({
         console.error("Error fetching RPC data:", error);
       }
     },
-    [sampleHistoryHours],
+    [sampleHistoryHours]
   );
 
   // Load statistics only when the component is visible
   useEffect(() => {
     const abortController = initAbortController();
-    if (visible) {
-      getRPCData(
-        getCurrentValidatorNodes,
-        getLiveTransactionCount,
-        abortController.signal,
-      );
+    let intervalId = null;
+    let hasFetchedSuperminority = false;
 
-      // Fetch superminority count
-      const fetchSuperminorityData = async () => {
-        const count = await fetchSuperminority();
-        setSuperminority(count);
-      };
-      fetchSuperminorityData();
+    if (visible) {
+      getRPCData(getCurrentValidatorNodes, abortController.signal);
+
+      // Fetch superminority count only once on first mount
+      if (!hasFetchedSuperminority) {
+        const fetchSuperminorityData = async () => {
+          const count = await fetchSuperminority();
+          setSuperminority(count);
+          hasFetchedSuperminority = true;
+        };
+        fetchSuperminorityData();
+      }
+
+      // Only set interval if component is visible
+      intervalId = setInterval(() => {
+        getRPCData(getCurrentValidatorNodes, abortController.signal);
+      }, performanceUpdateSeconds * 1000);
     }
 
-    const interval = setInterval(() => {
-      getRPCData(false, getLiveTransactionCount, abortController.signal);
-    }, performanceUpdateSeconds * 1000);
-
     return () => {
-      abortController.abort();
-      clearInterval(interval);
+      if (abortController && typeof abortController.abort === 'function') {
+        abortController.abort();
+      }
+      if (intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
     };
   }, [
     visible,
     getCurrentValidatorNodes,
-    getLiveTransactionCount,
     performanceUpdateSeconds,
     getRPCData,
   ]);
@@ -191,7 +194,6 @@ export const useTransactionStats = ({
   return {
     availableStats,
     avgTps,
-    totalTransactionCount,
     validators,
     superminority,
   };

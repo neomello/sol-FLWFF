@@ -3,8 +3,6 @@ import Layout from "@/components/layout";
 import PostCard from "@/components/blog/PostCard";
 import HTMLHead from "@/components/HTMLHead";
 import styled from "styled-components";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { slugWithLocales } from "@/i18n/routing";
 import {
   getSingleTag,
   getPostsByTag,
@@ -16,7 +14,6 @@ import { NEWS_BUILDER_CONFIG } from "@/lib/builder/news/constants";
 
 import { MetaData } from "@/components/blog/meta";
 
-builder.init(NEWS_BUILDER_CONFIG.apiKey);
 builder.apiVersion = "v3";
 
 const StyledBlogTagHeader = styled.div`
@@ -86,13 +83,11 @@ export async function getStaticPaths() {
   const allPaths = [];
   const paths = allPaths?.map((p) => `/news/tag/${p?.data?.slug}`) || [];
   return {
-    paths: slugWithLocales(paths),
     fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   try {
     const { slug } = params;
 
@@ -108,7 +103,6 @@ export async function getStaticProps({ params }) {
 
     return {
       props: {
-        locale,
         tag,
         pageSettings,
         posts: posts
@@ -117,7 +111,6 @@ export async function getStaticProps({ params }) {
               return p;
             })
           : [],
-        ...(await serverSideTranslations(locale, ["common"])),
       },
       revalidate: 60,
     };

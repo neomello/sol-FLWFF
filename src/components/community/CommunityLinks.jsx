@@ -1,5 +1,4 @@
 import RoundedDepthCard from "../shared/RoundedDepthCard";
-import { useTranslation } from "next-i18next";
 import Button from "../shared/Button";
 
 /**
@@ -7,7 +6,6 @@ import Button from "../shared/Button";
  * @constructor
  */
 const CommunityLinks = () => {
-  const { t } = useTranslation();
 
   return (
     <section className="container mb-8">
@@ -18,9 +16,9 @@ const CommunityLinks = () => {
             bgColor="#14f195"
             shadow="bottom"
           >
-            <h2 className="h3 mb-8">{t("community.learn")}</h2>
+            <h2 className="h3 mb-8">{community.learn}</h2>
             <Button to="/news" arrow noBorder>
-              {t("community.blog")}
+              {community.blog}
             </Button>
           </RoundedDepthCard>
         </div>
@@ -30,9 +28,9 @@ const CommunityLinks = () => {
             bgColor="#ab66ff"
             shadow="bottom"
           >
-            <h2 className="h3 mb-8">{t("community.info")}</h2>
+            <h2 className="h3 mb-8">{community.info}</h2>
             <Button to="/validated" arrow noBorder>
-              {t("community.podcast")}
+              {community.podcast}
             </Button>
           </RoundedDepthCard>
         </div>

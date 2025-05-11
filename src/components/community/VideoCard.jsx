@@ -1,7 +1,6 @@
 import Image from "next/legacy/image";
 import styled from "styled-components";
 import Button from "../shared/Button";
-import { useTranslation } from "next-i18next";
 import { Link } from "../../utils/Link";
 import { getMaximalThumbnailResolutionUrl } from "../../utils/ytUtils";
 
@@ -68,7 +67,6 @@ const StyledVideoCard = styled.div`
  * @constructor
  */
 const VideoCard = ({ video, showThumbnail }) => {
-  const { t } = useTranslation();
   const thumbnailUrl = getMaximalThumbnailResolutionUrl(video);
 
   return (
@@ -94,7 +92,7 @@ const VideoCard = ({ video, showThumbnail }) => {
       <Button
         to={`https://www.youtube.com/watch?v=${video.contentDetails.videoId}`}
       >
-        {t("community.videos.watch")}
+        {community.videos.watch}
       </Button>
     </StyledVideoCard>
   );

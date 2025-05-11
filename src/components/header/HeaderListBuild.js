@@ -1,17 +1,15 @@
-import { useTranslation } from "next-i18next";
 import { Link } from "../../utils/Link";
 import DevelopersSVG from "../../../assets/nav/build/developers.inline.svg";
 import MoreSVG from "../../../assets/nav/build/cases.inline.svg";
 
 const HeaderListBuild = () => {
-  const { t } = useTranslation("common");
 
   return (
     <div className="d-lg-flex">
       <div>
         <div className="text-uppercase py-2 d-flex align-items-center">
           <DevelopersSVG className="me-3" />
-          {t("nav.developers.items.title")}
+          {nav.developers.items.title}
         </div>
         <div>
           <Link
@@ -20,9 +18,9 @@ const HeaderListBuild = () => {
             activeClassName="active"
           >
             <strong className="d-block text-white">
-              {t("nav.developers.items.docs.title")}
+              {nav.developers.items.docs.title}
             </strong>
-            {t("nav.developers.items.docs.description")}
+            {nav.developers.items.docs.description}
           </Link>
           <Link
             to="/docs/rpc"
@@ -30,9 +28,9 @@ const HeaderListBuild = () => {
             activeClassName="active"
           >
             <strong className="d-block text-white">
-              {t("nav.developers.items.api.title")}
+              {nav.developers.items.api.title}
             </strong>
-            {t("nav.developers.items.api.description")}
+            {nav.developers.items.api.description}
           </Link>
           <Link
             to="/developers/cookbook"
@@ -40,9 +38,9 @@ const HeaderListBuild = () => {
             activeClassName="active"
           >
             <strong className="d-block text-white">
-              {t("nav.developers.items.cookbook.title")}
+              {nav.developers.items.cookbook.title}
             </strong>
-            {t("nav.developers.items.cookbook.description")}
+            {nav.developers.items.cookbook.description}
           </Link>
           <Link
             to="/developers"
@@ -50,9 +48,9 @@ const HeaderListBuild = () => {
             activeClassName="active"
           >
             <strong className="d-block text-white">
-              {t("nav.developers.items.hub.title")}
+              {nav.developers.items.hub.title}
             </strong>
-            {t("nav.developers.items.hub.description")}
+            {nav.developers.items.hub.description}
           </Link>
         </div>
       </div>
@@ -62,7 +60,7 @@ const HeaderListBuild = () => {
       <div>
         <div className="text-uppercase py-2 d-flex align-items-center">
           <MoreSVG className="me-3" />
-          {t("nav.developers.tutorials.title")}
+          {nav.developers.tutorials.title}
         </div>
         <div>
           <Link
@@ -70,21 +68,21 @@ const HeaderListBuild = () => {
             className="nav-link nav-link--secondary d-block text-white fw-bold"
             activeClassName="active"
           >
-            {t("nav.developers.tutorials.hello-world")}
+            {nav.developers.tutorials.hello-world}
           </Link>
           <Link
             to="/docs/intro/installation"
             className="nav-link nav-link--secondary text-white d-block fw-bold"
             activeClassName="active font-weight-bold"
           >
-            {t("nav.developers.tutorials.local-setup")}
+            {nav.developers.tutorials.local-setup}
           </Link>
           <Link
             to="/developers/evm-to-svm"
             className="nav-link nav-link--secondary text-white d-block fw-bold"
             activeClassName="active font-weight-bold"
           >
-            {t("nav.developers.tutorials.evm-to-svm")}
+            {nav.developers.tutorials.evm-to-svm}
           </Link>
         </div>
       </div>

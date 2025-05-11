@@ -5,7 +5,6 @@ import styles from "./RampsLayout.module.scss";
 import RampsSearch from "./RampsSearch";
 import { Hero } from "@solana-foundation/solana-lib";
 import onOffRampHeroImage from "../../../assets/onofframp/on-off-ramp-hero-img.png";
-import { useTranslation } from "next-i18next";
 
 const RampLayout = ({
   data,
@@ -13,7 +12,6 @@ const RampLayout = ({
   countryOptions,
   paymentRailsOptions,
 }) => {
-  const { t } = useTranslation();
 
   const [filtersActive, setFiltersActive] = useState(0);
 
@@ -26,7 +24,6 @@ const RampLayout = ({
     }
   };
 
-  const rampsTitles = data.map((data) => data.fields.RampName).sort();
   const placeholderRamps = [];
 
   if (rampsTitles.length) {
@@ -64,8 +61,8 @@ const RampLayout = ({
   } else {
     // Dummy ramp data if we have no data coming from the API
     placeholderRamps.push({
-      title: t("on-off-ramp.ramp-fallbacks.title"),
-      description: t("on-off-ramp.ramp-fallbacks.description"),
+      title: on-off-ramp.ramp-fallbacks.title,
+      description: on-off-ramp.ramp-fallbacks.description,
       websiteUrl: "",
       imageUrl: null,
       meta: {
@@ -81,12 +78,12 @@ const RampLayout = ({
   const rampStatus = [
     {
       value: "ramp-status-on",
-      title: t("on-off-ramp.ramp-data.on-ramp-status"),
+      title: on-off-ramp.ramp-data.on-ramp-status,
       name: "ramp-status",
     },
     {
       value: "ramp-status-off",
-      title: t("on-off-ramp.ramp-data.off-ramp-status"),
+      title: on-off-ramp.ramp-data.off-ramp-status,
       name: "ramp-status",
     },
   ];
@@ -101,7 +98,6 @@ const RampLayout = ({
   const sortAndFormatData = (dataArray, checkboxName) => {
     const sortedData = [];
     if (dataArray.length) {
-      const onlyTitles = dataArray.map((data) => data.fields.Name).sort();
 
       onlyTitles.forEach((title) => {
         const data = dataArray.filter((item) => item.fields.Name === title);
@@ -172,10 +168,10 @@ const RampLayout = ({
     <>
       <div className={styles["ramps-hero-container"]}>
         <Hero
-          eyebrow={t("on-off-ramp.hero.eyebrow")}
-          headline={t("on-off-ramp.hero.headline")}
+          eyebrow={on-off-ramp.hero.eyebrow}
+          headline={on-off-ramp.hero.headline}
           headingAs="h1"
-          body={`<p>${t("on-off-ramp.hero.body")}</p>`}
+          body={`<p>${on-off-ramp.hero.body}</p>`}
           image={onOffRampHeroImage}
           centered={false}
           newsletter={false}

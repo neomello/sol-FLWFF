@@ -16,7 +16,6 @@ export const getAuthorProperties = (primaryAuthor) => {
       : null,
   );
 
-  authorProfiles = _.compact(authorProfiles);
 
   return {
     name: authorData?.name || null,

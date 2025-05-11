@@ -4,7 +4,6 @@ import { BUILDER_CONFIG } from "./builderConstants";
 import uniqBy from "lodash/uniqBy";
 import take from "lodash/take";
 
-builder.init(BUILDER_CONFIG.apiKey);
 builder.apiVersion = "v3";
 Builder.isStatic = true;
 
@@ -31,7 +30,6 @@ export async function getAllPostSlugs() {
       (p) => `/news/${p?.data?.slug}`,
     );
 
-    Post = Post.concat(posts);
     postCount = postCount + posts.length;
 
     if (builderLimit > posts.length) {
@@ -57,14 +55,12 @@ export async function getPostPagination(page, builderModel) {
     if (builderLimit > posts.length) {
       return postCount;
     } else {
-      await totalPostCount(postCount);
     }
 
     return postCount;
   };
 
   const limit = BUILDER_CONFIG.listingLimit;
-  const pageCount = await totalPostCount();
   const pages = Math.ceil(pageCount / limit);
 
   return {
@@ -120,14 +116,11 @@ export function getPostsPage(
   );
 }
 
-export async function getPost(mongoQuery, locale, builderModel, options = {}) {
   let post = await builder
-    .get(builderModel, {
       includeRefs: true,
       staleCacheSeconds: 20,
       options: {
         noTargeting: true,
-        locale,
         ...options,
       },
       query: mongoQuery,
@@ -137,12 +130,9 @@ export async function getPost(mongoQuery, locale, builderModel, options = {}) {
   return post || null;
 }
 
-export async function getPostAndMorePosts(builderModel, slug, locale) {
-  const post = await getPost(
     {
       "data.slug": { $eq: slug },
     },
-    locale,
     builderModel,
     { includeUnpublished: true }, // Add this option to include unpublished content so that the Builder preview page shows the title before publishing
   );
@@ -194,7 +184,6 @@ export async function searchTags(query, offset = 0, limit = 100) {
 
 export async function getSingleTag(tag) {
   let post = await builder
-    .get(BUILDER_CONFIG.tagsModel, {
       includeRefs: true,
       staleCacheSeconds: 20,
       options: {
@@ -238,7 +227,6 @@ export async function getPageSettings() {
 
   // Get news page settings
   const newsPageSettings = await builder
-    .get(BUILDER_CONFIG.pageModel, {
       includeRefs: true,
       staleCacheSeconds: 20,
       options: {
@@ -279,7 +267,6 @@ export const extractTags = (posts, limit = undefined) => {
 
 export async function getAuthor(id) {
   const author = await builder
-    .get("author", {
       includeRefs: true,
       options: {
         noTargeting: true,
@@ -293,12 +280,9 @@ export async function getAuthor(id) {
   return author.data || null;
 }
 
-export async function getCustomPage(builderModel, slug, locale) {
-  const page = await getPost(
     {
       "data.slug": { $eq: slug },
     },
-    locale,
     builderModel,
   );
 
@@ -316,7 +300,6 @@ export async function getAllCustomSlugs(path) {
       (p) => `${path}/${p?.data?.slug}`,
     );
 
-    Post = Post.concat(posts);
     postCount = postCount + posts.length;
 
     if (builderLimit > posts.length) {

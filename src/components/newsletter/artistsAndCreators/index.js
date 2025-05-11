@@ -1,6 +1,5 @@
 import { useCallback, useState, useEffect } from "react";
 import { Input, Button, sendFormRequest } from "@solana-foundation/solana-lib";
-import { useTranslation } from "next-i18next";
 
 const ArtistsAndCreatorsNewsletter = ({
   modalCloseHandler = null,
@@ -11,7 +10,6 @@ const ArtistsAndCreatorsNewsletter = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const { t } = useTranslation();
 
   const [values, setValues] = useState({
     email: {
@@ -40,7 +38,6 @@ const ArtistsAndCreatorsNewsletter = ({
     const veryBasicEmailCheck = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
 
     Object.keys(values).forEach((key) => {
-      if (key === "email" && !veryBasicEmailCheck.test(values.email.value)) {
         updatedValues.email.error = true;
         isValid = false;
       } else if (key === "Country" && values.Country.value === "default") {
@@ -71,7 +68,6 @@ const ArtistsAndCreatorsNewsletter = ({
   );
 
   const onSubmit = async (e) => {
-    e.preventDefault();
     const formIsValid = await validate();
 
     if (formIsValid) {
@@ -82,7 +78,6 @@ const ArtistsAndCreatorsNewsletter = ({
 
       try {
         setIsSubmitting(true);
-        await sendFormRequest(actionUrl, formState);
         setIsSuccess(true);
         modalActionCompleted.current = true;
 
@@ -104,22 +99,18 @@ const ArtistsAndCreatorsNewsletter = ({
     }
   };
 
-  useEffect(() => {
     let timeoutId;
     if (isSuccess && modalCloseHandler) {
-      timeoutId = setTimeout(() => {
         modalCloseHandler();
       }, 5000);
     }
 
     return () => {
       if (timeoutId) {
-        clearTimeout(timeoutId);
       }
     };
   }, [isSuccess, modalCloseHandler]);
 
-  useEffect(() => {
     const source = `${window.location.protocol}//${window.location.hostname}${window.location.pathname}`;
     setValues((prevValues) => ({
       ...prevValues,
@@ -140,10 +131,10 @@ const ArtistsAndCreatorsNewsletter = ({
             <div className={`row flex justify-content-center`}>
               <div className={`col col-lg-8`}>
                 <h3 className={`h3 fw-normal mb-0 text-center mb-5`}>
-                  {t("artistsAndCreatorsNewsletter.form.success.title")}
+                  {artistsAndCreatorsNewsletter.form.success.title}
                 </h3>
                 <p className={`lead text-center mb-7`}>
-                  {t("artistsAndCreatorsNewsletter.form.success.description")}
+                  {artistsAndCreatorsNewsletter.form.success.description}
                 </p>
                 <Button
                   size={`md`}
@@ -151,7 +142,7 @@ const ArtistsAndCreatorsNewsletter = ({
                   className="tw-mt-4 mx-auto d-block"
                   onClick={() => modalCloseHandler()}
                 >
-                  {t("artistsAndCreatorsNewsletter.form.success.cta")}
+                  {artistsAndCreatorsNewsletter.form.success.cta}
                 </Button>
               </div>
             </div>
@@ -161,10 +152,10 @@ const ArtistsAndCreatorsNewsletter = ({
             <div className={`row flex justify-content-center`}>
               <div className={`col col-lg-8 mb-md-5`}>
                 <h2 className={`h3 fw-normal mb-0 text-center mb-5`}>
-                  {t("artistsAndCreatorsNewsletter.title")}
+                  {artistsAndCreatorsNewsletter.title}
                 </h2>
                 <p className={`lead text-center mb-8`}>
-                  {t("artistsAndCreatorsNewsletter.description")}
+                  {artistsAndCreatorsNewsletter.description}
                 </p>
               </div>
             </div>
@@ -173,15 +164,14 @@ const ArtistsAndCreatorsNewsletter = ({
                 <form onSubmit={onSubmit}>
                   <Input
                     size={"md"}
-                    label={t("artistsAndCreatorsNewsletter.form.email.label")}
+                    label={artistsAndCreatorsNewsletter.form.email.label}
                     name="email"
-                    placeholder={t(
                       "artistsAndCreatorsNewsletter.form.email.placeholder",
                     )}
                     className={"tw-w-full mb-4"}
                     helperText={
                       values.email.error
-                        ? t("artistsAndCreatorsNewsletter.form.email.error")
+                        ? artistsAndCreatorsNewsletter.form.email.error
                         : ""
                     }
                     error={values.email.error}
@@ -189,17 +179,15 @@ const ArtistsAndCreatorsNewsletter = ({
                   />
                   <Input
                     size={"md"}
-                    label={t(
                       "artistsAndCreatorsNewsletter.form.firstName.label",
                     )}
                     name="firstName"
                     className={"tw-w-full mb-5"}
-                    placeholder={t(
                       "artistsAndCreatorsNewsletter.form.firstName.placeholder",
                     )}
                     helperText={
                       values.firstName.error
-                        ? t("artistsAndCreatorsNewsletter.form.firstName.error")
+                        ? artistsAndCreatorsNewsletter.form.firstName.error
                         : ""
                     }
                     error={values.firstName.error}
@@ -207,17 +195,15 @@ const ArtistsAndCreatorsNewsletter = ({
                   />
                   <Input
                     size={"md"}
-                    label={t(
                       "artistsAndCreatorsNewsletter.form.lastName.label",
                     )}
                     name="lastName"
-                    placeholder={t(
                       "artistsAndCreatorsNewsletter.form.lastName.placeholder",
                     )}
                     className={"tw-w-full mb-5"}
                     helperText={
                       values.lastName.error
-                        ? t("artistsAndCreatorsNewsletter.form.lastName.error")
+                        ? artistsAndCreatorsNewsletter.form.lastName.error
                         : ""
                     }
                     error={values.lastName.error}
@@ -232,8 +218,8 @@ const ArtistsAndCreatorsNewsletter = ({
                     className="tw-mt-4 tw-w-full"
                   >
                     {isSubmitting
-                      ? t("artistsAndCreatorsNewsletter.form.submitting")
-                      : t("artistsAndCreatorsNewsletter.form.submit")}
+                      ? artistsAndCreatorsNewsletter.form.submitting
+                      : artistsAndCreatorsNewsletter.form.submit}
                   </Button>
                   {error && (
                     <p

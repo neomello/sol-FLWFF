@@ -3,7 +3,6 @@ import Image from "next/image";
 import SocialShareButtons from "../sharedPageSections/SocialShareButtons";
 import Button from "../shared/Button";
 import FormattedDate from "../shared/FormattedDate";
-import { useTranslation } from "next-i18next";
 import defaultImg from "../../../public/social/solana.jpg";
 import Link from "../shared/Link";
 
@@ -42,7 +41,6 @@ const StyledSection = styled.section`
 `;
 
 const EventsDetailSection = ({ event = null }) => {
-  const { t } = useTranslation();
   if (!event) return null;
 
   const eventUrl =
@@ -93,7 +91,7 @@ const EventsDetailSection = ({ event = null }) => {
           newTab
           rel={!eventUrl.includes("solana.com") && "nofollow"}
         >
-          {t("events.detail.action")}
+          {events.detail.action}
         </Button>
         <SocialShareButtons
           url={eventUrl}

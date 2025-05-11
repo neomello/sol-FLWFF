@@ -10,10 +10,9 @@ import { useRouter } from "next/router";
  *
  */
 const MetaData = ({ data = {}, settings = {} }) => {
-  const { asPath, locale } = useRouter();
   const canonical = url.resolve(
     config.siteUrl,
-    asPath.split("?")[0].split("#")[0],
+    asPath.spli?[0].spli#[0],
   );
   const { builderPost, builderTag } = data;
 
@@ -23,7 +22,6 @@ const MetaData = ({ data = {}, settings = {} }) => {
         data={builderPost}
         canonical={canonical}
         settings={settings}
-        locale={locale}
       />
     );
   } else if (builderTag) {
@@ -33,7 +31,6 @@ const MetaData = ({ data = {}, settings = {} }) => {
         canonical={canonical}
         type="Series"
         settings={settings}
-        locale={locale}
       />
     );
   } else {

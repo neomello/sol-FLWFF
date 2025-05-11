@@ -8,7 +8,6 @@ module.exports = (opts = {}) => {
   purgePlugin.OnceExit = function (...args) {
     const [root] = args;
     const filename = root?.source?.input?.file;
-    if (ignore && ignore.test(filename)) {
       // console.log("ignoring", filename);
       return;
     }

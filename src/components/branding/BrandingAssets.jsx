@@ -2,7 +2,6 @@ import Image from "next/image";
 import styled from "styled-components";
 import Divider from "../shared/Divider";
 import Button from "../shared/Button";
-import { useTranslation } from "next-i18next";
 
 const StyledSection = styled.section`
   .logo-section {
@@ -24,11 +23,10 @@ const StyledSection = styled.section`
 `;
 
 const BrandingAssets = () => {
-  const { t } = useTranslation();
 
   return (
     <StyledSection className="pt-10" id="asset">
-      <h2 className="h3">{t("branding.assets.title")}</h2>
+      <h2 className="h3">{branding.assets.title}</h2>
       <Button
         to="https://drive.google.com/drive/u/1/folders/1Y882o7uxW4Bx2vL6MXI-IozbGTX3ztBk"
         variant="secondary"
@@ -36,14 +34,14 @@ const BrandingAssets = () => {
         newTab
         className="mt-6 mb-6"
       >
-        {t("branding.assets.download-btn")}
+        {branding.assets.download-btn}
       </Button>
 
       <Divider theme="light" axis="x" className="my-4" />
       <div className="logo-section">
         <div>
           <p className="smaller text-uppercase mt-4">
-            {t("branding.assets.mainLogoType")}
+            {branding.assets.mainLogoType}
           </p>
           <div className="d-flex align-items-center">
             <Button
@@ -72,7 +70,7 @@ const BrandingAssets = () => {
       <div className="logo-section">
         <div>
           <p className="smaller text-uppercase mt-4">
-            {t("branding.assets.logomark")}
+            {branding.assets.logomark}
           </p>
           <div className="d-flex align-items-center">
             <Button
@@ -101,7 +99,7 @@ const BrandingAssets = () => {
       <div className="logo-section">
         <div>
           <p className="smaller text-uppercase mt-4">
-            {t("branding.assets.wordmark")}
+            {branding.assets.wordmark}
           </p>
           <div className="d-flex align-items-center">
             <Button
@@ -130,7 +128,7 @@ const BrandingAssets = () => {
       <div className="logo-section">
         <div>
           <p className="smaller text-uppercase mt-4">
-            {t("branding.assets.vertical")}
+            {branding.assets.vertical}
           </p>
           <div className="d-flex align-items-center">
             <Button
@@ -159,7 +157,7 @@ const BrandingAssets = () => {
       <div className="logo-section">
         <div>
           <p className="smaller text-uppercase mt-4">
-            {t("branding.assets.foundation")}
+            {branding.assets.foundation}
           </p>
           <div className="d-flex align-items-center">
             <Button

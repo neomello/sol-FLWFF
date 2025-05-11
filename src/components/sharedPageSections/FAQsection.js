@@ -48,7 +48,6 @@ const StyledFAQSection = styled.div`
 `;
 
 export const FAQWrapper = styled.div`
-  & > div:not(:first-child) {
     margin-top: 6rem;
   }
 
@@ -101,7 +100,6 @@ export const FAQWrapper = styled.div`
 `;
 
 const FAQToggle = ({ children, eventKey, callback }) => {
-  const { activeEventKey } = useContext(AccordionContext);
 
   const decoratedOnClick = useAccordionButton(
     eventKey,

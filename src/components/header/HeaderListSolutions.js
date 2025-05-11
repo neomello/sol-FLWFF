@@ -1,18 +1,13 @@
-import { useTranslation } from "next-i18next";
 import { Link } from "../../utils/Link";
 import SolutionsToolsSVG from "../../../assets/nav/solutions/solutions.inline.svg";
 import SolutionsCasesSVG from "../../../assets/nav/solutions/cases.inline.svg";
 import SolutionsResourcesSVG from "../../../assets/nav/solutions/resources.inline.svg";
 
 const HeaderListSolutions = () => {
-  const { t } = useTranslation("common");
-  const solutionsToolsItems = t("nav.solutions.tools.items", {
     returnObjects: true,
   });
-  const solutionsCasesItems = t("nav.solutions.cases.items", {
     returnObjects: true,
   });
-  const solutionsResourcesItems = t("nav.solutions.resources.items", {
     returnObjects: true,
   });
 
@@ -22,7 +17,7 @@ const HeaderListSolutions = () => {
         <div>
           <div className="text-uppercase py-2 d-flex align-items-center">
             <SolutionsToolsSVG className="me-3" />
-            {t("nav.solutions.tools.title")}
+            {nav.solutions.tools.title}
           </div>
           <div>
             <Link
@@ -133,7 +128,7 @@ const HeaderListSolutions = () => {
         <div>
           <div className="text-uppercase py-2 d-flex align-items-center">
             <SolutionsCasesSVG className="me-3" />
-            {t("nav.solutions.cases.title")}
+            {nav.solutions.cases.title}
           </div>
           <div>
             <Link
@@ -179,7 +174,7 @@ const HeaderListSolutions = () => {
         <div className="w-lg-50">
           <div className="text-uppercase py-2 d-flex align-items-center">
             <SolutionsResourcesSVG className="me-3" />
-            {t("nav.solutions.resources.title")}
+            {nav.solutions.resources.title}
           </div>
           <div>
             <Link

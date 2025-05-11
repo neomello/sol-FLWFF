@@ -15,17 +15,12 @@ import {
 import CategorySelection from "@/components/news/CategorySelection";
 import { getPageSettings } from "@/lib/builder/api";
 import customComponentsRegistration from "@/utils/customComponentGenerator";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { withLocales } from "@/i18n/routing";
 import { NEWS_BUILDER_CONFIG } from "@/lib/builder/news/constants";
 
-builder.init(NEWS_BUILDER_CONFIG.apiKey);
 builder.apiVersion = "v3";
 customComponentsRegistration();
 
 const BlogIndex = ({ builderLocale, newsListingPage, pressRelease, posts }) => {
-  const { t } = useTranslation();
   const postsGridRef = useRef(null);
   const searchInputRef = useRef(null);
   const [categoryFilter, setCategoryFilter] = useState(0);
@@ -95,7 +90,7 @@ const BlogIndex = ({ builderLocale, newsListingPage, pressRelease, posts }) => {
               hierarchy: "link",
               size: "md",
               label:
-                newsListingPage?.callToActionLabel || t("blog.readArticle"),
+                newsListingPage?.callToActionLabel || blog.readArticle,
               endIcon: "arrow-up-right",
               iconSize: "sm",
               url: `/news/${postData?.slug || ""}`,
@@ -103,7 +98,6 @@ const BlogIndex = ({ builderLocale, newsListingPage, pressRelease, posts }) => {
           };
         })
         .filter(Boolean)
-        .sort((a, b) => {
           const dateA = new Date(a.publishedDate);
           const dateB = new Date(b.publishedDate);
           return dateB - dateA;
@@ -120,14 +114,12 @@ const BlogIndex = ({ builderLocale, newsListingPage, pressRelease, posts }) => {
   };
 
   // Clear search input from "No results" view
-  useEffect(() => {
     if (searchFilter === null && searchInputRef.current) {
       searchInputRef.current.value = "";
     }
   }, [searchFilter]);
 
   // Filter and Search logic
-  useEffect(() => {
     if (!categoryFilter && !searchFilter) {
       setPostResults(allPostData);
       setNumResults(postsPerPage);
@@ -181,14 +173,14 @@ const BlogIndex = ({ builderLocale, newsListingPage, pressRelease, posts }) => {
             eyebrow={listingContent?.heroEyebrow}
             title={featuredPostData?.title}
             titleAsLink={true}
-            subHead={listingContent?.heroSubheading || t("blog.readArticle")}
+            subHead={listingContent?.heroSubheading || blog.readArticle}
             image={featuredPostData?.image || "/src/img/news/blogbackup.png"}
             publishedDate={featuredPostData?.datePublished}
             author={featuredPostData?.author.value}
             buttons={[
               {
                 label:
-                  listingContent?.callToActionLabel || t("blog.readArticle"),
+                  listingContent?.callToActionLabel || blog.readArticle,
                 url: `/news/${featuredPostData?.slug || ""}`,
                 hierarchy: "outline",
                 size: "lg",
@@ -315,21 +307,15 @@ const BlogIndex = ({ builderLocale, newsListingPage, pressRelease, posts }) => {
         options={{ includeRefs: true }}
         model={NEWS_BUILDER_CONFIG.listingPageModel}
         content={newsContent}
-        locale={builderLocale || "Default"}
       />
     </Layout>
   );
 };
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   try {
-    const isDefaultLocale = locale === "en";
-    const builderLocale = isDefaultLocale ? "Default" : locale;
 
     const newsListingPage = await builder
-      .get(NEWS_BUILDER_CONFIG.listingPageModel, {
-        options: { locale: builderLocale },
         includeRefs: true,
         staleCacheSeconds: 20,
       })
@@ -343,7 +329,6 @@ export async function getStaticProps({ params }) {
     const pressRelease = await builder
       .getAll(NEWS_BUILDER_CONFIG.pressReleaseModel, {
         limit: 6,
-        options: { locale: builderLocale },
       })
       .then((results) => {
         return results;
@@ -357,13 +342,11 @@ export async function getStaticProps({ params }) {
 
     return {
       props: {
-        locale,
         builderLocale,
         newsListingPage,
         pressRelease,
         pageSettings,
         posts,
-        ...(await serverSideTranslations(builderLocale, ["common"])),
       },
       revalidate: 60,
     };
@@ -387,7 +370,6 @@ async function getAllPosts(builderLocale, featuredPostId) {
         },
         options: {
           offset: offset,
-          locale: builderLocale,
           fields:
             "data.slug,data.title,data.intro,data.image,data.datePublished,data.author,data.tags",
         },
@@ -396,7 +378,6 @@ async function getAllPosts(builderLocale, featuredPostId) {
         return response;
       });
 
-    allPosts = allPosts.concat(response);
 
     // Break the loop if the number of posts returned is less than the limit, indicating you've reached the end
     if (response.length < limit) {
@@ -411,7 +392,6 @@ async function getAllPosts(builderLocale, featuredPostId) {
 
 export async function getStaticPaths() {
   return {
-    paths: withLocales(),
     fallback: "blocking",
   };
 }

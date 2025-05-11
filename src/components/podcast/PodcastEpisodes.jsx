@@ -10,10 +10,7 @@ import { usePodcastPlayerContext } from "./PodcastStickyPlayer";
 import styles from "./PodcastEpisodes.module.scss";
 
 const PodcastEpisodeListing = memo(({ episode }) => {
-  const { setEpisodeId } = usePodcastPlayerContext();
 
-  const minutes = (~~(episode.duration / 60)).toString().padStart(2, "0");
-  const seconds = (episode.duration % 60).toString().padStart(2, "0");
   const duration = `${minutes}:${seconds}`;
   const description = truncateTextByWord(episode.description ?? "", 240, "...");
 

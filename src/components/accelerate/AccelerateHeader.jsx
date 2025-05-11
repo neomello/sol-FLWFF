@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import styles from "./AccelerateHeader.module.scss";
 import SolanaWordMark from "../../../public/src/img/branding/solanaWordMark.svg";
 import SolanaMark from "../../../public/img/logomark-white.svg";
@@ -9,7 +8,6 @@ import { ArrowUpRight, Menu, Ticket, X } from "lucide-react";
 import { useState } from "react";
 
 const Header = () => {
-  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const handleMenu = () => {
     setIsOpen(!isOpen);
@@ -47,9 +45,9 @@ const Header = () => {
           </a>
 
           <div className={styles.col}>
-            <a href="#speakers">{t("accelerate.header.speakers")}</a>
-            <a href="#sponsors">{t("accelerate.header.sponsors")}</a>
-            <a href="#faq">{t("accelerate.header.faq")}</a>
+            <a href="#speakers">{accelerate.header.speakers}</a>
+            <a href="#sponsors">{accelerate.header.sponsors}</a>
+            <a href="#faq">{accelerate.header.faq}</a>
             <a
               href="https://lu.ma/solana-nyc?tag=accelerate"
               target="_blank"
@@ -59,7 +57,7 @@ const Header = () => {
             </a>
             <a className={styles.cta} href="#tickets">
               <span>
-                {t("accelerate.header.get-tickets")} <ArrowUpRight />
+                {accelerate.header.get-tickets} <ArrowUpRight />
               </span>
             </a>
             <div className={styles.menuIcon}>
@@ -87,38 +85,35 @@ const Header = () => {
           <a
             href="#speakers"
             onClick={(e) => {
-              e.preventDefault();
               handleMenu();
               document
                 .getElementById("speakers")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            {t("accelerate.header.speakers")}
+            {accelerate.header.speakers}
           </a>
           <a
             href="#sponsors"
             onClick={(e) => {
-              e.preventDefault();
               handleMenu();
               document
                 .getElementById("sponsors")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            {t("accelerate.header.sponsors")}
+            {accelerate.header.sponsors}
           </a>
           <a
             href="#faq"
             onClick={(e) => {
-              e.preventDefault();
               handleMenu();
               document
                 .getElementById("faq")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            {t("accelerate.header.faq")}
+            {accelerate.header.faq}
           </a>
           <a
             href="https://lu.ma/solana-nyc?tag=accelerate"
@@ -132,7 +127,6 @@ const Header = () => {
         <a
           href="#tickets"
           onClick={(e) => {
-            e.preventDefault();
             handleMenu();
             document
               .getElementById("tickets")
@@ -140,7 +134,7 @@ const Header = () => {
           }}
           className={styles.mobileCta}
         >
-          {t("accelerate.header.get-tickets")} <Ticket size={24} />
+          {accelerate.header.get-tickets} <Ticket size={24} />
         </a>
       </div>
     </>

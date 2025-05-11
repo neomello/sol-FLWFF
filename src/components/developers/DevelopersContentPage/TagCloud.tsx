@@ -13,7 +13,6 @@ type TagCloudProps = {
  * Component to memoize and render the on-page tag cloud
  */
 export const TagCloud = memo(({ baseHref, record }: TagCloudProps) => {
-  // const { t } = useTranslation("common");
 
   // if no `record` was found, show nothing
   if (!record) return <></>;

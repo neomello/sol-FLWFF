@@ -1,5 +1,4 @@
 import Image from "next/legacy/image";
-import { useTranslation } from "next-i18next";
 import HackathonSponsorCard from "./HackathonSponsorCard";
 import graphicLeft from "../../../../../assets/hackathon/previous-sponsors/graphic-left.png";
 import graphicRight from "../../../../../assets/hackathon/previous-sponsors/graphic-right.png";
@@ -31,7 +30,6 @@ const pastSponsors = [
 ];
 
 export default function HackathonPreviousSponsorsSection() {
-  const { t } = useTranslation();
 
   return (
     <section className={styles["previous-sponsors"]}>
@@ -41,7 +39,7 @@ export default function HackathonPreviousSponsorsSection() {
           styles["previous-sponsors__content"],
         )}
       >
-        <h2>{t("hackathon.previousSponsors.title")}</h2>
+        <h2>{hackathon.previousSponsors.title}</h2>
         <div className={styles["previous-sponsors__container"]}>
           {pastSponsors.map(({ logo, alt, width, height }) => (
             <HackathonSponsorCard

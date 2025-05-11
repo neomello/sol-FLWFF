@@ -1,4 +1,3 @@
-import { useTranslation, Trans } from "next-i18next";
 import HashAccordion, {
   HashAccordionItem,
 } from "../sharedPageSections/HashAccordion";
@@ -7,13 +6,11 @@ import Image from "next/image";
 import faqLogo from "../../../public/src/img/validators/validators_geometry_small2.png";
 
 const ValidatorsFAQ = () => {
-  const { t } = useTranslation("common");
-  const questionsAndAnswers = t("validators.qa.items", { returnObjects: true });
 
   return (
     <section className="mt-12">
       <div className="container">
-        <h2 className="mb-4 mb-md-7">{t("validators.qa.title")}</h2>
+        <h2 className="mb-4 mb-md-7">{validators.qa.title}</h2>
 
         <div className="row">
           <div className="col-lg-8">
@@ -23,8 +20,6 @@ const ValidatorsFAQ = () => {
                   key={index}
                   question={qa.question}
                   answer={
-                    <Trans
-                      i18nKey={qa.answer}
                       components={{
                         bugreportslink: (
                           <Link href="https://github.com/anza-xyz/agave/security" />

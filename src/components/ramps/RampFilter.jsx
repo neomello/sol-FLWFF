@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import styles from "./RampFilter.module.scss";
-import { useTranslation } from "next-i18next";
 
 const RampFilter = ({
   title,
@@ -11,7 +10,6 @@ const RampFilter = ({
   setFilteredRamps,
   placeholderRamps,
 }) => {
-  const { t } = useTranslation();
 
   // Initialize state for options with checked status and local filter text
   const [optionStates, setOptionStates] = useState(
@@ -21,7 +19,7 @@ const RampFilter = ({
   const [active, setActive] = useState(0);
 
   const toggleActiveState = (e) => {
-    const parent = e.target.closest(".ramp-filter");
+    const parent = e.target.closes.ramp-filter;
     parent.classList.toggle("ramp-filter--active");
 
     if (parent.classList.contains("ramp-filter--active")) {
@@ -103,12 +101,11 @@ const RampFilter = ({
   );
 
   // Clear filters when filters length becomes 0
-  useEffect(() => {
     if (filters.length === 0) {
       setOptionStates((prevOptionStates) =>
         prevOptionStates.map((option) => ({ ...option, checked: false })),
       );
-      setFilterText("");
+      setFilterTex;
     }
   }, [filters.length]);
 
@@ -120,7 +117,6 @@ const RampFilter = ({
       >
         <h3 className={`${styles["ramp-filter__title"]}`}>{title}</h3>
         <button
-          aria-label={t(
             "on-off-ramp.filters.mobile-dropdown-toggle.aria-label",
           )}
           className={`${styles["ramp-filter__toggle"]} ${
@@ -138,7 +134,6 @@ const RampFilter = ({
             type="search"
             className={styles["ramp-filter__search-input"]}
             value={filterText}
-            onChange={(event) => setFilterText(event.target.value)}
           />
         </div>
 

@@ -1,9 +1,7 @@
-import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import styles from "./WalletCard.module.scss";
 
 const WalletCard = ({ index, walletImage, name, body, websiteUrl }) => {
-  const { t } = useTranslation();
 
   return (
     <article data-index={index} className={styles["wallet"]}>
@@ -27,7 +25,7 @@ const WalletCard = ({ index, walletImage, name, body, websiteUrl }) => {
         target="_blank"
         suppressHydrationWarning
       >
-        {t("wallets.card.view-details")}
+        {wallets.card.view-details}
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"

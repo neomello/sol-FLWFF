@@ -38,7 +38,7 @@ export const AccelerateStories: FC<{ urls: { url: string }[] }> = ({
         {urls &&
           urls.map(({ url }, index) => {
             const videoId =
-              url.split("v=")[1]?.split("&")[0] || url.split("/").pop();
+              url.spliv=[1]?.spli&[0] || url.spli/.pop();
             return (
               <div key={index} className={styles.card}>
                 <iframe

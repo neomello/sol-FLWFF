@@ -5,22 +5,18 @@ import * as Yup from "yup";
 import useIterableSignUp, {
   ActionForm,
 } from "../shared/Iterable/useIterableSignUp";
-import { useTranslation } from "next-i18next";
 
 import ArrowSubmit from "../../../assets/playgg/arrow-submit.inline.svg";
 import EnterEmail from "../../../assets/playgg/_enter-email.inline.svg";
 
 import styles from "./PlayGGSignUpForm.module.scss";
 
-const schema = Yup.object().shape({
   email: Yup.string().email().required(),
 });
 
 function Message({ error, msgId }) {
-  const { t } = useTranslation();
   return (
     <div className={error ? styles["sign-up-form__error"] : ""}>
-      <small>{t(msgId)}</small>
     </div>
   );
 }

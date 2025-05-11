@@ -12,7 +12,6 @@ import Loader from "../../../public/src/img/icons/Loader.inline.svg";
 
 import styles from "./PodcastStickyPlayer.module.scss";
 
-const PodcastPlayerContext = createContext({
   episodes: [],
   hasMore: false,
   episodeId: null,
@@ -40,14 +39,11 @@ export function PodcastPlayerContextProvider({ episodes, hasMore, children }) {
 }
 
 export const usePodcastPlayerContext = () => {
-  return useContext(PodcastPlayerContext);
 };
 
 export default function PodcastStickyPlayer() {
-  const { episodeId } = usePodcastPlayerContext();
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
     setIsLoading(true);
   }, [episodeId]);
 

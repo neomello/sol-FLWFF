@@ -1,5 +1,4 @@
 import CommonMarkdown from "@/components/sharedPageSections/CommonMarkdown";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 import Layout from "@/components/layout";
 import HTMLHead from "@/components/HTMLHead";
@@ -11,7 +10,6 @@ import { config } from "src/config";
 
 import { getAllPostsInDir, getPostBySlug } from "@/lib/markdown";
 import LearnPagination from "@/components/learn/LearnPagination";
-import { pathsWithLocales } from "@/i18n/routing";
 
 const LearnPage = ({ article }) => {
   const {
@@ -74,13 +72,11 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    paths: pathsWithLocales(paths),
     fallback: "blocking",
   };
 };
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   const article = getPostBySlug("learn", params.slug);
 
   if (!article) {
@@ -89,9 +85,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      locale,
       article,
-      ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 60,
   };

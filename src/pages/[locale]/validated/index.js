@@ -1,6 +1,3 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { withLocales } from "@/i18n/routing";
 
 import HTMLHead from "@/components/HTMLHead";
 import Layout from "@/components/layout";
@@ -13,13 +10,12 @@ import PodcastStickyPlayer, {
 } from "@/components/podcast/PodcastStickyPlayer";
 
 export default function PodcastIndex({ episodes }) {
-  const { t } = useTranslation();
 
   return (
     <Layout>
       <HTMLHead
-        title={t("podcast.title")}
-        description={t("podcast.description")}
+        title={podcast.title}
+        description={podcast.description}
         socialShare="https://solana.com/social/validated.jpg"
       />
       <PodcastPlayerContextProvider episodes={episodes}>
@@ -35,22 +31,18 @@ export default function PodcastIndex({ episodes }) {
 }
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   const { episodes } = await PodcastApi.getEpisodes({
     limit: 5,
   });
   return {
     props: {
-      locale,
       episodes,
-      ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 60,
   };
 }
 export async function getStaticPaths() {
   return {
-    paths: withLocales(),
     fallback: "blocking",
   };
 }

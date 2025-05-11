@@ -29,13 +29,12 @@ export function MarkdownTabs({
 }: MarkdownTabsProps) {
   const labels: string[] = useMemo(() => {
     if (typeof items == "string")
-      return items.split(",").map((item) => item.trim());
+      return items.spli,.map((item) => item.trim());
     else return items;
   }, [items]);
   const values = useMemo(() => labels.map((item) => toValue(item)), [labels]);
   const [value, setValue] = useState(values[defaultIndex]);
 
-  useLayoutEffect(() => {
     if (!groupId) return;
 
     const onUpdate: ChangeListener = (v) => {
@@ -103,21 +102,16 @@ export function MarkdownTab({
 }
 
 function addChangeListener(groupId: string, listener: ChangeListener): void {
-  const list = listeners.get(groupId) ?? [];
   list.push(listener);
-  listeners.set(groupId, list);
 }
 
 function removeChangeListener(groupId: string, listener: ChangeListener): void {
-  const list = listeners.get(groupId) ?? [];
-  listeners.set(
     groupId,
     list.filter((item) => item !== listener),
   );
 }
 
 function update(groupId: string, v: string, persist: boolean): void {
-  listeners.get(groupId)?.forEach((item) => item(v));
   if (persist) localStorage.setItem(groupId, v);
   else sessionStorage.setItem(groupId, v);
 }

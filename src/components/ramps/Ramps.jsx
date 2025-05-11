@@ -7,7 +7,6 @@ import Button from "../shared/Button";
 import { Accordion } from "react-bootstrap";
 import CommonMarkdown from "../sharedPageSections/CommonMarkdown";
 import ChevronDown from "../../../public/src/img/icons/Angle-down.inline.svg";
-import { useTranslation } from "next-i18next";
 
 const Ramps = ({
   fiatAssets,
@@ -16,7 +15,6 @@ const Ramps = ({
   ramps,
   resetFilters,
 }) => {
-  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState([]);
   const [generalModalData, setGeneralModalData] = useState({
@@ -52,20 +50,18 @@ const Ramps = ({
       {
         content: countriesOfRamp
           .map((item) => item.title)
-          .sort()
           .join(" / "),
-        title: t("on-off-ramp.ramp-modal-data.country-title"),
+        title: on-off-ramp.ramp-modal-data.country-title,
       },
       {
         content: `<div class="tw-flex tw-flex-row tw-gap-2 tw-flex-wrap py-2">${fiatHtml}</div>`,
-        title: t("on-off-ramp.ramp-modal-data.fiat-title"),
+        title: on-off-ramp.ramp-modal-data.fiat-title,
       },
       {
         content: paymentRailsOfRamp
           .map((item) => item.title)
-          .sort()
           .join(" / "),
-        title: t("on-off-ramp.ramp-modal-data.payment-rails-title"),
+        title: on-off-ramp.ramp-modal-data.payment-rails-title,
       },
     ]);
 
@@ -92,9 +88,9 @@ const Ramps = ({
           ))
         ) : (
           <div className={styles["ramp-no-results"]}>
-            {t("on-off-ramp.no-results.title")}
+            {on-off-ramp.no-results.title}
             <Button variant="outline" onClick={resetFilters} className="ms-2">
-              {t("on-off-ramp.no-results.clear-filters-button")}
+              {on-off-ramp.no-results.clear-filters-button}
             </Button>
           </div>
         )}
@@ -123,12 +119,12 @@ const Ramps = ({
             </h3>
             <Button
               to={generalModalData.websiteUrl}
-              ariaLabel={t("on-off-ramp.ramp-modal-data.button-aria-label")}
+              ariaLabel={on-off-ramp.ramp-modal-data.button-aria-label}
               variant="tertiary"
               size="md"
               newTab={true}
             >
-              {t("on-off-ramp.ramp-modal-data.button-title")}
+              {on-off-ramp.ramp-modal-data.button-title}
             </Button>
           </div>
           <div className="mt-5">

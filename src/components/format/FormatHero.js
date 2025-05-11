@@ -1,6 +1,5 @@
 import { useState } from "react";
 import StyledRoundedCard from "../shared/StyledRoundedCard";
-import { Trans, useTranslation } from "next-i18next";
 import heroImage from "../../../public/src/img/format/hero.jpg";
 import solanaFormat from "../../../public/src/img/format/solana-format.png";
 import formatBannerLogo from "../../../public/src/img/format/banner-logo.png";
@@ -31,7 +30,6 @@ const StyledImage = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    background: linear-gradient(0deg, black, transparent);
   }
 
   .video-btn {
@@ -72,7 +70,6 @@ const StyledBanner = styled.div`
 `;
 
 const FormatHero = () => {
-  const { t } = useTranslation();
   const [showVideoModal, setShowVideoModal] = useState(false);
 
   return (
@@ -104,11 +101,9 @@ const FormatHero = () => {
         <div className="container py-10 my-10">
           <div className="w-md-75 m-auto">
             <p className="mb-4">
-              <strong>{t("format.hero.subtitle")}</strong>
+              <strong>{format.hero.subtitle}</strong>
             </p>
             <p>
-              <Trans
-                i18nKey="format.hero.description"
                 components={{
                   formatLink: (
                     <InlineLink to="https://www.format-festival.com/" />
@@ -122,7 +117,7 @@ const FormatHero = () => {
                 }}
               />
             </p>
-            <p>{t("format.hero.dates")}</p>
+            <p>{format.hero.dates}</p>
           </div>
 
           <StyledBanner>
@@ -131,9 +126,9 @@ const FormatHero = () => {
                 <Image src={formatBannerLogo} alt="" />
               </div>
               <div className="col-md-8">
-                <div className="h4">{t("format.claim.title")}</div>
+                <div className="h4">{format.claim.title}</div>
                 <div className="w-md-75 mb-6">
-                  <p>{t("format.claim.description")}</p>
+                  <p>{format.claim.description}</p>
                 </div>
                 <Button
                   to="https://tiplink.io/format"
@@ -141,7 +136,7 @@ const FormatHero = () => {
                   size="large"
                   newTab
                 >
-                  {t("format.claim.cta")}
+                  {format.claim.cta}
                 </Button>
               </div>
             </div>
@@ -149,8 +144,6 @@ const FormatHero = () => {
               <div className="d-lg-flex justify-content-between align-items-center">
                 <p className="m-0">
                   <Twitter className="me-2" />{" "}
-                  <Trans
-                    i18nKey="format.claim.social.description"
                     components={{
                       tipLink: (
                         <InlineLink to="https://twitter.com/tiplinkofficial" />
@@ -162,7 +155,7 @@ const FormatHero = () => {
                   />
                 </p>
                 <p className="m-0 poweredby">
-                  {t("format.claim.social.poweredby")}
+                  {format.claim.social.poweredby}
                   <InlineLink to="https://tiplink.io/" className="ms-2">
                     <TipLink fill="currentcolor" width="55" />
                   </InlineLink>
@@ -179,8 +172,8 @@ const FormatHero = () => {
                 bgColor="#1c1c1c"
                 className="h-100 p-6 text-white"
               >
-                <h2 className="h3 mb-6">{t("format.concessions.title")}</h2>
-                <p className="mb-0">{t("format.concessions.description")}</p>
+                <h2 className="h3 mb-6">{format.concessions.title}</h2>
+                <p className="mb-0">{format.concessions.description}</p>
 
                 <div className="mt-6">
                   <InlineLink to="https://solanapay.com/" className="me-4">
@@ -197,10 +190,8 @@ const FormatHero = () => {
                 bgColor="#1c1c1c"
                 className="h-100 p-6 text-white"
               >
-                <h2 className="h3 mb-6">{t("format.slipstream.title")}</h2>
+                <h2 className="h3 mb-6">{format.slipstream.title}</h2>
                 <p className="mb-0">
-                  <Trans
-                    i18nKey="format.slipstream.description"
                     components={{
                       auctionLink: (
                         <InlineLink to="https://www.magiceden.io/auction/slipstream_entanglement_08" />

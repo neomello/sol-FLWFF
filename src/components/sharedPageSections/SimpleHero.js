@@ -3,7 +3,6 @@ import { PageBreadcrumbs } from "@/components/developers/DevelopersContentPage/P
 import { memo } from "react";
 
 const StyledSimpleHero = styled.section`
-  background: linear-gradient(
     267.53deg,
     #1a1a1a 17.14%,
     rgba(26, 26, 26, 0) 100.31%

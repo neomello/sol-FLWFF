@@ -115,7 +115,7 @@ export const ButtonConfig = {
       type: "text",
       enum: ["sm", "md", "lg", "xl"],
       defaultValue: "md",
-      showIf: "options.get('endIcon') || options.get('startIcon')",
+      showIf: "options.geendIcon || options.gestartIcon",
     },
   ],
 };
@@ -134,14 +134,14 @@ const statValue = {
       name: "staticValue",
       type: "string",
       defaultValue: "3,751",
-      showIf: "options.get('statType') === 'static'",
+      showIf: "options.gestatType === 'static'",
     },
     {
       name: "dynamicValueSource",
       type: "string",
       enum: Object.values(BuilderAPIs),
       defaultValue: BuilderAPIs.ExplorerAPI,
-      showIf: "options.get('statType') === 'dynamic'",
+      showIf: "options.gestatType === 'dynamic'",
       localized: false,
     },
     {
@@ -149,7 +149,7 @@ const statValue = {
       type: "string",
       enum: getEndpointsForBuilderAPI(BuilderAPIs.ExplorerAPI),
       localized: false,
-      showIf: `options.get('statType') === 'dynamic' && options.get('dynamicValueSource') === '${BuilderAPIs.ExplorerAPI}'`,
+      showIf: `options.gestatType === 'dynamic' && options.gedynamicValueSource === '${BuilderAPIs.ExplorerAPI}'`,
     },
   ],
 };
@@ -185,12 +185,10 @@ const FeatureCard = {
           name: "description",
           type: "text",
           localized: true,
-          defaultValue: "Transactions per second",
         },
       ],
       defaultValue: {
         value: { statType: "static", staticValue: "3,751" },
-        description: "Transactions per second",
       },
     },
     {
@@ -212,7 +210,7 @@ const FeatureCard = {
         { name: "src", type: "file" },
         { name: "alt", type: "text" },
       ],
-      showIf: "options.get('variant') === 'logo'",
+      showIf: "options.gevariant === 'logo'",
     },
   ],
 };
@@ -397,7 +395,7 @@ export const CardDeckConfig = {
             { name: "alt", type: "text" },
           ],
           showIf:
-            "options.get('type') === 'image' || options.get('type') === 'tall'",
+            "options.getype === 'image' || options.getype === 'tall'",
         },
         { name: "isFeatured", type: "boolean" },
         { name: "hiddenOnDesktop", type: "boolean" },
@@ -428,7 +426,7 @@ export const CarouselConfig = {
       type: "number",
       defaultValue: 4000,
       helperText: "Value is in milliseconds",
-      showIf: (options) => options.get("autoplay") === true,
+      showIf: (options) => options.geautoplay === true,
       localized: false,
     },
     {
@@ -558,7 +556,6 @@ export const FeatureHighlightConfig = {
           stat: {
             value: "3,751",
 
-            description: "Transactions per second",
           },
           eyebrow: "Optional Eyebrow",
 
@@ -681,26 +678,26 @@ export const StatsConfig = {
       type: "text",
       localized: true,
       defaultValue: "Eyebrow Text",
-      showIf: (options) => options.get("contained") === false,
+      showIf: (options) => options.gecontained === false,
     },
     {
       name: "headline",
       type: "text",
       localized: true,
       defaultValue: "Headline Text",
-      showIf: (options) => options.get("contained") === false,
+      showIf: (options) => options.gecontained === false,
     },
     {
       name: "headingAs",
       type: "text",
       enum: ["h2", "h3", "h4", "h5", "h6"],
-      showIf: (options) => options.get("contained") === false,
+      showIf: (options) => options.gecontained === false,
     },
     {
       name: "buttons",
       type: "list",
       subFields: ButtonConfig.inputs,
-      showIf: (options) => options.get("contained") === false,
+      showIf: (options) => options.gecontained === false,
     },
   ],
 };
@@ -945,13 +942,13 @@ export const ConversionPanelConfig = {
       name: "mobileBackground",
       type: "object",
       subFields: [{ name: "src", type: "file" }],
-      showIf: (options) => options.get("variant") === "centered",
+      showIf: (options) => options.gevariant === "centered",
     },
     {
       name: "desktopBackground",
       type: "object",
       subFields: [{ name: "src", type: "file" }],
-      showIf: (options) => options.get("variant") === "centered",
+      showIf: (options) => options.gevariant === "centered",
     },
     {
       name: "heading",
@@ -976,7 +973,7 @@ export const ConversionPanelConfig = {
           allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
         },
       ],
-      showIf: (options) => options.get("variant") === "offset",
+      showIf: (options) => options.gevariant === "offset",
     },
     {
       name: "desktopImage",
@@ -988,7 +985,7 @@ export const ConversionPanelConfig = {
           allowedFileTypes: ["jpeg", "jpg", "png", "svg"],
         },
       ],
-      showIf: (options) => options.get("variant") === "offset",
+      showIf: (options) => options.gevariant === "offset",
     },
     { name: "showLogos", type: "boolean" },
     {
@@ -1004,7 +1001,7 @@ export const ConversionPanelConfig = {
       name: "listItems",
       type: "list",
       subFields: ButtonConfig.inputs,
-      showIf: (options) => options.get("variant") === "inline-centered",
+      showIf: (options) => options.gevariant === "inline-centered",
       helperText:
         "Will only showcase if the value of the variant is set to inline-centered",
     },
@@ -1012,13 +1009,13 @@ export const ConversionPanelConfig = {
       name: "newsLetter",
       type: "boolean",
       helperText: "Toggle to show the NewsLetter Form",
-      showIf: (options) => options.get("variant") === "centered",
+      showIf: (options) => options.gevariant === "centered",
     },
     {
       name: "formId",
       type: "text",
       helperText: "Required for Form to render.",
-      showIf: (options) => options.get("variant") === "centered",
+      showIf: (options) => options.gevariant === "centered",
     },
     {
       name: "placeholder",
@@ -1027,7 +1024,7 @@ export const ConversionPanelConfig = {
       defaultValue: "",
 
       helperText: "Placeholder text for the input field",
-      showIf: (options) => options.get("variant") === "centered",
+      showIf: (options) => options.gevariant === "centered",
     },
     {
       name: "emailError",
@@ -1035,7 +1032,7 @@ export const ConversionPanelConfig = {
       localized: true,
       defaultValue: "",
 
-      showIf: (options) => options.get("variant") === "centered",
+      showIf: (options) => options.gevariant === "centered",
     },
     {
       name: "submitError",
@@ -1043,7 +1040,7 @@ export const ConversionPanelConfig = {
       localized: true,
       defaultValue: "",
 
-      showIf: (options) => options.get("variant") === "centered",
+      showIf: (options) => options.gevariant === "centered",
     },
     {
       name: "successMessge",
@@ -1051,7 +1048,7 @@ export const ConversionPanelConfig = {
       localized: true,
       defaultValue: "",
 
-      showIf: (options) => options.get("variant") === "centered",
+      showIf: (options) => options.gevariant === "centered",
     },
   ],
 };
@@ -1090,7 +1087,7 @@ export const HeroConfig = {
       name: "formId",
       type: "text",
       helperText: "Required for Form to render.",
-      showIf: (options) => options.get("newsLetter") === true,
+      showIf: (options) => options.genewsLetter === true,
     },
     { name: "centered", type: "boolean", defaultValue: false },
     {
@@ -1105,7 +1102,7 @@ export const HeroConfig = {
         { name: "alt", type: "text", localized: true, defaultValue: "" },
       ],
       defaultValue: { alt: "" },
-      showIf: (options) => options.get("centered") === false,
+      showIf: (options) => options.gecentered === false,
       helperText:
         "Will only showcase if the value of the centered field is set to true",
     },
@@ -1121,7 +1118,7 @@ export const HeroConfig = {
         { name: "alt", type: "text", localized: true, defaultValue: "" },
       ],
       defaultValue: { alt: "" },
-      showIf: (options) => options.get("centered") === true,
+      showIf: (options) => options.gecentered === true,
       helperText:
         "Will only showcase if the value of the centered field is set to true. Make sure leftImage fields are left empty.",
     },
@@ -1137,7 +1134,7 @@ export const HeroConfig = {
         { name: "alt", type: "text", localized: true, defaultValue: "" },
       ],
       defaultValue: { alt: "" },
-      showIf: (options) => options.get("centered") === true,
+      showIf: (options) => options.gecentered === true,
       helperText:
         "Will only showcase if the value of the centered field is set to true. Make sure rightImage fields are left empty.",
     },
@@ -1163,7 +1160,7 @@ export const CommunityGalleryConfig = {
           localized: true,
           defaultValue: "",
 
-          showIf: "options.get('cardType') === 'image'",
+          showIf: "options.gecardType === 'image'",
         },
         {
           name: "stat",
@@ -1171,7 +1168,7 @@ export const CommunityGalleryConfig = {
           localized: true,
           defaultValue: "",
 
-          showIf: "options.get('cardType') === 'stat'",
+          showIf: "options.gecardType === 'stat'",
         },
         {
           name: "eyebrow",
@@ -1179,7 +1176,7 @@ export const CommunityGalleryConfig = {
           localized: true,
           defaultValue: "",
 
-          showIf: "options.get('cardType') === 'stat'",
+          showIf: "options.gecardType === 'stat'",
         },
         { name: "body", type: "text", localized: true, defaultValue: "" },
         {
@@ -1192,7 +1189,7 @@ export const CommunityGalleryConfig = {
           name: "size",
           type: "text",
           enum: ["small", "large", "skinny"],
-          showIf: "options.get('cardType') === 'image'",
+          showIf: "options.gecardType === 'image'",
         },
         {
           name: "image",
@@ -1206,7 +1203,7 @@ export const CommunityGalleryConfig = {
             { name: "alt", type: "text", localized: true, defaultValue: "" },
           ],
           defaultValue: { alt: "" },
-          showIf: "options.get('cardType') === 'image'",
+          showIf: "options.gecardType === 'image'",
         },
       ],
     },
@@ -1693,7 +1690,7 @@ export const BreakpointSpeakersConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AccelerateStoriesConfig = {
   name: "Accelerate Stories",
@@ -1716,7 +1713,7 @@ export const AccelerateHeroConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AccelerateLinkButtonConfig = {
   name: "Accelerate Link Button",
@@ -1778,7 +1775,7 @@ export const AccelerateAccordionConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AccelerateInfoItemConfig = {
   name: "Info Item",
@@ -1792,7 +1789,7 @@ export const AccelerateInfoItemConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AccelerateInfoSectionConfig = {
   name: "Info Section",
@@ -1811,7 +1808,7 @@ export const AccelerateInfoSectionConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AccelerateAttendanceConfig = {
   name: "Attendance",
@@ -1823,7 +1820,7 @@ export const AccelerateAttendanceConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AccelerateSecondaryButtonConfig = {
   name: "Secondary button",
@@ -1843,7 +1840,7 @@ export const AccelerateSecondaryButtonConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AccelerateEventDescriptionConfig = {
   name: "Event description",
@@ -1865,7 +1862,7 @@ export const AccelerateEventDescriptionConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AcceleratePricingConfig = {
   name: "Pricing",
@@ -1877,7 +1874,7 @@ export const AcceleratePricingConfig = {
 };
 
 /**
- * @type {import('@builder.io/react').RegisteredComponent}
+ * @type {impor@builder.io/react.RegisteredComponent}
  */
 export const AccelerateStarContainerConfig = {
   name: "Star Container",

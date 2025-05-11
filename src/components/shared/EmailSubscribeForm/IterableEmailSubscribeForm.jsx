@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { useTranslation } from "next-i18next";
 import { memo, useMemo } from "react";
 import * as Yup from "yup";
 import Button from "../Button";
@@ -14,7 +13,6 @@ const Status = {
 };
 
 const StatusMessage = memo(function StatusMessage({ status }) {
-  const { t } = useTranslation("common");
 
   if (!Object.values(Status).includes(status)) {
     return null;
@@ -22,19 +20,18 @@ const StatusMessage = memo(function StatusMessage({ status }) {
 
   const color = status === Status.Error ? "red" : "inherit";
 
-  let message = t("shared.mail-signup.form.signup-success");
+  let message = shared.mail-signup.form.signup-success;
 
   if (status !== Status.Success) {
     message =
       status === Status.Sending
-        ? t("shared.mail-signup.form.sending")
-        : t("shared.mail-signup.form.unexpected-error");
+        ? shared.mail-signup.form.sending
+        : shared.mail-signup.form.unexpected-error;
   }
 
   return <small style={{ color }}>{message}</small>;
 });
 
-const defaultSchema = Yup.object().shape({
   email: Yup.string().email().required(),
 });
 
@@ -50,7 +47,6 @@ export default function IterableEmailSubscribeForm({
   placeholderTextID,
   ctaTextID,
 }) {
-  const { t } = useTranslation("common");
 
   const {
     actionUrl,
@@ -103,8 +99,7 @@ export default function IterableEmailSubscribeForm({
               )}
               placeholder={
                 placeholderTextID
-                  ? t(placeholderTextID)
-                  : t("shared.mail-signup.form.placeholder")
+                  : shared.mail-signup.form.placeholder
               }
               onChange={onValueChange}
             />
@@ -124,8 +119,7 @@ export default function IterableEmailSubscribeForm({
               onClick={onSubmit}
             >
               {ctaTextID
-                ? t({ ctaTextID })
-                : t("shared.mail-signup.form.signup")}
+                : shared.mail-signup.form.signup}
             </Button>
           </div>
         </div>
@@ -143,7 +137,7 @@ export default function IterableEmailSubscribeForm({
               className={styles["iterable-email-subscribe-form__input-error"]}
               role="alert"
             >
-              {t("shared.mail-signup.form.email-error")}
+              {shared.mail-signup.form.email-error}
             </p>
           </div>
         )}

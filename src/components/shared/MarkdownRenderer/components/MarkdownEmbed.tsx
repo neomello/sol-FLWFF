@@ -26,14 +26,12 @@ export const MarkdownEmbed = memo(
     if (
       new RegExp(
         /^(https:\/\/)?whimsical.com\/embed\/(?:[a-zA-Z0-9\-]+\-)?([a-km-zA-HJ-NP-Z1-9]{16,22})/gi,
-      ).test(url)
     ) {
       return <WhimsicalEmbed src={url} width={width} height={height || 180} />;
     }
 
     // youtube embeds
     else if (
-      new RegExp(/^(https:\/\/)?(www.)?(youtube.com|youtu.be)\//gi).test(url)
     ) {
       const videoId = url.match(
         /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|.*[?&]v=))([^?&]+)/,

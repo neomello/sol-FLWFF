@@ -51,43 +51,43 @@ import * as configs from "./builderConfigs";
 export const richTextDataModels = [
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Button),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Button),
     ),
     config: ButtonConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.HtmlParser),
+      impor@solana-foundation/solana-lib.then((lib) => lib.HtmlParser),
     ),
     config: HtmlParserConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Tip),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Tip),
     ),
     config: TipConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.YoutubeVideo),
+      impor@solana-foundation/solana-lib.then((lib) => lib.YoutubeVideo),
     ),
     config: YoutubeConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.RichTextStat),
+      impor@solana-foundation/solana-lib.then((lib) => lib.RichTextStat),
     ),
     config: RichStatsConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.RichTextQuote),
+      impor@solana-foundation/solana-lib.then((lib) => lib.RichTextQuote),
     ),
     config: RichTextQuoteConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.CodeBlock),
+      impor@solana-foundation/solana-lib.then((lib) => lib.CodeBlock),
     ),
     config: CodeBlockConfig,
   },
@@ -96,7 +96,7 @@ export const richTextDataModels = [
 const breakpointDataModels = [
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then(
+      impor@solana-foundation/solana-lib.then(
         (lib) => lib.BreakpointSpeakers,
       ),
     ),
@@ -104,7 +104,7 @@ const breakpointDataModels = [
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then(
+      impor@solana-foundation/solana-lib.then(
         (lib) => lib.BreakpointTitle,
       ),
     ),
@@ -112,13 +112,13 @@ const breakpointDataModels = [
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.BreakpointHero),
+      impor@solana-foundation/solana-lib.then((lib) => lib.BreakpointHero),
     ),
     config: BreakpointHeroConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.BreakpointCard),
+      impor@solana-foundation/solana-lib.then((lib) => lib.BreakpointCard),
     ),
     config: BreakpointCardConfig,
   },
@@ -127,7 +127,7 @@ const breakpointDataModels = [
 const accelerateDataModels = [
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateStories").then(
+      impor../components/accelerate/AccelerateStories.then(
         (lib) => lib.AccelerateStories,
       ),
     ),
@@ -135,7 +135,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateAccordion").then(
+      impor../components/accelerate/AccelerateAccordion.then(
         (lib) => lib.AccelerateAccordion,
       ),
     ),
@@ -143,7 +143,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateSpeakers").then(
+      impor../components/accelerate/AccelerateSpeakers.then(
         (lib) => lib.AccelerateSpeakers,
       ),
     ),
@@ -152,7 +152,7 @@ const accelerateDataModels = [
   {
     component: withChildren(
       dynamic(() =>
-        import("../components/accelerate/AccelerateHero").then(
+        impor../components/accelerate/AccelerateHero.then(
           (lib) => lib.AccelerateHero,
         ),
       ),
@@ -161,7 +161,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateApplyButton").then(
+      impor../components/accelerate/AccelerateApplyButton.then(
         (lib) => lib.AccelerateApplyButton,
       ),
     ),
@@ -169,7 +169,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateLinkButton").then(
+      impor../components/accelerate/AccelerateLinkButton.then(
         (lib) => lib.AccelerateLinkButton,
       ),
     ),
@@ -177,7 +177,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateInfoItem").then(
+      impor../components/accelerate/AccelerateInfoItem.then(
         (lib) => lib.AccelerateInfoItem,
       ),
     ),
@@ -186,7 +186,7 @@ const accelerateDataModels = [
   {
     component: withChildren(
       dynamic(() =>
-        import("../components/accelerate/AccelerateInfoSection").then(
+        impor../components/accelerate/AccelerateInfoSection.then(
           (lib) => lib.AccelerateInfoSection,
         ),
       ),
@@ -195,7 +195,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateAttendance").then(
+      impor../components/accelerate/AccelerateAttendance.then(
         (lib) => lib.AccelerateAttendance,
       ),
     ),
@@ -203,7 +203,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateSecondaryButton").then(
+      impor../components/accelerate/AccelerateSecondaryButton.then(
         (lib) => lib.AccelerateSecondaryButton,
       ),
     ),
@@ -211,7 +211,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AccelerateEventDescription").then(
+      impor../components/accelerate/AccelerateEventDescription.then(
         (lib) => lib.AccelerateEventDescription,
       ),
     ),
@@ -219,7 +219,7 @@ const accelerateDataModels = [
   },
   {
     component: dynamic(() =>
-      import("../components/accelerate/AcceleratePricing").then(
+      impor../components/accelerate/AcceleratePricing.then(
         (lib) => lib.AcceleratePricing,
       ),
     ),
@@ -228,7 +228,7 @@ const accelerateDataModels = [
   {
     component: withChildren(
       dynamic(() =>
-        import("../components/accelerate/AccelerateStarContainer").then(
+        impor../components/accelerate/AccelerateStarContainer.then(
           (lib) => lib.AccelerateStarContainer,
         ),
       ),
@@ -240,13 +240,13 @@ const accelerateDataModels = [
 const componentDataModel = [
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Accordion),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Accordion),
     ),
     config: AccordionConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then(
+      impor@solana-foundation/solana-lib.then(
         (lib) => lib.AnnouncementBar,
       ),
     ),
@@ -254,19 +254,19 @@ const componentDataModel = [
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.CardDeck),
+      impor@solana-foundation/solana-lib.then((lib) => lib.CardDeck),
     ),
     config: CardDeckConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Carousel),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Carousel),
     ),
     config: CarouselConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then(
+      impor@solana-foundation/solana-lib.then(
         (lib) => lib.CommunityGallery,
       ),
     ),
@@ -275,7 +275,7 @@ const componentDataModel = [
   {
     component: withChildren(
       dynamic(() =>
-        import("@solana-foundation/solana-lib").then(
+        impor@solana-foundation/solana-lib.then(
           (lib) => lib.ContentEditor,
         ),
       ),
@@ -284,7 +284,7 @@ const componentDataModel = [
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then(
+      impor@solana-foundation/solana-lib.then(
         (lib) => lib.ConversionPanel,
       ),
     ),
@@ -292,7 +292,7 @@ const componentDataModel = [
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then(
+      impor@solana-foundation/solana-lib.then(
         (lib) => lib.FeatureHighlight,
       ),
     ),
@@ -300,33 +300,33 @@ const componentDataModel = [
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Heading),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Heading),
     ),
     config: HeadingConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Hero),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Hero),
     ),
     config: HeroConfig,
   },
   {
     component: withChildren(
       dynamic(() =>
-        import("@solana-foundation/solana-lib").then((lib) => lib.Section),
+        impor@solana-foundation/solana-lib.then((lib) => lib.Section),
       ),
     ),
     config: SectionConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.NewsletterForm),
+      impor@solana-foundation/solana-lib.then((lib) => lib.NewsletterForm),
     ),
     config: NewsletterFormConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then(
+      impor@solana-foundation/solana-lib.then(
         (lib) => lib.NewsletterMultipleListsForm,
       ),
     ),
@@ -334,25 +334,25 @@ const componentDataModel = [
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Slider),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Slider),
     ),
     config: SliderConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Stats),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Stats),
     ),
     config: StatsConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Switchback),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Switchback),
     ),
     config: SwitchbackConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then(
+      impor@solana-foundation/solana-lib.then(
         (lib) => lib.SwitchbackChain,
       ),
     ),
@@ -360,31 +360,31 @@ const componentDataModel = [
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Switcher),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Switcher),
     ),
     config: SwitcherConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Trustbar),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Trustbar),
     ),
     config: TrustbarConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.Quote),
+      impor@solana-foundation/solana-lib.then((lib) => lib.Quote),
     ),
     config: QuoteConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.QuoteSlider),
+      impor@solana-foundation/solana-lib.then((lib) => lib.QuoteSlider),
     ),
     config: QuoteSliderConfig,
   },
   {
     component: dynamic(() =>
-      import("@solana-foundation/solana-lib").then((lib) => lib.DetailsHero),
+      impor@solana-foundation/solana-lib.then((lib) => lib.DetailsHero),
     ),
     config: DetailsHeroConfig,
   },
@@ -395,7 +395,6 @@ const componentDataModel = [
 
 const customComponentsRegistration = () => {
   componentDataModel.map((component) =>
-    Builder.registerComponent(component.component, component.config),
   );
 
   Builder.register("insertMenu", {

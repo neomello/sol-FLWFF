@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { useTranslation } from "next-i18next";
 import { ArrowRightCircle } from "react-feather";
 import styled from "styled-components";
 
@@ -19,7 +18,6 @@ export default function DevelopersCourseItem({
   url,
   image,
 }) {
-  const { t } = useTranslation();
 
   return (
     <CourseLink to={url} className={styles["course-item"]} $image={image}>
@@ -36,7 +34,7 @@ export default function DevelopersCourseItem({
           <div className={styles["cta"]}>
             <button
               className="btn btn-sm btn-link p-0"
-              aria-label={t("developers.courses.aria-label")}
+              aria-label={developers.courses.aria-label}
             >
               <ArrowRightCircle strokeWidth={1} />
             </button>

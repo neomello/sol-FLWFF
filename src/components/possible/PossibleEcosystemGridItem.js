@@ -9,7 +9,6 @@ const PossibleEcosystemGridItem = ({ data }) => {
 
   const handleTooltipPosition = () => {
     if (itemRef.current) {
-      const rect = itemRef.current.getBoundingClientRect();
       const { innerWidth } = window;
       const tooltipHalfWidth = rect.width / 2; // approximate width of tooltip / 2
       let left = rect.left + rect.width / 2 - tooltipHalfWidth;

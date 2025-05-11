@@ -2,7 +2,6 @@ import { Link } from "../../utils/Link";
 import Image from "next/legacy/image";
 import styled from "styled-components";
 import Button from "../shared/Button";
-import { useTranslation } from "next-i18next";
 
 const StyledPostCard = styled.article`
   // Using !important here to overcome the global !important setting from solana-variables
@@ -67,7 +66,6 @@ const StyledPostCard = styled.article`
  * @constructor
  */
 const PostCard = ({ post }) => {
-  const { t } = useTranslation();
   const url = `/news/${post?.data?.slug}/`;
   const featuredImage = post?.data?.image ?? "/src/img/news/blogbackup.png";
 
@@ -89,7 +87,7 @@ const PostCard = ({ post }) => {
         <h3 className="post-card-title">{post?.name}</h3>
       </div>
       <div>
-        <Button to={url}>{t("blog.readArticle")}</Button>
+        <Button to={url}>{blog.readArticle}</Button>
       </div>
     </StyledPostCard>
   );

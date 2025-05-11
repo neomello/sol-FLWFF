@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import styles from "./NFTShowdownPartners.module.scss";
 import Image from "next/image";
 
@@ -19,13 +18,12 @@ import Metaplex from "../../../assets/nft-showdown/partners/metaplex.png";
 import Lollipop from "../../../assets/nft-showdown/partners/lollipop.png";
 
 const NFTShowdownPartners = () => {
-  const { t } = useTranslation("common");
 
   return (
     <div className="my-10">
       <div className={styles["nft-showdown-partners"]}>
         <h2 className="mono section-title h6 fw-normal mb-5">
-          {t("nft-showdown.partners.title")}:
+          {nft-showdown.partners.title}:
         </h2>
 
         <div className={styles["nft-showdown-partners__logos"]}>

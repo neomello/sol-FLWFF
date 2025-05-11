@@ -5,10 +5,8 @@ import RpcApiIcon from "@@/public/src/img/developers/api.inline.svg";
 import CookbookIcon from "@@/public/src/img/developers/cookbook.inline.svg";
 import GuidesIcon from "@@/public/src/img/developers/guides.inline.svg";
 import StackExchangeIcon from "@@/assets/developers/stackexchange.inline.svg";
-import { useTranslation } from "next-i18next";
 
 export default function DevelopersNav({ containerClassName }) {
-  const { t } = useTranslation();
 
   return (
     <div className={styles["developers-nav"]}>
@@ -23,12 +21,12 @@ export default function DevelopersNav({ containerClassName }) {
             >
               <DocsIcon height="16" width="16" className="me-2" />
               <span className="align-middle">
-                {t("developers.nav.documentation")}
+                {developers.nav.documentation}
               </span>
             </Link>
             <Link partiallyActive to="/docs/rpc" activeClassName="active">
               <RpcApiIcon height="16" width="16" className="me-2" />
-              <span className="align-middle">{t("developers.nav.rpc")}</span>
+              <span className="align-middle">{developers.nav.rpc}</span>
             </Link>
             <Link
               partiallyActive
@@ -37,13 +35,13 @@ export default function DevelopersNav({ containerClassName }) {
             >
               <CookbookIcon height="16" width="16" className="me-2" />
               <span className="align-middle">
-                {t("developers.nav.cookbook")}
+                {developers.nav.cookbook}
               </span>
             </Link>
             <Link partiallyActive to="/docs/toolkit" activeClassName="active">
               <GuidesIcon height="16" width="16" className="me-2" />
               <span className="align-middle">
-                {t("developers.nav.toolkit")}
+                {developers.nav.toolkit}
               </span>
             </Link>
             <Link

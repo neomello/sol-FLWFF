@@ -8,13 +8,10 @@ export function CopyToClipBoardButton() {
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const [isCopied, setIsCopied] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
       setIsCopied(false);
     }, 2000);
 
     return () => {
-      clearTimeout(timer);
     };
   }, [isCopied]);
 
@@ -25,8 +22,7 @@ export function CopyToClipBoardButton() {
         console.log("unable to access the window's clipboard");
       }
 
-      await navigator.clipboard.writeText(
-        btnRef.current?.closest("pre")?.querySelector("code")?.textContent ||
+        btnRef.current?.closespre?.querySelector("code")?.textContent ||
           "[err]",
       );
 

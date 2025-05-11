@@ -8,7 +8,6 @@ export default memo(function FormattedDate({
 }) {
   const [date, setDate] = useState(null);
 
-  useEffect(() => {
     const parsed = new Date(dateString);
 
     if (isNaN(parsed)) {

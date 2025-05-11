@@ -80,9 +80,6 @@ const StyledBSButton = styled(BSButton)`
             ? `1px solid black`
             : `1px solid white`};
 
-    &:not([disabled]):hover,
-    &:not([disabled]):active,
-    &:not([disabled]):focus {
       background-color: ${(props) => {
         switch (props.$variant) {
           case "disabled":

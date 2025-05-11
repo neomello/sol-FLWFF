@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import { useTranslation } from "next-i18next";
 import useReducedMotion from "../../hooks/useReducedMotion";
 import classNames from "classnames";
 import Button from "../shared/Button";
@@ -11,12 +10,10 @@ import VideoPoster from "assets/possible/opos_hype_poster.jpg";
 import PlayButton from "assets/possible/play_btn.png";
 
 const PossibleHero = () => {
-  const { t } = useTranslation();
   const heroVideoRef = useRef();
   const [prefersReducedMotion] = useReducedMotion();
   const [showVideoModal, setShowVideoModal] = useState(false);
 
-  useEffect(() => {
     prefersReducedMotion && heroVideoRef.current.pause();
   }, [prefersReducedMotion]);
 
@@ -44,7 +41,7 @@ const PossibleHero = () => {
                 />
               </video>
               <span className="visually-hidden">
-                {t("possible.hero.title")}
+                {possible.hero.title}
               </span>
             </h1>
             <p
@@ -53,7 +50,7 @@ const PossibleHero = () => {
                 `d-block d-md-none mb-6`,
               )}
             >
-              {t("possible.hero.description")}
+              {possible.hero.description}
             </p>
             <div className={`text-center text-md-start`}>
               <Button
@@ -62,14 +59,14 @@ const PossibleHero = () => {
                 size={"large"}
                 className="mt-4 mx-2"
               >
-                {t("possible.hero.cta-primary")}
+                {possible.hero.cta-primary}
               </Button>
             </div>
           </div>
           <div className="col d-none d-md-block ps-8 pe-5">
             <VideoModalButton setShowVideoModal={setShowVideoModal} />
             <p className={classNames(styles["hero__copy--possible"], `mb-0`)}>
-              {t("possible.hero.description")}
+              {possible.hero.description}
             </p>
           </div>
         </div>

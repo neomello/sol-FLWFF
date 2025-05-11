@@ -8,7 +8,6 @@ const PossibleAnimatedIcons = ({
   const [showFallback, setShowFallback] = useState(false);
   const videoRef = useRef(null);
 
-  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;

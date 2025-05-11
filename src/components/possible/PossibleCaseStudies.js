@@ -1,11 +1,9 @@
 import Link from "../../utils/Link";
 import classNames from "classnames";
 import styles from "./PossibleCaseStudies.module.scss";
-import { useTranslation } from "next-i18next";
 
 const PossibleCaseStudies = () => {
-  const { t } = useTranslation();
-  const caseStudyCTA = t("possible.learnMore");
+  const caseStudyCTA = possible.learnMore;
 
   return (
     <section className={styles["section__caseStudies--possible"]}>
@@ -13,32 +11,32 @@ const PossibleCaseStudies = () => {
         <div className={styles["caseStudies__card-row--possible"]}>
           <div className={styles["caseStudies__card-row-inner--possible"]}>
             <CaseStudyCard
-              title={t("possible.caseStudies.case-1.title")}
-              copy={t("possible.caseStudies.case-1.description")}
+              title={possible.caseStudies.case-1.title}
+              copy={possible.caseStudies.case-1.description}
               cta={caseStudyCTA}
               url={"/news/case-study-hivemapper"}
             />
             <CaseStudyCard
-              title={t("possible.caseStudies.case-2.title")}
-              copy={t("possible.caseStudies.case-2.description")}
+              title={possible.caseStudies.case-2.title}
+              copy={possible.caseStudies.case-2.description}
               cta={caseStudyCTA}
               url={"/news/case-study-helium"}
             />
             <CaseStudyCard
-              title={t("possible.caseStudies.case-3.title")}
-              copy={t("possible.caseStudies.case-3.description")}
+              title={possible.caseStudies.case-3.title}
+              copy={possible.caseStudies.case-3.description}
               cta={caseStudyCTA}
               url={"https://drip.haus/"}
             />
             <CaseStudyCard
-              title={t("possible.caseStudies.case-4.title")}
-              copy={t("possible.caseStudies.case-4.description")}
+              title={possible.caseStudies.case-4.title}
+              copy={possible.caseStudies.case-4.description}
               cta={caseStudyCTA}
               url={"/news/case-study-dialect"}
             />
             <CaseStudyCard
-              title={t("possible.caseStudies.case-5.title")}
-              copy={t("possible.caseStudies.case-5.description")}
+              title={possible.caseStudies.case-5.title}
+              copy={possible.caseStudies.case-5.description}
               cta={caseStudyCTA}
               url={"/news/case-study-gainforest"}
             />

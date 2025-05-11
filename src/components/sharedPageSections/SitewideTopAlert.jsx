@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "@/hooks/useRouter";
+import { useRouter, usePathname } from "next/navigation";
 import { AnnouncementBar } from "@solana-foundation/solana-lib";
 import builder from "@builder.io/react";
 import { BUILDER_CONFIG } from "../../lib/builder/builderConstants";
@@ -13,23 +13,19 @@ import styles from "./SitewideTopAlert.module.scss";
  *
  * @returns {JSX.Element}
  */
-function SitewideTopAlert({ locale }) {
+export default function SitewideTopAlert() {
   const router = useRouter();
+  const pathname = usePathname();
   const [announcementBarData, setAnnouncementBarData] = useState(null);
 
   useEffect(() => {
     // Fetch announcement bar data from Builder.io
-    builder.init(BUILDER_CONFIG.apiKey);
     builder.apiVersion = "v3";
     builder
-      .get("component-announcement-bar", {
+      .get("announcement-bar", {
         staleCacheSeconds: 20,
-        userAttributes: {
-          locale,
-        },
-        options: {
-          locale,
-        },
+        userAttributes: {},
+        options: {}
       })
       .promise()
       .then((response) => {
@@ -42,18 +38,18 @@ function SitewideTopAlert({ locale }) {
           color: response.data.color,
         });
       });
-  }, [locale]);
+  }, []);
 
   if (
-    router.pathname.includes(announcementBarData?.cta.url) ||
-    router.asPath.includes("/breakpoint/app")
+    pathname?.includes(announcementBarData?.cta?.url) ||
+    pathname?.includes("/breakpoint/app")
   ) {
     return null;
   }
 
   return (
     <>
-      {(announcementBarData?.text || announcementBarData?.cta.label) && (
+      {(announcementBarData?.text || announcementBarData?.cta?.label) && (
         <div className={styles["alertOuter"]}>
           <div className={styles["alertInner"]}>
             <AnnouncementBar {...announcementBarData} dismissable={false} />
@@ -63,5 +59,3 @@ function SitewideTopAlert({ locale }) {
     </>
   );
 }
-
-export default SitewideTopAlert;

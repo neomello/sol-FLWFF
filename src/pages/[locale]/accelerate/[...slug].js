@@ -4,12 +4,9 @@ import customComponentsRegistration from "@/utils/customComponentGenerator";
 import AccelerateLayout from "@/components/accelerate/AccelerateLayout";
 import { getAllCustomSlugs, getCustomPage } from "@/lib/builder/api";
 import { ACCELERATE_BUILDER_CONFIG } from "@/lib/builder/accelerate/constants";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import HTMLHead from "@/components/builder/HTMLHead";
 import SimpleHero from "@/components/accelerate/AccelerateSimpleHero";
-import { slugWithLocales } from "@/i18n/routing";
 
-builder.init(ACCELERATE_BUILDER_CONFIG.apiKey);
 builder.apiVersion = "v3";
 customComponentsRegistration();
 
@@ -40,7 +37,6 @@ const AcceleratePage = ({ builderLocale, page }) => {
             options={{ includeRefs: true }}
             model={ACCELERATE_BUILDER_CONFIG.model}
             content={page}
-            locale={builderLocale || "Default"}
           />
         </article>
       </AccelerateLayout>
@@ -54,17 +50,13 @@ export async function getStaticPaths() {
     ACCELERATE_BUILDER_CONFIG.model,
   );
   return {
-    paths: slugWithLocales(allPages || []),
     fallback: "blocking",
   };
 }
 
 export const getStaticProps = async ({ params }) => {
-  const { locale = "en" } = params;
   try {
     let slug = params?.slug || "";
-    const isDefaultLocale = locale === "en";
-    const builderLocale = isDefaultLocale ? "Default" : locale;
 
     if (typeof slug === "object" && slug.length) {
       slug = slug.map((slug) => slug.replace(/(%\d+)+$/, ""));
@@ -85,11 +77,9 @@ export const getStaticProps = async ({ params }) => {
 
     return {
       props: {
-        locale,
         builderLocale,
         key: page?.id + page?.data.slug + params.slug,
         page: page || null,
-        ...(await serverSideTranslations(locale, ["common"])),
       },
       revalidate: 60,
     };

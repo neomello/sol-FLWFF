@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 import Image from "next/legacy/image";
 
 import blogHeroImage from "../../../public/src/img/news/hero.png";
@@ -46,7 +45,6 @@ const StyledHeroText = styled.div`
 `;
 
 const BlogHero = () => {
-  const { t } = useTranslation();
 
   return (
     <section className="news-hero">
@@ -64,7 +62,7 @@ const BlogHero = () => {
         <div className="background-gradient secondary" />
         <div className="hero-title">
           <StyledHeroText>
-            <h1 className="news-heading">{t("blog.hero")}</h1>
+            <h1 className="news-heading">{blog.hero}</h1>
           </StyledHeroText>
         </div>
       </div>

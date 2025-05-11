@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import Image from "next/legacy/image";
-import { useTranslation } from "next-i18next";
 import Button from "@/components/shared/Button";
 import DevelopersIcon from "../../../../../assets/hackathon/hero/developers.inline.svg";
 import FundingIcon from "../../../../../assets/hackathon/hero/funding.inline.svg";
@@ -11,7 +10,6 @@ import { ArrowUpRight } from "react-feather";
 
 import styles from "./HackathonHeroSection.module.scss";
 
-function StatComponent({ Icon, title, subtitle }) {
   return (
     <div
       className="d-flex justify-content-center align-items-center"
@@ -32,18 +30,17 @@ function StatComponent({ Icon, title, subtitle }) {
 }
 
 export default function HackathonHeroSection() {
-  const { t } = useTranslation();
 
   return (
     <section className={styles["hero-section"]}>
       <div className="container">
-        <h1 className={styles["title"]}>{t("hackathon.index.title")}</h1>
+        <h1 className={styles["title"]}>{hackathon.index.title}</h1>
         <p className={classNames("subdued", styles["subtitle"])}>
-          {t("hackathon.index.description")}
+          {hackathon.index.description}
         </p>
         <div className={styles["signup-form"]}>
           <Button to="https://arena.colosseum.org/signup" newTab rel="nofollow">
-            {t("hackathon.index.cta")}
+            {hackathon.index.cta}
             <ArrowUpRight />
           </Button>
         </div>
@@ -55,18 +52,18 @@ export default function HackathonHeroSection() {
         >
           <StatComponent
             Icon={DevelopersIcon}
-            title={t("hackathon.index.hero.developers.title")}
-            subtitle={t("hackathon.index.hero.developers.subtitle")}
+            title={hackathon.index.hero.developers.title}
+            subtitle={hackathon.index.hero.developers.subtitle}
           />
           <StatComponent
             Icon={ProjectsIcon}
-            title={t("hackathon.index.hero.projects.title")}
-            subtitle={t("hackathon.index.hero.projects.subtitle")}
+            title={hackathon.index.hero.projects.title}
+            subtitle={hackathon.index.hero.projects.subtitle}
           />
           <StatComponent
             Icon={FundingIcon}
-            title={t("hackathon.index.hero.funding.title")}
-            subtitle={t("hackathon.index.hero.funding.subtitle")}
+            title={hackathon.index.hero.funding.title}
+            subtitle={hackathon.index.hero.funding.subtitle}
           />
         </div>
       </div>

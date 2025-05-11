@@ -1,6 +1,5 @@
 import { Link } from "../../utils/Link";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 
 const StyledPagination = styled.div`
   font-family: Diatype, var(--font-family-sans-serif);
@@ -79,7 +78,6 @@ const Pagination = ({
     ? "separator"
     : "seperator mt-10";
 
-  const { t } = useTranslation();
 
   return (
     <StyledPagination>
@@ -91,7 +89,6 @@ const Pagination = ({
         {numberOfPages > 1 && (
           <>
             <div>
-              {t("blog.pagination", {
                 firstItem: firstIndex,
                 lastItem: lastIndex > itemsTotal ? itemsTotal : lastIndex,
                 total: itemsTotal,
@@ -127,7 +124,7 @@ const Pagination = ({
                       strokeWidth="1.5"
                     />
                   </svg>
-                  {t("blog.previous-btn")}
+                  {blog.previous-btn}
                 </Link>
               )}
               {nextPagePath && (
@@ -152,7 +149,7 @@ const Pagination = ({
                       strokeWidth="1.5"
                     />
                   </svg>
-                  {t("blog.next-btn")}
+                  {blog.next-btn}
                 </Link>
               )}
             </div>

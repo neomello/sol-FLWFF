@@ -13,14 +13,12 @@ const WebsiteMeta = ({
   description,
   image,
   type,
-  locale,
 }) => {
   const publisherLogo = url.resolve(
     config.siteUrl,
     settings.logo || config.siteIcon,
   );
   let shareImage =
-    image || data?.feature_image || _.get(settings, `cover_image`, null);
 
   shareImage = shareImage ? url.resolve(config.siteUrl, shareImage) : null;
 
@@ -67,7 +65,6 @@ const WebsiteMeta = ({
     <>
       <Head>
         <title>{title}</title>
-        <meta property="language" content={locale} />
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
         <meta property="og:site_name" content={settings.title} />

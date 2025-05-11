@@ -34,7 +34,6 @@ export function MarkdownAccordionItem({
 
   // css for radixui data-state attribute (sometimes) doesn't render on change
   // this seems to cause rerender and apply the correct state
-  useEffect(() => {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (
@@ -52,7 +51,6 @@ export function MarkdownAccordionItem({
       observer.observe(contentRef.current, { attributes: true });
     }
 
-    return () => observer.disconnect();
   }, []);
 
   return (

@@ -10,16 +10,13 @@ import Sun from "../../public/src/img/icons/Sun.inline.svg";
 import HeaderList from "./header/HeaderList";
 import { InkeepSearchBar } from "@/app/components/inkeep/inkeep-searchbar";
 import { useTheme } from "@/themecontext";
-import { useTranslation } from "react-i18next";
 import DevelopersNav from "./developers/DevelopersNav/DevelopersNav";
 import styles from "./Header.module.scss";
 
 const Header = ({ className = "", containerClassName = "" }) => {
   const router = useRouter();
   const { theme, toggleTheme, isThemePage } = useTheme();
-  const { t } = useTranslation();
 
-  useEffect(() => {
     const navbar = document.getElementById("navbar");
     if (navbar) {
       if (isThemePage) {
@@ -62,7 +59,7 @@ const Header = ({ className = "", containerClassName = "" }) => {
                 <button
                   className={styles.header__toggle}
                   onClick={toggleTheme}
-                  aria-label={t("commands.toggle")}
+                  aria-label={commands.toggle}
                 >
                   {theme === "light" && <Moon />}
                   {theme === "dark" && <Sun />}

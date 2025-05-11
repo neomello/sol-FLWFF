@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Filters.module.scss";
 import RampFilter from "./RampFilter";
 import { CloseButton } from "react-bootstrap";
-import { useTranslation } from "next-i18next";
 
 const Filters = ({
   filtersActive,
@@ -18,7 +17,6 @@ const Filters = ({
   resetFilters,
   filters,
 }) => {
-  const { t } = useTranslation();
 
   return (
     <div
@@ -31,15 +29,15 @@ const Filters = ({
           <h2 className={`${styles["ramp-filters__title"]}`}>Filters</h2>
           <button
             className={`${styles["ramp-filters__clear-filters"]}`}
-            aria-label={t("on-off-ramp.filters.clear-button.aria-label")}
+            aria-label={on-off-ramp.filters.clear-button.aria-label}
             onClick={resetFilters}
           >
-            {t("on-off-ramp.filters.clear-button.title")}
+            {on-off-ramp.filters.clear-button.title}
           </button>
         </div>
         <CloseButton
           className="ramp-filters__close"
-          aria-label={t("on-off-ramp.filters.close-button.aria-label")}
+          aria-label={on-off-ramp.filters.close-button.aria-label}
           onClick={toggleFiltersActive}
         ></CloseButton>
       </div>
@@ -56,7 +54,7 @@ const Filters = ({
           placeholderRamps={placeholderRamps}
         />*/}
         <RampFilter
-          title={t("on-off-ramp.filters.country")}
+          title={on-off-ramp.filters.country}
           options={countries}
           inputType={"normal"}
           setFilters={setFilters}
@@ -66,7 +64,7 @@ const Filters = ({
           placeholderRamps={placeholderRamps}
         />
         <RampFilter
-          title={t("on-off-ramp.filters.fiat-assets")}
+          title={on-off-ramp.filters.fiat-assets}
           options={fiatAssets}
           inputType={"currency"}
           setFilters={setFilters}
@@ -76,7 +74,7 @@ const Filters = ({
           placeholderRamps={placeholderRamps}
         />
         <RampFilter
-          title={t("on-off-ramp.filters.payment-rails")}
+          title={on-off-ramp.filters.payment-rails}
           options={paymentRails}
           inputType={"normal"}
           setFilters={setFilters}

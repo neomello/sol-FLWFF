@@ -2,9 +2,8 @@ import dynamic from "next/dynamic";
 import Image from "next/legacy/image";
 import Link from "../../utils/Link";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 
-const PublishedAt = dynamic(() => import("./PublishedAt"), {
+const PublishedAt = dynamic(() => impor./PublishedAt, {
   ssr: false,
 });
 
@@ -141,7 +140,6 @@ const StyledPostCard = styled.article`
 `;
 
 const PostCard = ({ post, index, isFirstPage, variant = "primary" }) => {
-  const { t } = useTranslation();
 
   if (!post?.data) {
     return null;
@@ -177,7 +175,7 @@ const PostCard = ({ post, index, isFirstPage, variant = "primary" }) => {
           </h2>
         </div>
         <Link to={url} className="post-card-button">
-          {t("blog.read-article")}
+          {blog.read-article}
         </Link>
       </StyledPostCard>
     );

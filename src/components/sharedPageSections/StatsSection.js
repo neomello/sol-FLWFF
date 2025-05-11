@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 import RoundedDepthCard from "../shared/RoundedDepthCard";
-import { useTranslation } from "next-i18next";
 import Divider from "../shared/Divider";
 import StyledCaption from "../shared/StyledCaption";
 
@@ -16,11 +15,8 @@ import StyledCaption from "../shared/StyledCaption";
  * @constructor
  */
 const SingleNFTStat = ({ id, subId, children }) => {
-  const { t } = useTranslation();
   return (
     <div className="p-5">
-      <div className="h2 mb-0">{t(id)}</div>
-      <div className="h5">{t(subId)}</div>
       {children}
     </div>
   );
@@ -33,20 +29,15 @@ const options = {
 };
 
 const StatsUpdatedAt = ({ updatedId, updatedAt }) => {
-  const { t } = useTranslation();
-  const { locale } = useRouter();
   const formatted = useMemo(() => {
     try {
-      return Intl.DateTimeFormat(locale, options).format(updatedAt);
     } catch (error) {
       console.error(error);
       return updatedAt;
     }
-  }, [locale, updatedAt]);
 
   return (
     <StyledCaption>
-      {t(updatedId, {
         updateDate: formatted,
       })}
     </StyledCaption>
@@ -72,7 +63,6 @@ const StatsSection = ({
 }) => {
   const [updatedAtDatetime, setUpdatedDatetime] = useState(null);
 
-  useEffect(() => {
     setUpdatedDatetime(updatedAt);
   }, [updatedAt]);
 

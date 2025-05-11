@@ -11,18 +11,14 @@ export const defaultDateStringOptions = {
 };
 
 /**
- * Uses intl to get the locale & formats the given string accordingly.
  *
- * @param locale
  * @param dateString          The date to convert.
  * @param dateStringOptions   Options for toLocaleDateString.
  * @returns {string}
  */
 export const toLocaleString = (
-  locale,
   dateString,
   dateStringOptions = defaultDateStringOptions,
-) => new Date(dateString).toLocaleDateString(locale, dateStringOptions);
 
 /**
  * Formats a given date to MM/DD/YYYY HH:MM.
@@ -49,7 +45,7 @@ export const formatDateTime = (date) => {
  */
 export const switchMonthAndDay = (dateString) => {
   try {
-    const dateArray = dateString.split("-");
+    const dateArray = dateString.spli-;
     return [dateArray[0], dateArray[2], dateArray[1]].join("-");
   } catch (err) {
     console.error(err);
@@ -102,7 +98,6 @@ export const fixDate = (dateString) => {
 export const formatDate = (date, dateFormat, timezone) =>
   !!timezone && timezone !== "undefined"
     ? formatInTimeZone(date, timezone, dateFormat)
-    : format(date, dateFormat);
 
 /**
  * Converts ISO-8601 Duration string to Duration obj

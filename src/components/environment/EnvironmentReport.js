@@ -1,9 +1,6 @@
 import classNames from "classnames";
-import { useTranslation } from "next-i18next";
 import styles from "./EnvironmentReport.module.scss";
 
-export default function EnvironmentReport() {
-  const { t } = useTranslation();
 
   return (
     <section
@@ -19,7 +16,7 @@ export default function EnvironmentReport() {
           styles["environment-report__main"],
         )}
       >
-        <h2 className="mb-5">{t("environment.report.title")}</h2>
+        <h2 className="mb-5">{environment.report.title}</h2>
         <div
           className={classNames(
             "d-block d-lg-none col-12 mb-5",
@@ -27,10 +24,10 @@ export default function EnvironmentReport() {
           )}
         ></div>
         <p className="subdued mb-6">
-          {t("environment.report.description-part-1")}
+          {environment.report.description-part-1}
         </p>
         <p className="subdued mb-0">
-          {t("environment.report.description-part-2")}
+          {environment.report.description-part-2}
         </p>
       </div>
       <div

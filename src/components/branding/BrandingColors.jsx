@@ -1,6 +1,5 @@
 import Image from "next/legacy/image";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 import Divider from "../shared/Divider";
 import Button from "../shared/Button";
 
@@ -46,15 +45,14 @@ const StyledSection = styled.section`
 `;
 
 const BrandingColors = () => {
-  const { t } = useTranslation();
 
   return (
     <StyledSection>
-      <div className="h6 fw-bold mb-4">{t("branding.colors.title")}</div>
+      <div className="h6 fw-bold mb-4">{branding.colors.title}</div>
       <Divider theme="light" axis="x" />
       <div className="mt-4 mb-6">
         <p className="smaller text-uppercase">
-          {t("branding.colors.gradient")}
+          {branding.colors.gradient}
         </p>
         <Button to="src/img/branding/solanaGradient.jpg" download>
           PNG
@@ -67,14 +65,14 @@ const BrandingColors = () => {
       <div className="colors mt-4">
         <div>
           <p className="smaller text-uppercase mt-2">
-            {t("branding.colors.purple")}
+            {branding.colors.purple}
           </p>
           <p className="small mt-2">#9945FF</p>
           <div className="purple mt-6" />
         </div>
         <div>
           <p className="smaller text-uppercase mt-2">
-            {t("branding.colors.green")}
+            {branding.colors.green}
           </p>
           <p className="small mt-2">#14F195</p>
           <div className="green mt-6" />

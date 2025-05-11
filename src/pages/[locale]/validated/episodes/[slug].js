@@ -1,5 +1,3 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { pathsWithLocales } from "@/i18n/routing";
 
 import HTMLHead from "@/components/HTMLHead";
 import Layout from "@/components/layout";
@@ -41,13 +39,11 @@ export const getStaticPaths = async () => {
   }));
 
   return {
-    paths: pathsWithLocales(paths),
     fallback: "blocking",
   };
 };
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   try {
     let slug = params?.slug;
 
@@ -59,9 +55,7 @@ export async function getStaticProps({ params }) {
 
     return {
       props: {
-        locale,
         episode,
-        ...(await serverSideTranslations(locale, ["common"])),
       },
     };
   } catch (error) {

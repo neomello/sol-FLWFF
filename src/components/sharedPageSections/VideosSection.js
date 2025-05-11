@@ -125,14 +125,13 @@ const VideosSection = ({ videos, jsonData = data }) => {
   const [currentSource, setCurrentSource] = useState("");
 
   const handleClickVideoSource = (e, source) => {
-    e.preventDefault();
 
     setShowVideoModal(true);
     let normalizedSource = source;
     if (source) {
-      const params = source.split("v=");
+      const params = source.spliv=;
       if (params[1]) {
-        const videoIds = params[1].split("&");
+        const videoIds = params[1].spli&;
         normalizedSource = params[0] + "v=" + videoIds[0];
       }
     }

@@ -1,5 +1,4 @@
 import { builder, BuilderComponent, useIsPreviewing } from "@builder.io/react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import HTMLHead from "@/components/builder/HTMLHead";
 import NotFoundPage from "./404";
 import customComponentsRegistration from "@/utils/customComponentGenerator";
@@ -7,9 +6,7 @@ import Layout from "@/components/layout";
 import { PAGE_BUILDER_CONFIG } from "@/lib/builder/page/constants";
 import { getPage, getAllPagesWithSlug } from "@/lib/builder/page/api";
 import ModalLauncher from "@/components/ModalLauncher/ModalLauncher";
-import { slugWithLocales, usePathname } from "@/i18n/routing";
 
-builder.init(PAGE_BUILDER_CONFIG.apiKey);
 builder.apiVersion = "v3";
 customComponentsRegistration();
 
@@ -36,7 +33,6 @@ const Page = ({ page, builderLocale }) => {
         <BuilderComponent
           model={PAGE_BUILDER_CONFIG.pagesModel}
           content={page}
-          locale={builderLocale || "Default"}
           options={{
             includeRefs: true,
             noTraverse: true,
@@ -54,8 +50,7 @@ export async function getStaticPaths() {
 
     const slugs = await allPages
       ?.filter((page) => page.data.slug[0] !== "/")
-      ?.map((page) => page.data.slug.split("/"));
-    const paths = slugWithLocales(slugs || []);
+      ?.map((page) => page.data.slug.spli/);
 
     return {
       paths,
@@ -74,28 +69,22 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   try {
     let slug =
       params?.slug && Array.isArray(params?.slug)
         ? params.slug.join("/")
         : params.slug;
-    const isDefaultLocale = locale === "en";
-    const builderLocale = isDefaultLocale ? "Default" : locale;
 
     if (!slug) {
       return { notFound: true };
     }
 
-    const page = await getPage(slug, locale);
 
     return {
       props: {
         key: page?.id + page?.data.slug + params.slug,
-        locale,
         builderLocale,
         page: page || null,
-        ...(await serverSideTranslations(builderLocale, ["common"])),
       },
       revalidate: 60,
     };
@@ -119,5 +108,4 @@ function useAppRouterNavigation(page) {
     new RegExp(`^/(?:[^/]{2}/)?developers/courses(/.*)?$`),
     new RegExp(`^/(?:[^/]{2}/)?developers/guides(/.*)?$`),
   ];
-  return regexes.some((regex) => regex.test(pathname));
 }

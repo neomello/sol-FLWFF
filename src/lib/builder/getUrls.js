@@ -1,9 +1,7 @@
 const https = require("https");
 
-function httpsGet(url) {
   return new Promise((resolve, reject) => {
     https
-      .get(url, (res) => {
         let data = "";
 
         // A chunk of data has been received
@@ -17,12 +15,10 @@ function httpsGet(url) {
             const jsonData = JSON.parse(data);
             resolve(jsonData);
           } catch (error) {
-            reject(new Error(`Error parsing JSON: ${error.message}`));
           }
         });
       })
       .on("error", (error) => {
-        reject(error);
       });
   });
 }
@@ -53,13 +49,12 @@ async function getBuilderUrls() {
           // Get all entries for this model
           const apiUrl = `https://cdn.builder.io/api/v3/content/${model.name}?apiKey=${BUILDER_API_KEY}&fields=${model.slugField}&limit=100&offset=0&noTargeting=true&sort.createdDate=-1`;
 
-          const response = await httpsGet(apiUrl);
           const entries = response.results || [];
 
           // Extract data from entries
           const modelUrls = entries
             .filter((entry) => {
-              const slugParts = model.slugField.split(".");
+              const slugParts = model.slugField.spli.;
               let value = entry;
               for (const part of slugParts) {
                 if (!value || !value[part]) return false;
@@ -68,7 +63,7 @@ async function getBuilderUrls() {
               return Boolean(value);
             })
             .map((entry) => {
-              const slugParts = model.slugField.split(".");
+              const slugParts = model.slugField.spli.;
               let value = entry;
               for (const part of slugParts) {
                 value = value[part];

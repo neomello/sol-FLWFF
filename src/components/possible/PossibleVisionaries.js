@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import { Trans, useTranslation } from "next-i18next";
 import Image from "next/image";
 import classNames from "classnames";
 import styles from "./PossibleVisionaries.module.scss";
@@ -14,7 +13,6 @@ import PlayButton from "assets/possible/visionaries/play-button.png";
 import { PossibleVisionariesData } from "./PossibleVisionariesData";
 
 const PossibleVisionaries = () => {
-  const { t } = useTranslation("common");
   const sliderRef = useRef(null);
   const [currentEpisode, setCurrentEpisode] = useState(0);
   const [showVideoModal, setShowVideoModal] = useState(false);
@@ -54,8 +52,6 @@ const PossibleVisionaries = () => {
         <div className={`row`}>
           <div className="col-12 col-md-5 d-flex flex-row d-md-block mb-8 mb-md-0 ps-lg-0 align-items-center">
             <h2 className="h2 pe-5 flex-grow-1 flex-shrink-1 mb-0">
-              <Trans
-                i18nKey="possible.visionaries.title"
                 components={{
                   italic: <em className="fst-italic" />,
                 }}
@@ -90,7 +86,7 @@ const PossibleVisionaries = () => {
                         poster={item.poster}
                         index={index}
                         title={item.title}
-                        watchText={t("possible.visionaries.watch")}
+                        watchText={possible.visionaries.watch}
                       />
                     </div>
                     <div className={`col-12 col-md-6 px-8 pe-lg-12`}>
@@ -131,7 +127,7 @@ const PossibleVisionaries = () => {
                           height={30}
                           className={`d-inline-block me-2`}
                         />
-                        {t("possible.visionaries.watch")}
+                        {possible.visionaries.watch}
                       </button>
                     </div>
                   </div>
@@ -157,7 +153,6 @@ const PossibleEpisodeSelection = ({
   episodeData,
   currentEpisode,
 }) => {
-  const { t } = useTranslation("common");
   const containerRef = useRef(null);
 
   const selectEpisode = (index) => {
@@ -194,8 +189,6 @@ const PossibleEpisodeSelection = ({
                 )}
                 onClick={() => selectEpisode(index)}
               >
-                <Trans
-                  i18nKey={item.name}
                   components={{
                     lowercase: <span className="text-lowercase" />,
                   }}
@@ -211,7 +204,7 @@ const PossibleEpisodeSelection = ({
                 styles[`visionaries-episodeSelectionBtn--possible`],
               )}
             >
-              {t("possible.visionaries.seeAll")}
+              {possible.visionaries.seeAll}
               <span className="d-inline-block position-relative me-n3 ms-1">
                 <ChevronDown />
               </span>
@@ -227,8 +220,6 @@ const PossibleEpisodeSelection = ({
                     styles[`visionaries-episodeDropdownBtn--possible`],
                   )}
                 >
-                  <Trans
-                    i18nKey={item.name}
                     components={{
                       lowercase: <span className="text-lowercase" />,
                     }}

@@ -68,8 +68,8 @@ export const AccelerateSpeakers: FC<AccelerateSpeakersProps> = ({
                   {speaker.event === "scale" ? "Scale or die" : "Ship or die"}
                 </p>
                 <h3 className={styles.name}>
-                  <span>{speaker.speakerName.split(" ")[0]}</span>
-                  <span>{speaker.speakerName.split(" ")[1]}</span>
+                  <span>{speaker.speakerName.spli [0]}</span>
+                  <span>{speaker.speakerName.spli [1]}</span>
                 </h3>
                 <div className={styles.companyWrapper}>
                   <p className={styles.company}>{speaker.company}</p>

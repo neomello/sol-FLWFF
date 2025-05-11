@@ -22,22 +22,16 @@ class RequestQueue {
 
   add(request) {
     this.queue.push(() =>
-      request().finally(() => {
         this.concurrentRequests--;
-        this.next();
       }),
     );
-    this.next();
   }
 
-  next() {
     if (
       this.concurrentRequests < this.maxConcurrentRequests &&
       this.queue.length > 0
     ) {
-      const request = this.queue.shift();
       this.concurrentRequests++;
-      request();
     }
   }
 }
@@ -66,7 +60,6 @@ export async function makeRPCCall({ abortSignal, method, params, rpcNodeURL }) {
           const result = await response.json();
           resolve(result);
         } catch (e) {
-          reject(e);
         }
       });
     });

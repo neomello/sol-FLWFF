@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { useTranslation } from "next-i18next";
 import { useCallback, useRef } from "react";
 
 import Button from "../shared/Button";
@@ -11,7 +10,6 @@ import ApplePodcastsListenBadge from "../../../assets/podcast/apple-podcasts-lis
 import styles from "./PodcastOverviewSection.module.scss";
 
 export default function PodcastOverviewSection() {
-  const { t } = useTranslation();
   const subscribeDialog = useRef();
 
   const onSubscribeClick = useCallback(
@@ -30,10 +28,10 @@ export default function PodcastOverviewSection() {
         >
           <div className="order-2">
             <h1 className={styles["description-container__title"]}>
-              {t("podcast.title")}
+              {podcast.title}
             </h1>
             <p className={styles["description-container__text"]}>
-              {t("podcast.description")}
+              {podcast.description}
             </p>
           </div>
           <div
@@ -52,7 +50,7 @@ export default function PodcastOverviewSection() {
               <ApplePodcastsListenBadge height={30} />
             </Button>
             <Button size="large" onClick={onSubscribeClick}>
-              {t("podcast.cta-list-sub")}
+              {podcast.cta-list-sub}
             </Button>
           </div>
         </div>

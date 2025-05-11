@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import { Rss as PodcastFeedIcon } from "react-feather";
 
 import Link, { InlineLink } from "../../utils/Link";
@@ -8,7 +7,6 @@ import TwitterIcon from "../../../public/src/img/footer/twitter.inline.svg";
 import styles from "./PodcastNavigation.module.scss";
 
 export default function PodcastNavigation() {
-  const { t } = useTranslation();
 
   return (
     <div className={styles["podcast-navigation"]}>
@@ -17,14 +15,14 @@ export default function PodcastNavigation() {
           to="/validated"
           activeClassName={styles["podcast-navigation__active"]}
         >
-          {t("podcast.navigation.home")}
+          {podcast.navigation.home}
         </Link>
         <Link
           to="/validated/episodes"
           partiallyActive
           activeClassName={styles["podcast-navigation__active"]}
         >
-          {t("podcast.navigation.episodes")}
+          {podcast.navigation.episodes}
         </Link>
       </div>
       <div className={styles["podcast-navigation__socials"]}>

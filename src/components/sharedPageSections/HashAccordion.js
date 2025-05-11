@@ -22,7 +22,6 @@ export default function HashAccordion({ prefix, children }) {
   const router = useRouter();
   const [activeKey, setActiveKey] = useState(null);
 
-  useEffect(() => {
     if (router.isReady) {
       const key = getItemKey(prefix, router.asPath);
 
@@ -43,7 +42,7 @@ export default function HashAccordion({ prefix, children }) {
   const handleSelect = (eventKey) => {
     setActiveKey(eventKey);
     router.push(
-      eventKey ? `#${eventKey}` : router.asPath.split("#")[0],
+      eventKey ? `#${eventKey}` : router.asPath.spli#[0],
       undefined,
       {
         scroll: false,
@@ -65,7 +64,7 @@ export default function HashAccordion({ prefix, children }) {
 
 // Helper function to get the item key from the URL
 function getItemKey(prefix, asPath) {
-  const [, itemKey] = asPath.split("#");
+  const [, itemKey] = asPath.spli#;
   if (!itemKey) {
     return null;
   }

@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import PossibleGlow from "./PossibleGlow";
 import classNames from "classnames";
 import Button from "../shared/Button";
@@ -7,7 +6,6 @@ import IconBackground from "../../../assets/possible/icons.png";
 import IconMobileBackground from "../../../assets/possible/icons-mobile.png";
 
 const PossibleIcons = () => {
-  const { t } = useTranslation();
 
   return (
     <section
@@ -42,14 +40,14 @@ const PossibleIcons = () => {
       <div className="container-xl pt-14 pb-14 pt-md-12 pb-md-12 px-6 px-md-8 mx-auto position-relative text-center">
         <div className={`row d-flex align-items-center h-md-auto`}>
           <div className="col">
-            <h3 className="h2 mb-4">{t("possible.icons.title")}</h3>
+            <h3 className="h2 mb-4">{possible.icons.title}</h3>
             <p
               className={classNames(
                 styles["icons__copy--possible"],
                 `mb-6 mx-auto`,
               )}
             >
-              {t("possible.icons.description")}
+              {possible.icons.description}
             </p>
             <div className={`text-center text-md-start`}>
               <Button
@@ -59,7 +57,7 @@ const PossibleIcons = () => {
                 size={"large"}
                 className="d-table mx-auto"
               >
-                {t("possible.icons.cta")}
+                {possible.icons.cta}
               </Button>
             </div>
           </div>

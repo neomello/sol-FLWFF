@@ -46,7 +46,6 @@ const StyledDepthClip = styled.div`
         `
         : ``}
 
-  background: linear-gradient(
     ${(props) =>
     props.$shadow === "top"
       ? "360deg"

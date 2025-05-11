@@ -1,14 +1,10 @@
-import { useTranslation } from "next-i18next";
 import Link, { InlineLink } from "../../utils/Link";
 import ResourcesSVG from "../../../assets/nav/network/resources.inline.svg";
 import InspectSVG from "../../../assets/nav/network/inspect.inline.svg";
 
 const HeaderListNetwork = () => {
-  const { t } = useTranslation("common");
-  const networkInspectItems = t("nav.network.inspect.items", {
     returnObjects: true,
   });
-  const networkResourcesItems = t("nav.network.resources.items", {
     returnObjects: true,
   });
 
@@ -17,7 +13,7 @@ const HeaderListNetwork = () => {
       <div>
         <div className="text-uppercase py-2 d-flex align-items-center">
           <ResourcesSVG className="me-3" />
-          {t("nav.network.resources.title")}
+          {nav.network.resources.title}
         </div>
         <div>
           <Link
@@ -67,7 +63,7 @@ const HeaderListNetwork = () => {
       <div>
         <div className="text-uppercase py-2 d-flex align-items-center">
           <InspectSVG className="me-3" />
-          {t("nav.network.inspect.title")}
+          {nav.network.inspect.title}
         </div>
         <div>
           <InlineLink

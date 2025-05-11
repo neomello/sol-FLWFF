@@ -1,5 +1,4 @@
 import Button from "../shared/Button";
-import { useTranslation } from "next-i18next";
 import VideoCard from "./VideoCard";
 
 /**
@@ -10,21 +9,20 @@ import VideoCard from "./VideoCard";
  * @constructor
  */
 export default function FeaturedVideos({ videos }) {
-  const { t } = useTranslation();
 
   return videos.length ? (
     <section className="featured-videos">
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-6 mb-4">
-            <h2 className="m-0">{t("community.videos.head")}</h2>
+            <h2 className="m-0">{community.videos.head}</h2>
           </div>
           <div className="col-12 col-md-6 links mb-4">
             <Button to="/youtube" arrow newTab noBorder variant="secondary">
-              {t("community.videos.youtube")}
+              {community.videos.youtube}
             </Button>
             <Button to="/validated" arrow noBorder variant="secondary">
-              {t("community.videos.podcast")}
+              {community.videos.podcast}
             </Button>
           </div>
         </div>
@@ -35,7 +33,7 @@ export default function FeaturedVideos({ videos }) {
           {/* related videos list */}
           <div className="related col-12 col-md-3">
             <h5 className="mb-5 d-none d-md-block">
-              {t("community.videos.related")}
+              {community.videos.related}
             </h5>
             {videos.slice(1, 4).map((video, i) => (
               <VideoCard

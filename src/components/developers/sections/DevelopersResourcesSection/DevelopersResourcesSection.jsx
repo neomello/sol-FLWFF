@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { useTranslation } from "next-i18next";
 import CarouselCards from "@/components/shared/CarouselCards";
 import DevelopersResourceItem from "./DevelopersResourceItem";
 import DevelopersSectionTitle from "../DevelopersSectionTitle";
@@ -12,7 +11,6 @@ export default function DevelopersResourcesSection({
   baseHref = "/developers/guides",
   translationKey = "guides",
 }) {
-  const { t } = useTranslation();
 
   return (
     <section className="mt-10 mt-md-12" id={translationKey}>
@@ -23,11 +21,10 @@ export default function DevelopersResourcesSection({
               titleId={`developers.${translationKey}.title`}
             />
             <p className="subdued">
-              {t(`developers.${translationKey}.description`)}
             </p>
           </div>
           <Button className="text-nowrap ms-md-4" to={baseHref}>
-            {t("developers.documents.view-all")}
+            {developers.documents.view-all}
           </Button>
         </div>
         <div className={styles["resources-section__carousel-container"]}>
@@ -45,7 +42,6 @@ export default function DevelopersResourcesSection({
 }
 
 const ResourceCards = memo(function ResourceCards({ items }) {
-  // const { t } = useTranslation();
 
   return (
     <>

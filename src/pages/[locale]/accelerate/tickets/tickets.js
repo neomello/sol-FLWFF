@@ -15,7 +15,6 @@ function TicketsPage() {
   const [showShipModal, setShowShipModal] = useState(false);
 
   // Add scroll event listener
-  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       if (scrollPosition > 50) {
@@ -41,7 +40,6 @@ function TicketsPage() {
 
   // Handle modal open/close
   const openShipModal = (e) => {
-    e.preventDefault();
     setShowShipModal(true);
     document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
   };
@@ -52,7 +50,6 @@ function TicketsPage() {
   };
 
   // Close modal on ESC key press
-  useEffect(() => {
     const handleEscKey = (event) => {
       if (event.key === "Escape" && showShipModal) {
         closeShipModal();
@@ -85,8 +82,8 @@ function TicketsPage() {
             /* ABC Diatype font-face declaration */
             @font-face {
               font-family: 'ABC Diatype';
-              src: url('/fonts/ABCDiatype-Regular.woff2') format('woff2'),
-                   url('/fonts/ABCDiatype-Regular.woff') format('woff');
+              src: url('/fonts/ABCDiatype-Regular.woff2') formawoff2,
+                   url('/fonts/ABCDiatype-Regular.woff') formawoff;
               font-weight: normal;
               font-style: normal;
               font-display: swap;
@@ -94,8 +91,8 @@ function TicketsPage() {
             
             @font-face {
               font-family: 'ABC Diatype';
-              src: url('/fonts/ABCDiatype-Medium.woff2') format('woff2'),
-                   url('/fonts/ABCDiatype-Medium.woff') format('woff');
+              src: url('/fonts/ABCDiatype-Medium.woff2') formawoff2,
+                   url('/fonts/ABCDiatype-Medium.woff') formawoff;
               font-weight: 500;
               font-style: normal;
               font-display: swap;

@@ -60,7 +60,6 @@ export async function fetchCalendarEvents(calendarId, options) {
 
   const { entries } = await res.json();
 
-  allEvents = allEvents.concat(
     entries.map((el) => {
       const {
         name,
@@ -139,7 +138,6 @@ export async function fetchCalendarRiverEvents(options) {
 
   const { events } = await res.json();
 
-  allEvents = allEvents.concat(
     events && events.length
       ? events.map((el) => {
           const {

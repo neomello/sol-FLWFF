@@ -4,15 +4,12 @@ import { config } from "src/config";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
     try {
-      let locale = null;
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) => {
-            locale = props.pageProps?.locale;
             return sheet.collectStyles(<App {...props} />);
           },
         });
@@ -20,11 +17,9 @@ class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
-        locale,
         styles: (
           <>
             {initialProps.styles}
-            {sheet.getStyleElement()}
           </>
         ),
       };
@@ -35,10 +30,8 @@ class MyDocument extends Document {
 
   render() {
     const id = config.siteMetadata.googleTagManagerID;
-    const { locale } = this.props;
 
     return (
-      <Html lang={locale || "en"}>
         <Head />
         <body>
           {/* Google Tag Manager (noscript) */}

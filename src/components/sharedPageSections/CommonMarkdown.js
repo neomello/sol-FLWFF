@@ -78,7 +78,6 @@ const CommonMarkdown = ({ children, ...props }) => {
     var children = Children.toArray(props.children);
     var text = children.reduce(flatten, "");
     var slug = text.toLowerCase().replace(/\W/g, "-");
-    return createElement(
       "h" + props.level,
       { id: slug, className: `h${props.level + 2}` },
       props.children,

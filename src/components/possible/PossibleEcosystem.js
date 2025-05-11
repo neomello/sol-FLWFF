@@ -1,11 +1,9 @@
-import { useTranslation } from "next-i18next";
 import Button from "../shared/Button";
 import PossibleEcosystemData from "./PossibleEcosystemData";
 import PossibleGlow from "./PossibleGlow";
 import PossibleEcosystemGrid from "./PossibleEcosystemGrid";
 
 const PossibleEcosystem = () => {
-  const { t } = useTranslation();
 
   return (
     <section className={`pt-10 pb-8 pt-md-12 pb-md-10 position-relative`}>
@@ -29,7 +27,7 @@ const PossibleEcosystem = () => {
         <div className={`row`}>
           <div className="col d-flex flex-row mb-8 mb-md-0 pb-md-10 align-items-center ">
             <h2 className="h2 pe-5 flex-grow-1 flex-shrink-1 mb-0">
-              {t("possible.ecosystem.title")}
+              {possible.ecosystem.title}
             </h2>
             <Button
               to="/news"
@@ -38,7 +36,7 @@ const PossibleEcosystem = () => {
               size="medium"
               className="d-none d-md-block mb-2 align-self-end flex-shrink-0 flex-grow-0"
             >
-              {t("possible.ecosystem.cta")}
+              {possible.ecosystem.cta}
             </Button>
           </div>
         </div>
@@ -58,7 +56,7 @@ const PossibleEcosystem = () => {
               size="medium"
               className="mt-4 align-self-end flex-shrink-0 flex-grow-0"
             >
-              {t("possible.ecosystem.cta")}
+              {possible.ecosystem.cta}
             </Button>
           </div>
         </div>

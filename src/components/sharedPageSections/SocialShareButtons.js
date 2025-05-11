@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
 import { config } from "src/config";
 import {
   TwitterShareButton,
@@ -44,7 +43,6 @@ const StyledCopied = styled.button`
 `;
 
 const SocialShareButtons = ({ url, title, className = "" }) => {
-  const { t } = useTranslation();
 
   const [copied, setCopied] = useState(false);
   const [timer, setTimer] = useState(null);
@@ -52,20 +50,17 @@ const SocialShareButtons = ({ url, title, className = "" }) => {
   const { social } = config;
   const copyLink = async (u) => {
     if (timer) {
-      clearTimeout(timer);
     }
 
     if (!navigator.clipboard) {
       return;
     }
     try {
-      await navigator.clipboard.writeText(u);
     } catch (error) {
       console.error(error);
     }
 
     setCopied(true);
-    setTimer(setTimeout(() => setCopied(false), 2000));
   };
 
   return (
@@ -82,7 +77,7 @@ const SocialShareButtons = ({ url, title, className = "" }) => {
         </TelegramShareButton>
         <StyledCopied type="button" onClick={() => copyLink(url)}>
           {copied ? (
-            <span className="copied">{t("commands.copied")}</span>
+            <span className="copied">{commands.copied}</span>
           ) : (
             <CopyLinkIcon />
           )}

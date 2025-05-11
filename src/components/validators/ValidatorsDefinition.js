@@ -1,9 +1,7 @@
 import Image from "next/legacy/image";
-import { useTranslation } from "next-i18next";
 import validatorLogo from "../../../public/src/img/validators/validators_geometry_small.png";
 
 const ValidatorsDefinition = () => {
-  const { t } = useTranslation();
 
   return (
     <section className="definition">
@@ -19,8 +17,8 @@ const ValidatorsDefinition = () => {
             />
           </div>
           <div className="d-flex flex-column">
-            <h2>{t("validators.definition.title")}</h2>
-            <p className="text-white my-0">{t("validators.definition.text")}</p>
+            <h2>{validators.definition.title}</h2>
+            <p className="text-white my-0">{validators.definition.text}</p>
           </div>
         </div>
       </div>

@@ -1,13 +1,10 @@
 import classNames from "classnames";
 import Image from "next/image";
-// import { useTranslation } from "next-i18next";
 import Button from "../shared/Button";
 
 import previewImg from "../../../assets/ai/cookbook.png";
 import styles from "./AiHighlight.module.scss";
 
-export default function AiHighlight() {
-  // const { t } = useTranslation();
 
   return (
     <section className="pt-10 my-10 overflow-hidden">

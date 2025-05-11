@@ -11,7 +11,6 @@ const ArticleMetaBuilder = ({
   data: builderPost,
   settings,
   canonical,
-  locale,
 }) => {
   const author = builderPost?.data?.author?.value || null;
 
@@ -24,7 +23,6 @@ const ArticleMetaBuilder = ({
     if (builderPost?.data?.openGraph?.ogImage)
       return builderPost.data.openGraph.ogImage;
     if (builderPost?.data?.image) return builderPost.data.image;
-    return _.get(settings, "cover_image", null);
   };
   const shareImage = getShareImage();
 
@@ -99,13 +97,11 @@ const ArticleMetaBuilder = ({
 
   const { asPath } = useRouter();
   const asPathNoRedirect = asPath === "/" ? "" : asPath;
-  const localeNoEnDefault = locale === "en" ? "" : "/" + locale;
 
   return (
     <>
       <Head>
         <MetaLinks
-          localeNoEnDefault={localeNoEnDefault}
           asPathNoRedirect={asPathNoRedirect}
         />
         <title>{title}</title>
@@ -115,7 +111,6 @@ const ArticleMetaBuilder = ({
             builderPost?.data?.seo?.seoDescription || builderPost?.data?.intro
           }
         />
-        <meta property="language" content={locale} />
 
         <meta property="og:site_name" content={`Solana`} />
         <meta property="og:type" content="article" />

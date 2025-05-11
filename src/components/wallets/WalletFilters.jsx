@@ -1,4 +1,3 @@
-import { useTranslation } from "next-i18next";
 import { useState } from "react";
 import styles from "./WalletFilters.module.scss";
 import Wallets from "./Wallets";
@@ -10,7 +9,6 @@ const WalletFilters = ({
   updateWallets,
   walletData,
 }) => {
-  const { t } = useTranslation();
 
   /**
    * Returns all filter data with an extra key named `checked` set to false as the initial state of a filter
@@ -104,7 +102,7 @@ const WalletFilters = ({
             className={`${styles["wallet-filter"]} ${styles["wallet-filter--active"]}`}
             data-role="show-all"
           >
-            {t("wallets.filters.all-wallets")}
+            {wallets.filters.all-wallets}
           </button>
         </div>
         {filterState.length &&

@@ -1,10 +1,8 @@
 import Navbar from "react-bootstrap/Navbar";
 import Link from "../shared/Link";
-import { useTranslation } from "next-i18next";
 import SolanaLogo from "../../../public/src/img/logos-solana/logotype.inline.svg";
 
 const Header = () => {
-  const { t } = useTranslation();
 
   return (
     // 1020 is a z-index value similar to main Header's one
@@ -53,7 +51,7 @@ const Header = () => {
                   activeClassName="active"
                   to="/breakpoint/speakers"
                 >
-                  {t("breakpoint.header.speakers")}
+                  {breakpoint.header.speakers}
                 </Link>
               </li> */}
               {/* <li className="nav-item">
@@ -62,7 +60,7 @@ const Header = () => {
                   activeClassName="active"
                   to="/breakpoint/sponsors"
                 >
-                  {t("breakpoint.header.sponsors")}
+                  {breakpoint.header.sponsors}
                 </Link>
               </li> */}
               <li className="nav-item">
@@ -71,7 +69,7 @@ const Header = () => {
                   activeClassName="active"
                   to="/breakpoint/travel"
                 >
-                  {t("breakpoint.header.travel")}
+                  {breakpoint.header.travel}
                 </Link>
               </li>
               <li className="nav-item">
@@ -80,7 +78,7 @@ const Header = () => {
                   activeClassName="active"
                   to="/breakpoint/faq"
                 >
-                  {t("breakpoint.header.faq")}
+                  {breakpoint.header.faq}
                 </Link>
               </li>
             </ul>

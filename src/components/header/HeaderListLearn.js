@@ -1,17 +1,14 @@
-import { useTranslation } from "next-i18next";
 import { Link } from "../../utils/Link";
 import StartSVG from "../../../assets/nav/learn/start.inline.svg";
 
 const HeaderListLearn = () => {
-  const { t } = useTranslation("common");
-  const learnStartItems = t("nav.learn.start.items", { returnObjects: true });
 
   return (
     <div className="d-lg-flex">
       <div>
         <div className="text-uppercase py-2 d-flex align-items-center">
           <StartSVG className="me-3" />
-          {t("nav.learn.start.title")}
+          {nav.learn.start.title}
         </div>
         <div>
           <Link

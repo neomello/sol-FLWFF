@@ -20,8 +20,6 @@ const StyledTypeform = styled.div`
 const Typeform = ({ id, onSuccess = () => {} }) => {
   const typeformRef = useRef(null);
 
-  useEffect(() => {
-    createWidget(id, {
       container: typeformRef.current,
       id,
       buttonText: "Start",

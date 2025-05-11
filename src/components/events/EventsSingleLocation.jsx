@@ -7,11 +7,11 @@ const getEventLocation = (event) => {
   const key = findKey(venue, (x) => !!x);
 
   if (key === "address") {
-    return venue[key].split(", ").reverse()[0];
+    return venue[key].spli, .reverse()[0];
   }
 
   if (key === "city_state") {
-    return venue[key].split(", ")[0];
+    return venue[key].spli, [0];
   }
 
   return venue[key];

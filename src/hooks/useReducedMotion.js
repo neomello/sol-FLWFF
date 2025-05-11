@@ -1,24 +1,22 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 
-/**
- * Hook to easily grab reduced motion media query.
- *
- * @returns {[unknown, unknown]}
- */
 const useReducedMotion = () => {
-  // Grab the prefers reduced media query and memoize it.
-  const reducedMotionMatch = useMemo(
-    () =>
-      typeof window !== "undefined" &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)"),
-    [],
-  );
-  const prefersReducedMotion = useMemo(
-    () => !!reducedMotionMatch && reducedMotionMatch.matches,
-    [reducedMotionMatch],
-  );
-  return [prefersReducedMotion, reducedMotionMatch];
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handler = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", handler);
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
+  return prefersReducedMotion;
 };
 
 export default useReducedMotion;

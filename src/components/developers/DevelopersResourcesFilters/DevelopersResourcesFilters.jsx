@@ -1,6 +1,5 @@
 "use client";
 
-import { Fragment, memo, useCallback, useTransition, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import classNames from "classnames";
 import styles from "./DevelopersResourcesFilters.module.scss";
@@ -40,7 +39,6 @@ function Filters({ filters, onReset, onToggle, activeFilters = new Map() }) {
                         {
                           [styles[
                             "developers-resources-filters__filter-btn--active"
-                          ]]: activeFilters.get(key)?.includes(filter),
                         },
                       )}
                     >
@@ -59,7 +57,6 @@ function Filters({ filters, onReset, onToggle, activeFilters = new Map() }) {
 function FilterLogic({ filters }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [, startTransition] = useTransition();
 
   const createQueryString = useCallback((params) => {
     const urlSearchParams = new URLSearchParams();
@@ -72,7 +69,6 @@ function FilterLogic({ filters }) {
   }, []);
 
   const resetFilters = useCallback(() => {
-    startTransition(() => {
       router.push("?", { scroll: false });
     });
   }, [router]);
@@ -95,7 +91,6 @@ function FilterLogic({ filters }) {
       // Update the specific filter
       newParams[key] = newValues;
 
-      startTransition(() => {
         router.push("?" + createQueryString(newParams), { scroll: false });
       });
     },
@@ -105,9 +100,7 @@ function FilterLogic({ filters }) {
   const activeFilters = new Map();
   Array.from(searchParams.entries()).forEach(([key, value]) => {
     if (!activeFilters.has(key)) {
-      activeFilters.set(key, []);
     }
-    activeFilters.get(key).push(value);
   });
 
   return (

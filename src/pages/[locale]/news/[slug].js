@@ -8,13 +8,10 @@ import {
   getPageSettings,
 } from "@/lib/builder/api";
 import { NEWS_BUILDER_CONFIG } from "@/lib/builder/news/constants";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { pathsWithLocales } from "@/i18n/routing";
 import { MetaData } from "@/components/blog/meta";
 import { DetailsHero } from "@solana-foundation/solana-lib";
 import { PageBreadcrumbs } from "@/components/developers/DevelopersContentPage/PageBreadcrumbs";
 
-builder.init(NEWS_BUILDER_CONFIG.apiKey);
 builder.apiVersion = "v3";
 customComponentsRegistration();
 
@@ -60,7 +57,6 @@ const Post = ({ builderLocale, post, pageSettings }) => {
             options={{ includeRefs: true }}
             model={NEWS_BUILDER_CONFIG.postsModel}
             content={post}
-            locale={builderLocale || "Default"}
           />
         </article>
       </Layout>
@@ -71,13 +67,11 @@ const Post = ({ builderLocale, post, pageSettings }) => {
 export async function getStaticPaths() {
   const allPosts = await getAllPostSlugs(NEWS_BUILDER_CONFIG.postsModel);
   return {
-    paths: pathsWithLocales(allPosts || []),
     fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   try {
     let slug = params?.slug || "";
 
@@ -85,8 +79,6 @@ export async function getStaticProps({ params }) {
       return { notFound: true };
     }
 
-    const isDefaultLocale = locale === "en";
-    const builderLocale = isDefaultLocale ? "Default" : locale;
 
     // sometimes links will contain a URL encoded character at the end (as exposed by Sentries).
     // make an effort to remove those so that the user doesnt get a 404
@@ -104,13 +96,11 @@ export async function getStaticProps({ params }) {
 
     return {
       props: {
-        locale,
         builderLocale,
         key: post?.id + post?.data.slug + params.slug,
         post: post || null,
         pageSettings,
         morePosts,
-        ...(await serverSideTranslations(locale, ["common"])),
       },
       revalidate: 60,
     };

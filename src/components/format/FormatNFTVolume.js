@@ -2,7 +2,6 @@ import Image from "next/legacy/image";
 import styled from "styled-components";
 import Button from "../shared/Button";
 import RoundedDepthCard from "../shared/RoundedDepthCard";
-import { Trans, useTranslation } from "next-i18next";
 import nftLogo from "../../../assets/format/nftLogo.png";
 import Link from "../../utils/Link";
 
@@ -62,15 +61,12 @@ const NFTCard = styled.div`
 `;
 
 const FormatNFTVolume = () => {
-  const { t } = useTranslation();
 
   return (
     <StyledHeroSection>
       <div className="container">
-        <h2 className="title mb-0">{t("format.nft-volume.title")}</h2>
+        <h2 className="title mb-0">{format.nft-volume.title}</h2>
         <p className="mt-2 w-md-75">
-          <Trans
-            i18nKey="format.nft-volume.description"
             components={{
               learnNFTsLink: <Link to="/learn/nfts" />,
             }}
@@ -89,15 +85,15 @@ const FormatNFTVolume = () => {
               <div className="nft-volume">
                 <div>
                   <h2 className="mb-0">
-                    {t("format.nft-volume.volume.title")}
+                    {format.nft-volume.volume.title}
                   </h2>
                   <p className="clamp mt-2 mt-md-4">
-                    {t("format.nft-volume.volume.description")}
+                    {format.nft-volume.volume.description}
                   </p>
                 </div>
                 <div className="d-inline-block">
                   <Button to="/learn/nfts" noBorder className="m-1">
-                    {t("format.nft-volume.volume.nfts")}
+                    {format.nft-volume.volume.nfts}
                   </Button>
                   <Button
                     to="https://www.magiceden.io/"
@@ -105,7 +101,7 @@ const FormatNFTVolume = () => {
                     newTab
                     className="m-1"
                   >
-                    {t("format.nft-volume.volume.me")}
+                    {format.nft-volume.volume.me}
                   </Button>
                   <Button
                     to="https://opensea.io/"
@@ -113,7 +109,7 @@ const FormatNFTVolume = () => {
                     newTab
                     className="m-1"
                   >
-                    {t("format.nft-volume.volume.os")}
+                    {format.nft-volume.volume.os}
                   </Button>
                 </div>
               </div>

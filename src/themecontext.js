@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { usePathname } from "@/hooks/useRouter";
 
-const ThemeContext = createContext({
+export const ThemeContext = createContext({
   theme: "dark",
   toggleTheme: () => {},
 });
@@ -18,7 +18,6 @@ export const ThemeProvider = ({ children }) => {
     : false;
   const [theme, setTheme] = useState("dark"); // Initial theme state; will be updated by useEffect.
 
-  useEffect(() => {
     if (isThemePage) {
       // Function to update the theme based on the passed theme name
       const updateTheme = (newTheme) => {
@@ -90,4 +89,3 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-export const useTheme = () => useContext(ThemeContext);

@@ -1,4 +1,3 @@
-import { Trans, useTranslation } from "next-i18next";
 import classNames from "classnames";
 import Link from "../../utils/Link";
 import { FormattedNumber } from "../SolFormattedMessage";
@@ -22,8 +21,6 @@ const StatCard = ({ value, description = "", note = "", className }) => (
 );
 
 const ECDRStats = () => {
-  const { t } = useTranslation("common");
-  const openSourceTitle = t("ecdr.stats.open-source.title", {
     returnObjects: true,
   });
   return (
@@ -34,15 +31,13 @@ const ECDRStats = () => {
       <div className={styles["ecdr-stats__heading"]}>
         <div className="col-lg-6">
           <h2 className={styles["ecdr-stats__heading--title"]}>
-            {t("ecdr.stats.title")}
+            {ecdr.stats.title}
           </h2>
         </div>
         <div className="col-lg-4">
           <div className="d-flex">
             <ClipboardIcon className="me-2" width="24" height="26" />
             <p className={styles["ecdr-stats__heading--learn"]}>
-              <Trans
-                i18nKey="ecdr.stats.learn"
                 components={{
                   learnLink: (
                     <Link
@@ -64,19 +59,19 @@ const ECDRStats = () => {
       <div className={styles["ecdr-stats__cards"]}>
         <StatCard
           value="16x"
-          description={t("ecdr.stats.full-time.title")}
+          description={ecdr.stats.full-time.title}
           className={styles["ecdr-stats__card--purple"]}
         />
         <StatCard
           value="83%"
-          description={t("ecdr.stats.blockchain.title")}
+          description={ecdr.stats.blockchain.title}
           className={styles["ecdr-stats__card--blue"]}
         />
         <StatCard
           value={2000}
-          description={t("ecdr.stats.active-developers.title")}
+          description={ecdr.stats.active-developers.title}
           className={styles["ecdr-stats__card--green"]}
-          note={t("ecdr.stats.active-developers.note")}
+          note={ecdr.stats.active-developers.note}
         />
       </div>
       <div className="row">
@@ -91,7 +86,7 @@ const ECDRStats = () => {
           <span className="d-block">{openSourceTitle[3].phrase}</span>
         </h2>
         <p className="col-md-6 mt-4 mx-auto text-center">
-          {t("ecdr.stats.open-source.description")}
+          {ecdr.stats.open-source.description}
         </p>
       </div>
     </div>

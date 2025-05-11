@@ -14,7 +14,6 @@ export const Link = ({
   ...other
 }) => {
   to = to ?? href;
-  const internal = /^\/(?!\/)/.test(to);
 
   const { isReady } = useRouter();
 

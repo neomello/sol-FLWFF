@@ -49,7 +49,6 @@ const CategorySelection = ({
 
   // estimate the widths of the category buttons on initial render
   // note: can't rely on actual widths because some buttons are stored in the dropdown and are not accessible
-  useEffect(() => {
     const widths = [];
     categories.forEach((item) => {
       widths.push(item.category.length * 10 + 40); // 10px per character + 32px for padding + 8px for margin. Estimated higher then expected to account for font size differences.
@@ -59,7 +58,6 @@ const CategorySelection = ({
   }, [categories]);
 
   // establish the initial displayed items and add a listener for window resizing
-  useEffect(() => {
     updateDisplayedItems();
     window.addEventListener("resize", updateDisplayedItems);
 

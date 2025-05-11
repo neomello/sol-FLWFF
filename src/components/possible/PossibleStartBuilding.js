@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
 import Button from "../shared/Button";
 import Link from "next/link";
 import PossibleGlow from "./PossibleGlow";
@@ -10,7 +9,6 @@ import programmingImg from "../../../assets/possible/startBuilding-programming.p
 import communityImg from "../../../assets/possible/startBuilding-community.png";
 
 const PossibleStartBuilding = () => {
-  const { t } = useTranslation();
 
   return (
     <section className={styles["section__start-building--possible"]}>
@@ -27,30 +25,30 @@ const PossibleStartBuilding = () => {
         <div className={`row d-flex align-items-end`}>
           <div className="col">
             <h2 className="h2 mb-10 mb-md-6 text-start text-md-center">
-              {t("possible.startBuilding.title")}
+              {possible.startBuilding.title}
             </h2>
           </div>
         </div>
         <div className={`row flex-md-wrap `}>
           <StartBuildingColumn
             image={portalImg}
-            title={t("possible.startBuilding.portal.title")}
-            copy={t("possible.startBuilding.portal.description")}
-            cta={t("possible.startBuilding.portal.cta")}
+            title={possible.startBuilding.portal.title}
+            copy={possible.startBuilding.portal.description}
+            cta={possible.startBuilding.portal.cta}
             url={"/developers"}
           />
           <StartBuildingColumn
             image={programmingImg}
-            title={t("possible.startBuilding.programming.title")}
-            copy={t("possible.startBuilding.programming.description")}
-            cta={t("possible.startBuilding.programming.cta")}
+            title={possible.startBuilding.programming.title}
+            copy={possible.startBuilding.programming.description}
+            cta={possible.startBuilding.programming.cta}
             url={"/events"}
           />
           <StartBuildingColumn
             image={communityImg}
-            title={t("possible.startBuilding.community.title")}
-            copy={t("possible.startBuilding.community.description")}
-            cta={t("possible.startBuilding.community.cta")}
+            title={possible.startBuilding.community.title}
+            copy={possible.startBuilding.community.description}
+            cta={possible.startBuilding.community.cta}
             url={"/community"}
           />
         </div>

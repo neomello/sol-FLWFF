@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { withLocales } from "@/i18n/routing";
 
 import Layout from "@/components/layout";
 import HTMLHead from "@/components/HTMLHead";
@@ -48,17 +45,16 @@ const StyledMainContainer = styled.div`
 `;
 
 const Branding = () => {
-  const { t } = useTranslation();
 
   return (
     <Layout>
       <HTMLHead
-        title={t("branding.title")}
-        description={t("branding.description")}
+        title={branding.title}
+        description={branding.description}
       />
       <SimpleHero
         frontmatter={{
-          title: t("branding.title"),
+          title: branding.title,
         }}
       />
       <StyledMainContainer className="container pt-8">
@@ -80,18 +76,14 @@ const Branding = () => {
 };
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   return {
     props: {
-      locale,
-      ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
 
 export async function getStaticPaths() {
   return {
-    paths: withLocales(),
     fallback: "blocking",
   };
 }

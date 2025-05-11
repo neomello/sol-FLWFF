@@ -1,6 +1,3 @@
-import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { withLocales } from "@/i18n/routing";
 import { useRef, useCallback } from "react";
 
 import HTMLHead from "@/components/HTMLHead";
@@ -12,7 +9,6 @@ import HackathonPreviousWinnersSection from "@/components/hackathon/sections/Hac
 import HackathonPreviousHackathonsSection from "@/components/hackathon/sections/HackathonPreviousHackathonsSection/HackathonPreviousHackathonsSection";
 
 export default function HackathonIndex() {
-  const { t } = useTranslation();
   const newsletterSignUpRef = useRef();
 
   const focusOnNewsletterSignUp = useCallback(() => {
@@ -26,8 +22,8 @@ export default function HackathonIndex() {
   return (
     <Layout>
       <HTMLHead
-        title={t("hackathon.index.title")}
-        description={t("hackathon.index.description")}
+        title={hackathon.index.title}
+        description={hackathon.index.description}
       />
       <HackathonHeroSection newsletterInputRef={newsletterSignUpRef} />
       <HackathonPreviousWinnersSection />
@@ -39,11 +35,8 @@ export default function HackathonIndex() {
 }
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   return {
     props: {
-      locale,
-      ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 60,
   };
@@ -51,7 +44,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   return {
-    paths: withLocales(),
     fallback: "blocking",
   };
 }

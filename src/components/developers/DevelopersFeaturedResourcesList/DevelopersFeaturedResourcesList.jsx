@@ -1,14 +1,11 @@
 import { memo } from "react";
 import classNames from "classnames";
-import { useTranslation } from "next-i18next";
 import styles from "./DevelopersFeaturedResourcesList.module.scss";
 import DevelopersFeaturedResourcesListItem from "./DevelopersFeaturedResourcesListItem/DevelopersFeaturedResourcesListItem";
 
-export default memo(function DevelopersFeaturedResourcesList({
   items,
   translationTag = "featured-resources-list",
 }) {
-  const { t } = useTranslation("common");
   return (
     <div
       id="featured"
@@ -19,9 +16,7 @@ export default memo(function DevelopersFeaturedResourcesList({
     >
       <div className="row">
         <div className="col-md-12 col-lg-4 p-0">
-          <h1 className="mb-5">{t(`developers.${translationTag}.title`)}</h1>
           <p className="mb-7">
-            {t(`developers.${translationTag}.description`)}
           </p>
         </div>
         <div

@@ -6,9 +6,6 @@ import CommunityLinks from "@/components/community/CommunityLinks";
 import CommunitySocial from "@/components/community/CommunitySocial";
 import CommunityNews from "@/components/community/CommunityNews";
 import CommunityCollective from "@/components/community/CommunityCollective";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { withLocales } from "@/i18n/routing";
-import { useTranslation } from "next-i18next";
 import { getPostsPage, getPostPagination } from "@/lib/builder/api";
 import {
   getGHStargazers,
@@ -26,12 +23,11 @@ import { NEWS_BUILDER_CONFIG } from "@/lib/builder/news/constants";
  * @constructor
  */
 const CommunityPage = ({ posts, socialData, youtubeVideos }) => {
-  const { t } = useTranslation();
 
   return (
     <Layout>
       <HTMLHead
-        title={t("titles.community")}
+        title={titles.community}
         description="Anyone in the world can contribute to Solana’s technical, content or community efforts. Join our communities and tap into our global family."
       />
       <div className="community-page mt-n10">
@@ -47,20 +43,16 @@ const CommunityPage = ({ posts, socialData, youtubeVideos }) => {
 };
 
 export async function getStaticProps({ params }) {
-  const { locale = "en" } = params;
   const [posts, pagination, youtube, github, meetup, youtubeVideos] =
     await Promise.allSettled([
       getPostsPage(NEWS_BUILDER_CONFIG.postsModel, 1, 6),
       getPostPagination(1, NEWS_BUILDER_CONFIG.postsModel),
-      getYoutubeSubscriberCount(),
       getGHStargazers(),
-      scrapeMeetupMemberCount(),
       getYTVideos(10),
     ]);
 
   return {
     props: {
-      locale,
       socialData: {
         youtube: youtube?.value || null,
         github: github?.value || null,
@@ -69,7 +61,6 @@ export async function getStaticProps({ params }) {
       },
       youtubeVideos: youtubeVideos?.value,
       posts: posts?.value || [],
-      ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 60,
   };
@@ -77,7 +68,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   return {
-    paths: withLocales(),
     fallback: "blocking",
   };
 }

@@ -20,7 +20,6 @@ export function getPostBySlug(path, slug) {
   const { data, content } = matter(fileContents);
   const date =
     data.date && typeof data.date !== "string"
-      ? format(data.date, "MMMM dd, yyyy")
       : (data.date ?? null);
   return {
     path: realSlug,

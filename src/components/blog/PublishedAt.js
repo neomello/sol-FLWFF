@@ -10,8 +10,6 @@ import { useRouter } from "next/router";
  * @constructor
  */
 const PublishedAt = ({ publishedDateString }) => {
-  const { locale } = useRouter();
-  const publishedAt = toLocaleString(locale, publishedDateString);
   return <time dateTime={publishedDateString}>{publishedAt}</time>;
 };
 

@@ -5,7 +5,6 @@ const ytBaseURL = "https://www.googleapis.com/youtube/v3/";
 
 const scrapeUrlForTag = async (url, tagName) => {
   const siteData = await fetch(url)
-    .then((res) => res.text())
     .catch((err) => {
       console.log(err);
     });
@@ -25,7 +24,6 @@ const scrapeMeetupMemberCount = async () => {
   );
   if (meetupMemberCountTag.length) {
     const meetupCountString = meetupMemberCountTag[0].children[0].data;
-    return parseInt(meetupCountString.replace(",", ""), 10);
   }
   return 0;
 };
@@ -45,7 +43,6 @@ const getYoutubeSubscriberCount = async () => {
     const data = await response.json();
 
     if (data.items && data.items.length > 0) {
-      return parseInt(data.items[0].statistics.subscriberCount, 10);
     }
 
     throw new Error("Channel statistics not found");

@@ -2,18 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 import { ArrowUp } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
-export function ScrollToTop() {
-  const { t } = useTranslation();
+const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const shouldBeVisible = window.scrollY > window.innerHeight;
-      setIsVisible(shouldBeVisible);
-    };
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
 
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -25,18 +26,19 @@ export function ScrollToTop() {
     });
   };
 
-  if (!isVisible) {
-    return null;
-  }
-
   return (
-    <button
-      onClick={scrollToTop}
-      className="flex items-center gap-2 text-sm text-fd-muted-foreground hover:text-fd-accent-foreground/80"
-      aria-label="Scroll to top"
-    >
-      <ArrowUp size={18} />
-      <span>{t("shared.general.scroll-to-top")}</span>
-    </button>
+    <>
+      {isVisible && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 p-2 rounded-full bg-primary text-white shadow-lg hover:bg-primary/90 transition-colors"
+          aria-label="Voltar ao topo"
+        >
+          ↑
+        </button>
+      )}
+    </>
   );
-}
+};
+
+export default ScrollToTop;

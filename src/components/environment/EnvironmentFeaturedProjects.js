@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import Image from "next/image";
 import { Button } from "@solana-foundation/solana-lib";
-import { useTranslation } from "next-i18next";
 import styles from "./EnvironmentFeaturedProjects.module.scss";
 
 import GainForestImg from "../../../assets/environment/projects/gainforest.jpg";
@@ -11,17 +10,14 @@ import OutsiteImg from "../../../assets/environment/projects/outside.png";
 import WiHiImg from "../../../assets/environment/projects/wihi.png";
 
 export default function EnvironmentFeaturedProjects() {
-  const { t } = useTranslation();
   const projects = [
     {
-      title: t("environment.featured-projects.projects.ecoToken.title"),
-      description: t(
+      title: environment.featured-projects.projects.ecoToken.title,
         "environment.featured-projects.projects.ecoToken.description",
       ),
       image: EcoTokenImg,
       links: [
         {
-          callToAction: t(
             "environment.featured-projects.projects.ecoToken.links.website",
           ),
           url: "https://ecotoken.earth/",
@@ -30,14 +26,12 @@ export default function EnvironmentFeaturedProjects() {
       ],
     },
     {
-      title: t("environment.featured-projects.projects.sunriseStake.title"),
-      description: t(
+      title: environment.featured-projects.projects.sunriseStake.title,
         "environment.featured-projects.projects.sunriseStake.description",
       ),
       image: SunriseStake,
       links: [
         {
-          callToAction: t(
             "environment.featured-projects.projects.sunriseStake.links.website",
           ),
           url: "https://www.sunrisestake.com/",
@@ -46,14 +40,12 @@ export default function EnvironmentFeaturedProjects() {
       ],
     },
     {
-      title: t("environment.featured-projects.projects.outerverse.title"),
-      description: t(
+      title: environment.featured-projects.projects.outerverse.title,
         "environment.featured-projects.projects.outerverse.description",
       ),
       image: OutsiteImg,
       links: [
         {
-          callToAction: t(
             "environment.featured-projects.projects.outerverse.links.website",
           ),
           url: "https://www.outside.io/",
@@ -62,12 +54,11 @@ export default function EnvironmentFeaturedProjects() {
       ],
     },
     {
-      title: t("environment.featured-projects.projects.wiHi.title"),
-      description: t("environment.featured-projects.projects.wiHi.description"),
+      title: environment.featured-projects.projects.wiHi.title,
+      description: environment.featured-projects.projects.wiHi.description,
       image: WiHiImg,
       links: [
         {
-          callToAction: t(
             "environment.featured-projects.projects.wiHi.links.website",
           ),
           url: "https://www.noetika.tech/weather",
@@ -78,21 +69,18 @@ export default function EnvironmentFeaturedProjects() {
   ];
 
   const gainforest = {
-    title: t("environment.featured-projects.projects.gainForest.title"),
-    description: t(
+    title: environment.featured-projects.projects.gainForest.title,
       "environment.featured-projects.projects.gainForest.description",
     ),
     image: GainForestImg,
     links: [
       {
-        callToAction: t(
           "environment.featured-projects.projects.gainForest.links.caseStudy",
         ),
         url: "https://solana.com/news/case-study-gainforest",
         isExternal: false,
       },
       {
-        callToAction: t(
           "environment.featured-projects.projects.gainForest.links.website",
         ),
         url: "https://gainforest.earth/",
@@ -109,7 +97,7 @@ export default function EnvironmentFeaturedProjects() {
       )}
     >
       <h2 className="h3 text-center mb-5 mb-lg-8">
-        {t("environment.featured-projects.title")}
+        {environment.featured-projects.title}
       </h2>
 
       <div

@@ -1,13 +1,10 @@
 import styled from "styled-components";
 import Button from "../shared/Button";
-import { useTranslation } from "next-i18next";
 
 const StyledCardsWrapper = styled.div`
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   @media (min-width: 768px) {
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
   }
 `;
 
@@ -30,7 +27,6 @@ const StyledGettingStartedCard = styled.div`
 `;
 
 const ValidatorsGettingStarted = () => {
-  const { t } = useTranslation();
 
   return (
     <section className="getting-started">
@@ -39,10 +35,10 @@ const ValidatorsGettingStarted = () => {
           <StyledGettingStartedCard background="#AB66FF">
             <div>
               <h2 className="text-black">
-                {t("validators.getting-started.cards.docs-header")}
+                {validators.getting-started.cards.docs-header}
               </h2>
               <p className="clamp text-black mt-2">
-                {t("validators.getting-started.cards.docs-text")}
+                {validators.getting-started.cards.docs-text}
               </p>
             </div>
             <Button
@@ -52,16 +48,16 @@ const ValidatorsGettingStarted = () => {
               variant="none"
               arrow={true}
             >
-              {t("commands.gtdocs")}
+              {commands.gtdocs}
             </Button>
           </StyledGettingStartedCard>
           <StyledGettingStartedCard background="#14F195">
             <div>
               <h2 className="text-black">
-                {t("validators.getting-started.cards.explorer-header")}
+                {validators.getting-started.cards.explorer-header}
               </h2>
               <p className="clamp text-black mt-2">
-                {t("validators.getting-started.cards.explorer-text")}
+                {validators.getting-started.cards.explorer-text}
               </p>
             </div>
             <Button
@@ -71,16 +67,16 @@ const ValidatorsGettingStarted = () => {
               variant="none"
               arrow={true}
             >
-              {t("validators.getting-started.cards.explorer-btn")}
+              {validators.getting-started.cards.explorer-btn}
             </Button>
           </StyledGettingStartedCard>
           <StyledGettingStartedCard background="#EB54BC">
             <div>
               <h2 className="text-black">
-                {t("validators.getting-started.cards.education-header")}
+                {validators.getting-started.cards.education-header}
               </h2>
               <p className="clamp text-black mt-2">
-                {t("validators.getting-started.cards.education-text")}
+                {validators.getting-started.cards.education-text}
               </p>
             </div>
             <Button
@@ -90,16 +86,16 @@ const ValidatorsGettingStarted = () => {
               variant="none"
               arrow={true}
             >
-              {t("commands.learn")}
+              {commands.learn}
             </Button>
           </StyledGettingStartedCard>
           <StyledGettingStartedCard background="#FF754A">
             <div>
               <h2 className="text-black">
-                {t("validators.getting-started.cards.delegation-header")}
+                {validators.getting-started.cards.delegation-header}
               </h2>
               <p className="clamp text-black mt-2">
-                {t("validators.getting-started.cards.delegation-text")}
+                {validators.getting-started.cards.delegation-text}
               </p>
             </div>
             <div className="d-flex flex-wrap">
@@ -110,7 +106,7 @@ const ValidatorsGettingStarted = () => {
                 variant="none"
                 className="mt-2 me-2"
               >
-                {t("commands.learn")}
+                {commands.learn}
               </Button>
               <Button
                 to="https://solana.org/validators-search"
@@ -120,7 +116,7 @@ const ValidatorsGettingStarted = () => {
                 arrow={true}
                 className="mt-2"
               >
-                {t("validators.getting-started.cards.delegation-btn")}
+                {validators.getting-started.cards.delegation-btn}
               </Button>
             </div>
           </StyledGettingStartedCard>
