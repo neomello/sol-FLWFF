@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -16,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+// AppHeader component
 export default function AppHeader() {
   const { user, logout, loading } = useAuth();
 
