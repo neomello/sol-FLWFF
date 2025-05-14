@@ -6,12 +6,26 @@ import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <section className="w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] flex flex-col justify-center items-center text-center p-4 md:p-8 relative overflow-hidden background-grid">
-      {/* Overlay com gradiente sutil para escurecer as bordas e focar no centro */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black/30 to-black/70 opacity-50 z-0"></div>
-      
-      <div className="relative z-10 flex flex-col items-center">
-        {/* Logo Principal - Em cima */}
+    <div // Root element provides perspective context
+      className="w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] 
+                 flex flex-col justify-center items-center text-center p-4 md:p-8 
+                 relative overflow-hidden 
+                 [perspective:1000px]" // Perspective context for 3D transformed children
+    >
+      {/* Transformed Grid Background Layer */}
+      <div
+        className="absolute inset-0 background-grid transform-gpu 
+                   [transform:rotateX(45deg)_translateY(-20%)_scale(1.3)] 
+                   [transform-origin:center_bottom] 
+                   z-0" // Grid is at the very back, transformed
+      />
+
+      {/* Overlay Layer */}
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black/30 to-black/70 opacity-50 z-[1]" />
+
+      {/* Content Layer: Stays flat */}
+      <div className="relative z-[2] flex flex-col items-center">
+        {/* Logo Principal */}
         <div className="relative w-60 h-60 md:w-80 md:h-80 mb-6 md:mb-8">
           <Image
             src="https://res.cloudinary.com/dgyocpguk/image/upload/v1747195356/LOGO_Sfundo2_av7gff.png"
@@ -52,8 +66,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Elemento decorativo adicional - opcional */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black via-black/50 to-transparent z-0"></div>
+      {/* Decorative footer gradient Layer */}
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black via-black/50 to-transparent z-[1]" />
 
       <style jsx>{`
         .animation-delay-300 {
@@ -77,6 +91,6 @@ export default function HeroSection() {
           opacity: 0; /* Start hidden before animation */
         }
       `}</style>
-    </section>
+    </div>
   );
 }
