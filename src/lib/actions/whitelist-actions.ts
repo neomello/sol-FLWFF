@@ -1,14 +1,14 @@
+
 'use server';
 
 import { z } from 'zod';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db, ensureFirebaseInitialized } from '@/lib/firebase';
+import { ensureFirebaseInitialized } from '@/lib/firebase'; // Import ensureFirebaseInitialized
 import { storeJson } from '@/lib/web3storage';
 
 const formSchema = z.object({
-  // walletAddress is now expected to be provided by the auth context, not directly from form
   email: z.string().email({ message: 'Por favor, insira um endereço de email válido.' }),
-  walletAddress: z.string().min(26, { // Keep for validation if passed, but prioritize auth context
+  walletAddress: z.string().min(26, { 
     message: 'O endereço da carteira parece muito curto.',
   }).max(44, {
     message: 'O endereço da carteira parece muito longo.'
@@ -23,21 +23,18 @@ interface WhitelistSubmissionResult {
   error?: string;
 }
 
-// The walletAddress parameter will be passed from the component after retrieving from AuthContext
 export async function submitWhitelistAction(
   values: z.infer<typeof formSchema>
 ): Promise<WhitelistSubmissionResult> {
   try {
-    // The calling component should ensure walletAddress is from an authenticated source (Web3Auth)
-    // and pass it in `values`.
     const validatedData = formSchema.parse(values);
     
-    ensureFirebaseInitialized(); 
+    const { db } = ensureFirebaseInitialized(); // Get db instance safely
 
-    const docRef = await addDoc(collection(db, 'whitelist'), { // Updated collection name
+    const docRef = await addDoc(collection(db, 'whitelist'), {
       walletAddress: validatedData.walletAddress,
       email: validatedData.email,
-      timestamp: serverTimestamp(), // Updated field name
+      timestamp: serverTimestamp(),
     });
 
     const ipfsData = { 
@@ -55,11 +52,16 @@ export async function submitWhitelistAction(
     if (error instanceof z.ZodError) {
       return { success: false, error: 'Dados fornecidos inválidos. Verifique os campos e tente novamente.' };
     }
+    
     let errorMessage = 'Ocorreu um erro inesperado durante o envio.';
     if (error instanceof Error) {
-        errorMessage = error.message.includes('NEXT_PUBLIC_WEB3_STORAGE_TOKEN') 
-          ? 'Erro de configuração do armazenamento IPFS. Contate o suporte.'
-          : error.message;
+        if (error.message.startsWith("Firebase services are critically unavailable")) {
+            errorMessage = "Serviço de banco de dados indisponível. Verifique a configuração do Firebase.";
+        } else if (error.message.includes('NEXT_PUBLIC_WEB3_STORAGE_TOKEN')) {
+            errorMessage = 'Erro de configuração do armazenamento IPFS. Contate o suporte.';
+        } else {
+            errorMessage = error.message;
+        }
     }
     return { success: false, error: errorMessage };
   }
