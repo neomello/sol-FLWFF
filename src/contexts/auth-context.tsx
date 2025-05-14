@@ -36,7 +36,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const clientId = process.env.NEXT_PUBLIC_WEB3AUTH_CLIENT_ID || '';
 if (!clientId) {
-  console.warn('NEXT_PUBLIC_WEB3AUTH_CLIENT_ID is not set. Web3Auth will not function properly.');
+  console.warn('[AuthContext] NEXT_PUBLIC_WEB3AUTH_CLIENT_ID is not set. Web3Auth will not function properly.');
 }
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -47,20 +47,20 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [firebaseReady, setFirebaseReady] = useState(false);
 
   useEffect(() => {
+    console.log('[AuthContext] Initializing Firebase...');
     const initFirebase = () => {
       try {
-        if (getIsFirebaseInitialized) { // Use the boolean variable directly
+        if (getIsFirebaseInitialized()) {
           const { auth: authInstance } = ensureFirebaseInitialized();
           setFirebaseAuthInstance(authInstance);
           setFirebaseReady(true);
+          console.log('[AuthContext] Firebase initialized successfully.');
         } else {
-          // This case implies module-level init failed, and ensureFirebaseInitialized would throw if called
-          // For client-side, we might want to wait or retry, but for now, mark as not ready.
-          console.warn("Firebase not initialized at AuthProvider mount. Email/password auth might be unavailable.");
+          console.warn("[AuthContext] Firebase not initialized at AuthProvider mount via getIsFirebaseInitialized. Email/password auth might be unavailable.");
           setFirebaseReady(false);
         }
       } catch (error) {
-        console.error("AuthContext: Failed to ensure Firebase initialization:", error);
+        console.error("[AuthContext] Failed to ensure Firebase initialization:", error);
         setFirebaseReady(false);
       }
     };
@@ -71,9 +71,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   useEffect(() => {
     const initWeb3Auth = async () => {
       if (!clientId) {
-        // setLoading(false); // Combined with Firebase auth listener
+        console.warn('[AuthContext] Web3Auth Client ID is missing, skipping Web3Auth initialization.');
+        // setLoading(false) will be handled by Firebase auth listener or after all inits
         return;
       }
+      console.log('[AuthContext] Initializing Web3Auth...');
       try {
         const web3auth = new Web3Auth({
           clientId,
@@ -111,8 +113,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         
         await web3auth.initModal();
         setWeb3authInstance(web3auth);
+        console.log('[AuthContext] Web3Auth initialized successfully.');
 
         if (web3auth.provider) {
+          console.log('[AuthContext] Web3Auth provider found, attempting to set user.');
           const ethersProvider = new ethers.BrowserProvider(web3auth.provider);
           const signer = await ethersProvider.getSigner();
           const address = await signer.getAddress();
@@ -122,11 +126,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             authMethod: 'web3auth_wallet',
             provider: web3auth.provider,
           });
+          console.log('[AuthContext] User set via Web3Auth provider:', address);
+        } else {
+          console.log('[AuthContext] No active Web3Auth provider on init.');
         }
       } catch (error) {
-        console.error('Web3Auth initialization error:', error);
+        console.error('[AuthContext] Web3Auth initialization error:', error);
       } finally {
-        // Defer setLoading(false) to be handled by Firebase auth listener or after all inits
+        // setLoading(false) will be handled by Firebase auth listener or after all inits
       }
     };
 
@@ -135,39 +142,53 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     // Firebase Auth state listener
     let unsubscribe: (() => void) | null = null;
     if (firebaseAuthInstance) {
+      console.log('[AuthContext] Setting up Firebase Auth state listener.');
       unsubscribe = onAuthStateChanged(firebaseAuthInstance, (fbUser) => {
+        console.log('[AuthContext] Firebase Auth state changed. Firebase User:', fbUser ? fbUser.uid : null);
         if (fbUser) {
           if (!web3authInstance?.provider) { // Prioritize Web3 if active
+             console.log('[AuthContext] Firebase user detected, Web3Auth provider not active. Setting user from Firebase.');
              setUser({
               id: fbUser.uid,
               email: fbUser.email,
               authMethod: 'firebase_email',
               firebaseUser: fbUser,
             });
+          } else {
+            console.log('[AuthContext] Firebase user detected, but Web3Auth provider is active. Prioritizing Web3Auth user.');
           }
         } else if (user?.authMethod !== 'web3auth_wallet') { 
+          console.log('[AuthContext] No Firebase user and not a Web3Auth session. Setting user to null.');
           setUser(null);
         }
+        console.log('[AuthContext] Finished processing Firebase Auth state change. Setting loading to false.');
         setLoading(false); // Firebase auth state is now determined
       });
     } else {
-      // If Firebase Auth instance is not ready, we might not be able to listen to auth changes.
-      // For now, assume no Firebase user if instance isn't ready.
-      if(user?.authMethod !== 'web3auth_wallet') setUser(null);
+      console.warn("[AuthContext] Firebase Auth instance not ready, Firebase auth state listener not set up. This might affect email/password auth and persisted sessions.");
+      if(user?.authMethod !== 'web3auth_wallet') {
+        console.log('[AuthContext] Firebase Auth instance not ready and not a Web3Auth session. Setting user to null.');
+        setUser(null);
+      }
+      console.log('[AuthContext] Firebase Auth instance not ready. Setting loading to false.');
       setLoading(false); // Still need to stop loading
     }
 
     return () => {
-      if (unsubscribe) unsubscribe();
+      if (unsubscribe) {
+        console.log('[AuthContext] Unsubscribing Firebase Auth state listener.');
+        unsubscribe();
+      }
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseAuthInstance, firebaseReady]); // Rerun when firebaseAuthInstance becomes available.
 
   const loginWithWeb3 = async () => {
     if (!web3authInstance) {
-      console.error('Web3Auth not initialized');
+      console.error('[AuthContext] Web3Auth not initialized. Cannot login with Web3.');
       return;
     }
+    console.log('[AuthContext] Attempting Web3 login...');
     try {
       setLoading(true);
       const web3authProvider = await web3authInstance.connect();
@@ -181,30 +202,42 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           authMethod: 'web3auth_wallet',
           provider: web3authProvider,
         });
+        console.log('[AuthContext] Web3 login successful. Wallet address:', address);
         // If Firebase was active, sign out to avoid conflicts
-        if (firebaseAuthInstance?.currentUser) await firebaseSignOut(firebaseAuthInstance);
+        if (firebaseAuthInstance?.currentUser) {
+          console.log('[AuthContext] Firebase user detected during Web3 login, signing out from Firebase.');
+          await firebaseSignOut(firebaseAuthInstance);
+        }
+      } else {
+         console.warn('[AuthContext] Web3Auth connect did not return a provider.');
       }
     } catch (error) {
-      console.error('Web3Auth login error:', error);
+      console.error('[AuthContext] Web3Auth login error:', error);
     } finally {
+      console.log('[AuthContext] Web3 login attempt finished. Setting loading to false.');
       setLoading(false);
     }
   };
 
   const loginWithEmail = async (email: string, pass: string) => {
     if (!firebaseAuthInstance) {
-      console.error("Firebase Auth not ready for email login.");
+      console.error("[AuthContext] Firebase Auth not ready for email login.");
       throw new Error("Serviço de autenticação indisponível.");
     }
+    console.log('[AuthContext] Attempting Firebase email login for:', email);
     setLoading(true);
     try {
       const userCredential = await signInWithEmailAndPassword(firebaseAuthInstance, email, pass);
+      console.log('[AuthContext] Firebase email login successful for UID:', userCredential.user.uid);
       // Auth state listener will update user. If Web3Auth was active, log it out.
-      if (web3authInstance?.provider) await web3authInstance.logout();
+      if (web3authInstance?.provider) {
+        console.log('[AuthContext] Web3Auth provider active during email login, logging out from Web3Auth.');
+        await web3authInstance.logout();
+      }
       setLoading(false);
       return userCredential.user;
     } catch (error) {
-      console.error("Firebase email login error:", error);
+      console.error("[AuthContext] Firebase email login error:", error);
       setLoading(false);
       throw error;
     }
@@ -212,32 +245,41 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const signupWithEmail = async (email: string, pass: string) => {
      if (!firebaseAuthInstance) {
-      console.error("Firebase Auth not ready for email signup.");
+      console.error("[AuthContext] Firebase Auth not ready for email signup.");
       throw new Error("Serviço de autenticação indisponível.");
     }
+    console.log('[AuthContext] Attempting Firebase email signup for:', email);
     setLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(firebaseAuthInstance, email, pass);
+      console.log('[AuthContext] Firebase email signup successful for UID:', userCredential.user.uid);
       // Auth state listener will update user. If Web3Auth was active, log it out.
-      if (web3authInstance?.provider) await web3authInstance.logout();
+      if (web3authInstance?.provider) {
+        console.log('[AuthContext] Web3Auth provider active during email signup, logging out from Web3Auth.');
+        await web3authInstance.logout();
+      }
       setLoading(false);
       return userCredential.user;
     } catch (error) {
-      console.error("Firebase email signup error:", error);
+      console.error("[AuthContext] Firebase email signup error:", error);
       setLoading(false);
       throw error;
     }
   };
 
   const logout = async () => {
+    console.log('[AuthContext] Attempting logout. Current user auth method:', user?.authMethod);
     setLoading(true);
     if (user?.authMethod === 'web3auth_wallet' && web3authInstance?.provider) {
+      console.log('[AuthContext] Logging out from Web3Auth.');
       await web3authInstance.logout();
     }
     if ((user?.authMethod === 'firebase_email' || firebaseAuthInstance?.currentUser) && firebaseAuthInstance) {
+       console.log('[AuthContext] Logging out from Firebase.');
        await firebaseSignOut(firebaseAuthInstance);
     }
     setUser(null);
+    console.log('[AuthContext] Logout successful. User set to null.');
     setLoading(false);
   };
 
@@ -255,3 +297,4 @@ export const useAuth = (): AuthContextType => {
   }
   return context;
 };
+

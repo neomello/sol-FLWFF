@@ -1,18 +1,37 @@
 
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
 import HeroSection from '@/components/flwff/hero-section';
 import PageFooter from '@/components/layout/page-footer';
-import PageHeader from '@/components/layout/page-header'; // Changed from DynamicPageHeader
+// import DynamicPageHeader from '@/components/layout/dynamic-page-header'; // Removed
 import PriceDisplay from '@/components/flwff/price-display';
-import WhitelistForm from '@/components/flwff/whitelist-form';
-import StakingSection from '@/components/flwff/staking-section';
+import DynamicWhitelistForm from '@/components/flwff/dynamic-whitelist-form';
+import DynamicStakingSection from '@/components/flwff/dynamic-staking-section';
 import { Separator } from '@/components/ui/separator';
 import { Coins, ShieldCheck, ListPlus } from 'lucide-react';
+
+const HeaderLoadingSkeleton = () => (
+  <header className="py-4 md:py-6 sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border shadow-md">
+    <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="flex items-center space-x-3">
+        <Skeleton className="h-10 w-10 rounded-full" />
+        <Skeleton className="h-6 w-20" />
+      </div>
+      <Skeleton className="h-10 w-32" />
+    </div>
+  </header>
+);
+
+const AppHeaderDynamic = dynamic(() => import('@/components/layout/app-header'), {
+  ssr: false,
+  loading: () => <HeaderLoadingSkeleton />,
+});
 
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
-      <PageHeader /> {/* Changed from DynamicPageHeader */}
+      <AppHeaderDynamic />
 
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 flex flex-col items-center space-y-12 md:space-y-20">
 
@@ -40,13 +59,13 @@ export default function HomePage() {
             <p className="text-muted-foreground mb-6 text-center text-sm md:text-base">
               Garanta seu acesso antecipado e benefícios exclusivos no ecossistema FLWFF.
             </p>
-            <WhitelistForm />
+            <DynamicWhitelistForm />
           </div>
         </section>
         
         <Separator className="my-8 md:my-12 w-3/4 max-w-2xl bg-border/50" />
 
-        <StakingSection />
+        <DynamicStakingSection />
 
       </main>
 
