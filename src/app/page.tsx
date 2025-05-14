@@ -1,8 +1,7 @@
 
 import HeroSection from '@/components/flwff/hero-section';
 import PageFooter from '@/components/layout/page-footer';
-import DynamicPageHeader from '@/components/layout/dynamic-page-header';
-// import PageHeader from '@/components/layout/page-header'; // Removed direct import
+import PageHeader from '@/components/layout/page-header'; // Changed from DynamicPageHeader
 import PriceDisplay from '@/components/flwff/price-display';
 import WhitelistForm from '@/components/flwff/whitelist-form';
 import StakingSection from '@/components/flwff/staking-section';
@@ -13,8 +12,7 @@ import { Coins, ShieldCheck, ListPlus } from 'lucide-react';
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
-      <DynamicPageHeader />
-      {/* <PageHeader /> */} {/* Ensure DynamicPageHeader is used */}
+      <PageHeader /> {/* Changed from DynamicPageHeader */}
 
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 flex flex-col items-center space-y-12 md:space-y-20">
 
@@ -48,7 +46,6 @@ export default function HomePage() {
         
         <Separator className="my-8 md:my-12 w-3/4 max-w-2xl bg-border/50" />
 
-        {/* StakingSection already has its own Card and styling, so we don't need an extra wrapper div like whitelist */}
         <StakingSection />
 
       </main>

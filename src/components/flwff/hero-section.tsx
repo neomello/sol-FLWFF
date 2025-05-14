@@ -7,16 +7,16 @@ import Link from 'next/link';
 export default function HeroSection() {
   return (
     <div // Root element provides perspective context
-      className="w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)] 
-                 flex flex-col justify-center items-center text-center p-4 md:p-8 
-                 relative overflow-hidden 
+      className="w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-96px)]
+                 flex flex-col justify-center items-center text-center p-4 md:p-8
+                 relative overflow-hidden
                  [perspective:1000px]" // Perspective context for 3D transformed children
     >
       {/* Transformed Grid Background Layer */}
       <div
-        className="absolute inset-0 background-grid transform-gpu 
-                   [transform:rotateX(45deg)_translateY(-20%)_scale(1.3)] 
-                   [transform-origin:center_bottom] 
+        className="absolute inset-0 background-grid transform-gpu
+                   [transform:rotateX(45deg)_translateY(-20%)_scale(1.3)]
+                   [transform-origin:center_bottom]
                    z-0"
       />
 
