@@ -4,14 +4,8 @@
 import { z } from 'zod';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db, ensureFirebaseInitialized } from '@/lib/firebase';
-
-export const StakingFormSchema = z.object({
-  walletAddress: z.string().min(26, { message: 'Endereço da carteira inválido.' }),
-  amount: z.number().positive({ message: 'O montante deve ser positivo.' }),
-  durationMonths: z.coerce.number().min(1, { message: 'A duração deve ser de pelo menos 1 mês.' }),
-});
-
-export type StakingFormValues = z.infer<typeof StakingFormSchema>;
+import type { StakingFormValues } from '@/lib/schemas/staking-schema'; // Import the type
+import { StakingFormSchema } from '@/lib/schemas/staking-schema'; // Import the schema
 
 interface StakingSubmissionResult {
   success: boolean;

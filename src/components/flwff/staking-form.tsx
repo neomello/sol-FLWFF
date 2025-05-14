@@ -22,7 +22,9 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { submitStakingAction, StakingFormSchema, type StakingFormValues } from '@/lib/actions/staking-actions';
+import { submitStakingAction } from '@/lib/actions/staking-actions';
+import type { StakingFormValues } from '@/lib/schemas/staking-schema';
+import { StakingFormSchema } from '@/lib/schemas/staking-schema';
 import { useAuth } from '@/contexts/auth-context';
 import { useState, useTransition, useEffect } from 'react';
 import { Loader2, CheckCircle, AlertTriangle, BarChartBig } from 'lucide-react';
