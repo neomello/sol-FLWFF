@@ -5,9 +5,9 @@ import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ShieldCheck } from 'lucide-react';
 
-// Dynamically import the actual StakingSection component with SSR disabled
+// Dynamically import the actual StakingSection component
 const ActualStakingSection = dynamic(() => import('@/components/flwff/staking-section'), {
-  ssr: false,
+  ssr: false, // Ensure this component is not server-side rendered
   loading: () => (
     <section id="staking" className="w-full max-w-2xl mt-12 md:mt-20">
       <div className="bg-card p-6 md:p-8 rounded-lg shadow-xl border border-secondary/50">

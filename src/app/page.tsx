@@ -1,37 +1,18 @@
 
-import dynamic from 'next/dynamic';
-import { Skeleton } from '@/components/ui/skeleton';
+import DynamicAppHeader from '@/components/layout/dynamic-app-header'; // Changed: Restored DynamicAppHeader
 import HeroSection from '@/components/flwff/hero-section';
 import PageFooter from '@/components/layout/page-footer';
-// import DynamicPageHeader from '@/components/layout/dynamic-page-header'; // Removed
 import PriceDisplay from '@/components/flwff/price-display';
 import DynamicWhitelistForm from '@/components/flwff/dynamic-whitelist-form';
 import DynamicStakingSection from '@/components/flwff/dynamic-staking-section';
 import { Separator } from '@/components/ui/separator';
 import { Coins, ShieldCheck, ListPlus } from 'lucide-react';
 
-const HeaderLoadingSkeleton = () => (
-  <header className="py-4 md:py-6 sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border shadow-md">
-    <div className="container mx-auto px-4 flex justify-between items-center">
-      <div className="flex items-center space-x-3">
-        <Skeleton className="h-10 w-10 rounded-full" />
-        <Skeleton className="h-6 w-20" />
-      </div>
-      <Skeleton className="h-10 w-32" />
-    </div>
-  </header>
-);
-
-const AppHeaderDynamic = dynamic(() => import('@/components/layout/app-header'), {
-  ssr: false,
-  loading: () => <HeaderLoadingSkeleton />,
-});
-
 
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans">
-      <AppHeaderDynamic />
+      <DynamicAppHeader /> {/* Changed: Using DynamicAppHeader */}
 
       <main className="flex-grow container mx-auto px-4 py-8 md:py-16 flex flex-col items-center space-y-12 md:space-y-20">
 

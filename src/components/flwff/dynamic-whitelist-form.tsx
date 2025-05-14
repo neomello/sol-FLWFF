@@ -4,9 +4,9 @@
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
-// Dynamically import the actual WhitelistForm component with SSR disabled
+// Dynamically import the actual WhitelistForm component
 const ActualWhitelistForm = dynamic(() => import('@/components/flwff/whitelist-form'), {
-  ssr: false,
+  ssr: false, // Ensure this component is not server-side rendered
   loading: () => (
     <div className="p-6 md:p-8 rounded-lg shadow-xl border border-primary/50 bg-card w-full max-w-md">
       <Skeleton className="h-8 w-3/4 mx-auto mb-4" />
