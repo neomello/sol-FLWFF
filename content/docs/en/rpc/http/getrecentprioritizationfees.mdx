@@ -1,0 +1,93 @@
+---
+title: getRecentPrioritizationFees
+hideTableOfContents: true
+h1: getRecentPrioritizationFees RPC Method
+---
+
+Returns a list of prioritization fees from recent blocks.
+
+<Callout type="info">
+  Currently, a node's prioritization-fee cache stores data from up to 150
+  blocks.
+</Callout>
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getRecentPrioritizationFees",
+  "params": [
+    // !hover address
+    ["CxELquR1gPP8wHe33gZ4QxqGB3sZ9RSwsJ2KshVewkFY"]
+  ]
+}
+```
+
+### !params
+
+#### !! address
+
+!type array
+
+An array of Account addresses (up to a maximum of 128 addresses), as base-58
+encoded strings
+
+<Callout type="info">
+  If this parameter is provided, the response will reflect a fee to land a
+  transaction locking all of the provided accounts as writable.
+</Callout>
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover(1:22) result
+  "result": [
+    {
+      // !hover slot
+      "slot": 348125,
+      // !hover prioritizationFee
+      "prioritizationFee": 0
+    },
+    {
+      "slot": 348126,
+      "prioritizationFee": 1000
+    },
+    {
+      "slot": 348127,
+      "prioritizationFee": 500
+    },
+    {
+      "slot": 348128,
+      "prioritizationFee": 0
+    },
+    {
+      "slot": 348129,
+      "prioritizationFee": 1234
+    }
+  ],
+  "id": 1
+}
+```
+
+!type array
+
+An array of prioritization fee objects containing:
+
+##### !! slot
+
+!type u64
+
+Slot in which the fee was observed
+
+##### !! prioritizationFee
+
+!type u64
+
+The per-compute-unit fee paid by at least one successfully landed transaction,
+specified in increments of micro-lamports (0.000001 lamports)
+
+</APIMethod>

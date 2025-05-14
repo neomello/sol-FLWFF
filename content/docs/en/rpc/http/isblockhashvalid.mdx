@@ -1,0 +1,80 @@
+---
+title: isBlockhashValid
+hideTableOfContents: true
+h1: isBlockhashValid RPC Method
+---
+
+Returns whether a blockhash is still valid or not
+
+<Callout type="warn" title={"Version Restriction"}>
+  This method is only available in `solana-core` v1.9 or newer. Please use
+  [getFeeCalculatorForBlockhash](/docs/rpc/http/getfeecalculatorforblockhash)
+  for `solana-core` v1.8 and below.
+</Callout>
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 45,
+  "method": "isBlockhashValid",
+  "params": [
+    // !hover blockhash
+    "J7rBdM6AecPDEZp8aPq5iPSNKVkU5Q76F3oAV4eW5wsW",
+    // !hover(1:3) config
+    {
+      // !hover commitment
+      "commitment": "processed"
+    }
+  ]
+}
+```
+
+### !params
+
+#### !! blockhash
+
+!type string  
+!required
+
+The blockhash of the block to evaluate, as base-58 encoded string
+
+#### !! config
+
+!type object
+
+Configuration object containing the following fields:
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+##### !! minContextSlot
+
+!type number
+
+The minimum slot that the request can be evaluated at
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": { "slot": 2483 },
+    // !hover result
+    "value": false
+  },
+  "id": 45
+}
+```
+
+!type bool
+
+Whether the blockhash is still valid
+
+</APIMethod>

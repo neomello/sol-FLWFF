@@ -1,0 +1,36 @@
+---
+title: getMaxRetransmitSlot
+hideTableOfContents: true
+h1: getMaxRetransmitSlot RPC Method
+---
+
+Get the max slot seen from retransmit stage.
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getMaxRetransmitSlot"
+}
+```
+
+### !params
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover result
+  "result": 1234,
+  "id": 1
+}
+```
+
+!type u64
+
+Slot number
+
+</APIMethod>

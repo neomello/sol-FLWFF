@@ -1,0 +1,69 @@
+---
+title: getBalance
+hideTableOfContents: true
+h1: getBalance RPC Method
+---
+
+Returns the lamport balance of the account of provided Pubkey
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getBalance",
+  "params": [
+    // !hover pubkey
+    "83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"
+  ]
+}
+```
+
+### !params
+
+#### !! pubkey
+
+!type string  
+!required
+
+Pubkey of account to query, as base-58 encoded string.
+
+#### !! 1
+
+!type object
+
+Configuration object.
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+##### !! minContextSlot
+
+!type number
+
+The minimum slot that the request can be evaluated at.
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": { "slot": 1 },
+    // !hover result
+    "value": 0
+  },
+  "id": 1
+}
+```
+
+!type u64
+
+RpcResponse JSON object with value field set to the balance.
+
+</APIMethod>

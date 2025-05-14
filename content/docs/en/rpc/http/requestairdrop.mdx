@@ -1,0 +1,69 @@
+---
+title: requestAirdrop
+hideTableOfContents: true
+h1: requestAirdrop RPC Method
+---
+
+Requests an airdrop of lamports to a Pubkey
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "requestAirdrop",
+  "params": [
+    // !hover pubkey
+    "83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri",
+    // !hover lamports
+    1000000000
+  ]
+}
+```
+
+### !params
+
+#### !! pubkey
+
+!type string  
+!required
+
+Pubkey of account to receive lamports, as a base-58 encoded string
+
+#### !! lamports
+
+!type u64  
+!required
+
+Amount of lamports to airdrop
+
+#### !! config
+
+!type object
+
+Configuration object containing the following fields:
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover result
+  "result": "5VERv8NMvzbJMEkV8xnrLkEaWRtSz9CosKDYjCJjBRnbJLgp8uirBgmQpjKhoR4tjF3ZpRzrFmBV6UjKdiSZkQUW",
+  "id": 1
+}
+```
+
+!type string
+
+Transaction Signature of the airdrop, as a base-58 encoded string
+
+</APIMethod>

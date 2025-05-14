@@ -1,0 +1,71 @@
+---
+title: getBlocksWithLimit
+hideTableOfContents: true
+h1: getBlocksWithLimit RPC Method
+---
+
+Returns a list of confirmed blocks starting at the given slot
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getBlocksWithLimit",
+  "params": [
+    // !hover start slot
+    5,
+    // !hover limit
+    3
+  ]
+}
+```
+
+### !params
+
+#### !! start slot
+
+!type u64  
+!required
+
+Start slot
+
+#### !! limit
+
+!type u64
+
+Limit (must be no more than 500,000 blocks higher than the `start_slot`)
+
+#### !! 2
+
+!type object
+
+Configuration object
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+- "processed" is not supported
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover result
+  "result": [5, 6, 7],
+  "id": 1
+}
+```
+
+!type array
+
+An array of u64 integers listing confirmed blocks starting at `start_slot` for
+up to `limit` blocks, inclusive.
+
+</APIMethod>

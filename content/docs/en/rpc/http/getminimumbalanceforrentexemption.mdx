@@ -1,0 +1,60 @@
+---
+title: getMinimumBalanceForRentExemption
+hideTableOfContents: true
+h1: getMinimumBalanceForRentExemption RPC Method
+---
+
+Returns minimum balance required to make account rent exempt.
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getMinimumBalanceForRentExemption",
+  "params": [
+    // !hover length
+    50
+  ]
+}
+```
+
+### !params
+
+#### !! length
+
+!type usize  
+!required
+
+The Account's data length
+
+#### !! 1
+
+!type object
+
+Configuration object containing the following fields:
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover result
+  "result": 500,
+  "id": 1
+}
+```
+
+!type u64
+
+Minimum lamports required in the Account to remain rent free
+
+</APIMethod>

@@ -1,0 +1,91 @@
+---
+title: getLatestBlockhash
+hideTableOfContents: true
+h1: getLatestBlockhash RPC Method
+---
+
+Returns the latest blockhash
+
+<Callout type="warn" title={"Version Restriction"}>
+  This method is only available in `solana-core` v1.9 or newer. Please use
+  [getRecentBlockhash](/docs/rpc/http/getrecentblockhash) for `solana-core` v1.8
+  and below.
+</Callout>
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getLatestBlockhash",
+  "params": [
+    // !hover(1:3) 0
+    {
+      // !hover commitment
+      "commitment": "processed"
+    }
+  ]
+}
+```
+
+### !params
+
+#### !! 0
+
+!type object
+
+Configuration object containing the following fields:
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+##### !! minContextSlot
+
+!type number
+
+The minimum slot that the request can be evaluated at
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": {
+      "slot": 2792
+    },
+    // !hover(1:4) result
+    "value": {
+      // !hover blockhash
+      "blockhash": "EkSnNWid2cvwEVnVx9aBqawnmiCNiDgp3gUdkDPTKN1N",
+      // !hover lastValidBlockHeight
+      "lastValidBlockHeight": 3090
+    }
+  },
+  "id": 1
+}
+```
+
+!type object
+
+RpcResponse JSON object with `value` field set to a JSON object including:
+
+##### !! blockhash
+
+!type string
+
+A Hash as base-58 encoded string
+
+##### !! lastValidBlockHeight
+
+!type u64
+
+Last [block height](/docs/references/terminology#block-height) at which the
+blockhash will be valid
+
+</APIMethod>

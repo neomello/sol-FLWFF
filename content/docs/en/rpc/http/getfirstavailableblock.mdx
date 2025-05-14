@@ -1,0 +1,37 @@
+---
+title: getFirstAvailableBlock
+hideTableOfContents: true
+h1: getFirstAvailableBlock RPC Method
+---
+
+Returns the slot of the lowest confirmed block that has not been purged from the
+ledger
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getFirstAvailableBlock"
+}
+```
+
+### !params
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover result
+  "result": 250000,
+  "id": 1
+}
+```
+
+!type u64
+
+Slot
+
+</APIMethod>

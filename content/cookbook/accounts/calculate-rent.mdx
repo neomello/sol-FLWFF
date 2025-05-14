@@ -1,0 +1,88 @@
+---
+title: How to Calculate Account Creation Cost
+description:
+  "Every time you create an account, that creation costs an amount of SOL. Learn
+  how to calculate how much an account costs at creation."
+---
+
+Keeping accounts alive on Solana incurs a data storage cost called
+[rent](/docs/core/accounts#rent). For the calculation, you need to consider the
+amount of data you intend to store in the account. Rent can be reclaimed in full
+if the account is closed.
+
+<CodeTabs >
+
+```typescript !! title="gill"
+import { getMinimumBalanceForRentExemption, createSolanaClient } from "gill";
+
+// allocate 1.5k bytes of extra space in the account for data
+const space = 1500n;
+
+// To calculate the minimum rent balance without making an RPC call:
+const lamports = getMinimumBalanceForRentExemption(space);
+console.log("Minimum balance for rent exemption:", lamports);
+
+const { rpc } = createSolanaClient({
+  urlOrMoniker: "http://127.0.0.1:8899" // or `mainnet`, `localnet`, etc
+});
+
+const lamportsFromRpcCall = await rpc
+  .getMinimumBalanceForRentExemption(space)
+  .send();
+console.log("Minimum balance for rent exemption:", lamports);
+```
+
+```typescript !! title="web3.js"
+import { Connection, clusterApiUrl } from "@solana/web3.js";
+
+const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+
+// allocate 1.5k bytes of extra space in the account for data
+const space = 1500;
+
+const lamports = await connection.getMinimumBalanceForRentExemption(space);
+console.log("Minimum balance for rent exemption:", lamports);
+```
+
+```rust !! title="rust"
+use solana_client::rpc_client::RpcClient;
+use solana_sdk::commitment_config::CommitmentConfig;
+
+fn main() -> anyhow::Result<()> {
+    let client = RpcClient::new_with_commitment(
+        String::from("http://127.0.0.1:8899"),
+        CommitmentConfig::confirmed(),
+    );
+
+    let data_len = 1500;
+    let rent_exemption_amount = client.get_minimum_balance_for_rent_exemption(data_len)?;
+
+    println!("{rent_exemption_amount}");
+
+    Ok(())
+}
+```
+
+```rust !! title="rust async"
+use solana_client::nonblocking::rpc_client::RpcClient;
+use solana_sdk::commitment_config::CommitmentConfig;
+
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
+    let client = RpcClient::new_with_commitment(
+        String::from("http://127.0.0.1:8899"),
+        CommitmentConfig::confirmed(),
+    );
+
+    let data_len = 1500;
+    let rent_exemption_amount = client
+        .get_minimum_balance_for_rent_exemption(data_len)
+        .await?;
+
+    println!("{rent_exemption_amount}");
+
+    Ok(())
+}
+```
+
+</CodeTabs>

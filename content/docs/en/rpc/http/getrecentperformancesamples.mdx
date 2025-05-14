@@ -1,0 +1,103 @@
+---
+title: getRecentPerformanceSamples
+hideTableOfContents: true
+h1: getRecentPerformanceSamples RPC Method
+---
+
+Returns a list of recent performance samples, in reverse slot order. Performance
+samples are taken every 60 seconds and include the number of transactions and
+slots that occur in a given time window.
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getRecentPerformanceSamples",
+  "params": [
+    // !hover number of samples
+    2
+  ]
+}
+```
+
+### !params
+
+#### !! number of samples
+
+!type usize
+
+Number of samples to return (maximum 720)
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover(1:16) result
+  "result": [
+    {
+      // !hover slot
+      "slot": 348125,
+      // !hover numTransactions
+      "numTransactions": 126,
+      // !hover numSlots
+      "numSlots": 126,
+      // !hover samplePeriodSecs
+      "samplePeriodSecs": 60,
+      // !hover numNonVoteTransactions
+      "numNonVoteTransactions": 1
+    },
+    {
+      "slot": 347999,
+      "numTransactions": 126,
+      "numSlots": 126,
+      "samplePeriodSecs": 60,
+      "numNonVoteTransactions": 1
+    }
+  ],
+  "id": 1
+}
+```
+
+!type array
+
+An array of performance sample objects containing:
+
+##### !! slot
+
+!type u64
+
+Slot in which sample was taken at
+
+##### !! numTransactions
+
+!type u64
+
+Number of transactions processed during the sample period
+
+##### !! numSlots
+
+!type u64
+
+Number of slots completed during the sample period
+
+##### !! samplePeriodSecs
+
+!type u16
+
+Number of seconds in a sample window
+
+##### !! numNonVoteTransactions
+
+!type u64
+
+Number of non-vote transactions processed during the sample period
+
+<Callout type="info">
+  `numNonVoteTransactions` is present starting with v1.15. To get a number of
+  voting transactions compute: `numTransactions - numNonVoteTransactions`
+</Callout>
+
+</APIMethod>

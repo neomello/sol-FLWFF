@@ -1,0 +1,206 @@
+---
+title: simulateTransaction
+hideTableOfContents: true
+h1: simulateTransaction RPC Method
+---
+
+Simulate sending a transaction
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "simulateTransaction",
+  "params": [
+    // !hover(1:2) transaction
+    "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEDArczbMia1tLmq7zz4DinMNN0pJ1JtLdqIJPUw3YrGCzYAMHBsgN27lcgB6H2WQvFgyZuJYHa46puOQo9yQ8CVQbd9uHXZaGT2cvhRs7reawctIXtX1s3kTqM9YV+/wCp20C7Wj2aiuk5TReAXo+VTVg8QTHjs0UjNMMKCvpzZ+ABAgEBARU=",
+    // !hover(1:3) config
+    {
+      // !hover encoding
+      "encoding": "base64"
+    }
+  ]
+}
+```
+
+### !params
+
+#### !! transaction
+
+!type string  
+!required
+
+Transaction, as an encoded string.
+
+<Callout type="info">
+  The transaction must have a valid blockhash, but is not required to be signed.
+</Callout>
+
+#### !! config
+
+!type object  
+!optional
+
+Configuration object containing the following fields:
+
+##### !! commitment
+
+!type string
+
+Commitment level to simulate the transaction at. See
+[Configuring State Commitment](/docs/rpc/index.mdx#configuring-state-commitment).
+Default `finalized`.
+
+##### !! sigVerify
+
+!type bool  
+!defaultValue false
+
+If `true` the transaction signatures will be verified (conflicts with
+`replaceRecentBlockhash`)
+
+##### !! replaceRecentBlockhash
+
+!type bool  
+!defaultValue false
+
+If `true` the transaction recent blockhash will be replaced with the most recent
+blockhash (conflicts with `sigVerify`)
+
+##### !! minContextSlot
+
+!type number  
+!optional
+
+The minimum slot that the request can be evaluated at
+
+##### !! encoding
+
+!type string  
+!values base58 base64  
+!default base58
+
+Encoding used for the transaction data. Values: `base58` (_slow_,
+**DEPRECATED**), or `base64`.
+
+##### !! innerInstructions
+
+!type bool  
+!defaultValue false
+
+If `true` the response will include
+[inner instructions](/docs/rpc/json-structures#inner-instructions). These inner
+instructions will be `jsonParsed` where possible, otherwise `json`.
+
+##### !! accounts
+
+!type object  
+!optional
+
+Accounts configuration object containing the following fields:
+
+- `addresses`: An array of accounts to return, as base-58 encoded strings
+- `encoding`: Encoding for returned Account data. Note: `jsonParsed` encoding
+  attempts to use program-specific state parsers to return more human-readable
+  and explicit account state data. If `jsonParsed` is requested but a
+  [parser cannot be found](https://github.com/solana-labs/solana/blob/cfd0a00ae2ba85a6d76757df8b4fa38ed242d185/account-decoder/src/parse_account_data.rs#L98-L100),
+  the field falls back to `base64` encoding, detectable when the returned
+  `accounts.data` field is type `string`.
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": { "slot": 218 },
+    // !hover(1:28) value
+    "value": {
+      // !hover err
+      "err": null,
+      // !hover accounts
+      "accounts": null,
+      // !hover(1:6) logs
+      "logs": [
+        "Program 83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri invoke [1]",
+        "Program 83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri consumed 2366 of 1400000 compute units",
+        "Program return: 83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri KgAAAAAAAAA=",
+        "Program 83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri success"
+      ],
+      // !hover(1:4) returnData
+      "returnData": {
+        "data": ["Kg==", "base64"],
+        "programId": "83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"
+      },
+      // !hover unitsConsumed
+      "unitsConsumed": 2366
+    }
+  },
+  "id": 1
+}
+```
+
+!type object
+
+The result will contain:
+
+##### !! err
+
+!type object|string|null
+
+Error if transaction failed, null if transaction succeeded. See
+[TransactionError definitions](https://github.com/solana-labs/solana/blob/c0c60386544ec9a9ec7119229f37386d9f070523/sdk/src/transaction/error.rs#L13)
+
+##### !! logs
+
+!type array|null
+
+Array of log messages the transaction instructions output during execution, null
+if simulation failed before the transaction was able to execute
+
+##### !! accounts
+
+!type array|null
+
+Array of accounts with the same length as the `accounts.addresses` array in the
+request. Each element is either:
+
+- `null` - if the account doesn't exist or if `err` is not null
+- An object containing:
+  - `lamports: <u64>` - number of lamports assigned to this account
+  - `owner: <string>` - base-58 encoded Pubkey of the program this account has
+    been assigned to
+  - `data: <[string, encoding]|object>` - data associated with the account,
+    either as encoded binary data or JSON format `{<program>: <state>}`
+  - `executable: <bool>` - boolean indicating if the account contains a program
+  - `rentEpoch: <u64>` - the epoch at which this account will next owe rent
+
+##### !! unitsConsumed
+
+!type u64|undefined
+
+The number of compute budget units consumed during the processing of this
+transaction
+
+##### !! returnData
+
+!type object|null
+
+The most-recent return data generated by an instruction in the transaction,
+containing:
+
+- `programId: <string>` - the program that generated the return data, as base-58
+  encoded Pubkey
+- `data: <[string, encoding]>` - the return data itself, as base-64 encoded
+  binary data
+
+##### !! innerInstructions
+
+!type object|undefined
+
+Defined only if `innerInstructions` was set to `true`. The value is a list of
+[inner instructions](/docs/rpc/json-structures#inner-instructions).
+
+</APIMethod>

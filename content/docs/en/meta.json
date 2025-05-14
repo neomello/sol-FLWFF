@@ -1,0 +1,4 @@
+{
+  "title": "Solana Documentation",
+  "pages": ["intro", "core", "tokens", "programs", "clients", "references", "rpc", "toolkit"]
+}

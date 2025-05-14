@@ -1,0 +1,101 @@
+---
+title: getBlockProduction
+hideTableOfContents: true
+h1: getBlockProduction RPC Method
+---
+
+Returns recent block production information from the current or previous epoch.
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getBlockProduction"
+}
+```
+
+### !params
+
+#### !! 0
+
+!type object
+
+Configuration object
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+##### !! identity
+
+!type string
+
+Only return results for this validator identity (base-58 encoded).
+
+##### !! range
+
+!type object
+
+Slot range to return block production for. If parameter not provided, defaults
+to current epoch.
+
+- `firstSlot: <u64>` - first slot to return block production information for
+  (inclusive)
+- (optional) `lastSlot: <u64>` - last slot to return block production
+  information for (inclusive). If parameter not provided, defaults to the
+  highest slot
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": {
+      "slot": 9887
+    },
+    // !hover(1:9) result
+    "value": {
+      // !hover(1:3) byIdentity
+      "byIdentity": {
+        "85iYT5RuzRTDgjyRa3cP8SYhM2j21fj7NhfJ3peu1DPr": [9888, 9886]
+      },
+      // !hover(1:4) range
+      "range": {
+        "firstSlot": 0,
+        "lastSlot": 9887
+      }
+    }
+  },
+  "id": 1
+}
+```
+
+!type object
+
+The result will be an RpcResponse JSON object with value equal to:
+
+##### !! byIdentity
+
+!type object
+
+A dictionary of validator identities, as base-58 encoded strings. Value is a two
+element array containing the number of leader slots and the number of blocks
+produced.
+
+##### !! range
+
+!type object
+
+Block production slot range
+
+- `firstSlot: <u64>` - first slot of the block production information
+  (inclusive)
+- `lastSlot: <u64>` - last slot of block production information (inclusive)
+
+</APIMethod>

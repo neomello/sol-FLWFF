@@ -1,0 +1,41 @@
+---
+title: minimumLedgerSlot
+hideTableOfContents: true
+h1: minimumLedgerSlot RPC Method
+---
+
+Returns the lowest slot that the node has information about in its ledger.
+
+<Callout type="info">
+  This value may increase over time if the node is configured to purge older
+  ledger data
+</Callout>
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "minimumLedgerSlot"
+}
+```
+
+### !params
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover result
+  "result": 1234,
+  "id": 1
+}
+```
+
+!type u64
+
+The minimum ledger slot number
+
+</APIMethod>

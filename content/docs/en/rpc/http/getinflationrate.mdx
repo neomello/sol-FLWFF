@@ -1,0 +1,69 @@
+---
+title: getInflationRate
+hideTableOfContents: true
+h1: getInflationRate RPC Method
+---
+
+Returns the specific inflation values for the current epoch
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getInflationRate"
+}
+```
+
+### !params
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover(1:6) result
+  "result": {
+    // !hover total
+    "total": 0.149,
+    // !hover validator
+    "validator": 0.148,
+    // !hover foundation
+    "foundation": 0.001,
+    // !hover epoch
+    "epoch": 100
+  },
+  "id": 1
+}
+```
+
+!type object
+
+The result field will be a JSON object with the following fields:
+
+##### !! total
+
+!type f64
+
+Total inflation
+
+##### !! validator
+
+!type f64
+
+Inflation allocated to validators
+
+##### !! foundation
+
+!type f64
+
+Inflation allocated to the foundation
+
+##### !! epoch
+
+!type u64
+
+Epoch for which these values are valid
+
+</APIMethod>

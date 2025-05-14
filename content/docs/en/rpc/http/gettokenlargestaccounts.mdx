@@ -1,0 +1,113 @@
+---
+title: getTokenLargestAccounts
+hideTableOfContents: true
+h1: getTokenLargestAccounts RPC Method
+---
+
+Returns the 20 largest accounts of a particular SPL Token type.
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getTokenLargestAccounts",
+  "params": [
+    // !hover pubkey
+    "3wyAj7Rt1TWVPZVteFJPLa26JmLvdb1CAKEFZm3NY75E"
+  ]
+}
+```
+
+### !params
+
+#### !! pubkey
+
+!type string  
+!required
+
+Pubkey of the token Mint to query, as base-58 encoded string
+
+#### !! 1
+
+!type object
+
+Configuration object containing the following fields:
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": { "slot": 1114 },
+    // !hover(1:16) result
+    "value": [
+      {
+        // !hover address
+        "address": "FYjHNoFtSQ5uijKrZFyYAxvEr87hsKXkXcxkcmkBAf4r",
+        // !hover amount
+        "amount": "771",
+        // !hover decimals
+        "decimals": 2,
+        // !hover uiAmount
+        "uiAmount": 7.71,
+        // !hover uiAmountString
+        "uiAmountString": "7.71"
+      },
+      {
+        "address": "BnsywxTcaYeNUtzrPxQUvzAWxfzZe3ZLUJ4wMMuLESnu",
+        "amount": "229",
+        "decimals": 2,
+        "uiAmount": 2.29,
+        "uiAmountString": "2.29"
+      }
+    ]
+  },
+  "id": 1
+}
+```
+
+!type array
+
+An array of JSON objects containing:
+
+##### !! address
+
+!type string
+
+The address of the token account
+
+##### !! amount
+
+!type string
+
+The raw token account balance without decimals, a string representation of u64
+
+##### !! decimals
+
+!type u8
+
+Number of base 10 digits to the right of the decimal place
+
+##### !! uiAmount
+
+!type number | null
+
+The token account balance, using mint-prescribed decimals **DEPRECATED**
+
+##### !! uiAmountString
+
+!type string
+
+The token account balance as a string, using mint-prescribed decimals
+
+</APIMethod>

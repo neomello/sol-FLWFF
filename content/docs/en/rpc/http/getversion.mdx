@@ -1,0 +1,53 @@
+---
+title: getVersion
+hideTableOfContents: true
+h1: getVersion RPC Method
+---
+
+Returns the current Solana version running on the node
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getVersion"
+}
+```
+
+### !params
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  // !hover(1:4) result
+  "result": {
+    // !hover solana-core
+    "solana-core": "1.16.7",
+    // !hover feature-set
+    "feature-set": 2891131721
+  },
+  "id": 1
+}
+```
+
+!type object
+
+A JSON object containing:
+
+##### !! solana-core
+
+!type string
+
+Software version of solana-core
+
+##### !! feature-set
+
+!type u32
+
+Unique identifier of the current software's feature set
+
+</APIMethod>

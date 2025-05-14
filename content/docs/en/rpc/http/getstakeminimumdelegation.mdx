@@ -1,0 +1,52 @@
+---
+title: getStakeMinimumDelegation
+hideTableOfContents: true
+h1: getStakeMinimumDelegation RPC Method
+---
+
+Returns the stake minimum delegation, in lamports.
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getStakeMinimumDelegation"
+}
+```
+
+### !params
+
+#### !! 0
+
+!type object
+
+Configuration object containing the following fields:
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": { "slot": 501 },
+    // !hover result
+    "value": 1000000000
+  },
+  "id": 1
+}
+```
+
+!type u64
+
+The stake minimum delegation, in lamports
+
+</APIMethod>

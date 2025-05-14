@@ -1,0 +1,98 @@
+---
+title: getSupply
+hideTableOfContents: true
+h1: getSupply RPC Method
+---
+
+Returns information about the current supply.
+
+<APIMethod>
+
+```jsonc !!request curl
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "getSupply"
+}
+```
+
+### !params
+
+#### !! 0
+
+!type object
+
+Configuration object containing the following fields:
+
+##### !! commitment
+
+!type string
+
+The commitment describes how finalized a block is at that point in time. See
+[Configuring State Commitment](/docs/rpc#configuring-state-commitment).
+
+##### !! excludeNonCirculatingAccountsList
+
+!type bool
+
+Exclude non circulating accounts list from response
+
+### !!result
+
+```jsonc !response
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "context": { "slot": 1114 },
+    // !hover(1:11) result
+    "value": {
+      // !hover total
+      "total": 1016000,
+      // !hover circulating
+      "circulating": 16000,
+      // !hover nonCirculating
+      "nonCirculating": 1000000,
+      // !hover(1:6) nonCirculatingAccounts
+      "nonCirculatingAccounts": [
+        "FEy8pTbP5fEoqMV1GdTz83byuA8EKByqYat1PKDgVAq5",
+        "9huDUZfxoJ7wGMTffUE7vh1xePqef7gyrLJu9NApncqA",
+        "3mi1GmwEE3zo2jmfDuzvjSX9ovRXsDUKHvsntpkhuLJ9",
+        "BYxEJTDerkaRWBem3XgnVcdhppktBXa2HbkHPKj2Ui4Z"
+      ]
+    }
+  },
+  "id": 1
+}
+```
+
+!type object
+
+The result will be a JSON object containing:
+
+##### !! total
+
+!type u64
+
+Total supply in lamports
+
+##### !! circulating
+
+!type u64
+
+Circulating supply in lamports
+
+##### !! nonCirculating
+
+!type u64
+
+Non-circulating supply in lamports
+
+##### !! nonCirculatingAccounts
+
+!type array
+
+An array of account addresses of non-circulating accounts, as strings. If
+`excludeNonCirculatingAccountsList` is enabled, the returned array will be
+empty.
+
+</APIMethod>

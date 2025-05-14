@@ -1,0 +1,249 @@
+---
+title: How to Create a Token Account
+description:
+  "Learn to create Solana token accounts, which hold tokens for users."
+---
+
+A token account is required for a user to hold tokens.
+
+A user will have at least one token account for every type of token they own.
+
+Associated Token Accounts (ATAs) are deterministically created accounts for
+every keypair. ATAs are the recommended method of managing token accounts.
+
+<CodeTabs >
+
+```typescript !! title="gill"
+import {
+  address,
+  airdropFactory,
+  createKeyPairSignerFromBytes,
+  createSolanaClient,
+  createTransaction,
+  lamports,
+  signTransactionMessageWithSigners
+} from "gill";
+import {
+  getAssociatedTokenAccountAddress,
+  getCreateAssociatedTokenIdempotentInstruction,
+  TOKEN_2022_PROGRAM_ADDRESS
+  // @ts-ignore
+} from "gill/programs/token";
+import bs58 from "bs58";
+
+const { rpc, rpcSubscriptions, sendAndConfirmTransaction } = createSolanaClient(
+  {
+    urlOrMoniker: "http://127.0.0.1:8899" // or `mainnet`, `localnet`, etc
+  }
+);
+
+const signer = await createKeyPairSignerFromBytes(
+  bs58.decode(
+    "588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2"
+  )
+);
+await airdropFactory({ rpc, rpcSubscriptions })({
+  commitment: "confirmed",
+  lamports: lamports(5_000_000n),
+  recipientAddress: signer.address
+});
+
+const { value: latestBlockhash } = await rpc.getLatestBlockhash().send();
+
+const tokenProgram = TOKEN_2022_PROGRAM_ADDRESS;
+const mint = address("8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV");
+
+const destination = address("nick6zJc6HpW3kfBm4xS2dmbuVRyb5F3AnUvj5ymzR5");
+const destinationAta = await getAssociatedTokenAccountAddress(
+  mint,
+  destination,
+  tokenProgram
+);
+
+const transaction = createTransaction({
+  feePayer: signer,
+  version: "legacy",
+  instructions: [
+    // create idempotent will gracefully fail if the ata already exists. this is the gold standard!
+    getCreateAssociatedTokenIdempotentInstruction({
+      mint,
+      payer: signer,
+      tokenProgram,
+      owner: destination,
+      ata: destinationAta
+    })
+  ],
+  latestBlockhash
+});
+
+const signedTransaction = await signTransactionMessageWithSigners(transaction);
+
+await sendAndConfirmTransaction(signedTransaction);
+```
+
+```typescript !! title="Legacy"
+import {
+  clusterApiUrl,
+  Connection,
+  PublicKey,
+  Keypair,
+  Transaction,
+  sendAndConfirmTransaction
+} from "@solana/web3.js";
+import {
+  getAssociatedTokenAddress,
+  createAssociatedTokenAccountInstruction,
+  createAssociatedTokenAccountIdempotent,
+  TOKEN_2022_PROGRAM_ID
+} from "@solana/spl-token";
+import bs58 from "bs58";
+
+(async () => {
+  // connection
+  const connection = new Connection(
+    clusterApiUrl("http://127.0.0.1:8899"),
+    "confirmed"
+  );
+
+  // 5YNmS1R9nNSCDzb5a7mMJ1dwK9uHeAAF4CmPEwKgVWr8
+  const feePayer = Keypair.fromSecretKey(
+    bs58.decode(
+      "588FU4PktJWfGfxtzpAAXywSNt74AvtroVzGfKkVN1LwRuvHwKGr851uH8czM5qm4iqLbs1kKoMKtMJG4ATR7Ld2"
+    )
+  );
+  const airdropSig = await connection.requestAirdrop(
+    feePayer.publicKey,
+    1000000000
+  );
+  await connection.confirmTransaction(airdropSig);
+
+  // G2FAbFQPFa5qKXCetoFZQEvF9BVvCKbvUZvodpVidnoY
+  const alice = Keypair.fromSecretKey(
+    bs58.decode(
+      "4NMwxzmYj2uvHuq8xoqhY8RXg63KSVJM1DXkpbmkUY7YQWuoyQgFnnzn6yo3CMnqZasnNPNuAT2TLwQsCaKkUddp"
+    )
+  );
+
+  const mintPubkey = new PublicKey(
+    "8mAKLjGGmjKTnmcXeyr3pr7iX13xXVjJJiL6RujDbSPV"
+  );
+
+  {
+    let ata = await createAssociatedTokenAccountIdempotent(
+      connection, // connection
+      feePayer, // fee payer
+      mintPubkey, // mint
+      alice.publicKey, // owner
+      undefined,
+      TOKEN_2022_PROGRAM_ID
+    );
+    console.log(`ATA: ${ata.toBase58()}`);
+  }
+})();
+```
+
+```rust !! title="Rust"
+use solana_client::nonblocking::rpc_client::RpcClient;
+use solana_sdk::{
+    commitment_config::CommitmentConfig, native_token::LAMPORTS_PER_SOL, program_pack::Pack,
+    signature::Keypair, signer::Signer, system_instruction::create_account,
+    transaction::Transaction,
+};
+use spl_associated_token_account::instruction::create_associated_token_account_idempotent;
+use spl_token::{instruction::initialize_mint2, state::Mint, ID as TOKEN_PROGRAM_ID};
+
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
+    let client = RpcClient::new_with_commitment(
+        String::from("http://127.0.0.1:8899"),
+        CommitmentConfig::confirmed(),
+    );
+
+    let authority_keypair = Keypair::new();
+    let mint_account = Keypair::new();
+
+    // Airdrop authority, create the mint account
+    setup(&client, &authority_keypair, &mint_account).await?;
+
+    let create_ata_ix = create_associated_token_account_idempotent(
+        &authority_keypair.pubkey(), // payer
+        &authority_keypair.pubkey(),
+        &mint_account.pubkey(),
+        &TOKEN_PROGRAM_ID,
+    );
+
+    let transaction_signature = client
+        .request_airdrop(&authority_keypair.pubkey(), 5 * LAMPORTS_PER_SOL)
+        .await?;
+    loop {
+        if client.confirm_transaction(&transaction_signature).await? {
+            break;
+        }
+    }
+
+    let mut transaction =
+        Transaction::new_with_payer(&[create_ata_ix], Some(&authority_keypair.pubkey()));
+
+    transaction.sign(&[&authority_keypair], client.get_latest_blockhash().await?);
+
+    match client.send_and_confirm_transaction(&transaction).await {
+        Ok(signature) => println!("Transaction Signature: {}", signature),
+        Err(err) => eprintln!("Error sending transaction: {}", err),
+    }
+
+    Ok(())
+}
+
+// Helper function to airdrop, create the mint account
+async fn setup(
+    client: &RpcClient,
+    authority_keypair: &Keypair,
+    mint_account: &Keypair,
+) -> anyhow::Result<()> {
+    let transaction_signature = client
+        .request_airdrop(&authority_keypair.pubkey(), 5 * LAMPORTS_PER_SOL)
+        .await?;
+    loop {
+        if client.confirm_transaction(&transaction_signature).await? {
+            break;
+        }
+    }
+
+    let decimals = 9;
+    let mint_account_len = Mint::LEN;
+    let mint_account_rent = client
+        .get_minimum_balance_for_rent_exemption(mint_account_len)
+        .await?;
+
+    let create_mint_account_ix = create_account(
+        &authority_keypair.pubkey(),
+        &mint_account.pubkey(),
+        mint_account_rent,
+        mint_account_len as u64,
+        &TOKEN_PROGRAM_ID,
+    );
+
+    let initialize_mint_ix = initialize_mint2(
+        &TOKEN_PROGRAM_ID,
+        &mint_account.pubkey(),
+        &authority_keypair.pubkey(),
+        Some(&authority_keypair.pubkey()),
+        decimals,
+    )?;
+
+    let mut transaction = Transaction::new_with_payer(
+        &[create_mint_account_ix, initialize_mint_ix],
+        Some(&authority_keypair.pubkey()),
+    );
+
+    transaction.sign(
+        &[authority_keypair, mint_account],
+        client.get_latest_blockhash().await?,
+    );
+
+    client.send_and_confirm_transaction(&transaction).await?;
+    Ok(())
+}
+```
+
+</CodeTabs>
